@@ -5,7 +5,7 @@ name: Python application
 
 on:
   schedule:
-    - cron: '50 * * * *' # 定期実行したい時刻を cron 形式で指定
+    - cron: '12 * * * *' # 定期実行したい時刻を cron 形式で指定
 
 jobs:
   build:
@@ -21,7 +21,6 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install flake8 pytest
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Run Python script
       run: python main.py
