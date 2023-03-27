@@ -5,7 +5,7 @@ name: Python application
 
 on:
   schedule:
-    - cron: '10 * * * *' # 定期実行したい時刻を cron 形式で指定
+    - cron: '25 * * * *' # 定期実行したい時刻を cron 形式で指定
 
 jobs:
   build:
