@@ -27,17 +27,49 @@ client_credentials = {
 creds = ServiceAccountCredentials._from_parsed_json_keyfile(client_credentials, scope, None, None)
 client = gspread.authorize(creds)
 # スプレッドシートのURLとシート名を指定する
-spreadsheet_url = 'https://docs.google.com/spreadsheets/d/1wBONE-poCXP-DTz107FEUSEqmUclGRiKjzX7lHuqNDM/edit#gid=1570231154'
-sheet_name = 'シート1'
+spreadsheet_url = 'https://docs.google.com/spreadsheets/d/1eYWEERQz3dL7lDFd5H63rWABSAci6LSX9xFB33eA9Yo/edit#gid=1570231154'
+sheet_name = '家具データ'
 
 # スプレッドシートのデータを取得する
 worksheet = client.open_by_url(spreadsheet_url).worksheet(sheet_name)
 rows = worksheet.get_all_values()
 
 # 取得したデータを処理する
-count = 0
-with open('output.csv', mode='w') as file:
+with open('data.csv', mode='w', encoding='UTF-8') as file:
+    count = 0
     for row in rows:
-        line = ','.join([str(count)]+row) + '\n'
+        if len(row) == 0:
+            continue
+        if row[1] == '' or row[1] == '名前':
+            continue
+        line = ','.join([str(count)]+row[1:15]) + '\n'
         file.write(line)
         count+=1
+
+sheet_name = '参照用素材数計算'
+
+# スプレッドシートのデータを取得する
+worksheet = client.open_by_url(spreadsheet_url).worksheet(sheet_name)
+rows = worksheet.get_all_values()
+
+# 取得したデータを処理する
+with open('series.csv', mode='w', encoding='UTF-8') as file:
+    count = 0
+    for row in rows:
+        count+=1
+        if count <= 21:
+            continue
+        if 'シリーズ' in row[73]:
+            line = ','.join(row[73:73+17]) + '\n'
+            file.write(line)
+
+with open('roomrank.csv', mode='w', encoding='UTF-8') as file:
+    count = 0
+    for row in rows:
+        count+=1
+        if count <= 21:
+            continue
+        if row[63].isdigit():
+            line = ','.join(row[63:63+6]) + '\n'
+            file.write(line)
+
