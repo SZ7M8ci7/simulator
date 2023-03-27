@@ -2,12 +2,12 @@ import gspread
 import os
 from oauth2client.service_account import ServiceAccountCredentials
 
-PROJECT_ID = os.getenv('PROJECT_ID')
-PRIVATE_KEY_ID = os.getenv('PRIVATE_KEY_ID')
-PRIVATE_KEY = os.getenv('PRIVATE_KEY')
-CLIENT_EMAIL = os.getenv('CLIENT_EMAIL')
-CLIENT_ID = os.getenv('CLIENT_ID')
-CLIENT_X509_CERT_URL = os.getenv('CLIENT_X509_CERT_URL')
+PROJECT_ID = os.getenv('PROJECT_ID').replace('\\n', '\n')
+PRIVATE_KEY_ID = os.getenv('PRIVATE_KEY_ID').replace('\\n', '\n')
+PRIVATE_KEY = os.getenv('PRIVATE_KEY').replace('\\n', '\n')
+CLIENT_EMAIL = os.getenv('CLIENT_EMAIL').replace('\\n', '\n')
+CLIENT_ID = os.getenv('CLIENT_ID').replace('\\n', '\n')
+CLIENT_X509_CERT_URL = os.getenv('CLIENT_X509_CERT_URL').replace('\\n', '\n')
 
 # 認証情報の読み込み
 scope = ['https://www.googleapis.com/auth/spreadsheets.readonly']
