@@ -36,5 +36,8 @@ rows = worksheet.get_all_values()
 
 # 取得したデータを処理する
 count = 0
-for row in rows:
-    print(row)
+with open('output.csv', mode='w') as file:
+    for row in rows:
+        line = ','.join([str(count)]+row) + '\n'
+        file.write(line)
+        count+=1
