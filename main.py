@@ -172,11 +172,11 @@ def makeicon():
     cosdict = getDict('cosdict.txt')
     namedict = getDict('namedict.txt')
     charadict = getCharaDict('charadata.tsv',namedict,cosdict)
-    files = glob.glob("get\\*")
-    out_files = glob.glob("img\\*")
-    out_files = [file.split('\\')[-1] for file in out_files]
+    files = glob.glob("get/*")
+    out_files = glob.glob("img/*")
+    out_files = [file.split('/')[-1] for file in out_files]
     for file in files:
-        filename = file.split('\\')[-1]
+        filename = file.split('/')[-1]
         rank = ''
         if 'SSR' in filename:
             rank = 'SSR'
@@ -219,7 +219,7 @@ def makeicon():
             background_image.alpha_composite(foreground_image, (start_pos+foreground_image.width*magic+magic, 0))
 
         # 合成した画像を保存する
-        background_image.save('img\\' + output_filename+'.png')
+        background_image.save('img/' + output_filename+'.png')
         input_file = 'simulator.html'
 
         with open(input_file, 'r',encoding='UTF-8') as file:
@@ -375,12 +375,12 @@ def get_list(url):
             images_list.append(get_image_link)
             alt_list.append(get_alt_link)
 
-        files = glob.glob("get\\*")
+        files = glob.glob("get/*")
         exists_files = []
         exists_names = []
         for file in files:
-            exists_files.append(file.split('\\')[-1])
-            exists_names.append(file.split('\\')[-1])
+            exists_files.append(file.split('/')[-1])
+            exists_names.append(file.split('/')[-1])
         for counter in range(len(images_list)):
             try:
                 filename = alt_list[counter]
@@ -388,7 +388,7 @@ def get_list(url):
                     continue
                 time.sleep(1)
                 r = requests.get('https://twst.wikiru.jp/' + images_list[counter])
-                path = 'get\\' + filename
+                path = 'get/' + filename
                 image_file = open(path, 'wb')
                 image_file.write(r.content)
                 image_file.close()
