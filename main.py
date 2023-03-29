@@ -231,7 +231,7 @@ def makeicon():
 
         # 合成した画像を保存する
         background_image.save('img/' + output_filename+'.png')
-        input_file = 'simulator.html'
+        input_file = 'index.html'
 
         with open(input_file, 'r',encoding='UTF-8') as file:
             # ファイルを1行ずつ読み込み、処理を行う
