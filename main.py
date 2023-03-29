@@ -168,7 +168,7 @@ def checkMagicBuf(str):
     if '属性ダメージUP(大)' in str:
         buf = '属性ダメUP(大)'
     return buf
-def main():
+def makeicon():
     cosdict = getDict('cosdict.txt')
     namedict = getDict('namedict.txt')
     charadict = getCharaDict('charadata.tsv',namedict,cosdict)
@@ -455,4 +455,4 @@ if __name__ == '__main__':
     with open("charadata.tsv", "w", encoding='UTF-8') as f:
         for out in output:
             f.write(f"{out}\n")
-    main()
+    makeicon()
