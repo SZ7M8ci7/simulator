@@ -207,7 +207,6 @@ def main():
         # 背景画像を60x60の正方形にリサイズする
         background_image = background_image.resize((60, 60))
         start_pos = background_image.width - max_magic*12 - (max_magic-1)
-        print(output_filename)
         for magic in range(max_magic):
 
             # 合成する画像を開く
