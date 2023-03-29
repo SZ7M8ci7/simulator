@@ -5,7 +5,7 @@ name: Python application
 
 on:
   schedule:
-    - cron: '15 * * * *' # 定期実行したい時刻を cron 形式で指定
+    - cron: '0 * * * *' # 定期実行したい時刻を cron 形式で指定
 
 jobs:
   build:
@@ -33,13 +33,6 @@ jobs:
         python -m pip install --upgrade pip
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Run Python script
-      env:
-          PROJECT_ID: ${{ secrets.PROJECT_ID }}
-          PRIVATE_KEY_ID: ${{ secrets.PRIVATE_KEY_ID }}
-          PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
-          CLIENT_EMAIL: ${{ secrets.CLIENT_EMAIL }}
-          CLIENT_ID: ${{ secrets.CLIENT_ID }}
-          CLIENT_X509_CERT_URL: ${{ secrets.CLIENT_X509_CERT_URL }}
       run: python main.py
     - name: Commit changes
       run: |
@@ -47,4 +40,7 @@ jobs:
           git config --global user.name "GitHub Actions"
           git add -u
           git diff-index --quiet HEAD || git commit -m "Update CSV file"
+          git add img/
+          git add get/
+          git diff-index --quiet HEAD || git commit -m "Update images"
           git push
