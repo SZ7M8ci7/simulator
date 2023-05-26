@@ -34,3 +34,4 @@
 見習いシェフ:chef
 運動着:gym
 おめかし・ギア:birth
+ケルベロス・ギア:cerberus_gear
