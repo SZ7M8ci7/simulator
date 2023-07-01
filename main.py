@@ -460,9 +460,12 @@ if __name__ == '__main__':
     for rank in ('SSR','SR','R'):
         url_all_list = get_list("https://twst.wikiru.jp/?" + rank)
         for cur_url in url_all_list:
-            time.sleep(1)
-            output.append(str(count) + '\t' + main(rank, cur_url, masters))
-            count+=1
+            try:
+                time.sleep(1)
+                output.append(str(count) + '\t' + main(rank, cur_url, masters))
+                count+=1
+            except Exception as e:
+                print(e,cur_url)
     with open("charadata.tsv", "w", encoding='UTF-8') as f:
         for out in output:
             f.write(f"{out}\n")
