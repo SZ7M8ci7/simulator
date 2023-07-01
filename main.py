@@ -198,12 +198,12 @@ def makeicon():
             add_name = GoogleTranslator(source='ja',target='en').translate(name).replace(' ','_')
             if add_name == '':
                 add_name = str(random.randint(1,100000))
-            namedict[name] = add_name
+            namedict[name] = add_name.replace('\'','').replace('"','')
         if cos not in cosdict:
             add_cos = GoogleTranslator(source='ja',target='en').translate(cos).replace(' ','_')
             if add_cos == '':
                 add_cos = str(random.randint(1,100000))
-            cosdict[cos] = add_cos
+            cosdict[cos] = add_cos.replace('\'','').replace('"','')
         output_filename = namedict[name] + '_' + cosdict[cos]
         if output_filename+'.png' in out_files:
             continue
