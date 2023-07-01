@@ -43,9 +43,9 @@ def getCharaDict(path,namedict,cosdict):
         outdict = dict()
         outdict['id'] = chara[0]
         if chara[1] not in namedict.keys():
-            namedict[chara[1]] = GoogleTranslator(source='ja',target='en').translate(chara[1]).replace(' ','_')
+            namedict[chara[1]] = GoogleTranslator(source='ja',target='en').translate(chara[1]).replace(' ','_').replace('\'','').replace('"','')
         if chara[2] not in cosdict.keys():
-            cosdict[chara[2]] = GoogleTranslator(source='ja',target='en').translate(chara[2]).replace(' ','_')
+            cosdict[chara[2]] = GoogleTranslator(source='ja',target='en').translate(chara[2]).replace(' ','_').replace('\'','').replace('"','')
         outdict['name'] = namedict[chara[1]] + '_' + cosdict[chara[2]]
         outdict['chara'] = chara[1]
         outdict['base_hp'] = chara[5]
