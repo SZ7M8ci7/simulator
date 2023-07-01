@@ -35,3 +35,4 @@
 運動着:gym
 おめかし・ギア:birth
 ケルベロス・ギア:cerberus_gear
+右大将の甲冑:Right_General's_Armor
