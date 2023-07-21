@@ -36,3 +36,4 @@
 おめかし・ギア:birth
 ケルベロス・ギア:cerberus_gear
 右大将の甲冑:Right_Generals_Armor
+ラビット・ウェア:Rabbit_wear
