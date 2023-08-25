@@ -39,3 +39,4 @@
 ラビット・ウェア:Rabbit_wear
 ラビット・ギア:rabbit_gear
 ブルーム・ギア:bloom_gear
+スイスイ・ウェア:Swiss_Wear
