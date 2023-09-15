@@ -40,3 +40,4 @@
 ラビット・ギア:rabbit_gear
 ブルーム・ギア:bloom_gear
 スイスイ・ウェア:Swiss_Wear
+プラチナジャケット:platinum_jacket
