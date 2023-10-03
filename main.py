@@ -238,7 +238,7 @@ def makeicon():
             lines = file.readlines()
             for i in range(len(lines)):
                 # testという文字列が含まれる行を見つけた場合、その前の行にhogehogeを追加する
-                if name+'バースデー追加エリア' in lines[i] and ('バースデー' in cos or 'ブルーム' in cos):
+                if name+'バースデー追加エリア' in lines[i] and 'birth' in cosdict[cos]:
                     lines[i] = make_html(namedict[name],cosdict[cos])+'\n' + lines[i]
                     break
                 elif name+rank+'追加エリア' in lines[i]:
