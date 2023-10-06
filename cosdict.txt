@@ -41,3 +41,4 @@
 ブルーム・ギア:bloom_gear
 スイスイ・ウェア:Swiss_Wear
 プラチナジャケット:birth4
+会長服:chairman_uniform
