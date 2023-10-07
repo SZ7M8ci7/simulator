@@ -160,18 +160,28 @@ def checkMagicBuf(str):
         buf = 'ATKUP(中)'
     if 'ATKUP(大)' in str:
         buf = 'ATKUP(大)'
+    if 'ATKUP(極大)' in str:
+        buf = 'ATKUP(極大)'
+    if 'ダメージUP(極小)' in str:
+        buf = 'ダメUP(極小)'
     if 'ダメージUP(小)' in str:
         buf = 'ダメUP(小)'
     if 'ダメージUP(中)' in str:
         buf = 'ダメUP(中)'
     if 'ダメージUP(大)' in str:
         buf = 'ダメUP(大)'
+    if 'ダメージUP(極大)' in str:
+        buf = 'ダメUP(極大)'
+    if '属性ダメージUP(極小)' in str:
+        buf = '属性ダメUP(極小)'
     if '属性ダメージUP(小)' in str:
         buf = '属性ダメUP(小)'
     if '属性ダメージUP(中)' in str:
         buf = '属性ダメUP(中)'
     if '属性ダメージUP(大)' in str:
         buf = '属性ダメUP(大)'
+    if '属性ダメージUP(極大)' in str:
+        buf = '属性ダメUP(極大)'
     return buf
 def makeicon():
     cosdict = getDict('cosdict.txt')
