@@ -143,7 +143,7 @@ def checkMagicHeal(str):
     if 'HP回復(中)' in str:
         heal = '回復(中)'
     if 'HP継続回復(小)' in str:
-        heal = 'HP継続回復(小)'
+        heal = '継続回復(小)'
     if 'HP継続回復(中)' in str:
         heal = '継続回復(中)'
     if 'HP継続回復(小)' in str and 'HP回復(小)' in str:
