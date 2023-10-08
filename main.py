@@ -137,15 +137,17 @@ def checkMagicAttr(string):
 def checkMagicHeal(str):
     heal = ''
     if 'HP回復(極小)' in str:
-        heal = 'HP回復(極小)'
+        heal = '回復(極小)'
     if 'HP回復(小)' in str:
-        heal = 'HP回復(小)'
+        heal = '回復(小)'
     if 'HP回復(中)' in str:
-        heal = 'HP回復(中)'
+        heal = '回復(中)'
     if 'HP継続回復(小)' in str:
         heal = 'HP継続回復(小)'
     if 'HP継続回復(中)' in str:
-        heal = 'HP継続回復(中)'
+        heal = '継続回復(中)'
+    if 'HP継続回復(小)' in str and 'HP回復(小)' in str:
+        heal = '回復&継続回復(小)'
 
     return heal
 
