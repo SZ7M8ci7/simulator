@@ -201,6 +201,10 @@ def makeicon():
             rank = 'SR'
         else:
             rank = 'R'
+        if '【' not in filename:
+            continue
+        if '】' not in filename:
+            continue
         leftbracket = filename.index('【')
         rightbracket = filename.index('】')
 
