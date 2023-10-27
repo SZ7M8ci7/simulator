@@ -42,3 +42,5 @@
 スイスイ・ウェア:Swiss_Wear
 プラチナジャケット:birth4
 会長服:chairman_uniform
+プレイフル・ドレス:playful_dress
+プレイフル・ギア:playful_gear
