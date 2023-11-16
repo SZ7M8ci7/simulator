@@ -193,77 +193,80 @@ def makeicon():
     out_files = glob.glob("img/*")
     out_files = [file.split('/')[-1] for file in out_files]
     for file in files:
-        filename = file.split('/')[-1]
-        rank = ''
-        if 'SSR' in filename:
-            rank = 'SSR'
-        elif 'SR' in filename:
-            rank = 'SR'
-        else:
-            rank = 'R'
-        if '【' not in filename:
-            continue
-        if '】' not in filename:
-            continue
-        leftbracket = filename.index('【')
-        rightbracket = filename.index('】')
+        try:
+            filename = file.split('/')[-1]
+            rank = ''
+            if 'SSR' in filename:
+                rank = 'SSR'
+            elif 'SR' in filename:
+                rank = 'SR'
+            else:
+                rank = 'R'
+            if '【' not in filename:
+                continue
+            if '】' not in filename:
+                continue
+            leftbracket = filename.index('【')
+            rightbracket = filename.index('】')
 
-        name = filename[len(rank):leftbracket]
-        cos = filename[leftbracket+1:rightbracket]
-        if name not in namedict:
-            add_name = GoogleTranslator(source='ja',target='en').translate(name).replace(' ','_')
-            if add_name == '':
-                add_name = str(random.randint(1,100000))
-            namedict[name] = add_name.replace('\'','').replace('"','')
-        if cos not in cosdict:
-            add_cos = GoogleTranslator(source='ja',target='en').translate(cos).replace(' ','_')
-            if add_cos == '':
-                add_cos = str(random.randint(1,100000))
-            cosdict[cos] = add_cos.replace('\'','').replace('"','')
-        output_filename = namedict[name] + '_' + cosdict[cos]
-        if output_filename+'.png' in out_files:
-            continue
+            name = filename[len(rank):leftbracket]
+            cos = filename[leftbracket+1:rightbracket]
+            if name not in namedict:
+                add_name = GoogleTranslator(source='ja',target='en').translate(name).replace(' ','_')
+                if add_name == '':
+                    add_name = str(random.randint(1,100000))
+                namedict[name] = add_name.replace('\'','').replace('"','')
+            if cos not in cosdict:
+                add_cos = GoogleTranslator(source='ja',target='en').translate(cos).replace(' ','_')
+                if add_cos == '':
+                    add_cos = str(random.randint(1,100000))
+                cosdict[cos] = add_cos.replace('\'','').replace('"','')
+            output_filename = namedict[name] + '_' + cosdict[cos]
+            if output_filename+'.png' in out_files:
+                continue
 
-        max_magic = 2
-        if rank == 'SSR':
-            max_magic = 3
-        magics = charadict[output_filename]
-        # 画像合成
-        background_image = Image.open(file).convert("RGBA")
+            max_magic = 2
+            if rank == 'SSR':
+                max_magic = 3
+            magics = charadict[output_filename]
+            # 画像合成
+            background_image = Image.open(file).convert("RGBA")
 
-        # 背景画像を60x60の正方形にリサイズする
-        background_image = background_image.resize((60, 60))
-        start_pos = background_image.width - max_magic*12 - (max_magic-1)
-        for magic in range(max_magic):
+            # 背景画像を60x60の正方形にリサイズする
+            background_image = background_image.resize((60, 60))
+            start_pos = background_image.width - max_magic*12 - (max_magic-1)
+            for magic in range(max_magic):
 
-            # 合成する画像を開く
-            foreground_image = Image.open(f"{magics[magic]}.png")
+                # 合成する画像を開く
+                foreground_image = Image.open(f"{magics[magic]}.png")
 
-            # 透過PNGをサポートするように設定する
-            foreground_image = foreground_image.convert("RGBA")
+                # 透過PNGをサポートするように設定する
+                foreground_image = foreground_image.convert("RGBA")
 
-            # 合成する画像を背景画像の中央に配置する
-            background_image.alpha_composite(foreground_image, (start_pos+foreground_image.width*magic+magic, 0))
+                # 合成する画像を背景画像の中央に配置する
+                background_image.alpha_composite(foreground_image, (start_pos+foreground_image.width*magic+magic, 0))
 
-        # 合成した画像を保存する
-        background_image.save('img/' + output_filename+'.png')
-        input_file = 'index.html'
+            # 合成した画像を保存する
+            background_image.save('img/' + output_filename+'.png')
+            input_file = 'index.html'
 
-        with open(input_file, 'r',encoding='UTF-8') as file:
-            # ファイルを1行ずつ読み込み、処理を行う
-            lines = file.readlines()
-            for i in range(len(lines)):
-                # testという文字列が含まれる行を見つけた場合、その前の行にhogehogeを追加する
-                if name+'バースデー追加エリア' in lines[i] and 'birth' in cosdict[cos]:
-                    lines[i] = make_html(namedict[name],cosdict[cos])+'\n' + lines[i]
-                    break
-                elif name+rank+'追加エリア' in lines[i]:
-                    lines[i] = make_html(namedict[name],cosdict[cos])+'\n' + lines[i]
-                    break
+            with open(input_file, 'r',encoding='UTF-8') as file:
+                # ファイルを1行ずつ読み込み、処理を行う
+                lines = file.readlines()
+                for i in range(len(lines)):
+                    # testという文字列が含まれる行を見つけた場合、その前の行にhogehogeを追加する
+                    if name+'バースデー追加エリア' in lines[i] and 'birth' in cosdict[cos]:
+                        lines[i] = make_html(namedict[name],cosdict[cos])+'\n' + lines[i]
+                        break
+                    elif name+rank+'追加エリア' in lines[i]:
+                        lines[i] = make_html(namedict[name],cosdict[cos])+'\n' + lines[i]
+                        break
 
-        # 処理結果を同一ファイルに書き込む
-        with open(input_file, 'w',encoding='UTF-8') as file:
-            file.writelines(lines)
+            # 処理結果を同一ファイルに書き込む
+            with open(input_file, 'w',encoding='UTF-8') as file:
+                file.writelines(lines)
+        except Exception as e:
+            print(e, file)
 
     outDict('cosdict.txt',cosdict)
     outDict('namedict.txt',namedict)
