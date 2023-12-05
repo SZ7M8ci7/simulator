@@ -254,8 +254,10 @@ def makeicon():
                 # ファイルを1行ずつ読み込み、処理を行う
                 lines = file.readlines()
                 for i in range(len(lines)):
-                    # testという文字列が含まれる行を見つけた場合、その前の行にhogehogeを追加する
                     if name+'バースデー追加エリア' in lines[i] and 'birth' in cosdict[cos]:
+                        lines[i] = make_html(namedict[name],cosdict[cos])+'\n' + lines[i]
+                        break
+                    elif name+'バースデー追加エリア' in lines[i] and 'club' in cosdict[cos]:
                         lines[i] = make_html(namedict[name],cosdict[cos])+'\n' + lines[i]
                         break
                     elif name+rank+'追加エリア' in lines[i]:
@@ -273,7 +275,7 @@ def makeicon():
 
 def make_html(name,cos):
     eng = name + '_' + cos
-    out_html = '  <a href="#" rel="modal:close" onclick="gtag(\'event\', \'click\', {\'event_category\': \'chara\', \'event_label\':\'' + eng + '\', \'value\':\'1\'});changeImg(\''+eng+'\')"><img src="img/'+eng+'.png"></a>'
+    out_html = '    <a href="#" rel="modal:close" onclick="gtag(\'event\', \'click\', {\'event_category\': \'chara\', \'event_label\':\'' + eng + '\', \'value\':\'1\'});changeImg(\''+eng+'\')"><img src="img/'+eng+'.png"></a>'
     return out_html
 
 
