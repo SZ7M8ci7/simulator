@@ -41,7 +41,7 @@ def main1():
             name = c['chara']
             tmp = len(member_name_set&{c['buddy1c'],c['buddy2c'],c['buddy3c']})
 
-            if buddy+d[name]+tmp > 11:
+            if buddy+d[name]+tmp > 12:
                 raise Exception()
 
 
