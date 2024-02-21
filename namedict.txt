@@ -22,3 +22,4 @@
 リリア:lilia
 グリム:grim
 ロロ:rollo
+クロウリー:crowley
