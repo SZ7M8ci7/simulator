@@ -44,3 +44,6 @@
 会長服:chairman_uniform
 プレイフル・ドレス:playful_dress
 プレイフル・ギア:playful_gear
+レイブンジャケット:raven_jacket
+常夜の甲冑:armor_of_eternal_night
+ニューイヤー・ギア:new_year_gear
