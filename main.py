@@ -399,7 +399,7 @@ def get_img(rank):
     url = "https://twst.wikiru.jp/?plugin=attach&pcmd=list&refer=img"
     result = requests.get(url, headers=headers)
     data_all = BeautifulSoup(result.text, 'html.parser')
-
+    print(data_all)
     files = glob.glob("get/*")
     exists_files = set()
     for file in files:
