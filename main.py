@@ -400,8 +400,8 @@ def get_img(rank):
     exists_files = set()
     for file in files:
         sp = file.split('/')[-1]
-        if sp.startswith('get\\'):
-            exists_files.add(sp.replace('get\\',''))
+        if sp.startswith('get/'):
+            exists_files.add(sp.replace('get/',''))
     
     # 条件にマッチするすべてのリンクを探す
     for link in data_all.find_all('a'):
