@@ -391,48 +391,43 @@ def main(rank, url, masters):
 
     return out_txt
 
-def get_list(url):
+def get_img(rank):
+    url = "https://twst.wikiru.jp/?plugin=attach&pcmd=list&refer=img"
     result = requests.get(url)
     data_all = BeautifulSoup(result.text, 'html.parser')
-    url_list = []
 
-    for item in data_all.find_all("table", class_="style_table"):
-        img_items = item.find_all('img')
-        images_list = []
-        alt_list = []
-        for n in range(len(img_items)):
-            # 画像を取得
-            get_image_link = img_items[n].attrs['src']
-            get_alt_link = img_items[n].attrs['alt']
-            images_list.append(get_image_link)
-            alt_list.append(get_alt_link)
-
-        files = glob.glob("get/*")
-        exists_files = []
-        exists_names = []
-        for file in files:
-            exists_files.append(file.split('/')[-1])
-            exists_names.append(file.split('/')[-1])
-        for counter in range(len(images_list)):
+    files = glob.glob("get/*")
+    exists_files = set()
+    for file in files:
+        sp = file.split('/')[-1]
+        if sp.startswith('get\\'):
+            exists_files.add(sp.replace('get\\',''))
+    
+    # 条件にマッチするすべてのリンクを探す
+    for link in data_all.find_all('a'):
+        # リンクのテキストが特定の条件
+        if link.text.startswith(rank) and link.text.endswith('jpg'):
             try:
-                filename = alt_list[counter]
-                if filename in exists_files:
+                if link.text in exists_files:
                     continue
                 time.sleep(1)
-                r = requests.get('https://twst.wikiru.jp/' + images_list[counter])
-                path = 'get/' + filename
+                r = requests.get("https://twst.wikiru.jp/?plugin=attach&pcmd=open&file=" + link.text + "&refer=img")
+                path = 'get/' + link.text
                 image_file = open(path, 'wb')
                 image_file.write(r.content)
                 image_file.close()
             except:
                 pass
 
-        url_items = item.find_all('a')
-        for url in url_items:
-            url_list.append('https://twst.wikiru.jp' + url.get("href"))
-
+def get_list(rank):
+    url = "https://twst.wikiru.jp/?cmd=list"
+    result = requests.get(url)
+    data_all = BeautifulSoup(result.text, 'html.parser')
+    url_list = []
+    for link in data_all.find_all('a'):
+        if link.text.startswith(rank) and link.text.endswith('】'):
+            url_list.append('https://twst.wikiru.jp/?' + link.text)
     return url_list
-
 def make_type_dict(url):
     response = requests.get(url)
     html = response.text
@@ -479,7 +474,8 @@ if __name__ == '__main__':
     output = []
     count = 0
     for rank in ('SSR','SR','R'):
-        url_all_list = get_list("https://twst.wikiru.jp/?" + rank)
+        get_img(rank)
+        url_all_list = get_list(rank)
         for cur_url in url_all_list:
             try:
                 time.sleep(1)
