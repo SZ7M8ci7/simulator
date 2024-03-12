@@ -473,18 +473,18 @@ def make_type_dict(url):
 
 if __name__ == '__main__':
     masters = make_type_dict('https://twst.wikiru.jp/?%E3%82%AB%E3%83%BC%E3%83%89%E6%88%90%E9%95%B7%E7%8E%87')
-    # output = []
-    # count = 0
-    # for rank in ('SSR','SR','R'):
-    #     url_all_list = get_list(rank)
-    #     for cur_url in url_all_list:
-    #         try:
-    #             time.sleep(1)
-    #             output.append(str(count) + '\t' + main(rank, cur_url, masters))
-    #             count+=1
-    #         except Exception as e:
-    #             print(e,cur_url)
-    # with open("charadata.tsv", "w", encoding='UTF-8') as f:
-    #     for out in output:
-    #         f.write(f"{out}\n")
+    output = []
+    count = 0
+    for rank in ('SSR','SR','R'):
+        url_all_list = get_list(rank)
+        for cur_url in url_all_list:
+            try:
+                time.sleep(1)
+                output.append(str(count) + '\t' + main(rank, cur_url, masters))
+                count+=1
+            except Exception as e:
+                print(e,cur_url)
+    with open("charadata.tsv", "w", encoding='UTF-8') as f:
+        for out in output:
+            f.write(f"{out}\n")
     makeicon()
