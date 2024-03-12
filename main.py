@@ -383,8 +383,8 @@ def main(rank, url, masters):
                + "\t" + attr
                + "\t" + str(name_base_hp_master[name+costume])
                + "\t" + str(name_base_atk_master[name+costume])
-               + "\t" + str(name_hp_master[name+costume])
-               + "\t" + str(name_atk_master[name+costume])
+               + "\t" + str(name_hp_master[name+costume] if name_hp_master[name+costume] else HP)
+               + "\t" + str(name_atk_master[name+costume] if name_atk_master[name+costume] else ATK)
                + "\t" + magic1
                + "\t" + magic2
                + "\t" + magic3
