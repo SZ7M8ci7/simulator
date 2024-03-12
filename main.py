@@ -399,9 +399,12 @@ def get_img(rank):
     files = glob.glob("get/*")
     exists_files = set()
     for file in files:
-        sp = file.split('/')[-1]
-        if sp.startswith('get/'):
-            exists_files.add(sp.replace('get/',''))
+        try:
+            sp = file.split('/')[-1]
+            if sp.startswith('get/'):
+                exists_files.add(sp.replace('get/',''))
+        except:
+            pass
     
     # 条件にマッチするすべてのリンクを探す
     for link in data_all.find_all('a'):
@@ -475,15 +478,15 @@ if __name__ == '__main__':
     count = 0
     for rank in ('SSR','SR','R'):
         get_img(rank)
-        url_all_list = get_list(rank)
-        for cur_url in url_all_list:
-            try:
-                time.sleep(1)
-                output.append(str(count) + '\t' + main(rank, cur_url, masters))
-                count+=1
-            except Exception as e:
-                print(e,cur_url)
-    with open("charadata.tsv", "w", encoding='UTF-8') as f:
-        for out in output:
-            f.write(f"{out}\n")
-    makeicon()
+    #     url_all_list = get_list(rank)
+    #     for cur_url in url_all_list:
+    #         try:
+    #             time.sleep(1)
+    #             output.append(str(count) + '\t' + main(rank, cur_url, masters))
+    #             count+=1
+    #         except Exception as e:
+    #             print(e,cur_url)
+    # with open("charadata.tsv", "w", encoding='UTF-8') as f:
+    #     for out in output:
+    #         f.write(f"{out}\n")
+    # makeicon()
