@@ -403,7 +403,8 @@ def get_img(title, exists_files):
         if filename in exists_files:
             return
         time.sleep(1)
-        r = requests.get("https://twst.wikiru.jp/?plugin=attach&pcmd=open&file=" + filename + "&refer=img")
+        url = "https://twst.wikiru.jp/attach2/696D67_" + filename.encode('utf-8').hex().rstrip().upper() + ".jpg"
+        r = requests.get(url)
         path = 'get/' + filename
         image_file = open(path, 'wb')
         image_file.write(r.content)
