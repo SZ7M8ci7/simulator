@@ -405,10 +405,10 @@ def get_img(rank):
                 exists_files.add(sp.replace('get/',''))
         except:
             pass
-    
+    print(exists_files)
     # 条件にマッチするすべてのリンクを探す
     for link in data_all.find_all('a'):
-        # リンクのテキストが特定の条件
+        print(link.text)
         if link.text.startswith(rank) and link.text.endswith('jpg'):
             try:
                 if link.text in exists_files:
