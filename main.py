@@ -393,7 +393,6 @@ def main(rank, url, masters):
 
 def get_img(title, exists_files):
 
-    print(exists_files)
     filename = title.replace('/','')+'アイコン.jpg'
     # 条件にマッチするすべてのリンクを探す
     try:
@@ -474,14 +473,14 @@ if __name__ == '__main__':
     count = 0
     for rank in ('SSR','SR','R'):
         url_all_list = get_list(rank)
-    #     for cur_url in url_all_list:
-    #         try:
-    #             time.sleep(1)
-    #             output.append(str(count) + '\t' + main(rank, cur_url, masters))
-    #             count+=1
-    #         except Exception as e:
-    #             print(e,cur_url)
-    # with open("charadata.tsv", "w", encoding='UTF-8') as f:
-    #     for out in output:
-    #         f.write(f"{out}\n")
-    # makeicon()
+        for cur_url in url_all_list:
+            try:
+                time.sleep(1)
+                output.append(str(count) + '\t' + main(rank, cur_url, masters))
+                count+=1
+            except Exception as e:
+                print(e,cur_url)
+    with open("charadata.tsv", "w", encoding='UTF-8') as f:
+        for out in output:
+            f.write(f"{out}\n")
+    makeicon()
