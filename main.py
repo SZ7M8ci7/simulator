@@ -391,49 +391,41 @@ def main(rank, url, masters):
 
     return out_txt
 
-def get_img(rank):
-    user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'
+def get_img(title, exists_files):
 
-    # headers変数にユーザーエージェントを設定
-    headers = {'User-Agent': user_agent}
-    url = "https://twst.wikiru.jp/?plugin=attach&pcmd=list&refer=img"
-    result = requests.get(url, headers=headers)
-    data_all = BeautifulSoup(result.text, 'html.parser')
-    print(data_all)
-    files = glob.glob("get/*")
-    exists_files = set()
-    for file in files:
-        try:
-            sp = file.split('/')[-1]
-            if sp.startswith('get/'):
-                exists_files.add(sp.replace('get/',''))
-        except:
-            pass
     print(exists_files)
+    filename = title.replace('/','')+'アイコン.jpg'
     # 条件にマッチするすべてのリンクを探す
-    for link in data_all.find_all('a'):
-        print(link.text)
-        if link.text.startswith(rank) and link.text.endswith('jpg'):
-            try:
-                if link.text in exists_files:
-                    continue
-                time.sleep(1)
-                r = requests.get("https://twst.wikiru.jp/?plugin=attach&pcmd=open&file=" + link.text + "&refer=img")
-                path = 'get/' + link.text
-                image_file = open(path, 'wb')
-                image_file.write(r.content)
-                image_file.close()
-            except:
-                pass
+    try:
+        if filename in exists_files:
+            return
+        time.sleep(1)
+        r = requests.get("https://twst.wikiru.jp/?plugin=attach&pcmd=open&file=" + filename + "&refer=img")
+        path = 'get/' + filename
+        image_file = open(path, 'wb')
+        image_file.write(r.content)
+        image_file.close()
+    except:
+        pass
 
 def get_list(rank):
     url = "https://twst.wikiru.jp/?cmd=list"
     result = requests.get(url)
     data_all = BeautifulSoup(result.text, 'html.parser')
     url_list = []
+    
+    files = glob.glob("get/*")
+    exists_files = set()
+    for file in files:
+        try:
+            sp = file.split('/')[-1]
+            exists_files.add(sp.replace('get/',''))
+        except:
+            pass
     for link in data_all.find_all('a'):
         if link.text.startswith(rank) and link.text.endswith('】'):
             url_list.append('https://twst.wikiru.jp/?' + link.text)
+            get_img(link.text, exists_files)
     return url_list
 def make_type_dict(url):
     response = requests.get(url)
@@ -481,8 +473,7 @@ if __name__ == '__main__':
     output = []
     count = 0
     for rank in ('SSR','SR','R'):
-        get_img(rank)
-    #     url_all_list = get_list(rank)
+        url_all_list = get_list(rank)
     #     for cur_url in url_all_list:
     #         try:
     #             time.sleep(1)
