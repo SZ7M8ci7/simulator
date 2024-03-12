@@ -124,7 +124,7 @@
         "rare": "SSR"
     },
     {
-        "atk": "",
+        "atk": "5578",
         "base_atk": "",
         "base_hp": "",
         "buddy1c": "レオナ",
@@ -137,7 +137,7 @@
         "duo": "ジャミル",
         "etc": "HP継続回復(小)(自/3T)<br>ダメージUP(小)(自/1T)<br>ATKDOWN(小)(相手/1T)<br>ダメージUP(小)(自/1T)<br>",
         "growtype": "",
-        "hp": "",
+        "hp": "13004",
         "id": "4",
         "magic1atr": "火",
         "magic1buf": "ダメUP(小)",
@@ -341,7 +341,7 @@
         "rare": "SSR"
     },
     {
-        "atk": "",
+        "atk": "6063",
         "base_atk": "",
         "base_hp": "",
         "buddy1c": "ジャック",
@@ -354,7 +354,7 @@
         "duo": "シルバー",
         "etc": "ダメージUP(中)(味方選択/1T)<br>",
         "growtype": "",
-        "hp": "",
+        "hp": "11829",
         "id": "11",
         "magic1atr": "木",
         "magic1buf": "",
@@ -1333,7 +1333,7 @@
         "rare": "SSR"
     },
     {
-        "atk": "",
+        "atk": "6345",
         "base_atk": "",
         "base_hp": "",
         "buddy1c": "デュース",
@@ -1346,7 +1346,7 @@
         "duo": "グリム",
         "etc": "HP継続回復(小)(味方選択/3T)<br>",
         "growtype": "",
-        "hp": "",
+        "hp": "14020",
         "id": "43",
         "magic1atr": "無",
         "magic1buf": "",
@@ -1519,7 +1519,7 @@
         "rare": "SSR"
     },
     {
-        "atk": "",
+        "atk": "6903",
         "base_atk": "",
         "base_hp": "",
         "buddy1c": "ラギー",
@@ -1532,7 +1532,7 @@
         "duo": "ラギー",
         "etc": "ダメージUP(大)(自/1T)<br>ダメージDOWN(大)(相手/1T)<br>",
         "growtype": "",
-        "hp": "",
+        "hp": "10149",
         "id": "49",
         "magic1atr": "火",
         "magic1buf": "ダメUP(大)",
@@ -1860,7 +1860,7 @@
         "rare": "SSR"
     },
     {
-        "atk": "",
+        "atk": "6011",
         "base_atk": "",
         "base_hp": "",
         "buddy1c": "リドル",
@@ -1873,7 +1873,7 @@
         "duo": "リドル",
         "etc": "ATKUP(中)(自/1T)<br>ATKDOWN(小)(相手/1T)<br>ダメージUP(中)(自/1T)<br>HP回復(極小)<br>",
         "growtype": "",
-        "hp": "",
+        "hp": "11933",
         "id": "60",
         "magic1atr": "無",
         "magic1buf": "ATKUP(中)",
@@ -2201,7 +2201,7 @@
         "rare": "SSR"
     },
     {
-        "atk": "",
+        "atk": "7506",
         "base_atk": "",
         "base_hp": "",
         "buddy1c": "??",
@@ -2214,7 +2214,7 @@
         "duo": "ジェイド",
         "etc": "凍結無効(味方選択/1T)<br>ATKUP(中)(自/1T)<br>ATKUP(小)(自/1T)<br>ダメージDOWN(小)(相手/1T)<br>",
         "growtype": "",
-        "hp": "",
+        "hp": "8754",
         "id": "71",
         "magic1atr": "火",
         "magic1buf": "ATKUP(中)",
@@ -2542,7 +2542,7 @@
         "rare": "SSR"
     },
     {
-        "atk": "",
+        "atk": "7093",
         "base_atk": "",
         "base_hp": "",
         "buddy1c": "カリム",
@@ -2555,7 +2555,7 @@
         "duo": "オルト",
         "etc": "被ダメージUP(大)(相手/1T)<br>暗闇無効(味方選択/1T)<br>ダメージDOWN(小)(相手/1T)<br>",
         "growtype": "",
-        "hp": "",
+        "hp": "9809",
         "id": "82",
         "magic1atr": "水",
         "magic1buf": "ダメUP(大)",
@@ -2945,7 +2945,7 @@
         "rare": "SSR"
     },
     {
-        "atk": "",
+        "atk": "4587",
         "base_atk": "",
         "base_hp": "",
         "buddy1c": "レオナ",
@@ -2958,7 +2958,7 @@
         "duo": "レオナ",
         "etc": "木属性ダメージDOWN(大)(相手選択/1T)<br>ATKUP(小)(自/1T)<br>ダメージDOWN(小)(相手/1T)<br>",
         "growtype": "",
-        "hp": "",
+        "hp": "15413",
         "id": "95",
         "magic1atr": "火",
         "magic1buf": "",
@@ -3038,7 +3038,7 @@
         "rare": "SSR"
     },
     {
-        "atk": "",
+        "atk": "7667",
         "base_atk": "",
         "base_hp": "",
         "buddy1c": "??",
@@ -3051,7 +3051,7 @@
         "duo": "オルト",
         "etc": "ATKUP(大)(自/1T)<br>ATKDOWN(小)(相手/1T)<br>ダメージUP(小)(自/1T)<br>",
         "growtype": "",
-        "hp": "",
+        "hp": "8632",
         "id": "98",
         "magic1atr": "無",
         "magic1buf": "ATKUP(大)",
@@ -3224,7 +3224,7 @@
         "rare": "SSR"
     },
     {
-        "atk": "",
+        "atk": "5743",
         "base_atk": "",
         "base_hp": "",
         "buddy1c": "レオナ",
@@ -3237,7 +3237,7 @@
         "duo": "カリム",
         "etc": "ATKDOWN(中)(相手/1T)ATKUP(小)(自/1T)<br>ダメージDOWN(中)(相手/1T)HP回復(極小)<br>",
         "growtype": "",
-        "hp": "",
+        "hp": "12455",
         "id": "104",
         "magic1atr": "水",
         "magic1buf": "ATKUP(小)",
@@ -3379,7 +3379,7 @@
         "rare": "SSR"
     },
     {
-        "atk": "",
+        "atk": "5455",
         "base_atk": "",
         "base_hp": "",
         "buddy1c": "デュース",
@@ -3392,7 +3392,7 @@
         "duo": "デュース",
         "etc": "ダメージDOWN(大)(相手/1T)<br>HP回復(小)<br>ダメージDOWN(小)(相手/1T)<br>",
         "growtype": "",
-        "hp": "",
+        "hp": "13315",
         "id": "109",
         "magic1atr": "木",
         "magic1buf": "",
@@ -3565,7 +3565,7 @@
         "rare": "SSR"
     },
     {
-        "atk": "",
+        "atk": "5256",
         "base_atk": "",
         "base_hp": "",
         "buddy1c": "レオナ",
@@ -3578,7 +3578,7 @@
         "duo": "レオナ",
         "etc": "呪い無効(味方選択/1T)<br>ATKDOWN(小)(相手選択/1T)<br>ダメージDOWN(中)(相手/1T)<br>HP回復(極小)<br>",
         "growtype": "",
-        "hp": "",
+        "hp": "13821",
         "id": "115",
         "magic1atr": "火",
         "magic1buf": "",
@@ -4030,7 +4030,7 @@
         "rare": "SSR"
     },
     {
-        "atk": "",
+        "atk": "7034",
         "base_atk": "",
         "base_hp": "",
         "buddy1c": "アズール",
@@ -4043,7 +4043,7 @@
         "duo": "エペル",
         "etc": "ダメージUP(大)(自/1T)<br>ダメージUP(中)(自/1T)<br>HP回復(極小)<br>",
         "growtype": "",
-        "hp": "",
+        "hp": "9895",
         "id": "130",
         "magic1atr": "無",
         "magic1buf": "ダメUP(大)",
@@ -4278,7 +4278,7 @@
         "rare": "SSR"
     },
     {
-        "atk": "",
+        "atk": "5174",
         "base_atk": "",
         "base_hp": "",
         "buddy1c": "リドル",
@@ -4291,7 +4291,7 @@
         "duo": "オルト",
         "etc": "HP回復(小)<br>ダメージUP(小)(自/1T)<br>ダメージUP(中)(自/3T)<br>",
         "growtype": "",
-        "hp": "",
+        "hp": "13952",
         "id": "138",
         "magic1atr": "木",
         "magic1buf": "ダメUP(小)",
@@ -4371,7 +4371,7 @@
         "rare": "SSR"
     },
     {
-        "atk": "",
+        "atk": "4289",
         "base_atk": "",
         "base_hp": "",
         "buddy1c": "??",
@@ -4384,7 +4384,7 @@
         "duo": "ジェイド",
         "etc": "被ダメージDOWN(中)(自/3T)<br>ATKDOWN(大)(相手/1T)<br>",
         "growtype": "",
-        "hp": "",
+        "hp": "16400",
         "id": "141",
         "magic1atr": "水",
         "magic1buf": "",
@@ -5518,7 +5518,7 @@
         "rare": "SR"
     },
     {
-        "atk": "",
+        "atk": "5778",
         "base_atk": "",
         "base_hp": "",
         "buddy1c": "??",
@@ -5531,7 +5531,7 @@
         "duo": "",
         "etc": "ATKUP(中)(自/1T)<br>ATKUP(小)(自/1T)<br>",
         "growtype": "",
-        "hp": "",
+        "hp": "7836",
         "id": "178",
         "magic1atr": "木",
         "magic1buf": "ATKUP(中)",
@@ -5890,7 +5890,7 @@
         "rare": "SR"
     },
     {
-        "atk": "",
+        "atk": "4474",
         "base_atk": "",
         "base_hp": "",
         "buddy1c": "トレイ",
@@ -5903,7 +5903,7 @@
         "duo": "",
         "etc": "HP継続回復(小)(自/3T)<br>HP回復(小)<br>",
         "growtype": "",
-        "hp": "",
+        "hp": "10494",
         "id": "190",
         "magic1atr": "木",
         "magic1buf": "",
@@ -6386,7 +6386,7 @@
         "rare": "SR"
     },
     {
-        "atk": "",
+        "atk": "4738",
         "base_atk": "",
         "base_hp": "",
         "buddy1c": "??",
@@ -6399,7 +6399,7 @@
         "duo": "",
         "etc": "ダメージDOWN(中)(相手/1T)<br>ダメージDOWN(小)(相手/1T)<br>",
         "growtype": "",
-        "hp": "",
+        "hp": "9851",
         "id": "206",
         "magic1atr": "水",
         "magic1buf": "",
@@ -6572,7 +6572,7 @@
         "rare": "SR"
     },
     {
-        "atk": "",
+        "atk": "5698",
         "base_atk": "",
         "base_hp": "",
         "buddy1c": "??",
@@ -6585,7 +6585,7 @@
         "duo": "",
         "etc": "ATKUP(小)(味方選択/1T)<br>ATKUP(小)(自/1T)<br>",
         "growtype": "",
-        "hp": "",
+        "hp": "7952",
         "id": "212",
         "magic1atr": "木",
         "magic1buf": "ATKUP(小)",
@@ -8587,7 +8587,7 @@
         "rare": "SR"
     },
     {
-        "atk": "",
+        "atk": "6141",
         "base_atk": "",
         "base_hp": "",
         "buddy1c": "??",
@@ -8600,7 +8600,7 @@
         "duo": "",
         "etc": "凍結無効(味方選択/1T)<br>ATKUP(小)(自/1T)<br>",
         "growtype": "",
-        "hp": "",
+        "hp": "6984",
         "id": "277",
         "magic1atr": "水",
         "magic1buf": "",
