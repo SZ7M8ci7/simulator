@@ -392,8 +392,12 @@ def main(rank, url, masters):
     return out_txt
 
 def get_img(rank):
+    user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'
+
+    # headers変数にユーザーエージェントを設定
+    headers = {'User-Agent': user_agent}
     url = "https://twst.wikiru.jp/?plugin=attach&pcmd=list&refer=img"
-    result = requests.get(url)
+    result = requests.get(url, headers=headers)
     data_all = BeautifulSoup(result.text, 'html.parser')
 
     files = glob.glob("get/*")
