@@ -431,7 +431,6 @@ function changeImg(imgsrc){
                 setChart();
             }
         }
-    getUrl();
 };
 
 function changeLevel(inid){
@@ -459,6 +458,8 @@ function changeLevel(inid){
     document.getElementById("cATK" + inid).value = ((maxATK - ATKperLv * leveldef)*totsurate).toFixed(1);
 };
 function calc(){
+    try{
+
     var charaDict = {"":""};
     
     // バディチェック用辞書作成
@@ -776,6 +777,7 @@ function calc(){
         for (j = 0; j < 5; j++) {
             for (k = 2 * j; k < 2 * j + 2; k++) {
                 for (l = j; l < 5; l++) {
+                    if (!result[k]) {continue;}
                     if (result[k].duoMagic == "デュオ魔法") {
                         score[l] += 3000;
                     }
@@ -793,6 +795,8 @@ function calc(){
         for (j = 0; j < 5; j++) {
             for (k = 2 * j; k < 2 * j + 2; k++) {
                 for (l = j; l < 5; l++) {
+                    if (!result[k]) {continue;}
+
                     if (result[k].duoMagic == "デュオ魔法") {
                         score[l] += 3000;
                     }
@@ -815,6 +819,8 @@ function calc(){
         for (j = 0; j < 5; j++) {
             for (k = 2 * j; k < 2 * j + 2; k++) {
                 for (l = j; l < 5; l++) {
+                    if (!result[k]) {continue;}
+
                     if (result[k].duoMagic == "デュオ魔法") {
                         score[l] += 3000;
                     }
@@ -837,6 +843,7 @@ function calc(){
         for (j = 0; j < 5; j++) {
             for (k = 2 * j; k < 2 * j + 2; k++) {
                 for (l = j; l < 5; l++) {
+                    if (!result[k]) {continue;}
                     if (result[k].duoMagic == "デュオ魔法") {
                         score[l] += 3000;
                     }
@@ -859,6 +866,7 @@ function calc(){
         for (j = 0; j < 5; j++) {
             for (k = 2 * j; k < 2 * j + 2; k++) {
                 for (l = j; l < 5; l++) {
+                    if (!result[k]) {continue;}
                     if (result[k].duoMagic == "デュオ魔法") {
                         score[l] += 3000;
                     }
@@ -871,9 +879,10 @@ function calc(){
     damageList.sort(function(a,b){
         return b - a;
     });
-    damage3 = damageList[0] + damageList[1] + damageList[2] + damageList[3] + damageList[4] + damageList[5];
-    damage4 = damage3 + damageList[6] + damageList[7];
-    damage5 = damage4 + damageList[8] + damageList[9];
+    damage3 = (damageList[0] || 0) + (damageList[1] || 0) + (damageList[2] || 0) + (damageList[3] || 0) + (damageList[4] || 0) + (damageList[5] || 0);
+    damage4 = damage3 + (damageList[6] || 0) + (damageList[7] || 0);
+    damage5 = damage4 + (damageList[8] || 0) + (damageList[9] || 0);
+    
     document.getElementById("totalHP").innerHTML  = totalHP.toFixed();
     document.getElementById("totalHealHP").innerHTML  = totalHealHP.toFixed();
     document.getElementById("totalDamage5").innerHTML  = damage5.toFixed();
@@ -897,6 +906,10 @@ function calc(){
     document.getElementById("easyscore3T").innerHTML  = (score[2] * 0.1056).toFixed();
     document.getElementById("easyscore4T").innerHTML  = (score[3] * 0.1008).toFixed();
     document.getElementById("easyscore5T").innerHTML  = (score[4] * 0.08).toFixed();
+    }
+    catch {
+
+    }
 };
 $myChart = 0;
 function setChart(){
@@ -1125,66 +1138,6 @@ fulldata = 		[{label: 'HP',
     });
 };
 
-function getUrl(){
-    // from取得
-    var inform = document.getElementById('myForm');
-    // fromの子要素を取得
-    var inform_child = inform;
-    var statattr="";
-    // 各値を入れるオブジェクト
-    var obj= new Object();
-    for (var i = 0; i < inform_child.length; i++){
-        // id未設定のものからは取得しない
-        if(inform_child[i].id === undefined || inform_child[i].id == ""){
-            continue;
-        }
-        // チェックボックス、ラジオボタンはチェックが入ってないものは取得しない
-        if(inform_child[i].type == 'checkbox' ||inform_child[i].type == 'radio'){
-            if(!inform_child[i].checked){
-                continue;
-            }else {
-                obj[inform_child[i].id] = inform_child[i].value;
-                statattr = inform_child[i].value;
-            }
-        }
-        for (var index = 1; index < 6; index++){
-            if ("cLv"+index == inform_child[i].id){obj[inform_child[i].id] = inform_child[i].value;}
-            if ("cHP"+index == inform_child[i].id){obj[inform_child[i].id] = inform_child[i].value;}
-            if ("cATK"+index == inform_child[i].id){obj[inform_child[i].id] = inform_child[i].value;}
-            for (var magic = 1; magic <= 3; magic++){
-                if ("cM${magic}Lv"+index == inform_child[i].id){obj[inform_child[i].id] = inform_child[i].value;}
-                if ("cM${magic}pow"+index == inform_child[i].id){obj[inform_child[i].id] = inform_child[i].value;}
-                if ("cM${magic}heal"+index == inform_child[i].id){obj[inform_child[i].id] = inform_child[i].value;}
-                if ("cM${magic}buf1"+index == inform_child[i].id){obj[inform_child[i].id] = inform_child[i].value;}
-                if ("cM${magic}buf1Lv"+index == inform_child[i].id){obj[inform_child[i].id] = inform_child[i].value;}
-                if ("cM${magic}buf2"+index == inform_child[i].id){obj[inform_child[i].id] = inform_child[i].value;}
-                if ("cM${magic}buf2Lv"+index == inform_child[i].id){obj[inform_child[i].id] = inform_child[i].value;}
-            }
-            if ("cbuddy1Lv"+index == inform_child[i].id){obj[inform_child[i].id] = inform_child[i].value;}
-            if ("cbuddy2Lv"+index == inform_child[i].id){obj[inform_child[i].id] = inform_child[i].value;}
-            if ("cbuddy3Lv"+index == inform_child[i].id){obj[inform_child[i].id] = inform_child[i].value;}
-        }
-    }
-    obj["img1"] = document.getElementById('img1').value;
-    obj["img2"] = document.getElementById('img2').value;
-    obj["img3"] = document.getElementById('img3').value;
-    obj["img4"] = document.getElementById('img4').value;
-    obj["img5"] = document.getElementById('img5').value;
-
-    // 結果表示
-    var result = "?";
-    for (var key in obj) {
-        result += key +"=" + encodeURI(obj[key]) + "%26";
-    }
-    var twlink = location.protocol + "//" + location.host + location.pathname + result;
-    var stat =  " 合計HP:" + document.getElementById('totalHP').innerHTML + " 回復込:" + document.getElementById('totalHealHP').innerHTML;
-    var stat2 =  "ダメージ 5T:" + document.getElementById('totalDamage5').innerHTML + " 4T:" + document.getElementById('totalDamage4').innerHTML + " 3T:" + document.getElementById('totalDamage3').innerHTML;
-    var button = document.getElementById('tweet');
-    var targeturl = encodeURI("http://twitter.com/intent/tweet?text=【ツイステ】デッキシミュレータ \r\n" + statattr + stat + "\r\n" + stat2 + "\r\n" +twlink);
-    button.innerHTML = '<a href=' + targeturl + ' target="_blank" onClick="gtag(\'event\', \'tweet\', {\'event_category\': \'tweet\', \'event_label\': \'tweet\', \'value\':\'1\'});">デッキをツイートする</a>';
-
-};
-
 function into(){
     var query = decodeURI(window.location.search).substring(1);
     var parms = query.split('%26');
@@ -1223,28 +1176,112 @@ function into(){
         }
     }
 };
+function saveState() {
+    const inputs = document.querySelectorAll('input');
+    const selects = document.querySelectorAll('select');
+    
+    let state = [];
+  
+    inputs.forEach(input => {
+      let inputState = {
+        id: input.id,
+        value: input.value,
+        type: input.type,
+        checked: input.checked // チェックボックスとラジオボタンの状態
+      };
+      state.push(inputState);
+    });
+    
+    selects.forEach(select => {
+      let selectState = {
+        id: select.id,
+        value: select.value
+      };
+      state.push(selectState);
+    });
+    
+    // 状態をシリアライズして保存
+    localStorage.setItem('pageState', JSON.stringify(state)); // シリアライズ必須
+  }
+  
 
+  
+function openInNewTab() {
+  saveState(); // 状態を保存
+
+  // URLに?restoreState=trueが既に含まれているかどうかをチェック
+  const restoreStateParam = "restoreState=true";
+  let newUrl = window.location.href;
+  
+  if (!newUrl.includes(restoreStateParam)) {
+    // URLに?または&を適切に追加
+    newUrl += newUrl.includes('?') ? '&' : '?';
+    newUrl += restoreStateParam; // restoreState=trueパラメータを追加
+  }
+
+  window.open(newUrl, '_blank'); // 新しいタブで修正したURLを開く
+}
+
+  
+  function restoreState() {
+    const savedState = localStorage.getItem('pageState');
+    if (savedState) {
+      const state = JSON.parse(savedState); // パース必須
+  
+      // imgに続く数字一桁のidを持つ要素の特別処理を最初に行う
+      state.forEach(item => {
+        const match = item.id.match(/^img(\d)$/);
+        if (match && item.type === 'image') { // 画像のURLを扱うinput想定
+          const element = document.getElementById(item.id);
+          if (element) {
+            modalId = match[1]; // 数字一桁をmodalIdにセット
+            changeImg(item.value.replace('img/', '').replace('.png', '')); // changeImg関数を呼び出し
+            item.processed = true; // このアイテムが処理されたことをマーク
+          }
+        }
+      });
+  
+      // その他の要素を復元
+      state.forEach(item => {
+        // すでに処理されたアイテムはスキップ
+        if (item.processed) return;
+  
+        const element = document.getElementById(item.id);
+        if (element) {
+          if (element.tagName === 'INPUT' && (element.type === 'checkbox' || element.type === 'radio')) {
+            element.checked = item.checked;
+          } else if (element.tagName === 'INPUT' || element.tagName === 'SELECT') {
+            element.value = item.value;
+          }
+        }
+      });
+    }
+  }
+  
+  
+  
 window.addEventListener('DOMContentLoaded', function(){
     var inform = document.getElementById("myForm");
     inform.addEventListener("change",function(){
         calc();
         setChart();
-        getUrl();
     });
     inform.addEventListener("input",function(){
         calc();
         setChart();
-        getUrl();
     });
 });
 window.addEventListener("load",function() {
    $.getJSON('chara.json') // json読み込み開始
    .done(function(json){
        data = json;
-       into();
+       const queryParams = new URLSearchParams(window.location.search);
+       if (queryParams.get('restoreState') === 'true') {
+        restoreState();
+       }
        calc();
        setChart();
-       document.getElementById("asumi-frame-435-1792").parentNode.remove();
+       document.getElementById("loading").style.display = "none";
    });
 });
   $(function(){

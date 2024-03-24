@@ -142,7 +142,7 @@ p {
   width: 450px;
 }
 
-/* ƒƒjƒ…[‚Ì•”•ª */
+/* ï¿½ï¿½ï¿½jï¿½ï¿½ï¿½[ï¿½Ì•ï¿½ï¿½ï¿½ */
 .ac_menu label{
   background: #696969;
   color: #fff;
@@ -157,7 +157,7 @@ p {
   display: none;
 }
 
-/* ƒRƒ“ƒeƒ“ƒc‚Ì•”•ª */
+/* ï¿½Rï¿½ï¿½ï¿½eï¿½ï¿½ï¿½cï¿½Ì•ï¿½ï¿½ï¿½ */
 .ac_menu div{
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
@@ -175,3 +175,57 @@ p {
 .ac_menu input[type="checkbox"].on-off:checked + div{
   height: 120px;
 }
+#loading {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(255, 255, 255, 0.7);
+	z-index: 9999;
+}
+.loader {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+.dli-external-link {
+	display: inline-block;
+	vertical-align: middle;
+	color: #333;
+	line-height: 1;
+	width: 0.9em;
+	height: 0.9em;
+	border: 0.1em solid currentColor;
+	border-radius: 0.1em;
+	background: #fff;
+	box-sizing: content-box;
+	position: relative;
+  }
+  
+  .dli-external-link > span {
+	position: absolute;
+	top: -0.2em;
+	right: -0.2em;
+	width: 45%;
+	height: 45%;
+	border: 0.1em solid currentColor;
+	border-bottom: 0;
+	border-left: 0;
+	background: #fff;
+	box-shadow: -0.1em 0.1em 0 0.1em #fff;
+	box-sizing: border-box;
+  }
+  
+  .dli-external-link > span::before {
+	content: '';
+	position: absolute;
+	top: -0.05em;
+	right: -0.1em;
+	width: 0.1em;
+	height: 0.9em;
+	background: currentColor;
+	transform: rotate(45deg);
+	transform-origin: top center;
+  }

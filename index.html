@@ -27,7 +27,9 @@
 
 </head>
 <body>
-
+    <div id="loading">
+        <div class="loader">Loading...</div>
+    </div>
 <h3><a href = "https://sz7m8ci7.github.io/simulator/index.html"><img src="twst.jpg" width="25" height="25"></a>【ツイステ】デッキシミュレータ</h3><a href="#ex2" rel="modal:open" class="right">使い方等</a>
 
 <div id="ex2" class="modal">
@@ -607,20 +609,19 @@
 <table border="1" style="border-collapse: collapse">
 <caption>
 <span class="left">
-<input type="radio" id="display" name="display" value="全属性" checked>
+<input type="radio" id="display1" name="display" value="全属性" checked>
 <label for="全属性">全属性</label>
-<input type="radio" id="display" name="display" value="対火属性" >
+<input type="radio" id="display2" name="display" value="対火属性" >
 <label for="対火属性">対火属性</label>
-<input type="radio" id="display" name="display" value="対木属性" >
+<input type="radio" id="display3" name="display" value="対木属性" >
 <label for="対木属性">対木属性</label>
-<input type="radio" id="display" name="display" value="対水属性" >
+<input type="radio" id="display4" name="display" value="対水属性" >
 <label for="対水属性">対水属性</label>
-<input type="radio" id="display" name="display" value="対無属性" >
+<input type="radio" id="display5" name="display" value="対無属性" >
 <label for="対無属性">対無属性</label>
 </span>
-<span calss ="right" id="tweet">
-デッキをツイートする
-</span>
+<span calss ="right">
+    <button onclick="openInNewTab()">選択内容を別タブで開く<span class="dli-external-link"><span></span></span></button></span>
 </caption>
 
 <tr>
@@ -815,7 +816,7 @@
     <label for="cM1Lv1">マジック１<br>（＋バフ）</label>
     </td>
     <td>
-    <input type="checkbox" name="checkboxc1" onclick="checkLimit(this,1)" checked value="1">
+    <input type="checkbox" name="checkboxc1" id="checkboxc11" onclick="checkLimit(this,1)" checked value="1">
     <select name="cM1Atr1" id="cM1Atr1">
     <option value=""></option>
     <option value="火">火</option>
@@ -918,7 +919,7 @@
     </select>
     </td>
     <td>
-    <input type="checkbox" name="checkboxc2" onclick="checkLimit(this,2)" checked value="1">
+    <input type="checkbox" name="checkboxc2" id="checkboxc21" onclick="checkLimit(this,2)" checked value="1">
     <select name="cM1Atr2" id="cM1Atr2">
     <option value=""></option>
     <option value="火">火</option>
@@ -1021,7 +1022,7 @@
     </select>
     </td>
     <td>
-    <input type="checkbox" name="checkboxc3" onclick="checkLimit(this,3)" checked value="1">
+    <input type="checkbox" name="checkboxc3" id="checkboxc31" onclick="checkLimit(this,3)" checked value="1">
     <select name="cM1Atr3" id="cM1Atr3">
     <option value=""></option>
     <option value="火">火</option>
@@ -1125,7 +1126,7 @@
     </select>
     </td>
     <td>
-    <input type="checkbox" name="checkboxc4" onclick="checkLimit(this,4)" checked value="1">
+    <input type="checkbox" name="checkboxc4" id="checkboxc41" onclick="checkLimit(this,4)" checked value="1">
     <select name="cM1Atr4" id="cM1Atr4">
     <option value=""></option>
     <option value="火">火</option>
@@ -1229,7 +1230,7 @@
     </select>
     </td>
     <td>
-    <input type="checkbox" name="checkboxc5" onclick="checkLimit(this,5)" checked value="1">
+    <input type="checkbox" name="checkboxc5" id="checkboxc51" onclick="checkLimit(this,5)" checked value="1">
     <select name="cM1Atr5" id="cM1Atr5">
     <option value=""></option>
     <option value="火">火</option>
@@ -1337,7 +1338,7 @@
     <td><label for="cM2Lv1">マジック２<br>（＋バフ）</label>
     </td>
     <td>
-    <input type="checkbox" name="checkboxc1" onclick="checkLimit(this,1)" checked value="2">
+    <input type="checkbox" name="checkboxc1" id="checkboxc12" onclick="checkLimit(this,1)" checked value="2">
     <select name="cM2Atr1" id="cM2Atr1">
     <option value=""></option>
     <option value="火">火</option>
@@ -1442,7 +1443,7 @@
     </select>
     </td>
     <td>
-    <input type="checkbox" name="checkboxc2" onclick="checkLimit(this,2)" checked value="2">
+    <input type="checkbox" name="checkboxc2" id="checkboxc22" onclick="checkLimit(this,2)" checked value="2">
     <select name="cM2Atr2" id="cM2Atr2">
     <option value=""></option>
     <option value="火">火</option>
@@ -1548,7 +1549,7 @@
     </td>
     </td>
     <td>
-    <input type="checkbox" name="checkboxc3" onclick="checkLimit(this,3)" checked value="2">
+    <input type="checkbox" name="checkboxc3" id="checkboxc32" onclick="checkLimit(this,3)" checked value="2">
     <select name="cM2Atr3" id="cM2Atr3">
     <option value=""></option>
     <option value="火">火</option>
@@ -1654,7 +1655,7 @@
     </td>
     </td>
     <td>
-    <input type="checkbox" name="checkboxc4" onclick="checkLimit(this,4)" checked value="2">
+    <input type="checkbox" name="checkboxc4" id="checkboxc42" onclick="checkLimit(this,4)" checked value="2">
     <select name="cM2Atr4" id="cM2Atr4">
     <option value=""></option>
     <option value="火">火</option>
@@ -1760,7 +1761,7 @@
     </td>
     </td>
     <td>
-    <input type="checkbox" name="checkboxc5" onclick="checkLimit(this,5)" checked value="2">
+    <input type="checkbox" name="checkboxc5" id="checkboxc52" onclick="checkLimit(this,5)" checked value="2">
     <select name="cM2Atr5" id="cM2Atr5">
     <option value=""></option>
     <option value="火">火</option>
@@ -1872,7 +1873,7 @@
     <label for="cM3Lv1">マジック３<br>（＋バフ）</label>
     </td>
     <td>
-    <input type="checkbox" name="checkboxc1" onclick="checkLimit(this,1)" value="3">
+    <input type="checkbox" name="checkboxc1" id="checkboxc13" onclick="checkLimit(this,1)" value="3">
     <select name="cM3Atr1" id="cM3Atr1">
     <option value=""></option>
     <option value="火">火</option>
@@ -1976,7 +1977,7 @@
     </select>
     </td>
     <td>
-    <input type="checkbox" name="checkboxc2" onclick="checkLimit(this,2)" value="3">
+    <input type="checkbox" name="checkboxc2" id="checkboxc23" onclick="checkLimit(this,2)" value="3">
     <select name="cM3Atr2" id="cM3Atr2">
     <option value=""></option>
     <option value="火">火</option>
@@ -2080,7 +2081,7 @@
     </select>
     </td>
     <td>
-    <input type="checkbox" name="checkboxc3" onclick="checkLimit(this,3)" value="3">
+    <input type="checkbox" name="checkboxc3" id="checkboxc33" onclick="checkLimit(this,3)" value="3">
     <select name="cM3Atr3" id="cM3Atr3">
     <option value=""></option>
     <option value="火">火</option>
@@ -2184,7 +2185,7 @@
     </select>
     </td>
     <td>
-    <input type="checkbox" name="checkboxc4" onclick="checkLimit(this,4)" value="3">
+    <input type="checkbox" name="checkboxc4" id="checkboxc43" onclick="checkLimit(this,4)" value="3">
     <select name="cM3Atr4" id="cM3Atr4">
     <option value=""></option>
     <option value="火">火</option>
@@ -2288,7 +2289,7 @@
     </select>
     </td>
     <td>
-    <input type="checkbox" name="checkboxc5" onclick="checkLimit(this,5)" value="3">
+    <input type="checkbox" name="checkboxc5" id="checkboxc53" onclick="checkLimit(this,5)" value="3">
     <select name="cM3Atr5" id="cM3Atr5">
     <option value=""></option>
     <option value="火">火</option>
