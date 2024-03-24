@@ -229,12 +229,4 @@ p {
 	transform: rotate(45deg);
 	transform-origin: top center;
   }
-  .white-text-link {
-	color: white; /* テキスト色を白に */
-	text-decoration: none; /* 下線を消す */
-  }
-  
-  .white-text-link:hover {
-	text-decoration: underline; /* ホバー時に下線を表示 */
-  }
   
