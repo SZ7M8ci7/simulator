@@ -1,0 +1,3380 @@
+<html>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-165031877-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-165031877-1');
+</script>
+
+<head>
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@____akita">
+<meta name="twitter:title" content="【ツイステ】デッキシミュレータ">
+<meta name="twitter:description" content="ツイステのデッキ編成後のHP、ダメージを自動計算しグラフ化">
+<meta name="twitter:image" content="https://sz7m8ci7.github.io/simulator/twitter.png">
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.js"></script>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="twitter:url" content="https://sz7m8ci7.github.io/simulator/index.html" />
+<meta http-equiv="content-type" charset="utf-8">
+<link type="text/css" rel="stylesheet" href="twstsimu.css">
+<title>【ツイステ】デッキシミュレータ</title>
+
+</head>
+<body>
+    <div id="loading">
+        <div class="loader">Loading...</div>
+    </div>
+<h3><a href = "https://sz7m8ci7.github.io/simulator/index.html"><img src="twst.jpg" width="25" height="25"></a>【ツイステ】デッキシミュレータ</h3><a href="#ex2" rel="modal:open" class="right">使い方等</a>
+
+<div id="ex2" class="modal">
+・使い方<br>
+＋アイコンを選択し、編成したいキャラを選択すると自動で完凸のステータスが入力されます。<br>
+完凸でない場合は調整したいステータスを手動で入力して下さい。<br>
+レベルを選択するとHP,ATKが自動で調整されますが、実測値ではないので±50程度誤差が発生する場合があります。<br>
+正確に計算したい場合は直接HPとATKを入力してください。<br>
+マジックの下段二つはバフ入力欄なので、バフを掛けて撃つ想定の場合入力してください。<br>
+合計ダメージは火力の高い順に撃つと出るそのターン数でのダメージです。<br>
+<p></p>
+・免責事項<br>
+表示されるゲーム情報はすべてディズニー及びアニプレックスに帰属します。　©Disney. Published by Aniplex<br>
+当ツールは著作権法第32条に基づき画像を引用しております。<br>
+権利者様側からの画像等の削除の依頼や警告には速やかに対処いたします。<br>
+趣味で作ったツールなので正確性は話半分程度に考えてください。<br>
+誤差の範囲じゃなさそうなレベルで動作がおかしい場合は報告して頂ければその内直る気がします。<br>
+使い方が分からない、分かり辛い等あったら気軽に作者に聞いて下さい。<br>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script><span class="right">不具合報告・改善要望は<a href= "https://twitter.com/____akita" onClick="gtag('event', 'click', {'event_category': 'link', 'event_label': 'twitter', 'value':'1'});" >@____akita</a>まで</span>
+
+</div>
+<div id="ex1" class="modal">
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'riddle_dormitory', 'value':'1'});changeImg('riddle_dormitory')"><img src="img/riddle_dormitory.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'riddle_birth', 'value':'1'});changeImg('riddle_birth')"><img src="img/riddle_birth.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'riddle_birth2', 'value':'1'});changeImg('riddle_birth2')"><img src="img/riddle_birth2.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'riddle_birth3', 'value':'1'});changeImg('riddle_birth3')"><img src="img/riddle_birth3.png"></a>
+    <!-- リドルバースデー追加エリア -->
+    <!-- リドル部活追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'riddle_scary', 'value':'1'});changeImg('riddle_scary')"><img src="img/riddle_scary.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'riddle_tmu', 'value':'1'});changeImg('riddle_tmu')"><img src="img/riddle_tmu.png"></a>
+    <!-- リドルSSR追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'riddle_groom', 'value':'1'});changeImg('riddle_groom')"><img src="img/riddle_groom.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'riddle_experiment', 'value':'1'});changeImg('riddle_experiment')"><img src="img/riddle_experiment.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'riddle_ceremony', 'value':'1'});changeImg('riddle_ceremony')"><img src="img/riddle_ceremony.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'riddle_chef', 'value':'1'});changeImg('riddle_chef')"><img src="img/riddle_chef.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'riddle_Swiss_Wear', 'value':'1'});changeImg('riddle_Swiss_Wear')"><img src="img/riddle_Swiss_Wear.png"></a>
+    <!-- リドルSR追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'riddle_masquerade', 'value':'1'});changeImg('riddle_masquerade')"><img src="img/riddle_masquerade.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'riddle_uniform', 'value':'1'});changeImg('riddle_uniform')"><img src="img/riddle_uniform.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'riddle_gym', 'value':'1'});changeImg('riddle_gym')"><img src="img/riddle_gym.png"></a>
+    <!-- リドルR追加エリア -->
+    <br>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'ace_dormitory', 'value':'1'});changeImg('ace_dormitory')"><img src="img/ace_dormitory.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'ace_birth', 'value':'1'});changeImg('ace_birth')"><img src="img/ace_birth.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'ace_birth2', 'value':'1'});changeImg('ace_birth2')"><img src="img/ace_birth2.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'ace_birth3', 'value':'1'});changeImg('ace_birth3')"><img src="img/ace_birth3.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'ace_birth4', 'value':'1'});changeImg('ace_birth4')"><img src="img/ace_birth4.png"></a>
+    <!-- エースバースデー追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'ace_club', 'value':'1'});changeImg('ace_club')"><img src="img/ace_club.png"></a>
+    <!-- エース部活追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'ace_groom', 'value':'1'});changeImg('ace_groom')"><img src="img/ace_groom.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'ace_playful_dress', 'value':'1'});changeImg('ace_playful_dress')"><img src="img/ace_playful_dress.png"></a>
+    <!-- エースSSR追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'ace_gara', 'value':'1'});changeImg('ace_gara')"><img src="img/ace_gara.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'ace_scary', 'value':'1'});changeImg('ace_scary')"><img src="img/ace_scary.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'ace_experiment', 'value':'1'});changeImg('ace_experiment')"><img src="img/ace_experiment.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'ace_ceremony', 'value':'1'});changeImg('ace_ceremony')"><img src="img/ace_ceremony.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'ace_chef', 'value':'1'});changeImg('ace_chef')"><img src="img/ace_chef.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'ace_Swiss_Wear', 'value':'1'});changeImg('ace_Swiss_Wear')"><img src="img/ace_Swiss_Wear.png"></a>
+    <!-- エースSR追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'ace_uniform', 'value':'1'});changeImg('ace_uniform')"><img src="img/ace_uniform.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'ace_gym', 'value':'1'});changeImg('ace_gym')"><img src="img/ace_gym.png"></a>
+    <!-- エースR追加エリア -->
+    <br>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'deuce_dormitory', 'value':'1'});changeImg('deuce_dormitory')"><img src="img/deuce_dormitory.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'deuce_birth', 'value':'1'});changeImg('deuce_birth')"><img src="img/deuce_birth.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'deuce_birth2', 'value':'1'});changeImg('deuce_birth2')"><img src="img/deuce_birth2.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'deuce_birth3', 'value':'1'});changeImg('deuce_birth3')"><img src="img/deuce_birth3.png"></a>
+    <!-- デュースバースデー追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'deuce_club', 'value':'1'});changeImg('deuce_club')"><img src="img/deuce_club.png"></a>
+    <!-- デュース部活追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'deuce_star', 'value':'1'});changeImg('deuce_star')"><img src="img/deuce_star.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'deuce_Rabbit_wear', 'value':'1'});changeImg('deuce_Rabbit_wear')"><img src="img/deuce_Rabbit_wear.png"></a>
+    <!-- デュースSSR追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'deuce_masquerade', 'value':'1'});changeImg('deuce_masquerade')"><img src="img/deuce_masquerade.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'deuce_experiment', 'value':'1'});changeImg('deuce_experiment')"><img src="img/deuce_experiment.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'deuce_ceremony', 'value':'1'});changeImg('deuce_ceremony')"><img src="img/deuce_ceremony.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'deuce_newyear', 'value':'1'});changeImg('deuce_newyear')"><img src="img/deuce_newyear.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'deuce_chef', 'value':'1'});changeImg('deuce_chef')"><img src="img/deuce_chef.png"></a>
+    <!-- デュースSR追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'deuce_scary', 'value':'1'});changeImg('deuce_scary')"><img src="img/deuce_scary.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'deuce_uniform', 'value':'1'});changeImg('deuce_uniform')"><img src="img/deuce_uniform.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'deuce_gym', 'value':'1'});changeImg('deuce_gym')"><img src="img/deuce_gym.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'deuce_tmu', 'value':'1'});changeImg('deuce_tmu')"><img src="img/deuce_tmu.png"></a>
+    <!-- デュースR追加エリア -->
+    <br>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'cater_dormitory', 'value':'1'});changeImg('cater_dormitory')"><img src="img/cater_dormitory.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'cater_birth', 'value':'1'});changeImg('cater_birth')"><img src="img/cater_birth.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'cater_birth2', 'value':'1'});changeImg('cater_birth2')"><img src="img/cater_birth2.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'cater_birth3', 'value':'1'});changeImg('cater_birth3')"><img src="img/cater_birth3.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'cater_birth4', 'value':'1'});changeImg('cater_birth4')"><img src="img/cater_birth4.png"></a>
+    <!-- ケイトバースデー追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'cater_club', 'value':'1'});changeImg('cater_club')"><img src="img/cater_club.png"></a>
+    <!-- ケイト部活追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'cater_scary', 'value':'1'});changeImg('cater_scary')"><img src="img/cater_scary.png"></a>
+    <!-- ケイトSSR追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'cater_tmu', 'value':'1'});changeImg('cater_tmu')"><img src="img/cater_tmu.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'cater_milk', 'value':'1'});changeImg('cater_milk')"><img src="img/cater_milk.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'cater_experiment', 'value':'1'});changeImg('cater_experiment')"><img src="img/cater_experiment.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'cater_ceremony', 'value':'1'});changeImg('cater_ceremony')"><img src="img/cater_ceremony.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'cater_newyear', 'value':'1'});changeImg('cater_newyear')"><img src="img/cater_newyear.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'cater_chef', 'value':'1'});changeImg('cater_chef')"><img src="img/cater_chef.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'cater_playful_dress', 'value':'1'});changeImg('cater_playful_dress')"><img src="img/cater_playful_dress.png"></a>
+    <!-- ケイトSR追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'cater_beans', 'value':'1'});changeImg('cater_beans')"><img src="img/cater_beans.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'cater_uniform', 'value':'1'});changeImg('cater_uniform')"><img src="img/cater_uniform.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'cater_gym', 'value':'1'});changeImg('cater_gym')"><img src="img/cater_gym.png"></a>
+    <!-- ケイトR追加エリア -->
+    <br>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'trey_dormitory', 'value':'1'});changeImg('trey_dormitory')"><img src="img/trey_dormitory.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'trey_birth', 'value':'1'});changeImg('trey_birth')"><img src="img/trey_birth.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'trey_birth2', 'value':'1'});changeImg('trey_birth2')"><img src="img/trey_birth2.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'trey_birth3', 'value':'1'});changeImg('trey_birth3')"><img src="img/trey_birth3.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'trey_birth4', 'value':'1'});changeImg('trey_birth4')"><img src="img/trey_birth4.png"></a>
+    <!-- トレイバースデー追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'trey_club', 'value':'1'});changeImg('trey_club')"><img src="img/trey_club.png"></a>
+    <!-- トレイ部活追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'trey_outdoor', 'value':'1'});changeImg('trey_outdoor')"><img src="img/trey_outdoor.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'trey_newyear', 'value':'1'});changeImg('trey_newyear')"><img src="img/trey_newyear.png"></a>
+    <!-- トレイSSR追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'trey_scary', 'value':'1'});changeImg('trey_scary')"><img src="img/trey_scary.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'trey_experiment', 'value':'1'});changeImg('trey_experiment')"><img src="img/trey_experiment.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'trey_ceremony', 'value':'1'});changeImg('trey_ceremony')"><img src="img/trey_ceremony.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'trey_chef', 'value':'1'});changeImg('trey_chef')"><img src="img/trey_chef.png"></a>
+    <!-- トレイSR追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'trey_milk', 'value':'1'});changeImg('trey_milk')"><img src="img/trey_milk.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'trey_uniform', 'value':'1'});changeImg('trey_uniform')"><img src="img/trey_uniform.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'trey_star', 'value':'1'});changeImg('trey_star')"><img src="img/trey_star.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'trey_gym', 'value':'1'});changeImg('trey_gym')"><img src="img/trey_gym.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'trey_playful_dress', 'value':'1'});changeImg('trey_playful_dress')"><img src="img/trey_playful_dress.png"></a>
+    <!-- トレイR追加エリア -->
+    <br>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'leona_dormitory', 'value':'1'});changeImg('leona_dormitory')"><img src="img/leona_dormitory.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'leona_birth', 'value':'1'});changeImg('leona_birth')"><img src="img/leona_birth.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'leona_birth2', 'value':'1'});changeImg('leona_birth2')"><img src="img/leona_birth2.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'leona_birth3', 'value':'1'});changeImg('leona_birth3')"><img src="img/leona_birth3.png"></a>
+    <!-- レオナバースデー追加エリア -->
+    <!-- レオナ部活追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'leona_gara', 'value':'1'});changeImg('leona_gara')"><img src="img/leona_gara.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'leona_tmu', 'value':'1'});changeImg('leona_tmu')"><img src="img/leona_tmu.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'leona_beast', 'value':'1'});changeImg('leona_beast')"><img src="img/leona_beast.png"></a>
+    <!-- レオナSSR追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'leona_scary', 'value':'1'});changeImg('leona_scary')"><img src="img/leona_scary.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'leona_experiment', 'value':'1'});changeImg('leona_experiment')"><img src="img/leona_experiment.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'leona_ceremony', 'value':'1'});changeImg('leona_ceremony')"><img src="img/leona_ceremony.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'leona_chef', 'value':'1'});changeImg('leona_chef')"><img src="img/leona_chef.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'leona_playful_dress', 'value':'1'});changeImg('leona_playful_dress')"><img src="img/leona_playful_dress.png"></a>
+    <!-- レオナSR追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'leona_outdoor', 'value':'1'});changeImg('leona_outdoor')"><img src="img/leona_outdoor.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'leona_uniform', 'value':'1'});changeImg('leona_uniform')"><img src="img/leona_uniform.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'leona_gym', 'value':'1'});changeImg('leona_gym')"><img src="img/leona_gym.png"></a>
+    <!-- レオナR追加エリア -->
+    <br>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'jack_dormitory', 'value':'1'});changeImg('jack_dormitory')"><img src="img/jack_dormitory.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'jack_birth', 'value':'1'});changeImg('jack_birth')"><img src="img/jack_birth.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'jack_birth2', 'value':'1'});changeImg('jack_birth2')"><img src="img/jack_birth2.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'jack_birth3', 'value':'1'});changeImg('jack_birth3')"><img src="img/jack_birth3.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'jack_birth4', 'value':'1'});changeImg('jack_birth4')"><img src="img/jack_birth4.png"></a>
+    <!-- ジャックバースデー追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'jack_club', 'value':'1'});changeImg('jack_club')"><img src="img/jack_club.png"></a>
+    <!-- ジャック部活追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'jack_port', 'value':'1'});changeImg('jack_port')"><img src="img/jack_port.png"></a>
+    <!-- ジャックSSR追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'jack_scary', 'value':'1'});changeImg('jack_scary')"><img src="img/jack_scary.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'jack_beans', 'value':'1'});changeImg('jack_beans')"><img src="img/jack_beans.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'jack_experiment', 'value':'1'});changeImg('jack_experiment')"><img src="img/jack_experiment.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'jack_ceremony', 'value':'1'});changeImg('jack_ceremony')"><img src="img/jack_ceremony.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'jack_chef', 'value':'1'});changeImg('jack_chef')"><img src="img/jack_chef.png"></a>
+    <!-- ジャックSR追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'jack_gara', 'value':'1'});changeImg('jack_gara')"><img src="img/jack_gara.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'jack_tmu', 'value':'1'});changeImg('jack_tmu')"><img src="img/jack_tmu.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'jack_uniform', 'value':'1'});changeImg('jack_uniform')"><img src="img/jack_uniform.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'jack_gym', 'value':'1'});changeImg('jack_gym')"><img src="img/jack_gym.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'jack_Swiss_Wear', 'value':'1'});changeImg('jack_Swiss_Wear')"><img src="img/jack_Swiss_Wear.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'jack_playful_dress', 'value':'1'});changeImg('jack_playful_dress')"><img src="img/jack_playful_dress.png"></a>
+    <!-- ジャックR追加エリア -->
+    <br>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'ruggie_dormitory', 'value':'1'});changeImg('ruggie_dormitory')"><img src="img/ruggie_dormitory.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'ruggie_birth', 'value':'1'});changeImg('ruggie_birth')"><img src="img/ruggie_birth.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'ruggie_birth2', 'value':'1'});changeImg('ruggie_birth2')"><img src="img/ruggie_birth2.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'ruggie_birth3', 'value':'1'});changeImg('ruggie_birth3')"><img src="img/ruggie_birth3.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'ruggie_club', 'value':'1'});changeImg('ruggie_club')"><img src="img/ruggie_club.png"></a>
+    <!-- ラギーバースデー追加エリア -->
+    <!-- ラギー部活追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'ruggie_outdoor', 'value':'1'});changeImg('ruggie_outdoor')"><img src="img/ruggie_outdoor.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'ruggie_newyear', 'value':'1'});changeImg('ruggie_newyear')"><img src="img/ruggie_newyear.png"></a>
+    <!-- ラギーSSR追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'ruggie_scary', 'value':'1'});changeImg('ruggie_scary')"><img src="img/ruggie_scary.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'ruggie_port', 'value':'1'});changeImg('ruggie_port')"><img src="img/ruggie_port.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'ruggie_experiment', 'value':'1'});changeImg('ruggie_experiment')"><img src="img/ruggie_experiment.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'ruggie_ceremony', 'value':'1'});changeImg('ruggie_ceremony')"><img src="img/ruggie_ceremony.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'ruggie_chef', 'value':'1'});changeImg('ruggie_chef')"><img src="img/ruggie_chef.png"></a>
+    <!-- ラギーSR追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'ruggie_gara', 'value':'1'});changeImg('ruggie_gara')"><img src="img/ruggie_gara.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'ruggie_masquerade', 'value':'1'});changeImg('ruggie_masquerade')"><img src="img/ruggie_masquerade.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'ruggie_uniform', 'value':'1'});changeImg('ruggie_uniform')"><img src="img/ruggie_uniform.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'ruggie_gym', 'value':'1'});changeImg('ruggie_gym')"><img src="img/ruggie_gym.png"></a>
+    <!-- ラギーR追加エリア -->
+    <br>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'azul_dormitory', 'value':'1'});changeImg('azul_dormitory')"><img src="img/azul_dormitory.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'azul_birth', 'value':'1'});changeImg('azul_birth')"><img src="img/azul_birth.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'azul_birth2', 'value':'1'});changeImg('azul_birth2')"><img src="img/azul_birth2.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'azul_birth3', 'value':'1'});changeImg('azul_birth3')"><img src="img/azul_birth3.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'azul_birth4', 'value':'1'});changeImg('azul_birth4')"><img src="img/azul_birth4.png"></a>
+    <!-- アズールバースデー追加エリア -->
+    <!-- アズール部活追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'azul_beans', 'value':'1'});changeImg('azul_beans')"><img src="img/azul_beans.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'azul_masquerade', 'value':'1'});changeImg('azul_masquerade')"><img src="img/azul_masquerade.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'azul_tmu', 'value':'1'});changeImg('azul_tmu')"><img src="img/azul_tmu.png"></a>
+    <!-- アズールSSR追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'azul_scary', 'value':'1'});changeImg('azul_scary')"><img src="img/azul_scary.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'azul_experiment', 'value':'1'});changeImg('azul_experiment')"><img src="img/azul_experiment.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'azul_ceremony', 'value':'1'});changeImg('azul_ceremony')"><img src="img/azul_ceremony.png"></a>
+    <!-- アズールSR追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'azul_uniform', 'value':'1'});changeImg('azul_uniform')"><img src="img/azul_uniform.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'azul_gym', 'value':'1'});changeImg('azul_gym')"><img src="img/azul_gym.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'azul_outdoor', 'value':'1'});changeImg('azul_outdoor')"><img src="img/azul_outdoor.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'azul_Swiss_Wear', 'value':'1'});changeImg('azul_Swiss_Wear')"><img src="img/azul_Swiss_Wear.png"></a>
+    <!-- アズールR追加エリア -->
+    <br>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'jade_dormitory', 'value':'1'});changeImg('jade_dormitory')"><img src="img/jade_dormitory.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'jade_birth', 'value':'1'});changeImg('jade_birth')"><img src="img/jade_birth.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'jade_birth2', 'value':'1'});changeImg('jade_birth2')"><img src="img/jade_birth2.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'jade_birth3', 'value':'1'});changeImg('jade_birth3')"><img src="img/jade_birth3.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'jade_birth4', 'value':'1'});changeImg('jade_birth4')"><img src="img/jade_birth4.png"></a>
+    <!-- ジェイドバースデー追加エリア -->
+    <!-- ジェイド部活追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'jade_scary', 'value':'1'});changeImg('jade_scary')"><img src="img/jade_scary.png"></a>
+    <!-- ジェイドSSR追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'jade_outdoor', 'value':'1'});changeImg('jade_outdoor')"><img src="img/jade_outdoor.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'jade_beans', 'value':'1'});changeImg('jade_beans')"><img src="img/jade_beans.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'jade_experiment', 'value':'1'});changeImg('jade_experiment')"><img src="img/jade_experiment.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'jade_ceremony', 'value':'1'});changeImg('jade_ceremony')"><img src="img/jade_ceremony.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'jade_chef', 'value':'1'});changeImg('jade_chef')"><img src="img/jade_chef.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'jade_newyear', 'value':'1'});changeImg('jade_newyear')"><img src="img/jade_newyear.png"></a>
+    <!-- ジェイドSR追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'jade_apple', 'value':'1'});changeImg('jade_apple')"><img src="img/jade_apple.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'jade_uniform', 'value':'1'});changeImg('jade_uniform')"><img src="img/jade_uniform.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'jade_gym', 'value':'1'});changeImg('jade_gym')"><img src="img/jade_gym.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'jade_tmu', 'value':'1'});changeImg('jade_tmu')"><img src="img/jade_tmu.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'jade_playful_dress', 'value':'1'});changeImg('jade_playful_dress')"><img src="img/jade_playful_dress.png"></a>
+    <!-- ジェイドR追加エリア -->
+    <br>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'floyd_dormitory', 'value':'1'});changeImg('floyd_dormitory')"><img src="img/floyd_dormitory.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'floyd_birth', 'value':'1'});changeImg('floyd_birth')"><img src="img/floyd_birth.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'floyd_birth2', 'value':'1'});changeImg('floyd_birth2')"><img src="img/floyd_birth2.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'floyd_birth3', 'value':'1'});changeImg('floyd_birth3')"><img src="img/floyd_birth3.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'floyd_birth4', 'value':'1'});changeImg('floyd_birth4')"><img src="img/floyd_birth4.png"></a>
+    <!-- フロイドバースデー追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'floyd_club', 'value':'1'});changeImg('floyd_club')"><img src="img/floyd_club.png"></a>
+    <!-- フロイド部活追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'floyd_beans', 'value':'1'});changeImg('floyd_beans')"><img src="img/floyd_beans.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'floyd_Swiss_Wear', 'value':'1'});changeImg('floyd_Swiss_Wear')"><img src="img/floyd_Swiss_Wear.png"></a>
+    <!-- フロイドSSR追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'floyd_outdoor', 'value':'1'});changeImg('floyd_outdoor')"><img src="img/floyd_outdoor.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'floyd_tmu', 'value':'1'});changeImg('floyd_tmu')"><img src="img/floyd_tmu.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'floyd_experiment', 'value':'1'});changeImg('floyd_experiment')"><img src="img/floyd_experiment.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'floyd_ceremony', 'value':'1'});changeImg('floyd_ceremony')"><img src="img/floyd_ceremony.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'floyd_chef', 'value':'1'});changeImg('floyd_chef')"><img src="img/floyd_chef.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'floyd_playful_dress', 'value':'1'});changeImg('floyd_playful_dress')"><img src="img/floyd_playful_dress.png"></a>
+    <!-- フロイドSR追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'floyd_scary', 'value':'1'});changeImg('floyd_scary')"><img src="img/floyd_scary.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'floyd_port', 'value':'1'});changeImg('floyd_port')"><img src="img/floyd_port.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'floyd_uniform', 'value':'1'});changeImg('floyd_uniform')"><img src="img/floyd_uniform.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'floyd_gym', 'value':'1'});changeImg('floyd_gym')"><img src="img/floyd_gym.png"></a>
+    <!-- フロイドR追加エリア -->
+    <br>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'kalim_dormitory', 'value':'1'});changeImg('kalim_dormitory')"><img src="img/kalim_dormitory.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'kalim_birth', 'value':'1'});changeImg('kalim_birth')"><img src="img/kalim_birth.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'kalim_birth2', 'value':'1'});changeImg('kalim_birth2')"><img src="img/kalim_birth2.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'kalim_birth3', 'value':'1'});changeImg('kalim_birth3')"><img src="img/kalim_birth3.png"></a>
+    <!-- カリムバースデー追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'kalim_club', 'value':'1'});changeImg('kalim_club')"><img src="img/kalim_club.png"></a>
+    <!-- カリム部活追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'kalim_newyear', 'value':'1'});changeImg('kalim_newyear')"><img src="img/kalim_newyear.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'kalim_tmu', 'value':'1'});changeImg('kalim_tmu')"><img src="img/kalim_tmu.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'kalim_playful_dress', 'value':'1'});changeImg('kalim_playful_dress')"><img src="img/kalim_playful_dress.png"></a>
+    <!-- カリムSSR追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'kalim_gara', 'value':'1'});changeImg('kalim_gara')"><img src="img/kalim_gara.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'kalim_experiment', 'value':'1'});changeImg('kalim_experiment')"><img src="img/kalim_experiment.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'kalim_ceremony', 'value':'1'});changeImg('kalim_ceremony')"><img src="img/kalim_ceremony.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'kalim_beast', 'value':'1'});changeImg('kalim_beast')"><img src="img/kalim_beast.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'kalim_chef', 'value':'1'});changeImg('kalim_chef')"><img src="img/kalim_chef.png"></a>
+    <!-- カリムSR追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'kalim_scary', 'value':'1'});changeImg('kalim_scary')"><img src="img/kalim_scary.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'kalim_uniform', 'value':'1'});changeImg('kalim_uniform')"><img src="img/kalim_uniform.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'kalim_gym', 'value':'1'});changeImg('kalim_gym')"><img src="img/kalim_gym.png"></a>
+    <!-- カリムR追加エリア -->
+    <br>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'jamil_dormitory', 'value':'1'});changeImg('jamil_dormitory')"><img src="img/jamil_dormitory.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'jamil_birth', 'value':'1'});changeImg('jamil_birth')"><img src="img/jamil_birth.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'jamil_birth2', 'value':'1'});changeImg('jamil_birth2')"><img src="img/jamil_birth2.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'jamil_birth3', 'value':'1'});changeImg('jamil_birth3')"><img src="img/jamil_birth3.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'jamil_birth4', 'value':'1'});changeImg('jamil_birth4')"><img src="img/jamil_birth4.png"></a>
+    <!-- ジャミルバースデー追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'jamil_club', 'value':'1'});changeImg('jamil_club')"><img src="img/jamil_club.png"></a>
+    <!-- ジャミル部活追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'jamil_milk', 'value':'1'});changeImg('jamil_milk')"><img src="img/jamil_milk.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'jamil_apple', 'value':'1'});changeImg('jamil_apple')"><img src="img/jamil_apple.png"></a>
+    <!-- ジャミルSSR追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'jamil_gara', 'value':'1'});changeImg('jamil_gara')"><img src="img/jamil_gara.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'jamil_masquerade', 'value':'1'});changeImg('jamil_masquerade')"><img src="img/jamil_masquerade.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'jamil_experiment', 'value':'1'});changeImg('jamil_experiment')"><img src="img/jamil_experiment.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'jamil_ceremony', 'value':'1'});changeImg('jamil_ceremony')"><img src="img/jamil_ceremony.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'jamil_chef', 'value':'1'});changeImg('jamil_chef')"><img src="img/jamil_chef.png"></a>
+    <!-- ジャミルSR追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'jamil_scary', 'value':'1'});changeImg('jamil_scary')"><img src="img/jamil_scary.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'jamil_beans', 'value':'1'});changeImg('jamil_beans')"><img src="img/jamil_beans.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'jamil_uniform', 'value':'1'});changeImg('jamil_uniform')"><img src="img/jamil_uniform.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'jamil_gym', 'value':'1'});changeImg('jamil_gym')"><img src="img/jamil_gym.png"></a>
+    <!-- ジャミルR追加エリア -->
+    <br>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'vil_dormitory', 'value':'1'});changeImg('vil_dormitory')"><img src="img/vil_dormitory.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'vil_birth', 'value':'1'});changeImg('vil_birth')"><img src="img/vil_birth.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'vil_birth2', 'value':'1'});changeImg('vil_birth2')"><img src="img/vil_birth2.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'vil_birth3', 'value':'1'});changeImg('vil_birth3')"><img src="img/vil_birth3.png"></a>
+    <!-- ヴィルバースデー追加エリア -->
+    <!-- ヴィル部活追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'vil_scary', 'value':'1'});changeImg('vil_scary')"><img src="img/vil_scary.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'vil_milk', 'value':'1'});changeImg('vil_milk')"><img src="img/vil_milk.png"></a>
+    <!-- ヴィルSSR追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'vil_outdoor', 'value':'1'});changeImg('vil_outdoor')"><img src="img/vil_outdoor.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'vil_beans', 'value':'1'});changeImg('vil_beans')"><img src="img/vil_beans.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'vil_experiment', 'value':'1'});changeImg('vil_experiment')"><img src="img/vil_experiment.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'vil_ceremony', 'value':'1'});changeImg('vil_ceremony')"><img src="img/vil_ceremony.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'vil_newyear', 'value':'1'});changeImg('vil_newyear')"><img src="img/vil_newyear.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'vil_playful_dress', 'value':'1'});changeImg('vil_playful_dress')"><img src="img/vil_playful_dress.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'vil_chef', 'value':'1'});changeImg('vil_chef')"><img src="img/vil_chef.png"></a>
+    <!-- ヴィルSR追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'vil_uniform', 'value':'1'});changeImg('vil_uniform')"><img src="img/vil_uniform.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'vil_beast', 'value':'1'});changeImg('vil_beast')"><img src="img/vil_beast.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'vil_gym', 'value':'1'});changeImg('vil_gym')"><img src="img/vil_gym.png"></a>
+    <!-- ヴィルR追加エリア -->
+    <br>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'epel_dormitory', 'value':'1'});changeImg('epel_dormitory')"><img src="img/epel_dormitory.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'epel_birth', 'value':'1'});changeImg('epel_birth')"><img src="img/epel_birth.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'epel_birth2', 'value':'1'});changeImg('epel_birth2')"><img src="img/epel_birth2.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'epel_birth3', 'value':'1'});changeImg('epel_birth3')"><img src="img/epel_birth3.png"></a>
+    <!-- エペルバースデー追加エリア -->
+    <!-- エペル部活追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'epel_apple', 'value':'1'});changeImg('epel_apple')"><img src="img/epel_apple.png"></a>
+    <!-- エペルSSR追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'epel_groom', 'value':'1'});changeImg('epel_groom')"><img src="img/epel_groom.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'epel_masquerade', 'value':'1'});changeImg('epel_masquerade')"><img src="img/epel_masquerade.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'epel_experiment', 'value':'1'});changeImg('epel_experiment')"><img src="img/epel_experiment.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'epel_ceremony', 'value':'1'});changeImg('epel_ceremony')"><img src="img/epel_ceremony.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'epel_Rabbit_wear', 'value':'1'});changeImg('epel_Rabbit_wear')"><img src="img/epel_Rabbit_wear.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'epel_chef', 'value':'1'});changeImg('epel_chef')"><img src="img/epel_chef.png"></a>
+    <!-- エペルSR追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'epel_scary', 'value':'1'});changeImg('epel_scary')"><img src="img/epel_scary.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'epel_tmu', 'value':'1'});changeImg('epel_tmu')"><img src="img/epel_tmu.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'epel_uniform', 'value':'1'});changeImg('epel_uniform')"><img src="img/epel_uniform.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'epel_gym', 'value':'1'});changeImg('epel_gym')"><img src="img/epel_gym.png"></a>
+    <!-- エペルR追加エリア -->
+    <br>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'rook_dormitory', 'value':'1'});changeImg('rook_dormitory')"><img src="img/rook_dormitory.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'rook_birth', 'value':'1'});changeImg('rook_birth')"><img src="img/rook_birth.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'rook_birth2', 'value':'1'});changeImg('rook_birth2')"><img src="img/rook_birth2.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'rook_birth3', 'value':'1'});changeImg('rook_birth3')"><img src="img/rook_birth3.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'rook_birth4', 'value':'1'});changeImg('rook_birth4')"><img src="img/rook_birth4.png"></a>
+    <!-- ルークバースデー追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'rook_club', 'value':'1'});changeImg('rook_club')"><img src="img/rook_club.png"></a>
+    <!-- ルーク部活追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'rook_scary', 'value':'1'});changeImg('rook_scary')"><img src="img/rook_scary.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'rook_newyear', 'value':'1'});changeImg('rook_newyear')"><img src="img/rook_newyear.png"></a>
+    <!-- ルークSSR追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'rook_beans', 'value':'1'});changeImg('rook_beans')"><img src="img/rook_beans.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'rook_port', 'value':'1'});changeImg('rook_port')"><img src="img/rook_port.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'rook_experiment', 'value':'1'});changeImg('rook_experiment')"><img src="img/rook_experiment.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'rook_ceremony', 'value':'1'});changeImg('rook_ceremony')"><img src="img/rook_ceremony.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'rook_chef', 'value':'1'});changeImg('rook_chef')"><img src="img/rook_chef.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'rook_tmu', 'value':'1'});changeImg('rook_tmu')"><img src="img/rook_tmu.png"></a>
+    <!-- ルークSR追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'rook_groom', 'value':'1'});changeImg('rook_groom')"><img src="img/rook_groom.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'rook_masquerade', 'value':'1'});changeImg('rook_masquerade')"><img src="img/rook_masquerade.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'rook_uniform', 'value':'1'});changeImg('rook_uniform')"><img src="img/rook_uniform.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'rook_gym', 'value':'1'});changeImg('rook_gym')"><img src="img/rook_gym.png"></a>
+    <!-- ルークR追加エリア -->
+    <br>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'idia_dormitory', 'value':'1'});changeImg('idia_dormitory')"><img src="img/idia_dormitory.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'idia_birth', 'value':'1'});changeImg('idia_birth')"><img src="img/idia_birth.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'idia_birth2', 'value':'1'});changeImg('idia_birth2')"><img src="img/idia_birth2.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'idia_birth3', 'value':'1'});changeImg('idia_birth3')"><img src="img/idia_birth3.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'idia_birth4', 'value':'1'});changeImg('idia_birth4')"><img src="img/idia_birth4.png"></a>
+    <!-- イデアバースデー追加エリア -->
+    <!-- イデア部活追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'idia_groom', 'value':'1'});changeImg('idia_groom')"><img src="img/idia_groom.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'idia_masquerade', 'value':'1'});changeImg('idia_masquerade')"><img src="img/idia_masquerade.png"></a>
+    <!-- イデアSSR追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'idia_apple', 'value':'1'});changeImg('idia_apple')"><img src="img/idia_apple.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'idia_experiment', 'value':'1'});changeImg('idia_experiment')"><img src="img/idia_experiment.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'idia_ceremony', 'value':'1'});changeImg('idia_ceremony')"><img src="img/idia_ceremony.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'idia_star', 'value':'1'});changeImg('idia_star')"><img src="img/idia_star.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'idia_chef', 'value':'1'});changeImg('idia_chef')"><img src="img/idia_chef.png"></a>
+    <!-- イデアSR追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'idia_scary', 'value':'1'});changeImg('idia_scary')"><img src="img/idia_scary.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'idia_uniform', 'value':'1'});changeImg('idia_uniform')"><img src="img/idia_uniform.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'idia_gym', 'value':'1'});changeImg('idia_gym')"><img src="img/idia_gym.png"></a>
+    <!-- イデアR追加エリア -->
+    <br>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'ortho_dormitory', 'value':'1'});changeImg('ortho_dormitory')"><img src="img/ortho_dormitory.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'ortho_birth', 'value':'1'});changeImg('ortho_birth')"><img src="img/ortho_birth.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'ortho_birth2', 'value':'1'});changeImg('ortho_birth2')"><img src="img/ortho_birth2.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'ortho_bloom_gear', 'value':'1'});changeImg('ortho_bloom_gear')"><img src="img/ortho_bloom_gear.png"></a>
+    <!-- オルトバースデー追加エリア -->
+    <!-- オルト部活追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'ortho_gara', 'value':'1'});changeImg('ortho_gara')"><img src="img/ortho_gara.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'ortho_cerberus_gear', 'value':'1'});changeImg('ortho_cerberus_gear')"><img src="img/ortho_cerberus_gear.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'ortho_playful_gear', 'value':'1'});changeImg('ortho_playful_gear')"><img src="img/ortho_playful_gear.png"></a>
+    <!-- オルトSSR追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'ortho_stargaze', 'value':'1'});changeImg('ortho_stargaze')"><img src="img/ortho_stargaze.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'ortho_experiment', 'value':'1'});changeImg('ortho_experiment')"><img src="img/ortho_experiment.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'ortho_ceremony', 'value':'1'});changeImg('ortho_ceremony')"><img src="img/ortho_ceremony.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'ortho_tmu', 'value':'1'});changeImg('ortho_tmu')"><img src="img/ortho_tmu.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'ortho_rabbit_gear', 'value':'1'});changeImg('ortho_rabbit_gear')"><img src="img/ortho_rabbit_gear.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'ortho_new_year_gear', 'value':'1'});changeImg('ortho_new_year_gear')"><img src="img/ortho_new_year_gear.png"></a>
+    <!-- オルトSR追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'ortho_college', 'value':'1'});changeImg('ortho_college')"><img src="img/ortho_college.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'ortho_scary', 'value':'1'});changeImg('ortho_scary')"><img src="img/ortho_scary.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'ortho_uniform', 'value':'1'});changeImg('ortho_uniform')"><img src="img/ortho_uniform.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'ortho_gym', 'value':'1'});changeImg('ortho_gym')"><img src="img/ortho_gym.png"></a>
+    <!-- オルトR追加エリア -->
+    <br>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'malleus_dormitory', 'value':'1'});changeImg('malleus_dormitory')"><img src="img/malleus_dormitory.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'malleus_birth', 'value':'1'});changeImg('malleus_birth')"><img src="img/malleus_birth.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'malleus_birth2', 'value':'1'});changeImg('malleus_birth2')"><img src="img/malleus_birth2.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'malleus_birth3', 'value':'1'});changeImg('malleus_birth3')"><img src="img/malleus_birth3.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'malleus_birth4', 'value':'1'});changeImg('malleus_birth4')"><img src="img/malleus_birth4.png"></a>
+    <!-- マレウスバースデー追加エリア -->
+    <!-- マレウス部活追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'malleus_masquerade', 'value':'1'});changeImg('malleus_masquerade')"><img src="img/malleus_masquerade.png"></a>
+    <!-- マレウスSSR追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'malleus_scary', 'value':'1'});changeImg('malleus_scary')"><img src="img/malleus_scary.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'malleus_milk', 'value':'1'});changeImg('malleus_milk')"><img src="img/malleus_milk.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'malleus_experiment', 'value':'1'});changeImg('malleus_experiment')"><img src="img/malleus_experiment.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'malleus_ceremony', 'value':'1'});changeImg('malleus_ceremony')"><img src="img/malleus_ceremony.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'malleus_chef', 'value':'1'});changeImg('malleus_chef')"><img src="img/malleus_chef.png"></a>
+    <!-- マレウスSR追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'malleus_uniform', 'value':'1'});changeImg('malleus_uniform')"><img src="img/malleus_uniform.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'malleus_gym', 'value':'1'});changeImg('malleus_gym')"><img src="img/malleus_gym.png"></a>
+    <!-- マレウスR追加エリア -->
+    <br>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'silver_dormitory', 'value':'1'});changeImg('silver_dormitory')"><img src="img/silver_dormitory.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'silver_birth', 'value':'1'});changeImg('silver_birth')"><img src="img/silver_birth.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'silver_birth2', 'value':'1'});changeImg('silver_birth2')"><img src="img/silver_birth2.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'silver_birth3', 'value':'1'});changeImg('silver_birth3')"><img src="img/silver_birth3.png"></a>
+    <!-- シルバーバースデー追加エリア -->
+    <!-- シルバー部活追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'silver_scary', 'value':'1'});changeImg('silver_scary')"><img src="img/silver_scary.png"></a>
+    <!-- シルバーSSR追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'silver_gara', 'value':'1'});changeImg('silver_gara')"><img src="img/silver_gara.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'silver_experiment', 'value':'1'});changeImg('silver_experiment')"><img src="img/silver_experiment.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'silver_ceremony', 'value':'1'});changeImg('silver_ceremony')"><img src="img/silver_ceremony.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'silver_chef', 'value':'1'});changeImg('silver_chef')"><img src="img/silver_chef.png"></a>
+    <!-- シルバーSR追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'silver_masquerade', 'value':'1'});changeImg('silver_masquerade')"><img src="img/silver_masquerade.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'silver_uniform', 'value':'1'});changeImg('silver_uniform')"><img src="img/silver_uniform.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'silver_gym', 'value':'1'});changeImg('silver_gym')"><img src="img/silver_gym.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'silver_Rabbit_wear', 'value':'1'});changeImg('silver_Rabbit_wear')"><img src="img/silver_Rabbit_wear.png"></a>
+    <!-- シルバーR追加エリア -->
+    <br>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'sebek_dormitory', 'value':'1'});changeImg('sebek_dormitory')"><img src="img/sebek_dormitory.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'sebek_birth', 'value':'1'});changeImg('sebek_birth')"><img src="img/sebek_birth.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'sebek_birth2', 'value':'1'});changeImg('sebek_birth2')"><img src="img/sebek_birth2.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'sebek_birth3', 'value':'1'});changeImg('sebek_birth3')"><img src="img/sebek_birth3.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'sebek_birth4', 'value':'1'});changeImg('sebek_birth4')"><img src="img/sebek_birth4.png"></a>
+    <!-- セベクバースデー追加エリア -->
+    <!-- セベク部活追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'sebek_newyear', 'value':'1'});changeImg('sebek_newyear')"><img src="img/sebek_newyear.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'sebek_armor_of_eternal_night', 'value':'1'});changeImg('sebek_armor_of_eternal_night')"><img src="img/sebek_armor_of_eternal_night.png"></a>
+    <!-- セベクSSR追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'sebek_outdoor', 'value':'1'});changeImg('sebek_outdoor')"><img src="img/sebek_outdoor.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'sebek_apple', 'value':'1'});changeImg('sebek_apple')"><img src="img/sebek_apple.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'sebek_masquerade', 'value':'1'});changeImg('sebek_masquerade')"><img src="img/sebek_masquerade.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'sebek_experiment', 'value':'1'});changeImg('sebek_experiment')"><img src="img/sebek_experiment.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'sebek_ceremony', 'value':'1'});changeImg('sebek_ceremony')"><img src="img/sebek_ceremony.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'sebek_chef', 'value':'1'});changeImg('sebek_chef')"><img src="img/sebek_chef.png"></a>
+    <!-- セベクSR追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'sebek_scary', 'value':'1'});changeImg('sebek_scary')"><img src="img/sebek_scary.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'sebek_tmu', 'value':'1'});changeImg('sebek_tmu')"><img src="img/sebek_tmu.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'sebek_uniform', 'value':'1'});changeImg('sebek_uniform')"><img src="img/sebek_uniform.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'sebek_gym', 'value':'1'});changeImg('sebek_gym')"><img src="img/sebek_gym.png"></a>
+    <!-- セベクR追加エリア -->
+    <br>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'lilia_dormitory', 'value':'1'});changeImg('lilia_dormitory')"><img src="img/lilia_dormitory.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'lilia_birth', 'value':'1'});changeImg('lilia_birth')"><img src="img/lilia_birth.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'lilia_birth2', 'value':'1'});changeImg('lilia_birth2')"><img src="img/lilia_birth2.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'lilia_birth3', 'value':'1'});changeImg('lilia_birth3')"><img src="img/lilia_birth3.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'lilia_birth4', 'value':'1'});changeImg('lilia_birth4')"><img src="img/lilia_birth4.png"></a>
+    <!-- リリアバースデー追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'lilia_club', 'value':'1'});changeImg('lilia_club')"><img src="img/lilia_club.png"></a>
+    <!-- リリア部活追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'lilia_Right_Generals_Armor', 'value':'1'});changeImg('lilia_Right_Generals_Armor')"><img src="img/lilia_Right_Generals_Armor.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'lilia_Swiss_Wear', 'value':'1'});changeImg('lilia_Swiss_Wear')"><img src="img/lilia_Swiss_Wear.png"></a>
+    <!-- リリアSSR追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'lilia_groom', 'value':'1'});changeImg('lilia_groom')"><img src="img/lilia_groom.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'lilia_scary', 'value':'1'});changeImg('lilia_scary')"><img src="img/lilia_scary.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'lilia_experiment', 'value':'1'});changeImg('lilia_experiment')"><img src="img/lilia_experiment.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'lilia_ceremony', 'value':'1'});changeImg('lilia_ceremony')"><img src="img/lilia_ceremony.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'lilia_beast', 'value':'1'});changeImg('lilia_beast')"><img src="img/lilia_beast.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'lilia_chef', 'value':'1'});changeImg('lilia_chef')"><img src="img/lilia_chef.png"></a>
+    <!-- リリアSR追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'lilia_uniform', 'value':'1'});changeImg('lilia_uniform')"><img src="img/lilia_uniform.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'lilia_gym', 'value':'1'});changeImg('lilia_gym')"><img src="img/lilia_gym.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'lilia_tmu', 'value':'1'});changeImg('lilia_tmu')"><img src="img/lilia_tmu.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'lilia_playful_dress', 'value':'1'});changeImg('lilia_playful_dress')"><img src="img/lilia_playful_dress.png"></a>
+    <!-- リリアR追加エリア -->
+    <br>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'grim_birth4', 'value':'1'});changeImg('grim_birth4')"><img src="img/grim_birth4.png"></a>
+    <!-- グリムバースデー追加エリア -->
+    <!-- グリム部活追加エリア -->
+    <!-- グリムSSR追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'grim_stripe', 'value':'1'});changeImg('grim_stripe')"><img src="img/grim_stripe.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'grim_experiment', 'value':'1'});changeImg('grim_experiment')"><img src="img/grim_experiment.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'grim_ceremony', 'value':'1'});changeImg('grim_ceremony')"><img src="img/grim_ceremony.png"></a>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'grim_chef', 'value':'1'});changeImg('grim_chef')"><img src="img/grim_chef.png"></a>
+    <!-- グリムSR追加エリア -->
+    <br>
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'rollo_chairman_uniform', 'value':'1'});changeImg('rollo_chairman_uniform')"><img src="img/rollo_chairman_uniform.png"></a>
+    <!-- ロロバースデー追加エリア -->
+    <!-- ロロ部活追加エリア -->
+    <!-- ロロSSR追加エリア -->
+    <!-- ロロSR追加エリア -->
+    <!-- ロロR追加エリア -->
+    <!-- クロウリーバースデー追加エリア -->
+    <!-- クロウリー部活追加エリア -->
+    <a href="#" rel="modal:close" onclick="gtag('event', 'click', {'event_category': 'chara', 'event_label':'crowley_raven_jacket', 'value':'1'});changeImg('crowley_raven_jacket')"><img src="img/crowley_raven_jacket.png"></a>
+    <!-- クロウリーSSR追加エリア -->
+    <!-- クロウリーSR追加エリア -->
+    <!-- クロウリーR追加エリア -->
+</div>
+<div class="contents marginbt">
+<canvas id="chart01"></canvas>
+</div>
+<div class="margin">合計HP:<span id="totalHP"></span> 　回復込み:<span id="totalHealHP"></span></div>
+<div>合計ダメージ 5T:<span id="totalDamage5"></span> 　4T:<span id="totalDamage4"></span> 　3T:<span id="totalDamage3"></span></div>
+<div class="ac_menu">
+  <label for="Panel1">+Basic試験予想スコア</label>
+  <input type="checkbox" id="Panel1" class="on-off" />
+  <div>
+    <table border="1" style="border-collapse: collapse">
+      <tr>
+        <th>難易度</th>
+        <th>5T</th>
+        <th>4T</th>
+        <th>3T</th>
+        <th>2T</th>
+        <th>1T</th>
+      </tr>
+      <tr>
+        <td>HARD</td>
+        <td>　<span id="hardscore5T">0</span> </td>
+        <td>　<span id="hardscore4T">0</span> </td>
+        <td>　<span id="hardscore3T">0</span> </td>
+        <td>　<span id="hardscore2T">0</span> </td>
+        <td>　<span id="hardscore1T">0</span> </td>
+      </tr>
+      <tr>
+        <td>NORMAL</td>
+        <td>　<span id="normalscore5T">0</span> </td>
+        <td>　<span id="normalscore4T">0</span> </td>
+        <td>　<span id="normalscore3T">0</span> </td>
+        <td>　<span id="normalscore2T">0</span> </td>
+        <td>　<span id="normalscore1T">0</span> </td>
+      </tr>
+      <tr>
+        <td>EASY</td>
+        <td>　<span id="easyscore5T">0</span> </td>
+        <td>　<span id="easyscore4T">0</span> </td>
+        <td>　<span id="easyscore3T">0</span> </td>
+        <td>　<span id="easyscore2T">0</span> </td>
+        <td>　<span id="easyscore1T">0</span> </td>
+      </tr>
+    </table>
+  </div>
+</div>
+<form id="myForm">
+<table border="1" style="border-collapse: collapse">
+<caption>
+<span class="left">
+<input type="radio" id="display1" name="display" value="全属性" checked>
+<label for="全属性">全属性</label>
+<input type="radio" id="display2" name="display" value="対火属性" >
+<label for="対火属性">対火属性</label>
+<input type="radio" id="display3" name="display" value="対木属性" >
+<label for="対木属性">対木属性</label>
+<input type="radio" id="display4" name="display" value="対水属性" >
+<label for="対水属性">対水属性</label>
+<input type="radio" id="display5" name="display" value="対無属性" >
+<label for="対無属性">対無属性</label>
+</span>
+<span calss ="right">
+    <!-- <button onclick="openInNewTab()">選択内容を別タブで開く<span class="dli-external-link"><span></span></span></button></span> -->
+</caption>
+
+<tr>
+<td></td>
+<td><a href="#ex1" rel="modal:open" id="1" onclick="setModal(this.id)"><input type="image" src="img/cx.png" id="img1" value="img/cx.png"/></a></td>
+<td><a href="#ex1" rel="modal:open" id="2" onclick="setModal(this.id)"><input type="image" src="img/cx.png" id="img2" value="img/cx.png"/></a></td>
+<td><a href="#ex1" rel="modal:open" id="3" onclick="setModal(this.id)"><input type="image" src="img/cx.png" id="img3" value="img/cx.png"/></a></td>
+<td><a href="#ex1" rel="modal:open" id="4" onclick="setModal(this.id)"><input type="image" src="img/cx.png" id="img4" value="img/cx.png"/></a></td>
+<td><a href="#ex1" rel="modal:open" id="5" onclick="setModal(this.id)"><input type="image" src="img/cx.png" id="img5" value="img/cx.png"/></a></td>
+</tr>
+<tr>
+    <td class="nowrap">
+    キャラ名
+    </td>
+    <td>
+    <select name="cname1" id="cname1">
+    <option value=""></option>
+    <option value="リドル">リドル</option>
+    <option value="エース">エース</option>
+    <option value="デュース">デュース</option>
+    <option value="ケイト">ケイト</option>
+    <option value="トレイ">トレイ</option>
+    <option value="レオナ">レオナ</option>
+    <option value="ジャック">ジャック</option>
+    <option value="ラギー">ラギー</option>
+    <option value="アズール">アズール</option>
+    <option value="ジェイド">ジェイド</option>
+    <option value="フロイド">フロイド</option>
+    <option value="カリム">カリム</option>
+    <option value="ジャミル">ジャミル</option>
+    <option value="ヴィル">ヴィル</option>
+    <option value="エペル">エペル</option>
+    <option value="ルーク">ルーク</option>
+    <option value="イデア">イデア</option>
+    <option value="オルト">オルト</option>
+    <option value="マレウス">マレウス</option>
+    <option value="シルバー">シルバー</option>
+    <option value="セベク">セベク</option>
+    <option value="リリア">リリア</option>
+    <option value="グリム">グリム</option>
+    <option value="ロロ">ロロ</option>
+    <option value="クロウリー">クロウリー</option>
+    </select>
+    </td>
+    <td>
+    <select name="cname2" id="cname2">
+    <option value=""></option>
+    <option value="リドル">リドル</option>
+    <option value="エース">エース</option>
+    <option value="デュース">デュース</option>
+    <option value="ケイト">ケイト</option>
+    <option value="トレイ">トレイ</option>
+    <option value="レオナ">レオナ</option>
+    <option value="ジャック">ジャック</option>
+    <option value="ラギー">ラギー</option>
+    <option value="アズール">アズール</option>
+    <option value="ジェイド">ジェイド</option>
+    <option value="フロイド">フロイド</option>
+    <option value="カリム">カリム</option>
+    <option value="ジャミル">ジャミル</option>
+    <option value="ヴィル">ヴィル</option>
+    <option value="エペル">エペル</option>
+    <option value="ルーク">ルーク</option>
+    <option value="イデア">イデア</option>
+    <option value="オルト">オルト</option>
+    <option value="マレウス">マレウス</option>
+    <option value="シルバー">シルバー</option>
+    <option value="セベク">セベク</option>
+    <option value="リリア">リリア</option>
+    <option value="グリム">グリム</option>
+    <option value="ロロ">ロロ</option>
+    <option value="クロウリー">クロウリー</option>
+    </select>
+    </td>
+    <td>
+    <select name="cname3" id="cname3">
+    <option value=""></option>
+    <option value="リドル">リドル</option>
+    <option value="エース">エース</option>
+    <option value="デュース">デュース</option>
+    <option value="ケイト">ケイト</option>
+    <option value="トレイ">トレイ</option>
+    <option value="レオナ">レオナ</option>
+    <option value="ジャック">ジャック</option>
+    <option value="ラギー">ラギー</option>
+    <option value="アズール">アズール</option>
+    <option value="ジェイド">ジェイド</option>
+    <option value="フロイド">フロイド</option>
+    <option value="カリム">カリム</option>
+    <option value="ジャミル">ジャミル</option>
+    <option value="ヴィル">ヴィル</option>
+    <option value="エペル">エペル</option>
+    <option value="ルーク">ルーク</option>
+    <option value="イデア">イデア</option>
+    <option value="オルト">オルト</option>
+    <option value="マレウス">マレウス</option>
+    <option value="シルバー">シルバー</option>
+    <option value="セベク">セベク</option>
+    <option value="リリア">リリア</option>
+    <option value="グリム">グリム</option>
+    <option value="ロロ">ロロ</option>
+    <option value="クロウリー">クロウリー</option>
+    </select>
+    </td>
+    <td>
+    <select name="cname4" id="cname4">
+    <option value=""></option>
+    <option value="リドル">リドル</option>
+    <option value="エース">エース</option>
+    <option value="デュース">デュース</option>
+    <option value="ケイト">ケイト</option>
+    <option value="トレイ">トレイ</option>
+    <option value="レオナ">レオナ</option>
+    <option value="ジャック">ジャック</option>
+    <option value="ラギー">ラギー</option>
+    <option value="アズール">アズール</option>
+    <option value="ジェイド">ジェイド</option>
+    <option value="フロイド">フロイド</option>
+    <option value="カリム">カリム</option>
+    <option value="ジャミル">ジャミル</option>
+    <option value="ヴィル">ヴィル</option>
+    <option value="エペル">エペル</option>
+    <option value="ルーク">ルーク</option>
+    <option value="イデア">イデア</option>
+    <option value="オルト">オルト</option>
+    <option value="マレウス">マレウス</option>
+    <option value="シルバー">シルバー</option>
+    <option value="セベク">セベク</option>
+    <option value="リリア">リリア</option>
+    <option value="グリム">グリム</option>
+    <option value="ロロ">ロロ</option>
+    <option value="クロウリー">クロウリー</option>
+    </select>
+    </td>
+    <td>
+    <select name="cname5" id="cname5">
+    <option value=""></option>
+    <option value="リドル">リドル</option>
+    <option value="エース">エース</option>
+    <option value="デュース">デュース</option>
+    <option value="ケイト">ケイト</option>
+    <option value="トレイ">トレイ</option>
+    <option value="レオナ">レオナ</option>
+    <option value="ジャック">ジャック</option>
+    <option value="ラギー">ラギー</option>
+    <option value="アズール">アズール</option>
+    <option value="ジェイド">ジェイド</option>
+    <option value="フロイド">フロイド</option>
+    <option value="カリム">カリム</option>
+    <option value="ジャミル">ジャミル</option>
+    <option value="ヴィル">ヴィル</option>
+    <option value="エペル">エペル</option>
+    <option value="ルーク">ルーク</option>
+    <option value="イデア">イデア</option>
+    <option value="オルト">オルト</option>
+    <option value="マレウス">マレウス</option>
+    <option value="シルバー">シルバー</option>
+    <option value="セベク">セベク</option>
+    <option value="リリア">リリア</option>
+    <option value="グリム">グリム</option>
+    <option value="ロロ">ロロ</option>
+    <option value="クロウリー">クロウリー</option>
+    </select>
+    </td>
+</tr>
+<tr>
+<tr>
+<td>Lv</td>
+<td><input type="number" id="cLv1" onchange="changeLevel(1)" style="width: 20%;"><span style="width: 80%;"></span><input type="hidden" id="cLvhidden1"><input type="hidden" id="cGrowType1"><label for="option1">4凸:</label><input type="radio" id="ctotu1" name="ctotu1options" value="済" checked onchange="changeLevel(1)">済<input type="radio" id="cmutotu1" name="ctotu1options" value="未" onchange="changeLevel(1)">未</span></td>
+<td><input type="number" id="cLv2" onchange="changeLevel(2)" style="width: 20%;"><span style="width: 80%;"></span><input type="hidden" id="cLvhidden2"><input type="hidden" id="cGrowType2"><label for="option2">4凸:</label><input type="radio" id="ctotu2" name="ctotu2options" value="済" checked onchange="changeLevel(2)">済<input type="radio" id="cmutotu2" name="ctotu2options" value="未" onchange="changeLevel(2)">未</span></td>
+<td><input type="number" id="cLv3" onchange="changeLevel(3)" style="width: 20%;"><span style="width: 80%;"></span><input type="hidden" id="cLvhidden3"><input type="hidden" id="cGrowType3"><label for="option3">4凸:</label><input type="radio" id="ctotu3" name="ctotu3options" value="済" checked onchange="changeLevel(3)">済<input type="radio" id="cmutotu3" name="ctotu3options" value="未" onchange="changeLevel(3)">未</span></td>
+<td><input type="number" id="cLv4" onchange="changeLevel(4)" style="width: 20%;"><span style="width: 80%;"></span><input type="hidden" id="cLvhidden4"><input type="hidden" id="cGrowType4"><label for="option4">4凸:</label><input type="radio" id="ctotu4" name="ctotu4options" value="済" checked onchange="changeLevel(4)">済<input type="radio" id="cmutotu4" name="ctotu4options" value="未" onchange="changeLevel(4)">未</span></td>
+<td><input type="number" id="cLv5" onchange="changeLevel(5)" style="width: 20%;"><span style="width: 80%;"></span><input type="hidden" id="cLvhidden5"><input type="hidden" id="cGrowType5"><label for="option5">4凸:</label><input type="radio" id="ctotu5" name="ctotu5options" value="済" checked onchange="changeLevel(5)">済<input type="radio" id="cmutotu5" name="ctotu5options" value="未" onchange="changeLevel(5)">未</span></td>
+</tr>
+<td>HP</td>
+<td><input type="number" id="cHP1"><input type="hidden" id="cHPhidden1"><input type="hidden" id="cBaseHPhidden1"></td>
+<td><input type="number" id="cHP2"><input type="hidden" id="cHPhidden2"><input type="hidden" id="cBaseHPhidden2"></td>
+<td><input type="number" id="cHP3"><input type="hidden" id="cHPhidden3"><input type="hidden" id="cBaseHPhidden3"></td>
+<td><input type="number" id="cHP4"><input type="hidden" id="cHPhidden4"><input type="hidden" id="cBaseHPhidden4"></td>
+<td><input type="number" id="cHP5"><input type="hidden" id="cHPhidden5"><input type="hidden" id="cBaseHPhidden5"></td>
+</tr>
+<tr>
+<td>ATK</td>
+<td><input type="number" id="cATK1"><input type="hidden" id="cATKhidden1"><input type="hidden" id="cBaseATKhidden1"></td>
+<td><input type="number" id="cATK2"><input type="hidden" id="cATKhidden2"><input type="hidden" id="cBaseATKhidden2"></td>
+<td><input type="number" id="cATK3"><input type="hidden" id="cATKhidden3"><input type="hidden" id="cBaseATKhidden3"></td>
+<td><input type="number" id="cATK4"><input type="hidden" id="cATKhidden4"><input type="hidden" id="cBaseATKhidden4"></td>
+<td><input type="number" id="cATK5"><input type="hidden" id="cATKhidden5"><input type="hidden" id="cBaseATKhidden5"></td>
+</tr>
+<tr>
+    <td class="nowrap">
+    <label for="cM1Lv1">マジック１<br>（＋バフ）</label>
+    </td>
+    <td>
+    <input type="checkbox" name="checkboxc1" id="checkboxc11" onclick="checkLimit(this,1)" checked value="1">
+    <select name="cM1Atr1" id="cM1Atr1">
+    <option value=""></option>
+    <option value="火">火</option>
+    <option value="木">木</option>
+    <option value="水">水</option>
+    <option value="無">無</option>
+    </select>
+    Lv.
+    <select name="cM1Lv1" id="cM1Lv1">
+    <option value="10">10</option>
+    <option value="9">9</option>
+    <option value="8">8</option>
+    <option value="7">7</option>
+    <option value="6">6</option>
+    <option value="5">5</option>
+    <option value="4">4</option>
+    <option value="3">3</option>
+    <option value="2">2</option>
+    <option value="1">1</option>
+    </select>
+    <br>
+    <select name="cM1pow1" id="cM1pow1">
+    <option value=""></option>
+    <option value="連撃(強)">連撃(強)</option>
+    <option value="連撃(弱)">連撃(弱)</option>
+    <option value="単発(強)">単発(強)</option>
+    <option value="単発(弱)">単発(弱)</option>
+    </select>
+    <br>
+    <select name="cM1heal1" id="cM1heal1">
+    <option value=""></option>
+    <option value="回復(極小)">回復(極小)</option>
+    <option value="回復(小)">回復(小)</option>
+    <option value="回復(中)">回復(中)</option>
+    <option value="継続回復(小)">継続回復(小)</option>
+    <option value="継続回復(中)">継続回復(中)</option>
+    <option value="回復&継続回復(小)">回復&継続回復(小)</option>
+    </select>
+    <br>
+    <select name="cM1buf11" id="cM1buf11">
+    <option value=""></option>
+    <option value="ATKUP(極小)">ATKUP(極小)</option>
+    <option value="ATKUP(小)">ATKUP(小)</option>
+    <option value="ATKUP(中)">ATKUP(中)</option>
+    <option value="ATKUP(大)">ATKUP(大)</option>
+    <option value="ATKUP(極大)">ATKUP(極大)</option>
+    <option value="ダメUP(極小)">ダメUP(極小)</option>
+    <option value="ダメUP(小)">ダメUP(小)</option>
+    <option value="ダメUP(中)">ダメUP(中)</option>
+    <option value="ダメUP(大)">ダメUP(大)</option>
+    <option value="ダメUP(極大)">ダメUP(極大)</option>
+    <option value="属性ダメUP(極小)">属性ダメUP(極小)</option>
+    <option value="属性ダメUP(小)">属性ダメUP(小)</option>
+    <option value="属性ダメUP(中)">属性ダメUP(中)</option>
+    <option value="属性ダメUP(大)">属性ダメUP(大)</option>
+    <option value="属性ダメUP(極大)">属性ダメUP(極大)</option>
+    </select>
+    <select name="cM1buf1Lv1" id="cM1buf1Lv1">
+    <option value="10">10</option>
+    <option value="9">9</option>
+    <option value="8">8</option>
+    <option value="7">7</option>
+    <option value="6">6</option>
+    <option value="5">5</option>
+    <option value="4">4</option>
+    <option value="3">3</option>
+    <option value="2">2</option>
+    <option value="1">1</option>
+    </select>
+    <br>
+    <select name="cM1buf21" id="cM1buf21">
+    <option value=""></option>
+    <option value="ATKUP(極小)">ATKUP(極小)</option>
+    <option value="ATKUP(小)">ATKUP(小)</option>
+    <option value="ATKUP(中)">ATKUP(中)</option>
+    <option value="ATKUP(大)">ATKUP(大)</option>
+    <option value="ATKUP(極大)">ATKUP(極大)</option>
+    <option value="ダメUP(極小)">ダメUP(極小)</option>
+    <option value="ダメUP(小)">ダメUP(小)</option>
+    <option value="ダメUP(中)">ダメUP(中)</option>
+    <option value="ダメUP(大)">ダメUP(大)</option>
+    <option value="ダメUP(極大)">ダメUP(極大)</option>
+    <option value="属性ダメUP(極小)">属性ダメUP(極小)</option>
+    <option value="属性ダメUP(小)">属性ダメUP(小)</option>
+    <option value="属性ダメUP(中)">属性ダメUP(中)</option>
+    <option value="属性ダメUP(大)">属性ダメUP(大)</option>
+    <option value="属性ダメUP(極大)">属性ダメUP(極大)</option>
+    </select>
+    <select name="cM1buf2Lv1" id="cM1buf2Lv1">
+    <option value="10">10</option>
+    <option value="9">9</option>
+    <option value="8">8</option>
+    <option value="7">7</option>
+    <option value="6">6</option>
+    <option value="5">5</option>
+    <option value="4">4</option>
+    <option value="3">3</option>
+    <option value="2">2</option>
+    <option value="1">1</option>
+    </select>
+    </td>
+    <td>
+    <input type="checkbox" name="checkboxc2" id="checkboxc21" onclick="checkLimit(this,2)" checked value="1">
+    <select name="cM1Atr2" id="cM1Atr2">
+    <option value=""></option>
+    <option value="火">火</option>
+    <option value="木">木</option>
+    <option value="水">水</option>
+    <option value="無">無</option>
+    </select>
+    Lv.
+    <select name="cM1Lv2" id="cM1Lv2">
+    <option value="10">10</option>
+    <option value="9">9</option>
+    <option value="8">8</option>
+    <option value="7">7</option>
+    <option value="6">6</option>
+    <option value="5">5</option>
+    <option value="4">4</option>
+    <option value="3">3</option>
+    <option value="2">2</option>
+    <option value="1">1</option>
+    </select>
+    <br>
+    <select name="cM1pow2" id="cM1pow2">
+    <option value=""></option>
+    <option value="連撃(強)">連撃(強)</option>
+    <option value="連撃(弱)">連撃(弱)</option>
+    <option value="単発(強)">単発(強)</option>
+    <option value="単発(弱)">単発(弱)</option>
+    </select>
+    <br>
+    <select name="cM1heal2" id="cM1heal2">
+    <option value=""></option>
+    <option value="回復(極小)">回復(極小)</option>
+    <option value="回復(小)">回復(小)</option>
+    <option value="回復(中)">回復(中)</option>
+    <option value="継続回復(小)">継続回復(小)</option>
+    <option value="継続回復(中)">継続回復(中)</option>
+    <option value="回復&継続回復(小)">回復&継続回復(小)</option>
+    </select>
+    <br>
+    <select name="cM1buf12" id="cM1buf12">
+    <option value=""></option>
+    <option value="ATKUP(極小)">ATKUP(極小)</option>
+    <option value="ATKUP(小)">ATKUP(小)</option>
+    <option value="ATKUP(中)">ATKUP(中)</option>
+    <option value="ATKUP(大)">ATKUP(大)</option>
+    <option value="ATKUP(極大)">ATKUP(極大)</option>
+    <option value="ダメUP(極小)">ダメUP(極小)</option>
+    <option value="ダメUP(小)">ダメUP(小)</option>
+    <option value="ダメUP(中)">ダメUP(中)</option>
+    <option value="ダメUP(大)">ダメUP(大)</option>
+    <option value="ダメUP(極大)">ダメUP(極大)</option>
+    <option value="属性ダメUP(極小)">属性ダメUP(極小)</option>
+    <option value="属性ダメUP(小)">属性ダメUP(小)</option>
+    <option value="属性ダメUP(中)">属性ダメUP(中)</option>
+    <option value="属性ダメUP(大)">属性ダメUP(大)</option>
+    <option value="属性ダメUP(極大)">属性ダメUP(極大)</option>
+    </select>
+    <select name="cM1buf1Lv2" id="cM1buf1Lv2">
+    <option value="10">10</option>
+    <option value="9">9</option>
+    <option value="8">8</option>
+    <option value="7">7</option>
+    <option value="6">6</option>
+    <option value="5">5</option>
+    <option value="4">4</option>
+    <option value="3">3</option>
+    <option value="2">2</option>
+    <option value="1">1</option>
+    </select>
+    <br>
+    <select name="cM1buf22" id="cM1buf22">
+    <option value=""></option>
+    <option value="ATKUP(極小)">ATKUP(極小)</option>
+    <option value="ATKUP(小)">ATKUP(小)</option>
+    <option value="ATKUP(中)">ATKUP(中)</option>
+    <option value="ATKUP(大)">ATKUP(大)</option>
+    <option value="ATKUP(極大)">ATKUP(極大)</option>
+    <option value="ダメUP(極小)">ダメUP(極小)</option>
+    <option value="ダメUP(小)">ダメUP(小)</option>
+    <option value="ダメUP(中)">ダメUP(中)</option>
+    <option value="ダメUP(大)">ダメUP(大)</option>
+    <option value="ダメUP(極大)">ダメUP(極大)</option>
+    <option value="属性ダメUP(極小)">属性ダメUP(極小)</option>
+    <option value="属性ダメUP(小)">属性ダメUP(小)</option>
+    <option value="属性ダメUP(中)">属性ダメUP(中)</option>
+    <option value="属性ダメUP(大)">属性ダメUP(大)</option>
+    <option value="属性ダメUP(極大)">属性ダメUP(極大)</option>
+    </select>
+    <select name="cM1buf2Lv2" id="cM1buf2Lv2">
+    <option value="10">10</option>
+    <option value="9">9</option>
+    <option value="8">8</option>
+    <option value="7">7</option>
+    <option value="6">6</option>
+    <option value="5">5</option>
+    <option value="4">4</option>
+    <option value="3">3</option>
+    <option value="2">2</option>
+    <option value="1">1</option>
+    </select>
+    </td>
+    <td>
+    <input type="checkbox" name="checkboxc3" id="checkboxc31" onclick="checkLimit(this,3)" checked value="1">
+    <select name="cM1Atr3" id="cM1Atr3">
+    <option value=""></option>
+    <option value="火">火</option>
+    <option value="木">木</option>
+    <option value="水">水</option>
+    <option value="無">無</option>
+    </select>
+    Lv.
+    <select name="cM1Lv3" id="cM1Lv3">
+    <option value="10">10</option>
+    <option value="9">9</option>
+    <option value="8">8</option>
+    <option value="7">7</option>
+    <option value="6">6</option>
+    <option value="5">5</option>
+    <option value="4">4</option>
+    <option value="3">3</option>
+    <option value="2">2</option>
+    <option value="1">1</option>
+    </select>
+    <br>
+    <select name="cM1pow3" id="cM1pow3">
+    <option value=""></option>
+    <option value="連撃(強)">連撃(強)</option>
+    <option value="連撃(弱)">連撃(弱)</option>
+    <option value="単発(強)">単発(強)</option>
+    <option value="単発(弱)">単発(弱)</option>
+    </select>
+    <br>
+    <select name="cM1heal3" id="cM1heal3">
+    <option value=""></option>
+    <option value="回復(極小)">回復(極小)</option>
+    <option value="回復(小)">回復(小)</option>
+    <option value="回復(中)">回復(中)</option>
+    <option value="継続回復(小)">継続回復(小)</option>
+    <option value="継続回復(中)">継続回復(中)</option>
+    <option value="回復&継続回復(小)">回復&継続回復(小)</option>
+    
+    </select>
+    <br>
+    <select name="cM1buf13" id="cM1buf13">
+    <option value=""></option>
+    <option value="ATKUP(極小)">ATKUP(極小)</option>
+    <option value="ATKUP(小)">ATKUP(小)</option>
+    <option value="ATKUP(中)">ATKUP(中)</option>
+    <option value="ATKUP(大)">ATKUP(大)</option>
+    <option value="ATKUP(極大)">ATKUP(極大)</option>
+    <option value="ダメUP(極小)">ダメUP(極小)</option>
+    <option value="ダメUP(小)">ダメUP(小)</option>
+    <option value="ダメUP(中)">ダメUP(中)</option>
+    <option value="ダメUP(大)">ダメUP(大)</option>
+    <option value="ダメUP(極大)">ダメUP(極大)</option>
+    <option value="属性ダメUP(極小)">属性ダメUP(極小)</option>
+    <option value="属性ダメUP(小)">属性ダメUP(小)</option>
+    <option value="属性ダメUP(中)">属性ダメUP(中)</option>
+    <option value="属性ダメUP(大)">属性ダメUP(大)</option>
+    <option value="属性ダメUP(極大)">属性ダメUP(極大)</option>
+    </select>
+    <select name="cM1buf1Lv3" id="cM1buf1Lv3">
+    <option value="10">10</option>
+    <option value="9">9</option>
+    <option value="8">8</option>
+    <option value="7">7</option>
+    <option value="6">6</option>
+    <option value="5">5</option>
+    <option value="4">4</option>
+    <option value="3">3</option>
+    <option value="2">2</option>
+    <option value="1">1</option>
+    </select>
+    <br>
+    <select name="cM1buf23" id="cM1buf23">
+    <option value=""></option>
+    <option value="ATKUP(極小)">ATKUP(極小)</option>
+    <option value="ATKUP(小)">ATKUP(小)</option>
+    <option value="ATKUP(中)">ATKUP(中)</option>
+    <option value="ATKUP(大)">ATKUP(大)</option>
+    <option value="ATKUP(極大)">ATKUP(極大)</option>
+    <option value="ダメUP(極小)">ダメUP(極小)</option>
+    <option value="ダメUP(小)">ダメUP(小)</option>
+    <option value="ダメUP(中)">ダメUP(中)</option>
+    <option value="ダメUP(大)">ダメUP(大)</option>
+    <option value="ダメUP(極大)">ダメUP(極大)</option>
+    <option value="属性ダメUP(極小)">属性ダメUP(極小)</option>
+    <option value="属性ダメUP(小)">属性ダメUP(小)</option>
+    <option value="属性ダメUP(中)">属性ダメUP(中)</option>
+    <option value="属性ダメUP(大)">属性ダメUP(大)</option>
+    <option value="属性ダメUP(極大)">属性ダメUP(極大)</option>
+    </select>
+    <select name="cM1buf2Lv3" id="cM1buf2Lv3">
+    <option value="10">10</option>
+    <option value="9">9</option>
+    <option value="8">8</option>
+    <option value="7">7</option>
+    <option value="6">6</option>
+    <option value="5">5</option>
+    <option value="4">4</option>
+    <option value="3">3</option>
+    <option value="2">2</option>
+    <option value="1">1</option>
+    </select>
+    </td>
+    <td>
+    <input type="checkbox" name="checkboxc4" id="checkboxc41" onclick="checkLimit(this,4)" checked value="1">
+    <select name="cM1Atr4" id="cM1Atr4">
+    <option value=""></option>
+    <option value="火">火</option>
+    <option value="木">木</option>
+    <option value="水">水</option>
+    <option value="無">無</option>
+    </select>
+    Lv.
+    <select name="cM1Lv4" id="cM1Lv4" >
+    <option value="10">10</option>
+    <option value="9">9</option>
+    <option value="8">8</option>
+    <option value="7">7</option>
+    <option value="6">6</option>
+    <option value="5">5</option>
+    <option value="4">4</option>
+    <option value="3">3</option>
+    <option value="2">2</option>
+    <option value="1">1</option>
+    </select>
+    <br>
+    <select name="cM1pow4" id="cM1pow4">
+    <option value=""></option>
+    <option value="連撃(強)">連撃(強)</option>
+    <option value="連撃(弱)">連撃(弱)</option>
+    <option value="単発(強)">単発(強)</option>
+    <option value="単発(弱)">単発(弱)</option>
+    </select>
+    <br>
+    <select name="cM1heal4" id="cM1heal4">
+    <option value=""></option>
+    <option value="回復(極小)">回復(極小)</option>
+    <option value="回復(小)">回復(小)</option>
+    <option value="回復(中)">回復(中)</option>
+    <option value="継続回復(小)">継続回復(小)</option>
+    <option value="継続回復(中)">継続回復(中)</option>
+    <option value="回復&継続回復(小)">回復&継続回復(小)</option>
+    
+    </select>
+    <br>
+    <select name="cM1buf14" id="cM1buf14">
+    <option value=""></option>
+    <option value="ATKUP(極小)">ATKUP(極小)</option>
+    <option value="ATKUP(小)">ATKUP(小)</option>
+    <option value="ATKUP(中)">ATKUP(中)</option>
+    <option value="ATKUP(大)">ATKUP(大)</option>
+    <option value="ATKUP(極大)">ATKUP(極大)</option>
+    <option value="ダメUP(極小)">ダメUP(極小)</option>
+    <option value="ダメUP(小)">ダメUP(小)</option>
+    <option value="ダメUP(中)">ダメUP(中)</option>
+    <option value="ダメUP(大)">ダメUP(大)</option>
+    <option value="ダメUP(極大)">ダメUP(極大)</option>
+    <option value="属性ダメUP(極小)">属性ダメUP(極小)</option>
+    <option value="属性ダメUP(小)">属性ダメUP(小)</option>
+    <option value="属性ダメUP(中)">属性ダメUP(中)</option>
+    <option value="属性ダメUP(大)">属性ダメUP(大)</option>
+    <option value="属性ダメUP(極大)">属性ダメUP(極大)</option>
+    </select>
+    <select name="cM1buf1Lv4" id="cM1buf1Lv4">
+    <option value="10">10</option>
+    <option value="9">9</option>
+    <option value="8">8</option>
+    <option value="7">7</option>
+    <option value="6">6</option>
+    <option value="5">5</option>
+    <option value="4">4</option>
+    <option value="3">3</option>
+    <option value="2">2</option>
+    <option value="1">1</option>
+    </select>
+    <br>
+    <select name="cM1buf24" id="cM1buf24">
+    <option value=""></option>
+    <option value="ATKUP(極小)">ATKUP(極小)</option>
+    <option value="ATKUP(小)">ATKUP(小)</option>
+    <option value="ATKUP(中)">ATKUP(中)</option>
+    <option value="ATKUP(大)">ATKUP(大)</option>
+    <option value="ATKUP(極大)">ATKUP(極大)</option>
+    <option value="ダメUP(極小)">ダメUP(極小)</option>
+    <option value="ダメUP(小)">ダメUP(小)</option>
+    <option value="ダメUP(中)">ダメUP(中)</option>
+    <option value="ダメUP(大)">ダメUP(大)</option>
+    <option value="ダメUP(極大)">ダメUP(極大)</option>
+    <option value="属性ダメUP(極小)">属性ダメUP(極小)</option>
+    <option value="属性ダメUP(小)">属性ダメUP(小)</option>
+    <option value="属性ダメUP(中)">属性ダメUP(中)</option>
+    <option value="属性ダメUP(大)">属性ダメUP(大)</option>
+    <option value="属性ダメUP(極大)">属性ダメUP(極大)</option>
+    </select>
+    <select name="cM1buf2Lv4" id="cM1buf2Lv4">
+    <option value="10">10</option>
+    <option value="9">9</option>
+    <option value="8">8</option>
+    <option value="7">7</option>
+    <option value="6">6</option>
+    <option value="5">5</option>
+    <option value="4">4</option>
+    <option value="3">3</option>
+    <option value="2">2</option>
+    <option value="1">1</option>
+    </select>
+    </td>
+    <td>
+    <input type="checkbox" name="checkboxc5" id="checkboxc51" onclick="checkLimit(this,5)" checked value="1">
+    <select name="cM1Atr5" id="cM1Atr5">
+    <option value=""></option>
+    <option value="火">火</option>
+    <option value="木">木</option>
+    <option value="水">水</option>
+    <option value="無">無</option>
+    </select>
+    Lv.
+    <select name="cM1Lv5" id="cM1Lv5">
+    <option value="10">10</option>
+    <option value="9">9</option>
+    <option value="8">8</option>
+    <option value="7">7</option>
+    <option value="6">6</option>
+    <option value="5">5</option>
+    <option value="4">4</option>
+    <option value="3">3</option>
+    <option value="2">2</option>
+    <option value="1">1</option>
+    </select>
+    <br>
+    <select name="cM1pow5" id="cM1pow5">
+    <option value=""></option>
+    <option value="連撃(強)">連撃(強)</option>
+    <option value="連撃(弱)">連撃(弱)</option>
+    <option value="単発(強)">単発(強)</option>
+    <option value="単発(弱)">単発(弱)</option>
+    </select>
+    <br>
+    <select name="cM1heal5" id="cM1heal5">
+    <option value=""></option>
+    <option value="回復(極小)">回復(極小)</option>
+    <option value="回復(小)">回復(小)</option>
+    <option value="回復(中)">回復(中)</option>
+    <option value="継続回復(小)">継続回復(小)</option>
+    <option value="継続回復(中)">継続回復(中)</option>
+    <option value="回復&継続回復(小)">回復&継続回復(小)</option>
+    
+    </select>
+    <br>
+    <select name="cM1buf15" id="cM1buf15">
+    <option value=""></option>
+    <option value="ATKUP(極小)">ATKUP(極小)</option>
+    <option value="ATKUP(小)">ATKUP(小)</option>
+    <option value="ATKUP(中)">ATKUP(中)</option>
+    <option value="ATKUP(大)">ATKUP(大)</option>
+    <option value="ATKUP(極大)">ATKUP(極大)</option>
+    <option value="ダメUP(極小)">ダメUP(極小)</option>
+    <option value="ダメUP(小)">ダメUP(小)</option>
+    <option value="ダメUP(中)">ダメUP(中)</option>
+    <option value="ダメUP(大)">ダメUP(大)</option>
+    <option value="ダメUP(極大)">ダメUP(極大)</option>
+    <option value="属性ダメUP(極小)">属性ダメUP(極小)</option>
+    <option value="属性ダメUP(小)">属性ダメUP(小)</option>
+    <option value="属性ダメUP(中)">属性ダメUP(中)</option>
+    <option value="属性ダメUP(大)">属性ダメUP(大)</option>
+    <option value="属性ダメUP(極大)">属性ダメUP(極大)</option>
+    </select>
+    <select name="cM1buf1Lv5" id="cM1buf1Lv5">
+    <option value="10">10</option>
+    <option value="9">9</option>
+    <option value="8">8</option>
+    <option value="7">7</option>
+    <option value="6">6</option>
+    <option value="5">5</option>
+    <option value="4">4</option>
+    <option value="3">3</option>
+    <option value="2">2</option>
+    <option value="1">1</option>
+    </select>
+    <br>
+    <select name="cM1buf25" id="cM1buf25">
+    <option value=""></option>
+    <option value="ATKUP(極小)">ATKUP(極小)</option>
+    <option value="ATKUP(小)">ATKUP(小)</option>
+    <option value="ATKUP(中)">ATKUP(中)</option>
+    <option value="ATKUP(大)">ATKUP(大)</option>
+    <option value="ATKUP(極大)">ATKUP(極大)</option>
+    <option value="ダメUP(極小)">ダメUP(極小)</option>
+    <option value="ダメUP(小)">ダメUP(小)</option>
+    <option value="ダメUP(中)">ダメUP(中)</option>
+    <option value="ダメUP(大)">ダメUP(大)</option>
+    <option value="ダメUP(極大)">ダメUP(極大)</option>
+    <option value="属性ダメUP(極小)">属性ダメUP(極小)</option>
+    <option value="属性ダメUP(小)">属性ダメUP(小)</option>
+    <option value="属性ダメUP(中)">属性ダメUP(中)</option>
+    <option value="属性ダメUP(大)">属性ダメUP(大)</option>
+    <option value="属性ダメUP(極大)">属性ダメUP(極大)</option>
+    </select>
+    <select name="cM1buf2Lv5" id="cM1buf2Lv5">
+    <option value="10">10</option>
+    <option value="9">9</option>
+    <option value="8">8</option>
+    <option value="7">7</option>
+    <option value="6">6</option>
+    <option value="5">5</option>
+    <option value="4">4</option>
+    <option value="3">3</option>
+    <option value="2">2</option>
+    <option value="1">1</option>
+    </select>
+    </td>
+</tr>
+<tr>
+    <td><label for="cM2Lv1">マジック２<br>（＋バフ）</label>
+    </td>
+    <td>
+    <input type="checkbox" name="checkboxc1" id="checkboxc12" onclick="checkLimit(this,1)" checked value="2">
+    <select name="cM2Atr1" id="cM2Atr1">
+    <option value=""></option>
+    <option value="火">火</option>
+    <option value="木">木</option>
+    <option value="水">水</option>
+    <option value="無">無</option>
+    </select>
+    Lv.
+    <select name="cM2Lv1" id="cM2Lv1">
+    <option value="10">10</option>
+    <option value="9">9</option>
+    <option value="8">8</option>
+    <option value="7">7</option>
+    <option value="6">6</option>
+    <option value="5">5</option>
+    <option value="4">4</option>
+    <option value="3">3</option>
+    <option value="2">2</option>
+    <option value="1">1</option>
+    </select>
+    <br>
+    <select name="cM2pow1" id="cM2pow1">
+    <option value=""></option>
+    <option value="連撃(強)">連撃(強)</option>
+    <option value="連撃(弱)">連撃(弱)</option>
+    <option value="単発(強)">単発(強)</option>
+    <option value="単発(弱)">単発(弱)</option>
+    <option value="デュオ魔法">デュオ魔法</option>
+    </select>
+    <br>
+    <select name="cM2heal1" id="cM2heal1">
+    <option value=""></option>
+    <option value="回復(極小)">回復(極小)</option>
+    <option value="回復(小)">回復(小)</option>
+    <option value="回復(中)">回復(中)</option>
+    <option value="継続回復(小)">継続回復(小)</option>
+    <option value="継続回復(中)">継続回復(中)</option>
+    <option value="回復&継続回復(小)">回復&継続回復(小)</option>
+    
+    </select>
+    <br>
+    <select name="cM2buf11" id="cM2buf11">
+    <option value=""></option>
+    <option value="ATKUP(極小)">ATKUP(極小)</option>
+    <option value="ATKUP(小)">ATKUP(小)</option>
+    <option value="ATKUP(中)">ATKUP(中)</option>
+    <option value="ATKUP(大)">ATKUP(大)</option>
+    <option value="ATKUP(極大)">ATKUP(極大)</option>
+    <option value="ダメUP(極小)">ダメUP(極小)</option>
+    <option value="ダメUP(小)">ダメUP(小)</option>
+    <option value="ダメUP(中)">ダメUP(中)</option>
+    <option value="ダメUP(大)">ダメUP(大)</option>
+    <option value="ダメUP(極大)">ダメUP(極大)</option>
+    <option value="属性ダメUP(極小)">属性ダメUP(極小)</option>
+    <option value="属性ダメUP(小)">属性ダメUP(小)</option>
+    <option value="属性ダメUP(中)">属性ダメUP(中)</option>
+    <option value="属性ダメUP(大)">属性ダメUP(大)</option>
+    <option value="属性ダメUP(極大)">属性ダメUP(極大)</option>
+    </select>
+    <select name="cM2buf1Lv1" id="cM2buf1Lv1">
+    <option value="10">10</option>
+    <option value="9">9</option>
+    <option value="8">8</option>
+    <option value="7">7</option>
+    <option value="6">6</option>
+    <option value="5">5</option>
+    <option value="4">4</option>
+    <option value="3">3</option>
+    <option value="2">2</option>
+    <option value="1">1</option>
+    </select>
+    <br>
+    <select name="cM2buf21" id="cM2buf21">
+    <option value=""></option>
+    <option value="ATKUP(極小)">ATKUP(極小)</option>
+    <option value="ATKUP(小)">ATKUP(小)</option>
+    <option value="ATKUP(中)">ATKUP(中)</option>
+    <option value="ATKUP(大)">ATKUP(大)</option>
+    <option value="ATKUP(極大)">ATKUP(極大)</option>
+    <option value="ダメUP(極小)">ダメUP(極小)</option>
+    <option value="ダメUP(小)">ダメUP(小)</option>
+    <option value="ダメUP(中)">ダメUP(中)</option>
+    <option value="ダメUP(大)">ダメUP(大)</option>
+    <option value="ダメUP(極大)">ダメUP(極大)</option>
+    <option value="属性ダメUP(極小)">属性ダメUP(極小)</option>
+    <option value="属性ダメUP(小)">属性ダメUP(小)</option>
+    <option value="属性ダメUP(中)">属性ダメUP(中)</option>
+    <option value="属性ダメUP(大)">属性ダメUP(大)</option>
+    <option value="属性ダメUP(極大)">属性ダメUP(極大)</option>
+    </select>
+    <select name="cM2buf2Lv1" id="cM2buf2Lv1">
+    <option value="10">10</option>
+    <option value="9">9</option>
+    <option value="8">8</option>
+    <option value="7">7</option>
+    <option value="6">6</option>
+    <option value="5">5</option>
+    <option value="4">4</option>
+    <option value="3">3</option>
+    <option value="2">2</option>
+    <option value="1">1</option>
+    </select>
+    </td>
+    <td>
+    <input type="checkbox" name="checkboxc2" id="checkboxc22" onclick="checkLimit(this,2)" checked value="2">
+    <select name="cM2Atr2" id="cM2Atr2">
+    <option value=""></option>
+    <option value="火">火</option>
+    <option value="木">木</option>
+    <option value="水">水</option>
+    <option value="無">無</option>
+    </select>
+    Lv.
+    <select name="cM2Lv2" id="cM2Lv2">
+    <option value="10">10</option>
+    <option value="9">9</option>
+    <option value="8">8</option>
+    <option value="7">7</option>
+    <option value="6">6</option>
+    <option value="5">5</option>
+    <option value="4">4</option>
+    <option value="3">3</option>
+    <option value="2">2</option>
+    <option value="1">1</option>
+    </select>
+    <br>
+    <select name="cM2pow2" id="cM2pow2">
+    <option value=""></option>
+    <option value="連撃(強)">連撃(強)</option>
+    <option value="連撃(弱)">連撃(弱)</option>
+    <option value="単発(強)">単発(強)</option>
+    <option value="単発(弱)">単発(弱)</option>
+    <option value="デュオ魔法">デュオ魔法</option>
+    </select>
+    <br>
+    <select name="cM2heal2" id="cM2heal2">
+    <option value=""></option>
+    <option value="回復(極小)">回復(極小)</option>
+    <option value="回復(小)">回復(小)</option>
+    <option value="回復(中)">回復(中)</option>
+    <option value="継続回復(小)">継続回復(小)</option>
+    <option value="継続回復(中)">継続回復(中)</option>
+    <option value="回復&継続回復(小)">回復&継続回復(小)</option>
+    
+    </select>
+    <br>
+    <select name="cM2buf12" id="cM2buf12">
+    <option value=""></option>
+    <option value="ATKUP(極小)">ATKUP(極小)</option>
+    <option value="ATKUP(小)">ATKUP(小)</option>
+    <option value="ATKUP(中)">ATKUP(中)</option>
+    <option value="ATKUP(大)">ATKUP(大)</option>
+    <option value="ATKUP(極大)">ATKUP(極大)</option>
+    <option value="ダメUP(極小)">ダメUP(極小)</option>
+    <option value="ダメUP(小)">ダメUP(小)</option>
+    <option value="ダメUP(中)">ダメUP(中)</option>
+    <option value="ダメUP(大)">ダメUP(大)</option>
+    <option value="ダメUP(極大)">ダメUP(極大)</option>
+    <option value="属性ダメUP(極小)">属性ダメUP(極小)</option>
+    <option value="属性ダメUP(小)">属性ダメUP(小)</option>
+    <option value="属性ダメUP(中)">属性ダメUP(中)</option>
+    <option value="属性ダメUP(大)">属性ダメUP(大)</option>
+    <option value="属性ダメUP(極大)">属性ダメUP(極大)</option>
+    </select>
+    <select name="cM2buf1Lv2" id="cM2buf1Lv2">
+    <option value="10">10</option>
+    <option value="9">9</option>
+    <option value="8">8</option>
+    <option value="7">7</option>
+    <option value="6">6</option>
+    <option value="5">5</option>
+    <option value="4">4</option>
+    <option value="3">3</option>
+    <option value="2">2</option>
+    <option value="1">1</option>
+    </select>
+    <br>
+    <select name="cM2buf22" id="cM2buf22">
+    <option value=""></option>
+    <option value="ATKUP(極小)">ATKUP(極小)</option>
+    <option value="ATKUP(小)">ATKUP(小)</option>
+    <option value="ATKUP(中)">ATKUP(中)</option>
+    <option value="ATKUP(大)">ATKUP(大)</option>
+    <option value="ATKUP(極大)">ATKUP(極大)</option>
+    <option value="ダメUP(極小)">ダメUP(極小)</option>
+    <option value="ダメUP(小)">ダメUP(小)</option>
+    <option value="ダメUP(中)">ダメUP(中)</option>
+    <option value="ダメUP(大)">ダメUP(大)</option>
+    <option value="ダメUP(極大)">ダメUP(極大)</option>
+    <option value="属性ダメUP(極小)">属性ダメUP(極小)</option>
+    <option value="属性ダメUP(小)">属性ダメUP(小)</option>
+    <option value="属性ダメUP(中)">属性ダメUP(中)</option>
+    <option value="属性ダメUP(大)">属性ダメUP(大)</option>
+    <option value="属性ダメUP(極大)">属性ダメUP(極大)</option>
+    </select>
+    <select name="cM2buf2Lv2" id="cM2buf2Lv2">
+    <option value="10">10</option>
+    <option value="9">9</option>
+    <option value="8">8</option>
+    <option value="7">7</option>
+    <option value="6">6</option>
+    <option value="5">5</option>
+    <option value="4">4</option>
+    <option value="3">3</option>
+    <option value="2">2</option>
+    <option value="1">1</option>
+    </select>
+    </td>
+    </td>
+    <td>
+    <input type="checkbox" name="checkboxc3" id="checkboxc32" onclick="checkLimit(this,3)" checked value="2">
+    <select name="cM2Atr3" id="cM2Atr3">
+    <option value=""></option>
+    <option value="火">火</option>
+    <option value="木">木</option>
+    <option value="水">水</option>
+    <option value="無">無</option>
+    </select>
+    Lv.
+    <select name="cM2Lv3" id="cM2Lv3">
+    <option value="10">10</option>
+    <option value="9">9</option>
+    <option value="8">8</option>
+    <option value="7">7</option>
+    <option value="6">6</option>
+    <option value="5">5</option>
+    <option value="4">4</option>
+    <option value="3">3</option>
+    <option value="2">2</option>
+    <option value="1">1</option>
+    </select>
+    <br>
+    <select name="cM2pow3" id="cM2pow3">
+    <option value=""></option>
+    <option value="連撃(強)">連撃(強)</option>
+    <option value="連撃(弱)">連撃(弱)</option>
+    <option value="単発(強)">単発(強)</option>
+    <option value="単発(弱)">単発(弱)</option>
+    <option value="デュオ魔法">デュオ魔法</option>
+    </select>
+    <br>
+    <select name="cM2heal3" id="cM2heal3">
+    <option value=""></option>
+    <option value="回復(極小)">回復(極小)</option>
+    <option value="回復(小)">回復(小)</option>
+    <option value="回復(中)">回復(中)</option>
+    <option value="継続回復(小)">継続回復(小)</option>
+    <option value="継続回復(中)">継続回復(中)</option>
+    <option value="回復&継続回復(小)">回復&継続回復(小)</option>
+    
+    </select>
+    <br>
+    <select name="cM2buf13" id="cM2buf13">
+    <option value=""></option>
+    <option value="ATKUP(極小)">ATKUP(極小)</option>
+    <option value="ATKUP(小)">ATKUP(小)</option>
+    <option value="ATKUP(中)">ATKUP(中)</option>
+    <option value="ATKUP(大)">ATKUP(大)</option>
+    <option value="ATKUP(極大)">ATKUP(極大)</option>
+    <option value="ダメUP(極小)">ダメUP(極小)</option>
+    <option value="ダメUP(小)">ダメUP(小)</option>
+    <option value="ダメUP(中)">ダメUP(中)</option>
+    <option value="ダメUP(大)">ダメUP(大)</option>
+    <option value="ダメUP(極大)">ダメUP(極大)</option>
+    <option value="属性ダメUP(極小)">属性ダメUP(極小)</option>
+    <option value="属性ダメUP(小)">属性ダメUP(小)</option>
+    <option value="属性ダメUP(中)">属性ダメUP(中)</option>
+    <option value="属性ダメUP(大)">属性ダメUP(大)</option>
+    <option value="属性ダメUP(極大)">属性ダメUP(極大)</option>
+    </select>
+    <select name="cM2buf1Lv3" id="cM2buf1Lv3">
+    <option value="10">10</option>
+    <option value="9">9</option>
+    <option value="8">8</option>
+    <option value="7">7</option>
+    <option value="6">6</option>
+    <option value="5">5</option>
+    <option value="4">4</option>
+    <option value="3">3</option>
+    <option value="2">2</option>
+    <option value="1">1</option>
+    </select>
+    <br>
+    <select name="cM2buf23" id="cM2buf23">
+    <option value=""></option>
+    <option value="ATKUP(極小)">ATKUP(極小)</option>
+    <option value="ATKUP(小)">ATKUP(小)</option>
+    <option value="ATKUP(中)">ATKUP(中)</option>
+    <option value="ATKUP(大)">ATKUP(大)</option>
+    <option value="ATKUP(極大)">ATKUP(極大)</option>
+    <option value="ダメUP(極小)">ダメUP(極小)</option>
+    <option value="ダメUP(小)">ダメUP(小)</option>
+    <option value="ダメUP(中)">ダメUP(中)</option>
+    <option value="ダメUP(大)">ダメUP(大)</option>
+    <option value="ダメUP(極大)">ダメUP(極大)</option>
+    <option value="属性ダメUP(極小)">属性ダメUP(極小)</option>
+    <option value="属性ダメUP(小)">属性ダメUP(小)</option>
+    <option value="属性ダメUP(中)">属性ダメUP(中)</option>
+    <option value="属性ダメUP(大)">属性ダメUP(大)</option>
+    <option value="属性ダメUP(極大)">属性ダメUP(極大)</option>
+    </select>
+    <select name="cM2buf2Lv3" id="cM2buf2Lv3">
+    <option value="10">10</option>
+    <option value="9">9</option>
+    <option value="8">8</option>
+    <option value="7">7</option>
+    <option value="6">6</option>
+    <option value="5">5</option>
+    <option value="4">4</option>
+    <option value="3">3</option>
+    <option value="2">2</option>
+    <option value="1">1</option>
+    </select>
+    </td>
+    </td>
+    <td>
+    <input type="checkbox" name="checkboxc4" id="checkboxc42" onclick="checkLimit(this,4)" checked value="2">
+    <select name="cM2Atr4" id="cM2Atr4">
+    <option value=""></option>
+    <option value="火">火</option>
+    <option value="木">木</option>
+    <option value="水">水</option>
+    <option value="無">無</option>
+    </select>
+    Lv.
+    <select name="cM2Lv4" id="cM2Lv4">
+    <option value="10">10</option>
+    <option value="9">9</option>
+    <option value="8">8</option>
+    <option value="7">7</option>
+    <option value="6">6</option>
+    <option value="5">5</option>
+    <option value="4">4</option>
+    <option value="3">3</option>
+    <option value="2">2</option>
+    <option value="1">1</option>
+    </select>
+    <br>
+    <select name="cM2pow4" id="cM2pow4">
+    <option value=""></option>
+    <option value="連撃(強)">連撃(強)</option>
+    <option value="連撃(弱)">連撃(弱)</option>
+    <option value="単発(強)">単発(強)</option>
+    <option value="単発(弱)">単発(弱)</option>
+    <option value="デュオ魔法">デュオ魔法</option>
+    </select>
+    <br>
+    <select name="cM2heal4" id="cM2heal4">
+    <option value=""></option>
+    <option value="回復(極小)">回復(極小)</option>
+    <option value="回復(小)">回復(小)</option>
+    <option value="回復(中)">回復(中)</option>
+    <option value="継続回復(小)">継続回復(小)</option>
+    <option value="継続回復(中)">継続回復(中)</option>
+    <option value="回復&継続回復(小)">回復&継続回復(小)</option>
+    
+    </select>
+    <br>
+    <select name="cM2buf14" id="cM2buf14">
+    <option value=""></option>
+    <option value="ATKUP(極小)">ATKUP(極小)</option>
+    <option value="ATKUP(小)">ATKUP(小)</option>
+    <option value="ATKUP(中)">ATKUP(中)</option>
+    <option value="ATKUP(大)">ATKUP(大)</option>
+    <option value="ATKUP(極大)">ATKUP(極大)</option>
+    <option value="ダメUP(極小)">ダメUP(極小)</option>
+    <option value="ダメUP(小)">ダメUP(小)</option>
+    <option value="ダメUP(中)">ダメUP(中)</option>
+    <option value="ダメUP(大)">ダメUP(大)</option>
+    <option value="ダメUP(極大)">ダメUP(極大)</option>
+    <option value="属性ダメUP(極小)">属性ダメUP(極小)</option>
+    <option value="属性ダメUP(小)">属性ダメUP(小)</option>
+    <option value="属性ダメUP(中)">属性ダメUP(中)</option>
+    <option value="属性ダメUP(大)">属性ダメUP(大)</option>
+    <option value="属性ダメUP(極大)">属性ダメUP(極大)</option>
+    </select>
+    <select name="cM2buf1Lv4" id="cM2buf1Lv4">
+    <option value="10">10</option>
+    <option value="9">9</option>
+    <option value="8">8</option>
+    <option value="7">7</option>
+    <option value="6">6</option>
+    <option value="5">5</option>
+    <option value="4">4</option>
+    <option value="3">3</option>
+    <option value="2">2</option>
+    <option value="1">1</option>
+    </select>
+    <br>
+    <select name="cM2buf24" id="cM2buf24">
+    <option value=""></option>
+    <option value="ATKUP(極小)">ATKUP(極小)</option>
+    <option value="ATKUP(小)">ATKUP(小)</option>
+    <option value="ATKUP(中)">ATKUP(中)</option>
+    <option value="ATKUP(大)">ATKUP(大)</option>
+    <option value="ATKUP(極大)">ATKUP(極大)</option>
+    <option value="ダメUP(極小)">ダメUP(極小)</option>
+    <option value="ダメUP(小)">ダメUP(小)</option>
+    <option value="ダメUP(中)">ダメUP(中)</option>
+    <option value="ダメUP(大)">ダメUP(大)</option>
+    <option value="ダメUP(極大)">ダメUP(極大)</option>
+    <option value="属性ダメUP(極小)">属性ダメUP(極小)</option>
+    <option value="属性ダメUP(小)">属性ダメUP(小)</option>
+    <option value="属性ダメUP(中)">属性ダメUP(中)</option>
+    <option value="属性ダメUP(大)">属性ダメUP(大)</option>
+    <option value="属性ダメUP(極大)">属性ダメUP(極大)</option>
+    </select>
+    <select name="cM2buf2Lv4" id="cM2buf2Lv4">
+    <option value="10">10</option>
+    <option value="9">9</option>
+    <option value="8">8</option>
+    <option value="7">7</option>
+    <option value="6">6</option>
+    <option value="5">5</option>
+    <option value="4">4</option>
+    <option value="3">3</option>
+    <option value="2">2</option>
+    <option value="1">1</option>
+    </select>
+    </td>
+    </td>
+    <td>
+    <input type="checkbox" name="checkboxc5" id="checkboxc52" onclick="checkLimit(this,5)" checked value="2">
+    <select name="cM2Atr5" id="cM2Atr5">
+    <option value=""></option>
+    <option value="火">火</option>
+    <option value="木">木</option>
+    <option value="水">水</option>
+    <option value="無">無</option>
+    </select>
+    Lv.
+    <select name="cM2Lv5" id="cM2Lv5">
+    <option value="10">10</option>
+    <option value="9">9</option>
+    <option value="8">8</option>
+    <option value="7">7</option>
+    <option value="6">6</option>
+    <option value="5">5</option>
+    <option value="4">4</option>
+    <option value="3">3</option>
+    <option value="2">2</option>
+    <option value="1">1</option>
+    </select>
+    <br>
+    <select name="cM2pow5" id="cM2pow5">
+    <option value=""></option>
+    <option value="連撃(強)">連撃(強)</option>
+    <option value="連撃(弱)">連撃(弱)</option>
+    <option value="単発(強)">単発(強)</option>
+    <option value="単発(弱)">単発(弱)</option>
+    <option value="デュオ魔法">デュオ魔法</option>
+    </select>
+    <br>
+    <select name="cM2heal5" id="cM2heal5">
+    <option value=""></option>
+    <option value="回復(極小)">回復(極小)</option>
+    <option value="回復(小)">回復(小)</option>
+    <option value="回復(中)">回復(中)</option>
+    <option value="継続回復(小)">継続回復(小)</option>
+    <option value="継続回復(中)">継続回復(中)</option>
+    <option value="回復&継続回復(小)">回復&継続回復(小)</option>
+    
+    </select>
+    <br>
+    <select name="cM2buf15" id="cM2buf15">
+    <option value=""></option>
+    <option value="ATKUP(極小)">ATKUP(極小)</option>
+    <option value="ATKUP(小)">ATKUP(小)</option>
+    <option value="ATKUP(中)">ATKUP(中)</option>
+    <option value="ATKUP(大)">ATKUP(大)</option>
+    <option value="ATKUP(極大)">ATKUP(極大)</option>
+    <option value="ダメUP(極小)">ダメUP(極小)</option>
+    <option value="ダメUP(小)">ダメUP(小)</option>
+    <option value="ダメUP(中)">ダメUP(中)</option>
+    <option value="ダメUP(大)">ダメUP(大)</option>
+    <option value="ダメUP(極大)">ダメUP(極大)</option>
+    <option value="属性ダメUP(極小)">属性ダメUP(極小)</option>
+    <option value="属性ダメUP(小)">属性ダメUP(小)</option>
+    <option value="属性ダメUP(中)">属性ダメUP(中)</option>
+    <option value="属性ダメUP(大)">属性ダメUP(大)</option>
+    <option value="属性ダメUP(極大)">属性ダメUP(極大)</option>
+    </select>
+    <select name="cM2buf1Lv5" id="cM2buf1Lv5">
+    <option value="10">10</option>
+    <option value="9">9</option>
+    <option value="8">8</option>
+    <option value="7">7</option>
+    <option value="6">6</option>
+    <option value="5">5</option>
+    <option value="4">4</option>
+    <option value="3">3</option>
+    <option value="2">2</option>
+    <option value="1">1</option>
+    </select>
+    <br>
+    <select name="cM2buf25" id="cM2buf25">
+    <option value=""></option>
+    <option value="ATKUP(極小)">ATKUP(極小)</option>
+    <option value="ATKUP(小)">ATKUP(小)</option>
+    <option value="ATKUP(中)">ATKUP(中)</option>
+    <option value="ATKUP(大)">ATKUP(大)</option>
+    <option value="ATKUP(極大)">ATKUP(極大)</option>
+    <option value="ダメUP(極小)">ダメUP(極小)</option>
+    <option value="ダメUP(小)">ダメUP(小)</option>
+    <option value="ダメUP(中)">ダメUP(中)</option>
+    <option value="ダメUP(大)">ダメUP(大)</option>
+    <option value="ダメUP(極大)">ダメUP(極大)</option>
+    <option value="属性ダメUP(極小)">属性ダメUP(極小)</option>
+    <option value="属性ダメUP(小)">属性ダメUP(小)</option>
+    <option value="属性ダメUP(中)">属性ダメUP(中)</option>
+    <option value="属性ダメUP(大)">属性ダメUP(大)</option>
+    <option value="属性ダメUP(極大)">属性ダメUP(極大)</option>
+    </select>
+    <select name="cM2buf2Lv5" id="cM2buf2Lv5">
+    <option value="10">10</option>
+    <option value="9">9</option>
+    <option value="8">8</option>
+    <option value="7">7</option>
+    <option value="6">6</option>
+    <option value="5">5</option>
+    <option value="4">4</option>
+    <option value="3">3</option>
+    <option value="2">2</option>
+    <option value="1">1</option>
+    </select>
+    </td>
+
+    </td>
+</tr>
+<tr>
+    <td class="nowrap">
+    <label for="cM3Lv1">マジック３<br>（＋バフ）</label>
+    </td>
+    <td>
+    <input type="checkbox" name="checkboxc1" id="checkboxc13" onclick="checkLimit(this,1)" value="3">
+    <select name="cM3Atr1" id="cM3Atr1">
+    <option value=""></option>
+    <option value="火">火</option>
+    <option value="木">木</option>
+    <option value="水">水</option>
+    <option value="無">無</option>
+    </select>
+    Lv.
+    <select name="cM3Lv1" id="cM3Lv1">
+    <option value="10">10</option>
+    <option value="9">9</option>
+    <option value="8">8</option>
+    <option value="7">7</option>
+    <option value="6">6</option>
+    <option value="5">5</option>
+    <option value="4">4</option>
+    <option value="3">3</option>
+    <option value="2">2</option>
+    <option value="1">1</option>
+    </select>
+    <br>
+    <select name="cM3pow1" id="cM3pow1">
+    <option value=""></option>
+    <option value="連撃(強)">連撃(強)</option>
+    <option value="連撃(弱)">連撃(弱)</option>
+    <option value="単発(強)">単発(強)</option>
+    <option value="単発(弱)">単発(弱)</option>
+    </select>
+    <br>
+    <select name="cM3heal1" id="cM3heal1">
+    <option value=""></option>
+    <option value="回復(極小)">回復(極小)</option>
+    <option value="回復(小)">回復(小)</option>
+    <option value="回復(中)">回復(中)</option>
+    <option value="継続回復(小)">継続回復(小)</option>
+    <option value="継続回復(中)">継続回復(中)</option>
+    <option value="回復&継続回復(小)">回復&継続回復(小)</option>
+    
+    </select>
+    <br>
+    <select name="cM3buf11" id="cM3buf11">
+    <option value=""></option>
+    <option value="ATKUP(極小)">ATKUP(極小)</option>
+    <option value="ATKUP(小)">ATKUP(小)</option>
+    <option value="ATKUP(中)">ATKUP(中)</option>
+    <option value="ATKUP(大)">ATKUP(大)</option>
+    <option value="ATKUP(極大)">ATKUP(極大)</option>
+    <option value="ダメUP(極小)">ダメUP(極小)</option>
+    <option value="ダメUP(小)">ダメUP(小)</option>
+    <option value="ダメUP(中)">ダメUP(中)</option>
+    <option value="ダメUP(大)">ダメUP(大)</option>
+    <option value="ダメUP(極大)">ダメUP(極大)</option>
+    <option value="属性ダメUP(極小)">属性ダメUP(極小)</option>
+    <option value="属性ダメUP(小)">属性ダメUP(小)</option>
+    <option value="属性ダメUP(中)">属性ダメUP(中)</option>
+    <option value="属性ダメUP(大)">属性ダメUP(大)</option>
+    <option value="属性ダメUP(極大)">属性ダメUP(極大)</option>
+    </select>
+    <select name="cM3buf1Lv1" id="cM3buf1Lv1">
+    <option value="10">10</option>
+    <option value="9">9</option>
+    <option value="8">8</option>
+    <option value="7">7</option>
+    <option value="6">6</option>
+    <option value="5">5</option>
+    <option value="4">4</option>
+    <option value="3">3</option>
+    <option value="2">2</option>
+    <option value="1">1</option>
+    </select>
+    <br>
+    <select name="cM3buf21" id="cM3buf21">
+    <option value=""></option>
+    <option value="ATKUP(極小)">ATKUP(極小)</option>
+    <option value="ATKUP(小)">ATKUP(小)</option>
+    <option value="ATKUP(中)">ATKUP(中)</option>
+    <option value="ATKUP(大)">ATKUP(大)</option>
+    <option value="ATKUP(極大)">ATKUP(極大)</option>
+    <option value="ダメUP(極小)">ダメUP(極小)</option>
+    <option value="ダメUP(小)">ダメUP(小)</option>
+    <option value="ダメUP(中)">ダメUP(中)</option>
+    <option value="ダメUP(大)">ダメUP(大)</option>
+    <option value="ダメUP(極大)">ダメUP(極大)</option>
+    <option value="属性ダメUP(極小)">属性ダメUP(極小)</option>
+    <option value="属性ダメUP(小)">属性ダメUP(小)</option>
+    <option value="属性ダメUP(中)">属性ダメUP(中)</option>
+    <option value="属性ダメUP(大)">属性ダメUP(大)</option>
+    <option value="属性ダメUP(極大)">属性ダメUP(極大)</option>
+    </select>
+    <select name="cM3buf2Lv1" id="cM3buf2Lv1">
+    <option value="10">10</option>
+    <option value="9">9</option>
+    <option value="8">8</option>
+    <option value="7">7</option>
+    <option value="6">6</option>
+    <option value="5">5</option>
+    <option value="4">4</option>
+    <option value="3">3</option>
+    <option value="2">2</option>
+    <option value="1">1</option>
+    </select>
+    </td>
+    <td>
+    <input type="checkbox" name="checkboxc2" id="checkboxc23" onclick="checkLimit(this,2)" value="3">
+    <select name="cM3Atr2" id="cM3Atr2">
+    <option value=""></option>
+    <option value="火">火</option>
+    <option value="木">木</option>
+    <option value="水">水</option>
+    <option value="無">無</option>
+    </select>
+    Lv.
+    <select name="cM3Lv2" id="cM3Lv2">
+    <option value="10">10</option>
+    <option value="9">9</option>
+    <option value="8">8</option>
+    <option value="7">7</option>
+    <option value="6">6</option>
+    <option value="5">5</option>
+    <option value="4">4</option>
+    <option value="3">3</option>
+    <option value="2">2</option>
+    <option value="1">1</option>
+    </select>
+    <br>
+    <select name="cM3pow2" id="cM3pow2">
+    <option value=""></option>
+    <option value="連撃(強)">連撃(強)</option>
+    <option value="連撃(弱)">連撃(弱)</option>
+    <option value="単発(強)">単発(強)</option>
+    <option value="単発(弱)">単発(弱)</option>
+    </select>
+    <br>
+    <select name="cM3heal2" id="cM3heal2">
+    <option value=""></option>
+    <option value="回復(極小)">回復(極小)</option>
+    <option value="回復(小)">回復(小)</option>
+    <option value="回復(中)">回復(中)</option>
+    <option value="継続回復(小)">継続回復(小)</option>
+    <option value="継続回復(中)">継続回復(中)</option>
+    <option value="回復&継続回復(小)">回復&継続回復(小)</option>
+    
+    </select>
+    <br>
+    <select name="cM3buf12" id="cM3buf12">
+    <option value=""></option>
+    <option value="ATKUP(極小)">ATKUP(極小)</option>
+    <option value="ATKUP(小)">ATKUP(小)</option>
+    <option value="ATKUP(中)">ATKUP(中)</option>
+    <option value="ATKUP(大)">ATKUP(大)</option>
+    <option value="ATKUP(極大)">ATKUP(極大)</option>
+    <option value="ダメUP(極小)">ダメUP(極小)</option>
+    <option value="ダメUP(小)">ダメUP(小)</option>
+    <option value="ダメUP(中)">ダメUP(中)</option>
+    <option value="ダメUP(大)">ダメUP(大)</option>
+    <option value="ダメUP(極大)">ダメUP(極大)</option>
+    <option value="属性ダメUP(極小)">属性ダメUP(極小)</option>
+    <option value="属性ダメUP(小)">属性ダメUP(小)</option>
+    <option value="属性ダメUP(中)">属性ダメUP(中)</option>
+    <option value="属性ダメUP(大)">属性ダメUP(大)</option>
+    <option value="属性ダメUP(極大)">属性ダメUP(極大)</option>
+    </select>
+    <select name="cM3buf1Lv2" id="cM3buf1Lv2">
+    <option value="10">10</option>
+    <option value="9">9</option>
+    <option value="8">8</option>
+    <option value="7">7</option>
+    <option value="6">6</option>
+    <option value="5">5</option>
+    <option value="4">4</option>
+    <option value="3">3</option>
+    <option value="2">2</option>
+    <option value="1">1</option>
+    </select>
+    <br>
+    <select name="cM3buf22" id="cM3buf22">
+    <option value=""></option>
+    <option value="ATKUP(極小)">ATKUP(極小)</option>
+    <option value="ATKUP(小)">ATKUP(小)</option>
+    <option value="ATKUP(中)">ATKUP(中)</option>
+    <option value="ATKUP(大)">ATKUP(大)</option>
+    <option value="ATKUP(極大)">ATKUP(極大)</option>
+    <option value="ダメUP(極小)">ダメUP(極小)</option>
+    <option value="ダメUP(小)">ダメUP(小)</option>
+    <option value="ダメUP(中)">ダメUP(中)</option>
+    <option value="ダメUP(大)">ダメUP(大)</option>
+    <option value="ダメUP(極大)">ダメUP(極大)</option>
+    <option value="属性ダメUP(極小)">属性ダメUP(極小)</option>
+    <option value="属性ダメUP(小)">属性ダメUP(小)</option>
+    <option value="属性ダメUP(中)">属性ダメUP(中)</option>
+    <option value="属性ダメUP(大)">属性ダメUP(大)</option>
+    <option value="属性ダメUP(極大)">属性ダメUP(極大)</option>
+    </select>
+    <select name="cM3buf2Lv2" id="cM3buf2Lv2">
+    <option value="10">10</option>
+    <option value="9">9</option>
+    <option value="8">8</option>
+    <option value="7">7</option>
+    <option value="6">6</option>
+    <option value="5">5</option>
+    <option value="4">4</option>
+    <option value="3">3</option>
+    <option value="2">2</option>
+    <option value="1">1</option>
+    </select>
+    </td>
+    <td>
+    <input type="checkbox" name="checkboxc3" id="checkboxc33" onclick="checkLimit(this,3)" value="3">
+    <select name="cM3Atr3" id="cM3Atr3">
+    <option value=""></option>
+    <option value="火">火</option>
+    <option value="木">木</option>
+    <option value="水">水</option>
+    <option value="無">無</option>
+    </select>
+    Lv.
+    <select name="cM3Lv3" id="cM3Lv3">
+    <option value="10">10</option>
+    <option value="9">9</option>
+    <option value="8">8</option>
+    <option value="7">7</option>
+    <option value="6">6</option>
+    <option value="5">5</option>
+    <option value="4">4</option>
+    <option value="3">3</option>
+    <option value="2">2</option>
+    <option value="1">1</option>
+    </select>
+    <br>
+    <select name="cM3pow3" id="cM3pow3">
+    <option value=""></option>
+    <option value="連撃(強)">連撃(強)</option>
+    <option value="連撃(弱)">連撃(弱)</option>
+    <option value="単発(強)">単発(強)</option>
+    <option value="単発(弱)">単発(弱)</option>
+    </select>
+    <br>
+    <select name="cM3heal3" id="cM3heal3">
+    <option value=""></option>
+    <option value="回復(極小)">回復(極小)</option>
+    <option value="回復(小)">回復(小)</option>
+    <option value="回復(中)">回復(中)</option>
+    <option value="継続回復(小)">継続回復(小)</option>
+    <option value="継続回復(中)">継続回復(中)</option>
+    <option value="回復&継続回復(小)">回復&継続回復(小)</option>
+    
+    </select>
+    <br>
+    <select name="cM3buf13" id="cM3buf13">
+    <option value=""></option>
+    <option value="ATKUP(極小)">ATKUP(極小)</option>
+    <option value="ATKUP(小)">ATKUP(小)</option>
+    <option value="ATKUP(中)">ATKUP(中)</option>
+    <option value="ATKUP(大)">ATKUP(大)</option>
+    <option value="ATKUP(極大)">ATKUP(極大)</option>
+    <option value="ダメUP(極小)">ダメUP(極小)</option>
+    <option value="ダメUP(小)">ダメUP(小)</option>
+    <option value="ダメUP(中)">ダメUP(中)</option>
+    <option value="ダメUP(大)">ダメUP(大)</option>
+    <option value="ダメUP(極大)">ダメUP(極大)</option>
+    <option value="属性ダメUP(極小)">属性ダメUP(極小)</option>
+    <option value="属性ダメUP(小)">属性ダメUP(小)</option>
+    <option value="属性ダメUP(中)">属性ダメUP(中)</option>
+    <option value="属性ダメUP(大)">属性ダメUP(大)</option>
+    <option value="属性ダメUP(極大)">属性ダメUP(極大)</option>
+    </select>
+    <select name="cM3buf1Lv3" id="cM3buf1Lv3">
+    <option value="10">10</option>
+    <option value="9">9</option>
+    <option value="8">8</option>
+    <option value="7">7</option>
+    <option value="6">6</option>
+    <option value="5">5</option>
+    <option value="4">4</option>
+    <option value="3">3</option>
+    <option value="2">2</option>
+    <option value="1">1</option>
+    </select>
+    <br>
+    <select name="cM3buf23" id="cM3buf23">
+    <option value=""></option>
+    <option value="ATKUP(極小)">ATKUP(極小)</option>
+    <option value="ATKUP(小)">ATKUP(小)</option>
+    <option value="ATKUP(中)">ATKUP(中)</option>
+    <option value="ATKUP(大)">ATKUP(大)</option>
+    <option value="ATKUP(極大)">ATKUP(極大)</option>
+    <option value="ダメUP(極小)">ダメUP(極小)</option>
+    <option value="ダメUP(小)">ダメUP(小)</option>
+    <option value="ダメUP(中)">ダメUP(中)</option>
+    <option value="ダメUP(大)">ダメUP(大)</option>
+    <option value="ダメUP(極大)">ダメUP(極大)</option>
+    <option value="属性ダメUP(極小)">属性ダメUP(極小)</option>
+    <option value="属性ダメUP(小)">属性ダメUP(小)</option>
+    <option value="属性ダメUP(中)">属性ダメUP(中)</option>
+    <option value="属性ダメUP(大)">属性ダメUP(大)</option>
+    <option value="属性ダメUP(極大)">属性ダメUP(極大)</option>
+    </select>
+    <select name="cM3buf2Lv3" id="cM3buf2Lv3">
+    <option value="10">10</option>
+    <option value="9">9</option>
+    <option value="8">8</option>
+    <option value="7">7</option>
+    <option value="6">6</option>
+    <option value="5">5</option>
+    <option value="4">4</option>
+    <option value="3">3</option>
+    <option value="2">2</option>
+    <option value="1">1</option>
+    </select>
+    </td>
+    <td>
+    <input type="checkbox" name="checkboxc4" id="checkboxc43" onclick="checkLimit(this,4)" value="3">
+    <select name="cM3Atr4" id="cM3Atr4">
+    <option value=""></option>
+    <option value="火">火</option>
+    <option value="木">木</option>
+    <option value="水">水</option>
+    <option value="無">無</option>
+    </select>
+    Lv.
+    <select name="cM3Lv4" id="cM3Lv4" >
+    <option value="10">10</option>
+    <option value="9">9</option>
+    <option value="8">8</option>
+    <option value="7">7</option>
+    <option value="6">6</option>
+    <option value="5">5</option>
+    <option value="4">4</option>
+    <option value="3">3</option>
+    <option value="2">2</option>
+    <option value="1">1</option>
+    </select>
+    <br>
+    <select name="cM3pow4" id="cM3pow4">
+    <option value=""></option>
+    <option value="連撃(強)">連撃(強)</option>
+    <option value="連撃(弱)">連撃(弱)</option>
+    <option value="単発(強)">単発(強)</option>
+    <option value="単発(弱)">単発(弱)</option>
+    </select>
+    <br>
+    <select name="cM3heal4" id="cM3heal4">
+    <option value=""></option>
+    <option value="回復(極小)">回復(極小)</option>
+    <option value="回復(小)">回復(小)</option>
+    <option value="回復(中)">回復(中)</option>
+    <option value="継続回復(小)">継続回復(小)</option>
+    <option value="継続回復(中)">継続回復(中)</option>
+    <option value="回復&継続回復(小)">回復&継続回復(小)</option>
+    
+    </select>
+    <br>
+    <select name="cM3buf14" id="cM3buf14">
+    <option value=""></option>
+    <option value="ATKUP(極小)">ATKUP(極小)</option>
+    <option value="ATKUP(小)">ATKUP(小)</option>
+    <option value="ATKUP(中)">ATKUP(中)</option>
+    <option value="ATKUP(大)">ATKUP(大)</option>
+    <option value="ATKUP(極大)">ATKUP(極大)</option>
+    <option value="ダメUP(極小)">ダメUP(極小)</option>
+    <option value="ダメUP(小)">ダメUP(小)</option>
+    <option value="ダメUP(中)">ダメUP(中)</option>
+    <option value="ダメUP(大)">ダメUP(大)</option>
+    <option value="ダメUP(極大)">ダメUP(極大)</option>
+    <option value="属性ダメUP(極小)">属性ダメUP(極小)</option>
+    <option value="属性ダメUP(小)">属性ダメUP(小)</option>
+    <option value="属性ダメUP(中)">属性ダメUP(中)</option>
+    <option value="属性ダメUP(大)">属性ダメUP(大)</option>
+    <option value="属性ダメUP(極大)">属性ダメUP(極大)</option>
+    </select>
+    <select name="cM3buf1Lv4" id="cM3buf1Lv4">
+    <option value="10">10</option>
+    <option value="9">9</option>
+    <option value="8">8</option>
+    <option value="7">7</option>
+    <option value="6">6</option>
+    <option value="5">5</option>
+    <option value="4">4</option>
+    <option value="3">3</option>
+    <option value="2">2</option>
+    <option value="1">1</option>
+    </select>
+    <br>
+    <select name="cM3buf24" id="cM3buf24">
+    <option value=""></option>
+    <option value="ATKUP(極小)">ATKUP(極小)</option>
+    <option value="ATKUP(小)">ATKUP(小)</option>
+    <option value="ATKUP(中)">ATKUP(中)</option>
+    <option value="ATKUP(大)">ATKUP(大)</option>
+    <option value="ATKUP(極大)">ATKUP(極大)</option>
+    <option value="ダメUP(極小)">ダメUP(極小)</option>
+    <option value="ダメUP(小)">ダメUP(小)</option>
+    <option value="ダメUP(中)">ダメUP(中)</option>
+    <option value="ダメUP(大)">ダメUP(大)</option>
+    <option value="ダメUP(極大)">ダメUP(極大)</option>
+    <option value="属性ダメUP(極小)">属性ダメUP(極小)</option>
+    <option value="属性ダメUP(小)">属性ダメUP(小)</option>
+    <option value="属性ダメUP(中)">属性ダメUP(中)</option>
+    <option value="属性ダメUP(大)">属性ダメUP(大)</option>
+    <option value="属性ダメUP(極大)">属性ダメUP(極大)</option>
+    </select>
+    <select name="cM3buf2Lv4" id="cM3buf2Lv4">
+    <option value="10">10</option>
+    <option value="9">9</option>
+    <option value="8">8</option>
+    <option value="7">7</option>
+    <option value="6">6</option>
+    <option value="5">5</option>
+    <option value="4">4</option>
+    <option value="3">3</option>
+    <option value="2">2</option>
+    <option value="1">1</option>
+    </select>
+    </td>
+    <td>
+    <input type="checkbox" name="checkboxc5" id="checkboxc53" onclick="checkLimit(this,5)" value="3">
+    <select name="cM3Atr5" id="cM3Atr5">
+    <option value=""></option>
+    <option value="火">火</option>
+    <option value="木">木</option>
+    <option value="水">水</option>
+    <option value="無">無</option>
+    </select>
+    Lv.
+    <select name="cM3Lv5" id="cM3Lv5">
+    <option value="10">10</option>
+    <option value="9">9</option>
+    <option value="8">8</option>
+    <option value="7">7</option>
+    <option value="6">6</option>
+    <option value="5">5</option>
+    <option value="4">4</option>
+    <option value="3">3</option>
+    <option value="2">2</option>
+    <option value="1">1</option>
+    </select>
+    <br>
+    <select name="cM3pow5" id="cM3pow5">
+    <option value=""></option>
+    <option value="連撃(強)">連撃(強)</option>
+    <option value="連撃(弱)">連撃(弱)</option>
+    <option value="単発(強)">単発(強)</option>
+    <option value="単発(弱)">単発(弱)</option>
+    </select>
+    <br>
+    <select name="cM3heal5" id="cM3heal5">
+    <option value=""></option>
+    <option value="回復(極小)">回復(極小)</option>
+    <option value="回復(小)">回復(小)</option>
+    <option value="回復(中)">回復(中)</option>
+    <option value="継続回復(小)">継続回復(小)</option>
+    <option value="継続回復(中)">継続回復(中)</option>
+    <option value="回復&継続回復(小)">回復&継続回復(小)</option>
+    
+    </select>
+    <br>
+    <select name="cM3buf15" id="cM3buf15">
+    <option value=""></option>
+    <option value="ATKUP(極小)">ATKUP(極小)</option>
+    <option value="ATKUP(小)">ATKUP(小)</option>
+    <option value="ATKUP(中)">ATKUP(中)</option>
+    <option value="ATKUP(大)">ATKUP(大)</option>
+    <option value="ATKUP(極大)">ATKUP(極大)</option>
+    <option value="ダメUP(極小)">ダメUP(極小)</option>
+    <option value="ダメUP(小)">ダメUP(小)</option>
+    <option value="ダメUP(中)">ダメUP(中)</option>
+    <option value="ダメUP(大)">ダメUP(大)</option>
+    <option value="ダメUP(極大)">ダメUP(極大)</option>
+    <option value="属性ダメUP(極小)">属性ダメUP(極小)</option>
+    <option value="属性ダメUP(小)">属性ダメUP(小)</option>
+    <option value="属性ダメUP(中)">属性ダメUP(中)</option>
+    <option value="属性ダメUP(大)">属性ダメUP(大)</option>
+    <option value="属性ダメUP(極大)">属性ダメUP(極大)</option>
+    </select>
+    <select name="cM3buf1Lv5" id="cM3buf1Lv5">
+    <option value="10">10</option>
+    <option value="9">9</option>
+    <option value="8">8</option>
+    <option value="7">7</option>
+    <option value="6">6</option>
+    <option value="5">5</option>
+    <option value="4">4</option>
+    <option value="3">3</option>
+    <option value="2">2</option>
+    <option value="1">1</option>
+    </select>
+    <br>
+    <select name="cM3buf25" id="cM3buf25">
+    <option value=""></option>
+    <option value="ATKUP(極小)">ATKUP(極小)</option>
+    <option value="ATKUP(小)">ATKUP(小)</option>
+    <option value="ATKUP(中)">ATKUP(中)</option>
+    <option value="ATKUP(大)">ATKUP(大)</option>
+    <option value="ATKUP(極大)">ATKUP(極大)</option>
+    <option value="ダメUP(極小)">ダメUP(極小)</option>
+    <option value="ダメUP(小)">ダメUP(小)</option>
+    <option value="ダメUP(中)">ダメUP(中)</option>
+    <option value="ダメUP(大)">ダメUP(大)</option>
+    <option value="ダメUP(極大)">ダメUP(極大)</option>
+    <option value="属性ダメUP(極小)">属性ダメUP(極小)</option>
+    <option value="属性ダメUP(小)">属性ダメUP(小)</option>
+    <option value="属性ダメUP(中)">属性ダメUP(中)</option>
+    <option value="属性ダメUP(大)">属性ダメUP(大)</option>
+    <option value="属性ダメUP(極大)">属性ダメUP(極大)</option>
+    </select>
+    <select name="cM3buf2Lv5" id="cM3buf2Lv5">
+    <option value="10">10</option>
+    <option value="9">9</option>
+    <option value="8">8</option>
+    <option value="7">7</option>
+    <option value="6">6</option>
+    <option value="5">5</option>
+    <option value="4">4</option>
+    <option value="3">3</option>
+    <option value="2">2</option>
+    <option value="1">1</option>
+    </select>
+    </td>
+</tr>
+<tr>
+    <td><label for="cbuddy11">バディ１</label>
+    </td>
+    <td>
+    Lv.
+    <select name="cbuddy1Lv1" id="cbuddy1Lv1">
+    <option value="10">10</option>
+    <option value="9">9</option>
+    <option value="8">8</option>
+    <option value="7">7</option>
+    <option value="6">6</option>
+    <option value="5">5</option>
+    <option value="4">4</option>
+    <option value="3">3</option>
+    <option value="2">2</option>
+    <option value="1">1</option>
+    </select>
+    <select name="cbuddy1Name1" id="cbuddy1Name1">
+    <option value=""></option>
+    <option value="リドル">リドル</option>
+    <option value="エース">エース</option>
+    <option value="デュース">デュース</option>
+    <option value="ケイト">ケイト</option>
+    <option value="トレイ">トレイ</option>
+    <option value="レオナ">レオナ</option>
+    <option value="ジャック">ジャック</option>
+    <option value="ラギー">ラギー</option>
+    <option value="アズール">アズール</option>
+    <option value="ジェイド">ジェイド</option>
+    <option value="フロイド">フロイド</option>
+    <option value="カリム">カリム</option>
+    <option value="ジャミル">ジャミル</option>
+    <option value="ヴィル">ヴィル</option>
+    <option value="エペル">エペル</option>
+    <option value="ルーク">ルーク</option>
+    <option value="イデア">イデア</option>
+    <option value="オルト">オルト</option>
+    <option value="マレウス">マレウス</option>
+    <option value="シルバー">シルバー</option>
+    <option value="セベク">セベク</option>
+    <option value="リリア">リリア</option>
+    <option value="グリム">グリム</option>
+    <option value="ロロ">ロロ</option>
+    <option value="クロウリー">クロウリー</option>
+    </select>
+    <br>
+    <select name="cbuddy1St1" id="cbuddy1St1">
+    <option value=""></option>
+    <option value="ATKUP(中)">ATKUP(中)</option>
+    <option value="ATKUP(小)">ATKUP(小)</option>
+    <option value="HPUP(中)">HPUP(中)</option>
+    <option value="HPUP(小)">HPUP(小)</option>
+    <option value="HP&ATKUP(小)">HP&ATKUP(小)</option>
+    <option value="HP&ATKUP(中)">HP&ATKUP(中)</option>
+    </select>
+    </td>
+    <td>
+    Lv.
+    <select name="cbuddy1Lv2" id="cbuddy1Lv2">
+    <option value="10">10</option>
+    <option value="9">9</option>
+    <option value="8">8</option>
+    <option value="7">7</option>
+    <option value="6">6</option>
+    <option value="5">5</option>
+    <option value="4">4</option>
+    <option value="3">3</option>
+    <option value="2">2</option>
+    <option value="1">1</option>
+    </select>
+    <select name="cbuddy1Name2" id="cbuddy1Name2">
+    <option value=""></option>
+    <option value="リドル">リドル</option>
+    <option value="エース">エース</option>
+    <option value="デュース">デュース</option>
+    <option value="ケイト">ケイト</option>
+    <option value="トレイ">トレイ</option>
+    <option value="レオナ">レオナ</option>
+    <option value="ジャック">ジャック</option>
+    <option value="ラギー">ラギー</option>
+    <option value="アズール">アズール</option>
+    <option value="ジェイド">ジェイド</option>
+    <option value="フロイド">フロイド</option>
+    <option value="カリム">カリム</option>
+    <option value="ジャミル">ジャミル</option>
+    <option value="ヴィル">ヴィル</option>
+    <option value="エペル">エペル</option>
+    <option value="ルーク">ルーク</option>
+    <option value="イデア">イデア</option>
+    <option value="オルト">オルト</option>
+    <option value="マレウス">マレウス</option>
+    <option value="シルバー">シルバー</option>
+    <option value="セベク">セベク</option>
+    <option value="リリア">リリア</option>
+    <option value="グリム">グリム</option>
+    <option value="ロロ">ロロ</option>
+    <option value="クロウリー">クロウリー</option>
+    </select>
+    <br>
+    <select name="cbuddy1St2" id="cbuddy1St2">
+    <option value=""></option>
+    <option value="ATKUP(中)">ATKUP(中)</option>
+    <option value="ATKUP(小)">ATKUP(小)</option>
+    <option value="HPUP(中)">HPUP(中)</option>
+    <option value="HPUP(小)">HPUP(小)</option>
+    <option value="HP&ATKUP(小)">HP&ATKUP(小)</option>
+    <option value="HP&ATKUP(中)">HP&ATKUP(中)</option>
+    </select>
+    </td>
+        <td>
+    Lv.
+    <select name="cbuddy1Lv3" id="cbuddy1Lv3">
+    <option value="10">10</option>
+    <option value="9">9</option>
+    <option value="8">8</option>
+    <option value="7">7</option>
+    <option value="6">6</option>
+    <option value="5">5</option>
+    <option value="4">4</option>
+    <option value="3">3</option>
+    <option value="2">2</option>
+    <option value="1">1</option>
+    </select>
+    <select name="cbuddy1Name3" id="cbuddy1Name3">
+    <option value=""></option>
+    <option value="リドル">リドル</option>
+    <option value="エース">エース</option>
+    <option value="デュース">デュース</option>
+    <option value="ケイト">ケイト</option>
+    <option value="トレイ">トレイ</option>
+    <option value="レオナ">レオナ</option>
+    <option value="ジャック">ジャック</option>
+    <option value="ラギー">ラギー</option>
+    <option value="アズール">アズール</option>
+    <option value="ジェイド">ジェイド</option>
+    <option value="フロイド">フロイド</option>
+    <option value="カリム">カリム</option>
+    <option value="ジャミル">ジャミル</option>
+    <option value="ヴィル">ヴィル</option>
+    <option value="エペル">エペル</option>
+    <option value="ルーク">ルーク</option>
+    <option value="イデア">イデア</option>
+    <option value="オルト">オルト</option>
+    <option value="マレウス">マレウス</option>
+    <option value="シルバー">シルバー</option>
+    <option value="セベク">セベク</option>
+    <option value="リリア">リリア</option>
+    <option value="グリム">グリム</option>
+    <option value="ロロ">ロロ</option>
+    <option value="クロウリー">クロウリー</option>
+    </select>
+    <br>
+    <select name="cbuddy1St3" id="cbuddy1St3">
+    <option value=""></option>
+    <option value="ATKUP(中)">ATKUP(中)</option>
+    <option value="ATKUP(小)">ATKUP(小)</option>
+    <option value="HPUP(中)">HPUP(中)</option>
+    <option value="HPUP(小)">HPUP(小)</option>
+    <option value="HP&ATKUP(小)">HP&ATKUP(小)</option>
+    <option value="HP&ATKUP(中)">HP&ATKUP(中)</option>
+    </select>
+    </td>
+        <td>
+    Lv.
+    <select name="cbuddy1Lv4" id="cbuddy1Lv4">
+    <option value="10">10</option>
+    <option value="9">9</option>
+    <option value="8">8</option>
+    <option value="7">7</option>
+    <option value="6">6</option>
+    <option value="5">5</option>
+    <option value="4">4</option>
+    <option value="3">3</option>
+    <option value="2">2</option>
+    <option value="1">1</option>
+    </select>
+    <select name="cbuddy1Name4" id="cbuddy1Name4">
+    <option value=""></option>
+    <option value="リドル">リドル</option>
+    <option value="エース">エース</option>
+    <option value="デュース">デュース</option>
+    <option value="ケイト">ケイト</option>
+    <option value="トレイ">トレイ</option>
+    <option value="レオナ">レオナ</option>
+    <option value="ジャック">ジャック</option>
+    <option value="ラギー">ラギー</option>
+    <option value="アズール">アズール</option>
+    <option value="ジェイド">ジェイド</option>
+    <option value="フロイド">フロイド</option>
+    <option value="カリム">カリム</option>
+    <option value="ジャミル">ジャミル</option>
+    <option value="ヴィル">ヴィル</option>
+    <option value="エペル">エペル</option>
+    <option value="ルーク">ルーク</option>
+    <option value="イデア">イデア</option>
+    <option value="オルト">オルト</option>
+    <option value="マレウス">マレウス</option>
+    <option value="シルバー">シルバー</option>
+    <option value="セベク">セベク</option>
+    <option value="リリア">リリア</option>
+    <option value="グリム">グリム</option>
+    <option value="ロロ">ロロ</option>
+    <option value="クロウリー">クロウリー</option>
+    </select>
+    <br>
+    <select name="cbuddy1St4" id="cbuddy1St4">
+    <option value=""></option>
+    <option value="ATKUP(中)">ATKUP(中)</option>
+    <option value="ATKUP(小)">ATKUP(小)</option>
+    <option value="HPUP(中)">HPUP(中)</option>
+    <option value="HPUP(小)">HPUP(小)</option>
+    <option value="HP&ATKUP(小)">HP&ATKUP(小)</option>
+    <option value="HP&ATKUP(中)">HP&ATKUP(中)</option>
+    </select>
+    </td>
+        <td>
+    Lv.
+    <select name="cbuddy1Lv5" id="cbuddy1Lv5">
+    <option value="10">10</option>
+    <option value="9">9</option>
+    <option value="8">8</option>
+    <option value="7">7</option>
+    <option value="6">6</option>
+    <option value="5">5</option>
+    <option value="4">4</option>
+    <option value="3">3</option>
+    <option value="2">2</option>
+    <option value="1">1</option>
+    </select>
+    <select name="cbuddy1Name5" id="cbuddy1Name5">
+    <option value=""></option>
+    <option value="リドル">リドル</option>
+    <option value="エース">エース</option>
+    <option value="デュース">デュース</option>
+    <option value="ケイト">ケイト</option>
+    <option value="トレイ">トレイ</option>
+    <option value="レオナ">レオナ</option>
+    <option value="ジャック">ジャック</option>
+    <option value="ラギー">ラギー</option>
+    <option value="アズール">アズール</option>
+    <option value="ジェイド">ジェイド</option>
+    <option value="フロイド">フロイド</option>
+    <option value="カリム">カリム</option>
+    <option value="ジャミル">ジャミル</option>
+    <option value="ヴィル">ヴィル</option>
+    <option value="エペル">エペル</option>
+    <option value="ルーク">ルーク</option>
+    <option value="イデア">イデア</option>
+    <option value="オルト">オルト</option>
+    <option value="マレウス">マレウス</option>
+    <option value="シルバー">シルバー</option>
+    <option value="セベク">セベク</option>
+    <option value="リリア">リリア</option>
+    <option value="グリム">グリム</option>
+    <option value="ロロ">ロロ</option>
+    <option value="クロウリー">クロウリー</option>
+    </select>
+    <br>
+    <select name="cbuddy1St5" id="cbuddy1St5">
+    <option value=""></option>
+    <option value="ATKUP(中)">ATKUP(中)</option>
+    <option value="ATKUP(小)">ATKUP(小)</option>
+    <option value="HPUP(中)">HPUP(中)</option>
+    <option value="HPUP(小)">HPUP(小)</option>
+    <option value="HP&ATKUP(小)">HP&ATKUP(小)</option>
+    <option value="HP&ATKUP(中)">HP&ATKUP(中)</option>
+    </select>
+    </td>
+</tr>
+<tr>
+    <td><label for="cbuddy21">バディ２</label>
+    </td>
+    <td>
+    Lv.
+    <select name="cbuddy2Lv1" id="cbuddy2Lv1">
+    <option value="10">10</option>
+    <option value="9">9</option>
+    <option value="8">8</option>
+    <option value="7">7</option>
+    <option value="6">6</option>
+    <option value="5">5</option>
+    <option value="4">4</option>
+    <option value="3">3</option>
+    <option value="2">2</option>
+    <option value="1">1</option>
+    </select>
+    <select name="cbuddy2Name1" id="cbuddy2Name1">
+    <option value=""></option>
+    <option value="リドル">リドル</option>
+    <option value="エース">エース</option>
+    <option value="デュース">デュース</option>
+    <option value="ケイト">ケイト</option>
+    <option value="トレイ">トレイ</option>
+    <option value="レオナ">レオナ</option>
+    <option value="ジャック">ジャック</option>
+    <option value="ラギー">ラギー</option>
+    <option value="アズール">アズール</option>
+    <option value="ジェイド">ジェイド</option>
+    <option value="フロイド">フロイド</option>
+    <option value="カリム">カリム</option>
+    <option value="ジャミル">ジャミル</option>
+    <option value="ヴィル">ヴィル</option>
+    <option value="エペル">エペル</option>
+    <option value="ルーク">ルーク</option>
+    <option value="イデア">イデア</option>
+    <option value="オルト">オルト</option>
+    <option value="マレウス">マレウス</option>
+    <option value="シルバー">シルバー</option>
+    <option value="セベク">セベク</option>
+    <option value="リリア">リリア</option>
+    <option value="グリム">グリム</option>
+    <option value="ロロ">ロロ</option>
+    <option value="クロウリー">クロウリー</option>
+    </select>
+    <br>
+    <select name="cbuddy2St1" id="cbuddy2St1">
+    <option value=""></option>
+    <option value="ATKUP(中)">ATKUP(中)</option>
+    <option value="ATKUP(小)">ATKUP(小)</option>
+    <option value="HPUP(中)">HPUP(中)</option>
+    <option value="HPUP(小)">HPUP(小)</option>
+    <option value="HP&ATKUP(小)">HP&ATKUP(小)</option>
+    <option value="HP&ATKUP(中)">HP&ATKUP(中)</option>
+    </select>
+    </td>
+    <td>
+    Lv.
+    <select name="cbuddy2Lv2" id="cbuddy2Lv2">
+    <option value="10">10</option>
+    <option value="9">9</option>
+    <option value="8">8</option>
+    <option value="7">7</option>
+    <option value="6">6</option>
+    <option value="5">5</option>
+    <option value="4">4</option>
+    <option value="3">3</option>
+    <option value="2">2</option>
+    <option value="1">1</option>
+    </select>
+    <select name="cbuddy2Name2" id="cbuddy2Name2">
+    <option value=""></option>
+    <option value="リドル">リドル</option>
+    <option value="エース">エース</option>
+    <option value="デュース">デュース</option>
+    <option value="ケイト">ケイト</option>
+    <option value="トレイ">トレイ</option>
+    <option value="レオナ">レオナ</option>
+    <option value="ジャック">ジャック</option>
+    <option value="ラギー">ラギー</option>
+    <option value="アズール">アズール</option>
+    <option value="ジェイド">ジェイド</option>
+    <option value="フロイド">フロイド</option>
+    <option value="カリム">カリム</option>
+    <option value="ジャミル">ジャミル</option>
+    <option value="ヴィル">ヴィル</option>
+    <option value="エペル">エペル</option>
+    <option value="ルーク">ルーク</option>
+    <option value="イデア">イデア</option>
+    <option value="オルト">オルト</option>
+    <option value="マレウス">マレウス</option>
+    <option value="シルバー">シルバー</option>
+    <option value="セベク">セベク</option>
+    <option value="リリア">リリア</option>
+    <option value="グリム">グリム</option>
+    <option value="ロロ">ロロ</option>
+    <option value="クロウリー">クロウリー</option>
+    </select>
+    <br>
+    <select name="cbuddy2St2" id="cbuddy2St2">
+    <option value=""></option>
+    <option value="ATKUP(中)">ATKUP(中)</option>
+    <option value="ATKUP(小)">ATKUP(小)</option>
+    <option value="HPUP(中)">HPUP(中)</option>
+    <option value="HPUP(小)">HPUP(小)</option>
+    <option value="HP&ATKUP(小)">HP&ATKUP(小)</option>
+    <option value="HP&ATKUP(中)">HP&ATKUP(中)</option>
+    </select>
+    </td>
+        <td>
+    Lv.
+    <select name="cbuddy2Lv3" id="cbuddy2Lv3">
+    <option value="10">10</option>
+    <option value="9">9</option>
+    <option value="8">8</option>
+    <option value="7">7</option>
+    <option value="6">6</option>
+    <option value="5">5</option>
+    <option value="4">4</option>
+    <option value="3">3</option>
+    <option value="2">2</option>
+    <option value="1">1</option>
+    </select>
+    <select name="cbuddy2Name3" id="cbuddy2Name3">
+    <option value=""></option>
+    <option value="リドル">リドル</option>
+    <option value="エース">エース</option>
+    <option value="デュース">デュース</option>
+    <option value="ケイト">ケイト</option>
+    <option value="トレイ">トレイ</option>
+    <option value="レオナ">レオナ</option>
+    <option value="ジャック">ジャック</option>
+    <option value="ラギー">ラギー</option>
+    <option value="アズール">アズール</option>
+    <option value="ジェイド">ジェイド</option>
+    <option value="フロイド">フロイド</option>
+    <option value="カリム">カリム</option>
+    <option value="ジャミル">ジャミル</option>
+    <option value="ヴィル">ヴィル</option>
+    <option value="エペル">エペル</option>
+    <option value="ルーク">ルーク</option>
+    <option value="イデア">イデア</option>
+    <option value="オルト">オルト</option>
+    <option value="マレウス">マレウス</option>
+    <option value="シルバー">シルバー</option>
+    <option value="セベク">セベク</option>
+    <option value="リリア">リリア</option>
+    <option value="グリム">グリム</option>
+    <option value="ロロ">ロロ</option>
+    <option value="クロウリー">クロウリー</option>
+    </select>
+    <br>
+    <select name="cbuddy2St3" id="cbuddy2St3">
+    <option value=""></option>
+    <option value="ATKUP(中)">ATKUP(中)</option>
+    <option value="ATKUP(小)">ATKUP(小)</option>
+    <option value="HPUP(中)">HPUP(中)</option>
+    <option value="HPUP(小)">HPUP(小)</option>
+    <option value="HP&ATKUP(小)">HP&ATKUP(小)</option>
+    <option value="HP&ATKUP(中)">HP&ATKUP(中)</option>
+    </select>
+    </td>
+        <td>
+    Lv.
+    <select name="cbuddy2Lv4" id="cbuddy2Lv4">
+    <option value="10">10</option>
+    <option value="9">9</option>
+    <option value="8">8</option>
+    <option value="7">7</option>
+    <option value="6">6</option>
+    <option value="5">5</option>
+    <option value="4">4</option>
+    <option value="3">3</option>
+    <option value="2">2</option>
+    <option value="1">1</option>
+    </select>
+    <select name="cbuddy2Name4" id="cbuddy2Name4">
+    <option value=""></option>
+    <option value="リドル">リドル</option>
+    <option value="エース">エース</option>
+    <option value="デュース">デュース</option>
+    <option value="ケイト">ケイト</option>
+    <option value="トレイ">トレイ</option>
+    <option value="レオナ">レオナ</option>
+    <option value="ジャック">ジャック</option>
+    <option value="ラギー">ラギー</option>
+    <option value="アズール">アズール</option>
+    <option value="ジェイド">ジェイド</option>
+    <option value="フロイド">フロイド</option>
+    <option value="カリム">カリム</option>
+    <option value="ジャミル">ジャミル</option>
+    <option value="ヴィル">ヴィル</option>
+    <option value="エペル">エペル</option>
+    <option value="ルーク">ルーク</option>
+    <option value="イデア">イデア</option>
+    <option value="オルト">オルト</option>
+    <option value="マレウス">マレウス</option>
+    <option value="シルバー">シルバー</option>
+    <option value="セベク">セベク</option>
+    <option value="リリア">リリア</option>
+    <option value="グリム">グリム</option>
+    <option value="ロロ">ロロ</option>
+    <option value="クロウリー">クロウリー</option>
+    </select>
+    <br>
+    <select name="cbuddy2St4" id="cbuddy2St4">
+    <option value=""></option>
+    <option value="ATKUP(中)">ATKUP(中)</option>
+    <option value="ATKUP(小)">ATKUP(小)</option>
+    <option value="HPUP(中)">HPUP(中)</option>
+    <option value="HPUP(小)">HPUP(小)</option>
+    <option value="HP&ATKUP(小)">HP&ATKUP(小)</option>
+    <option value="HP&ATKUP(中)">HP&ATKUP(中)</option>
+    </select>
+    </td>
+        <td>
+    Lv.
+    <select name="cbuddy2Lv5" id="cbuddy2Lv5">
+    <option value="10">10</option>
+    <option value="9">9</option>
+    <option value="8">8</option>
+    <option value="7">7</option>
+    <option value="6">6</option>
+    <option value="5">5</option>
+    <option value="4">4</option>
+    <option value="3">3</option>
+    <option value="2">2</option>
+    <option value="1">1</option>
+    </select>
+    <select name="cbuddy2Name5" id="cbuddy2Name5">
+    <option value=""></option>
+    <option value="リドル">リドル</option>
+    <option value="エース">エース</option>
+    <option value="デュース">デュース</option>
+    <option value="ケイト">ケイト</option>
+    <option value="トレイ">トレイ</option>
+    <option value="レオナ">レオナ</option>
+    <option value="ジャック">ジャック</option>
+    <option value="ラギー">ラギー</option>
+    <option value="アズール">アズール</option>
+    <option value="ジェイド">ジェイド</option>
+    <option value="フロイド">フロイド</option>
+    <option value="カリム">カリム</option>
+    <option value="ジャミル">ジャミル</option>
+    <option value="ヴィル">ヴィル</option>
+    <option value="エペル">エペル</option>
+    <option value="ルーク">ルーク</option>
+    <option value="イデア">イデア</option>
+    <option value="オルト">オルト</option>
+    <option value="マレウス">マレウス</option>
+    <option value="シルバー">シルバー</option>
+    <option value="セベク">セベク</option>
+    <option value="リリア">リリア</option>
+    <option value="グリム">グリム</option>
+    <option value="ロロ">ロロ</option>
+    <option value="クロウリー">クロウリー</option>
+    </select>
+    <br>
+    <select name="cbuddy2St5" id="cbuddy2St5">
+    <option value=""></option>
+    <option value="ATKUP(中)">ATKUP(中)</option>
+    <option value="ATKUP(小)">ATKUP(小)</option>
+    <option value="HPUP(中)">HPUP(中)</option>
+    <option value="HPUP(小)">HPUP(小)</option>
+    <option value="HP&ATKUP(小)">HP&ATKUP(小)</option>
+    <option value="HP&ATKUP(中)">HP&ATKUP(中)</option>
+    </select>
+    </td>
+</tr>
+<tr>
+    <td><label for="cbuddy31">バディ３</label>
+    </td>
+    <td>
+    Lv.
+    <select name="cbuddy3Lv1" id="cbuddy3Lv1">
+    <option value="10">10</option>
+    <option value="9">9</option>
+    <option value="8">8</option>
+    <option value="7">7</option>
+    <option value="6">6</option>
+    <option value="5">5</option>
+    <option value="4">4</option>
+    <option value="3">3</option>
+    <option value="2">2</option>
+    <option value="1">1</option>
+    </select>
+    <select name="cbuddy3Name1" id="cbuddy3Name1">
+    <option value=""></option>
+    <option value="リドル">リドル</option>
+    <option value="エース">エース</option>
+    <option value="デュース">デュース</option>
+    <option value="ケイト">ケイト</option>
+    <option value="トレイ">トレイ</option>
+    <option value="レオナ">レオナ</option>
+    <option value="ジャック">ジャック</option>
+    <option value="ラギー">ラギー</option>
+    <option value="アズール">アズール</option>
+    <option value="ジェイド">ジェイド</option>
+    <option value="フロイド">フロイド</option>
+    <option value="カリム">カリム</option>
+    <option value="ジャミル">ジャミル</option>
+    <option value="ヴィル">ヴィル</option>
+    <option value="エペル">エペル</option>
+    <option value="ルーク">ルーク</option>
+    <option value="イデア">イデア</option>
+    <option value="オルト">オルト</option>
+    <option value="マレウス">マレウス</option>
+    <option value="シルバー">シルバー</option>
+    <option value="セベク">セベク</option>
+    <option value="リリア">リリア</option>
+    <option value="グリム">グリム</option>
+    <option value="ロロ">ロロ</option>
+    <option value="クロウリー">クロウリー</option>
+    </select>
+    <br>
+    <select name="cbuddy3St1" id="cbuddy3St1">
+    <option value=""></option>
+    <option value="ATKUP(中)">ATKUP(中)</option>
+    <option value="ATKUP(小)">ATKUP(小)</option>
+    <option value="HPUP(中)">HPUP(中)</option>
+    <option value="HPUP(小)">HPUP(小)</option>
+    <option value="HP&ATKUP(小)">HP&ATKUP(小)</option>
+    <option value="HP&ATKUP(中)">HP&ATKUP(中)</option>
+    </select>
+    </td>
+    <td>
+    Lv.
+    <select name="cbuddy3Lv2" id="cbuddy3Lv2">
+    <option value="10">10</option>
+    <option value="9">9</option>
+    <option value="8">8</option>
+    <option value="7">7</option>
+    <option value="6">6</option>
+    <option value="5">5</option>
+    <option value="4">4</option>
+    <option value="3">3</option>
+    <option value="2">2</option>
+    <option value="1">1</option>
+    </select>
+    <select name="cbuddy3Name2" id="cbuddy3Name2">
+    <option value=""></option>
+    <option value="リドル">リドル</option>
+    <option value="エース">エース</option>
+    <option value="デュース">デュース</option>
+    <option value="ケイト">ケイト</option>
+    <option value="トレイ">トレイ</option>
+    <option value="レオナ">レオナ</option>
+    <option value="ジャック">ジャック</option>
+    <option value="ラギー">ラギー</option>
+    <option value="アズール">アズール</option>
+    <option value="ジェイド">ジェイド</option>
+    <option value="フロイド">フロイド</option>
+    <option value="カリム">カリム</option>
+    <option value="ジャミル">ジャミル</option>
+    <option value="ヴィル">ヴィル</option>
+    <option value="エペル">エペル</option>
+    <option value="ルーク">ルーク</option>
+    <option value="イデア">イデア</option>
+    <option value="オルト">オルト</option>
+    <option value="マレウス">マレウス</option>
+    <option value="シルバー">シルバー</option>
+    <option value="セベク">セベク</option>
+    <option value="リリア">リリア</option>
+    <option value="グリム">グリム</option>
+    <option value="ロロ">ロロ</option>
+    <option value="クロウリー">クロウリー</option>
+    </select>
+    <br>
+    <select name="cbuddy3St2" id="cbuddy3St2">
+    <option value=""></option>
+    <option value="ATKUP(中)">ATKUP(中)</option>
+    <option value="ATKUP(小)">ATKUP(小)</option>
+    <option value="HPUP(中)">HPUP(中)</option>
+    <option value="HPUP(小)">HPUP(小)</option>
+    <option value="HP&ATKUP(小)">HP&ATKUP(小)</option>
+    <option value="HP&ATKUP(中)">HP&ATKUP(中)</option>
+    </select>
+    </td>
+        <td>
+    Lv.
+    <select name="cbuddy3Lv3" id="cbuddy3Lv3">
+    <option value="10">10</option>
+    <option value="9">9</option>
+    <option value="8">8</option>
+    <option value="7">7</option>
+    <option value="6">6</option>
+    <option value="5">5</option>
+    <option value="4">4</option>
+    <option value="3">3</option>
+    <option value="2">2</option>
+    <option value="1">1</option>
+    </select>
+    <select name="cbuddy3Name3" id="cbuddy3Name3">
+    <option value=""></option>
+    <option value="リドル">リドル</option>
+    <option value="エース">エース</option>
+    <option value="デュース">デュース</option>
+    <option value="ケイト">ケイト</option>
+    <option value="トレイ">トレイ</option>
+    <option value="レオナ">レオナ</option>
+    <option value="ジャック">ジャック</option>
+    <option value="ラギー">ラギー</option>
+    <option value="アズール">アズール</option>
+    <option value="ジェイド">ジェイド</option>
+    <option value="フロイド">フロイド</option>
+    <option value="カリム">カリム</option>
+    <option value="ジャミル">ジャミル</option>
+    <option value="ヴィル">ヴィル</option>
+    <option value="エペル">エペル</option>
+    <option value="ルーク">ルーク</option>
+    <option value="イデア">イデア</option>
+    <option value="オルト">オルト</option>
+    <option value="マレウス">マレウス</option>
+    <option value="シルバー">シルバー</option>
+    <option value="セベク">セベク</option>
+    <option value="リリア">リリア</option>
+    <option value="グリム">グリム</option>
+    <option value="ロロ">ロロ</option>
+    <option value="クロウリー">クロウリー</option>
+    </select>
+    <br>
+    <select name="cbuddy3St3" id="cbuddy3St3">
+    <option value=""></option>
+    <option value="ATKUP(中)">ATKUP(中)</option>
+    <option value="ATKUP(小)">ATKUP(小)</option>
+    <option value="HPUP(中)">HPUP(中)</option>
+    <option value="HPUP(小)">HPUP(小)</option>
+    <option value="HP&ATKUP(小)">HP&ATKUP(小)</option>
+    <option value="HP&ATKUP(中)">HP&ATKUP(中)</option>
+    </select>
+    </td>
+        <td>
+    Lv.
+    <select name="cbuddy3Lv4" id="cbuddy3Lv4">
+    <option value="10">10</option>
+    <option value="9">9</option>
+    <option value="8">8</option>
+    <option value="7">7</option>
+    <option value="6">6</option>
+    <option value="5">5</option>
+    <option value="4">4</option>
+    <option value="3">3</option>
+    <option value="2">2</option>
+    <option value="1">1</option>
+    </select>
+    <select name="cbuddy3Name4" id="cbuddy3Name4">
+    <option value=""></option>
+    <option value="リドル">リドル</option>
+    <option value="エース">エース</option>
+    <option value="デュース">デュース</option>
+    <option value="ケイト">ケイト</option>
+    <option value="トレイ">トレイ</option>
+    <option value="レオナ">レオナ</option>
+    <option value="ジャック">ジャック</option>
+    <option value="ラギー">ラギー</option>
+    <option value="アズール">アズール</option>
+    <option value="ジェイド">ジェイド</option>
+    <option value="フロイド">フロイド</option>
+    <option value="カリム">カリム</option>
+    <option value="ジャミル">ジャミル</option>
+    <option value="ヴィル">ヴィル</option>
+    <option value="エペル">エペル</option>
+    <option value="ルーク">ルーク</option>
+    <option value="イデア">イデア</option>
+    <option value="オルト">オルト</option>
+    <option value="マレウス">マレウス</option>
+    <option value="シルバー">シルバー</option>
+    <option value="セベク">セベク</option>
+    <option value="リリア">リリア</option>
+    <option value="グリム">グリム</option>
+    <option value="ロロ">ロロ</option>
+    <option value="クロウリー">クロウリー</option>
+    </select>
+    <br>
+    <select name="cbuddy3St4" id="cbuddy3St4">
+    <option value=""></option>
+    <option value="ATKUP(中)">ATKUP(中)</option>
+    <option value="ATKUP(小)">ATKUP(小)</option>
+    <option value="HPUP(中)">HPUP(中)</option>
+    <option value="HPUP(小)">HPUP(小)</option>
+    <option value="HP&ATKUP(小)">HP&ATKUP(小)</option>
+    <option value="HP&ATKUP(中)">HP&ATKUP(中)</option>
+    </select>
+    </td>
+        <td>
+    Lv.
+    <select name="cbuddy3Lv5" id="cbuddy3Lv5">
+    <option value="10">10</option>
+    <option value="9">9</option>
+    <option value="8">8</option>
+    <option value="7">7</option>
+    <option value="6">6</option>
+    <option value="5">5</option>
+    <option value="4">4</option>
+    <option value="3">3</option>
+    <option value="2">2</option>
+    <option value="1">1</option>
+    </select>
+    <select name="cbuddy3Name5" id="cbuddy3Name5">
+    <option value=""></option>
+    <option value="リドル">リドル</option>
+    <option value="エース">エース</option>
+    <option value="デュース">デュース</option>
+    <option value="ケイト">ケイト</option>
+    <option value="トレイ">トレイ</option>
+    <option value="レオナ">レオナ</option>
+    <option value="ジャック">ジャック</option>
+    <option value="ラギー">ラギー</option>
+    <option value="アズール">アズール</option>
+    <option value="ジェイド">ジェイド</option>
+    <option value="フロイド">フロイド</option>
+    <option value="カリム">カリム</option>
+    <option value="ジャミル">ジャミル</option>
+    <option value="ヴィル">ヴィル</option>
+    <option value="エペル">エペル</option>
+    <option value="ルーク">ルーク</option>
+    <option value="イデア">イデア</option>
+    <option value="オルト">オルト</option>
+    <option value="マレウス">マレウス</option>
+    <option value="シルバー">シルバー</option>
+    <option value="セベク">セベク</option>
+    <option value="リリア">リリア</option>
+    <option value="グリム">グリム</option>
+    <option value="ロロ">ロロ</option>
+    <option value="クロウリー">クロウリー</option>
+    </select>
+    <br>
+    <select name="cbuddy3St5" id="cbuddy3St5">
+    <option value=""></option>
+    <option value="ATKUP(中)">ATKUP(中)</option>
+    <option value="ATKUP(小)">ATKUP(小)</option>
+    <option value="HPUP(中)">HPUP(中)</option>
+    <option value="HPUP(小)">HPUP(小)</option>
+    <option value="HP&ATKUP(小)">HP&ATKUP(小)</option>
+    <option value="HP&ATKUP(中)">HP&ATKUP(中)</option>
+    </select>
+    </td>
+    <tr>
+    <td><label for="cduo">デュオ</label></td>
+    <td id="cduo1"></td>
+    <td id="cduo2"></td>
+    <td id="cduo3"></td>
+    <td id="cduo4"></td>
+    <td id="cduo5"></td>
+</tr>
+<tr>
+    <td>
+    特筆事項
+    </td>
+    <td id="cetc1"></td>
+    <td id="cetc2"></td>
+    <td id="cetc3"></td>
+    <td id="cetc4"></td>
+    <td id="cetc5"></td>
+</tr>
+</table>
+<table class="hide">
+<tr>
+    <td>
+    HP（バディ）
+    </td>
+    <td><input type="number" id="cHPbuddy1"></td>
+    <td><input type="number" id="cHPbuddy2"></td>
+    <td><input type="number" id="cHPbuddy3"></td>
+    <td><input type="number" id="cHPbuddy4"></td>
+    <td><input type="number" id="cHPbuddy5"></td>
+</tr>
+<tr>
+    <td>
+    HP（回復）
+    </td>
+    <td><input type="number" id="cHPheal1"></td>
+    <td><input type="number" id="cHPheal2"></td>
+    <td><input type="number" id="cHPheal3"></td>
+    <td><input type="number" id="cHPheal4"></td>
+    <td><input type="number" id="cHPheal5"></td>
+</tr>
+<tr>
+    <td>
+    ATK（バディ）
+    </td>
+    <td><input type="number" id="cATKbuddy1"></td>
+    <td><input type="number" id="cATKbuddy2"></td>
+    <td><input type="number" id="cATKbuddy3"></td>
+    <td><input type="number" id="cATKbuddy4"></td>
+    <td><input type="number" id="cATKbuddy5"></td>
+</tr>
+<tr>
+    <td>
+    magic1hi
+    </td>
+    <td><input type="number" id="cM1HiDamage1"></td>
+    <td><input type="number" id="cM1HiDamage2"></td>
+    <td><input type="number" id="cM1HiDamage3"></td>
+    <td><input type="number" id="cM1HiDamage4"></td>
+    <td><input type="number" id="cM1HiDamage5"></td>
+</tr>
+<tr>
+    <td>
+    magic1ki
+    </td>
+    <td><input type="number" id="cM1KiDamage1"></td>
+    <td><input type="number" id="cM1KiDamage2"></td>
+    <td><input type="number" id="cM1KiDamage3"></td>
+    <td><input type="number" id="cM1KiDamage4"></td>
+    <td><input type="number" id="cM1KiDamage5"></td>
+</tr>
+<tr>
+    <td>
+    magic1mi
+    </td>
+    <td><input type="number" id="cM1MizuDamage1"></td>
+    <td><input type="number" id="cM1MizuDamage2"></td>
+    <td><input type="number" id="cM1MizuDamage3"></td>
+    <td><input type="number" id="cM1MizuDamage4"></td>
+    <td><input type="number" id="cM1MizuDamage5"></td>
+</tr>
+<tr>
+    <td>
+    magic1mu
+    </td>
+    <td><input type="number" id="cM1MuDamage1"></td>
+    <td><input type="number" id="cM1MuDamage2"></td>
+    <td><input type="number" id="cM1MuDamage3"></td>
+    <td><input type="number" id="cM1MuDamage4"></td>
+    <td><input type="number" id="cM1MuDamage5"></td>
+</tr>
+<tr>
+    <td>
+    magic2hi
+    </td>
+    <td><input type="number" id="cM2HiDamage1"></td>
+    <td><input type="number" id="cM2HiDamage2"></td>
+    <td><input type="number" id="cM2HiDamage3"></td>
+    <td><input type="number" id="cM2HiDamage4"></td>
+    <td><input type="number" id="cM2HiDamage5"></td>
+</tr>
+<tr>
+    <td>
+    magic2ki
+    </td>
+    <td><input type="number" id="cM2KiDamage1"></td>
+    <td><input type="number" id="cM2KiDamage2"></td>
+    <td><input type="number" id="cM2KiDamage3"></td>
+    <td><input type="number" id="cM2KiDamage4"></td>
+    <td><input type="number" id="cM2KiDamage5"></td>
+</tr>
+<tr>
+    <td>
+    magic2mi
+    </td>
+    <td><input type="number" id="cM2MizuDamage1"></td>
+    <td><input type="number" id="cM2MizuDamage2"></td>
+    <td><input type="number" id="cM2MizuDamage3"></td>
+    <td><input type="number" id="cM2MizuDamage4"></td>
+    <td><input type="number" id="cM2MizuDamage5"></td>
+</tr>
+<tr>
+    <td>
+    magic2mu
+    </td>
+    <td><input type="number" id="cM2MuDamage1"></td>
+    <td><input type="number" id="cM2MuDamage2"></td>
+    <td><input type="number" id="cM2MuDamage3"></td>
+    <td><input type="number" id="cM2MuDamage4"></td>
+    <td><input type="number" id="cM2MuDamage5"></td>
+</tr>
+<tr>
+    <td>
+    magic3hi
+    </td>
+    <td><input type="number" id="cM3HiDamage1"></td>
+    <td><input type="number" id="cM3HiDamage2"></td>
+    <td><input type="number" id="cM3HiDamage3"></td>
+    <td><input type="number" id="cM3HiDamage4"></td>
+    <td><input type="number" id="cM3HiDamage5"></td>
+</tr>
+<tr>
+    <td>
+    magic3ki
+    </td>
+    <td><input type="number" id="cM3KiDamage1"></td>
+    <td><input type="number" id="cM3KiDamage2"></td>
+    <td><input type="number" id="cM3KiDamage3"></td>
+    <td><input type="number" id="cM3KiDamage4"></td>
+    <td><input type="number" id="cM3KiDamage5"></td>
+</tr>
+<tr>
+    <td>
+    magic3mi
+    </td>
+    <td><input type="number" id="cM3MizuDamage1"></td>
+    <td><input type="number" id="cM3MizuDamage2"></td>
+    <td><input type="number" id="cM3MizuDamage3"></td>
+    <td><input type="number" id="cM3MizuDamage4"></td>
+    <td><input type="number" id="cM3MizuDamage5"></td>
+</tr>
+<tr>
+    <td>
+    magic3mu
+    </td>
+    <td><input type="number" id="cM3MuDamage1"></td>
+    <td><input type="number" id="cM3MuDamage2"></td>
+    <td><input type="number" id="cM3MuDamage3"></td>
+    <td><input type="number" id="cM3MuDamage4"></td>
+    <td><input type="number" id="cM3MuDamage5"></td>
+</tr>
+</div>
+</table>
+</form>
+
+
+</body>
+<script type="text/javascript" src="twstsimu.js"></script>
+</html>
