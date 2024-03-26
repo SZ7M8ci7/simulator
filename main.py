@@ -485,6 +485,7 @@ if __name__ == '__main__':
                 count+=1
             except Exception as e:
                 print(e,cur_url)
+    print(output)
     with open("charadata.tsv", "w", encoding='UTF-8') as f:
         for out in output:
             f.write(f"{out}\n")
