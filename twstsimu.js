@@ -358,6 +358,9 @@ function changeImg(imgsrc){
     var imgId = "img" + modalId;
     document.getElementById(imgId).src = 'img/' + imgsrc + ".png";
     document.getElementById(imgId).value = 'img/' + imgsrc + ".png";
+    var totuRadioId = "ctotu" + modalId;
+    document.getElementById(totuRadioId).checked = true;
+
     var atk = 0;
         for (let i=0; i<data.length; i++){
             if(data[i].name == imgsrc) {
