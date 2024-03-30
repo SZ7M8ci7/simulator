@@ -185,6 +185,7 @@ def checkMagicBuf(str):
     if '属性ダメージUP(極大)' in str:
         buf = '属性ダメUP(極大)'
     return buf
+
 def makeicon():
     cosdict = getDict('cosdict.txt')
     namedict = getDict('namedict.txt')
@@ -192,10 +193,7 @@ def makeicon():
     files = glob.glob("get/*")
     out_files = glob.glob("img/*")
     out_files = [file.split('/')[-1] for file in out_files]
-    print(files)
-    print()
-    print()
-    print(out_files)
+
     for file in files:
         try:
             filename = file.split('/')[-1]
@@ -226,8 +224,6 @@ def makeicon():
                     add_cos = str(random.randint(1,100000))
                 cosdict[cos] = add_cos.replace('\'','').replace('"','')
             output_filename = namedict[name] + '_' + cosdict[cos]
-            if output_filename+'.png' in out_files:
-                continue
 
             max_magic = 2
             if rank == 'SSR':
@@ -252,6 +248,10 @@ def makeicon():
 
             # 合成した画像を保存する
             background_image.save('img/' + output_filename+'.png')
+
+            if output_filename+'.png' in out_files:
+                continue
+
             input_file = 'index.html'
 
             with open(input_file, 'r',encoding='UTF-8') as file:
