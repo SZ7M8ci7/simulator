@@ -47,3 +47,4 @@
 レイブンジャケット:raven_jacket
 常夜の甲冑:armor_of_eternal_night
 ニューイヤー・ギア:new_year_gear
+リュクスクチュール:luxe_couture
