@@ -704,7 +704,7 @@ function calc(){
 
         var M3kou2 = Number(M3magicRatio) * Number(M3muAdjust) + Number(M3dmgbuf1add) + Number(M3dmgbuf2add);
         
-        var M3rengeki = 1;
+        var M3rengeki = 0;
         var M3magicpow = document.getElementById("cM3pow" + i).value;
         if (M3magicpow == "連撃(弱)" || M3magicpow == "連撃(強)"){
             M3rengeki = 1.8;
