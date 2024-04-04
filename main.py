@@ -48,6 +48,8 @@ def getCharaDict(path,namedict,cosdict):
             cosdict[chara[2]] = GoogleTranslator(source='ja',target='en').translate(chara[2]).replace(' ','_').replace('\'','').replace('"','')
         outdict['name'] = namedict[chara[1]] + '_' + cosdict[chara[2]]
         outdict['chara'] = chara[1]
+        outdict['costume'] = chara[2]
+        outdict['attr'] = chara[4]
         outdict['base_hp'] = chara[5]
         outdict['base_atk'] = chara[6]
         outdict['hp'] = chara[7]
