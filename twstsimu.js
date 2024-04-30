@@ -892,14 +892,20 @@ function calc(){
     document.getElementById("totalDamage4").innerHTML  = damage4.toFixed();
     document.getElementById("totalDamage3").innerHTML  = damage3.toFixed();
 
+    document.getElementById("extrascore1T").innerHTML  = (score[0] * 0.216).toFixed();
+    document.getElementById("extrascore2T").innerHTML  = (score[1] * 0.207).toFixed();
+    document.getElementById("extrascore3T").innerHTML  = (score[2] * 0.198).toFixed();
+    document.getElementById("extrascore4T").innerHTML  = (score[3] * 0.189).toFixed();
+    document.getElementById("extrascore5T").innerHTML  = (score[4] * 0.15).toFixed();
+
     document.getElementById("hardscore1T").innerHTML  = (score[0] * 0.1728).toFixed();
     document.getElementById("hardscore2T").innerHTML  = (score[1] * 0.1656).toFixed();
     document.getElementById("hardscore3T").innerHTML  = (score[2] * 0.1584).toFixed();
     document.getElementById("hardscore4T").innerHTML  = (score[3] * 0.1512).toFixed();
     document.getElementById("hardscore5T").innerHTML  = (score[4] * 0.12).toFixed();
 
-    document.getElementById("normalscore2T").innerHTML  = (score[1] * 0.144).toFixed();
-    document.getElementById("normalscore1T").innerHTML  = (score[0] * 0.138).toFixed();
+    document.getElementById("normalscore2T").innerHTML  = (score[0] * 0.144).toFixed();
+    document.getElementById("normalscore1T").innerHTML  = (score[1] * 0.138).toFixed();
     document.getElementById("normalscore3T").innerHTML  = (score[2] * 0.132).toFixed();
     document.getElementById("normalscore4T").innerHTML  = (score[3] * 0.126).toFixed();
     document.getElementById("normalscore5T").innerHTML  = (score[4] * 0.10).toFixed();

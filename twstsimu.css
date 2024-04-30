@@ -173,7 +173,7 @@ p {
   overflow: hidden;
 }
 .ac_menu input[type="checkbox"].on-off:checked + div{
-  height: 120px;
+  height: 150px;
 }
 #loading {
 	position: fixed;
