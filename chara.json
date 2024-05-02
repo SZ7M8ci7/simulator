@@ -30,7 +30,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "azul_birth",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/アズール【おめかしバースデー】"
     },
     {
         "atk": "6567",
@@ -63,7 +64,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "azul_tmu",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/アズール【ツムステ】"
     },
     {
         "atk": "5387",
@@ -96,7 +98,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "azul_beans",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/アズール【ビーンズ・カモ】"
     },
     {
         "atk": "6185",
@@ -129,7 +132,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "azul_birth3",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/アズール【ブルームバースデー】"
     },
     {
         "atk": "5578",
@@ -162,7 +166,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "azul_birth4",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/アズール【プラチナジャケット】"
     },
     {
         "atk": "5837",
@@ -195,7 +200,8 @@
         "magic3heal": "継続回復(小)",
         "magic3pow": "連撃(弱)",
         "name": "azul_masquerade",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/アズール【マスカレードドレス】"
     },
     {
         "atk": "6776",
@@ -228,7 +234,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "azul_birth2",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/アズール【ユニオンバースデー】"
     },
     {
         "atk": "6030",
@@ -261,7 +268,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "azul_dormitory",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/アズール【寮服】"
     },
     {
         "atk": "6640",
@@ -294,7 +302,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "idia_birth",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/イデア【おめかしバースデー】"
     },
     {
         "atk": "5432",
@@ -327,7 +336,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "idia_groom",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/イデア【なりきり花婿】"
     },
     {
         "atk": "6665",
@@ -360,7 +370,8 @@
         "magic3heal": "回復(小)",
         "magic3pow": "連撃(弱)",
         "name": "idia_birth3",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/イデア【ブルームバースデー】"
     },
     {
         "atk": "6063",
@@ -393,7 +404,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "idia_birth4",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/イデア【プラチナジャケット】"
     },
     {
         "atk": "5555",
@@ -426,7 +438,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "idia_masquerade",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/イデア【マスカレードドレス】"
     },
     {
         "atk": "6326",
@@ -459,7 +472,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "idia_birth2",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/イデア【ユニオンバースデー】"
     },
     {
         "atk": "4478",
@@ -492,7 +506,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "idia_dormitory",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/イデア【寮服】"
     },
     {
         "atk": "5926",
@@ -525,7 +540,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "epel_birth",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/エペル【おめかしバースデー】"
     },
     {
         "atk": "7054",
@@ -558,7 +574,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "epel_apple",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/エペル【アップル・ボア】"
     },
     {
         "atk": "6742",
@@ -591,7 +608,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "epel_club",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/エペル【クラブ・ウェア】"
     },
     {
         "atk": "5328",
@@ -624,7 +642,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "epel_birth3",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/エペル【ブルームバースデー】"
     },
     {
         "atk": "5401",
@@ -657,7 +676,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "epel_birth2",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/エペル【ユニオンバースデー】"
     },
     {
         "atk": "4591",
@@ -690,7 +710,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "epel_dormitory",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/エペル【寮服】"
     },
     {
         "atk": "5070",
@@ -723,7 +744,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "ace_birth",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/エース【おめかしバースデー】"
     },
     {
         "atk": "7574",
@@ -756,7 +778,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "ace_groom",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/エース【なりきり花婿】"
     },
     {
         "atk": "7750",
@@ -789,7 +812,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "ace_club",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/エース【クラブ・ウェア】"
     },
     {
         "atk": "5940",
@@ -822,7 +846,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "ace_birth3",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/エース【ブルームバースデー】"
     },
     {
         "atk": "4566",
@@ -855,7 +880,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "ace_birth4",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/エース【プラチナジャケット】"
     },
     {
         "atk": "6072",
@@ -888,7 +914,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "ace_playful_dress",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/エース【プレイフル・ドレス】"
     },
     {
         "atk": "6222",
@@ -921,7 +948,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "ace_birth2",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/エース【ユニオンバースデー】"
     },
     {
         "atk": "6738",
@@ -954,7 +982,8 @@
         "magic3heal": "継続回復(小)",
         "magic3pow": "連撃(弱)",
         "name": "ace_dormitory",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/エース【寮服】"
     },
     {
         "atk": "5097",
@@ -987,7 +1016,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "ortho_birth",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/オルト【おめかし・ギア】"
     },
     {
         "atk": "6815",
@@ -1020,7 +1050,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "ortho_dormitory",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/オルト【イグニハイド・ギア】"
     },
     {
         "atk": "5591",
@@ -1053,7 +1084,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "ortho_cerberus_gear",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/オルト【ケルベロス・ギア】"
     },
     {
         "atk": "6396",
@@ -1086,7 +1118,8 @@
         "magic3heal": "継続回復(小)",
         "magic3pow": "連撃(弱)",
         "name": "ortho_gara",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/オルト【フェアリー・ギア】"
     },
     {
         "atk": "6528",
@@ -1119,7 +1152,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "ortho_bloom_gear",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/オルト【ブルーム・ギア】"
     },
     {
         "atk": "5120",
@@ -1152,7 +1186,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "ortho_playful_gear",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/オルト【プレイフル・ギア】"
     },
     {
         "atk": "5219",
@@ -1185,7 +1220,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "ortho_birth2",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/オルト【ユニオン・ギア】"
     },
     {
         "atk": "5523",
@@ -1218,7 +1254,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "kalim_birth",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/カリム【おめかしバースデー】"
     },
     {
         "atk": "5446",
@@ -1251,7 +1288,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "kalim_club",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/カリム【クラブ・ウェア】"
     },
     {
         "atk": "4326",
@@ -1284,7 +1322,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "kalim_tmu",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/カリム【ツムステ】"
     },
     {
         "atk": "6152",
@@ -1317,7 +1356,8 @@
         "magic3heal": "継続回復(小)",
         "magic3pow": "連撃(弱)",
         "name": "kalim_birth3",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/カリム【ブルームバースデー】"
     },
     {
         "atk": "7175",
@@ -1350,7 +1390,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "kalim_playful_dress",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/カリム【プレイフル・ドレス】"
     },
     {
         "atk": "6879",
@@ -1383,7 +1424,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "kalim_birth2",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/カリム【ユニオンバースデー】"
     },
     {
         "atk": "6345",
@@ -1416,7 +1458,8 @@
         "magic3heal": "回復(小)",
         "magic3pow": "連撃(弱)",
         "name": "kalim_dormitory",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/カリム【寮服】"
     },
     {
         "atk": "5907",
@@ -1449,7 +1492,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "kalim_newyear",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/カリム【新春の衣】"
     },
     {
         "atk": "6345",
@@ -1482,7 +1526,8 @@
         "magic3heal": "継続回復(小)",
         "magic3pow": "連撃(弱)",
         "name": "crowley_raven_jacket",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/クロウリー【レイブンジャケット】"
     },
     {
         "atk": "6100",
@@ -1515,7 +1560,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "grim_birth4",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/グリム【プラチナジャケット】"
     },
     {
         "atk": "6601",
@@ -1548,7 +1594,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "cater_birth",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/ケイト【おめかしバースデー】"
     },
     {
         "atk": "7527",
@@ -1581,7 +1628,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "cater_club",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/ケイト【クラブ・ウェア】"
     },
     {
         "atk": "5491",
@@ -1614,7 +1662,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "cater_scary",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/ケイト【スケアリー・ドレス】"
     },
     {
         "atk": "5038",
@@ -1647,7 +1696,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "cater_birth3",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/ケイト【ブルームバースデー】"
     },
     {
         "atk": "6903",
@@ -1680,7 +1730,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "cater_birth4",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/ケイト【プラチナジャケット】"
     },
     {
         "atk": "5978",
@@ -1713,7 +1764,8 @@
         "magic3heal": "回復(小)",
         "magic3pow": "連撃(弱)",
         "name": "cater_birth2",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/ケイト【ユニオンバースデー】"
     },
     {
         "atk": "6133",
@@ -1746,7 +1798,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "cater_dormitory",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/ケイト【寮服】"
     },
     {
         "atk": "5568",
@@ -1779,7 +1832,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "silver_birth",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/シルバー【おめかしバースデー】"
     },
     {
         "atk": "6377",
@@ -1812,7 +1866,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "silver_scary",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/シルバー【スケアリー・ドレス】"
     },
     {
         "atk": "7015",
@@ -1845,7 +1900,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "silver_birth3",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/シルバー【ブルームバースデー】"
     },
     {
         "atk": "6635",
@@ -1878,7 +1934,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "silver_birth2",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/シルバー【ユニオンバースデー】"
     },
     {
         "atk": "4339",
@@ -1911,7 +1968,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "silver_dormitory",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/シルバー【寮服】"
     },
     {
         "atk": "6081",
@@ -1944,7 +2002,8 @@
         "magic3heal": "回復(小)",
         "magic3pow": "連撃(弱)",
         "name": "jade_birth",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/ジェイド【おめかしバースデー】"
     },
     {
         "atk": "6796",
@@ -1977,7 +2036,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "jade_scary",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/ジェイド【スケアリー・ドレス】"
     },
     {
         "atk": "6898",
@@ -2010,7 +2070,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "jade_birth3",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/ジェイド【ブルームバースデー】"
     },
     {
         "atk": "6011",
@@ -2043,7 +2104,8 @@
         "magic3heal": "回復(極小)",
         "magic3pow": "連撃(弱)",
         "name": "jade_birth4",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/ジェイド【プラチナジャケット】"
     },
     {
         "atk": "6307",
@@ -2076,7 +2138,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "jade_birth2",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/ジェイド【ユニオンバースデー】"
     },
     {
         "atk": "5464",
@@ -2109,7 +2172,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "jade_dormitory",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/ジェイド【寮服】"
     },
     {
         "atk": "5959",
@@ -2142,7 +2206,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "jack_birth",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/ジャック【おめかしバースデー】"
     },
     {
         "atk": "6401",
@@ -2175,7 +2240,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "jack_club",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/ジャック【クラブ・ウェア】"
     },
     {
         "atk": "4503",
@@ -2208,7 +2274,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "jack_birth3",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/ジャック【ブルームバースデー】"
     },
     {
         "atk": "5582",
@@ -2241,7 +2308,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "jack_birth4",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/ジャック【プラチナジャケット】"
     },
     {
         "atk": "5818",
@@ -2274,7 +2342,8 @@
         "magic3heal": "継続回復(小)",
         "magic3pow": "連撃(弱)",
         "name": "jack_port",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/ジャック【ポート・ウェア】"
     },
     {
         "atk": "5355",
@@ -2307,7 +2376,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "jack_birth2",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/ジャック【ユニオンバースデー】"
     },
     {
         "atk": "6995",
@@ -2340,7 +2410,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "jack_dormitory",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/ジャック【寮服】"
     },
     {
         "atk": "6415",
@@ -2373,7 +2444,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "jamil_birth",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/ジャミル【おめかしバースデー】"
     },
     {
         "atk": "7506",
@@ -2406,7 +2478,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "jamil_apple",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/ジャミル【アップル・ボア】"
     },
     {
         "atk": "6236",
@@ -2439,7 +2512,8 @@
         "magic3heal": "回復(小)",
         "magic3pow": "連撃(弱)",
         "name": "jamil_club",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/ジャミル【クラブ・ウェア】"
     },
     {
         "atk": "5115",
@@ -2472,7 +2546,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "jamil_birth3",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/ジャミル【ブルームバースデー】"
     },
     {
         "atk": "7151",
@@ -2505,7 +2580,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "jamil_birth4",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/ジャミル【プラチナジャケット】"
     },
     {
         "atk": "4377",
@@ -2538,7 +2614,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "jamil_milk",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/ジャミル【ヤーサミーナシルク】"
     },
     {
         "atk": "6543",
@@ -2571,7 +2648,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "jamil_birth2",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/ジャミル【ユニオンバースデー】"
     },
     {
         "atk": "6859",
@@ -2604,7 +2682,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "jamil_dormitory",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/ジャミル【寮服】"
     },
     {
         "atk": "6293",
@@ -2637,7 +2716,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "sebek_birth",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/セベク【おめかしバースデー】"
     },
     {
         "atk": "5478",
@@ -2670,7 +2750,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "sebek_birth3",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/セベク【ブルームバースデー】"
     },
     {
         "atk": "7112",
@@ -2703,7 +2784,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "sebek_birth4",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/セベク【プラチナジャケット】"
     },
     {
         "atk": "6699",
@@ -2736,7 +2818,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "sebek_birth2",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/セベク【ユニオンバースデー】"
     },
     {
         "atk": "6937",
@@ -2769,7 +2852,8 @@
         "magic3heal": "継続回復(小)",
         "magic3pow": "連撃(弱)",
         "name": "sebek_dormitory",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/セベク【寮服】"
     },
     {
         "atk": "7093",
@@ -2802,7 +2886,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "sebek_armor_of_eternal_night",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/セベク【常夜の甲冑】"
     },
     {
         "atk": "5129",
@@ -2835,7 +2920,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "sebek_newyear",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/セベク【新春の衣】"
     },
     {
         "atk": "6718",
@@ -2868,7 +2954,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "deuce_birth",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/デュース【おめかしバースデー】"
     },
     {
         "atk": "5510",
@@ -2901,7 +2988,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "deuce_club",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/デュース【クラブ・ウェア】"
     },
     {
         "atk": "4541",
@@ -2934,7 +3022,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "deuce_birth3",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/デュース【ブルームバースデー】"
     },
     {
         "atk": "6504",
@@ -2967,7 +3056,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "deuce_birth2",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/デュース【ユニオンバースデー】"
     },
     {
         "atk": "7020",
@@ -3000,7 +3090,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "deuce_Rabbit_wear",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/デュース【ラビット・ウェア】"
     },
     {
         "atk": "5142",
@@ -3033,7 +3124,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "deuce_dormitory",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/デュース【寮服】"
     },
     {
         "atk": "5889",
@@ -3066,7 +3158,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "deuce_star",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/デュース【星送りの衣】"
     },
     {
         "atk": "6523",
@@ -3099,7 +3192,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "trey_birth",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/トレイ【おめかしバースデー】"
     },
     {
         "atk": "7932",
@@ -3132,7 +3226,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "trey_outdoor",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/トレイ【アウトドア・ウェア】"
     },
     {
         "atk": "6330",
@@ -3165,7 +3260,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "trey_club",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/トレイ【クラブ・ウェア】"
     },
     {
         "atk": "5251",
@@ -3198,7 +3294,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "trey_birth3",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/トレイ【ブルームバースデー】"
     },
     {
         "atk": "4587",
@@ -3231,7 +3328,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "trey_birth4",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/トレイ【プラチナジャケット】"
     },
     {
         "atk": "5804",
@@ -3264,7 +3362,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "trey_birth2",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/トレイ【ユニオンバースデー】"
     },
     {
         "atk": "4528",
@@ -3297,7 +3396,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "trey_dormitory",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/トレイ【寮服】"
     },
     {
         "atk": "7667",
@@ -3330,7 +3430,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "trey_newyear",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/トレイ【新春の衣】"
     },
     {
         "atk": "5419",
@@ -3363,7 +3464,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "floyd_birth",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/フロイド【おめかしバースデー】"
     },
     {
         "atk": "4612",
@@ -3396,7 +3498,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "floyd_club",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/フロイド【クラブ・ウェア】"
     },
     {
         "atk": "6548",
@@ -3429,7 +3532,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "floyd_Swiss_Wear",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/フロイド【スイスイ・ウェア】"
     },
     {
         "atk": "6114",
@@ -3462,7 +3566,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "floyd_beans",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/フロイド【ビーンズ・カモ】"
     },
     {
         "atk": "6485",
@@ -3495,7 +3600,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "floyd_birth3",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/フロイド【ブルームバースデー】"
     },
     {
         "atk": "5743",
@@ -3528,7 +3634,8 @@
         "magic3heal": "回復(極小)",
         "magic3pow": "連撃(弱)",
         "name": "floyd_birth4",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/フロイド【プラチナジャケット】"
     },
     {
         "atk": "6660",
@@ -3561,7 +3668,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "floyd_birth2",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/フロイド【ユニオンバースデー】"
     },
     {
         "atk": "6582",
@@ -3594,7 +3702,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "floyd_dormitory",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/フロイド【寮服】"
     },
     {
         "atk": "6757",
@@ -3627,7 +3736,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "malleus_birth",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/マレウス【おめかしバースデー】"
     },
     {
         "atk": "7171",
@@ -3660,7 +3770,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "malleus_birth3",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/マレウス【ブルームバースデー】"
     },
     {
         "atk": "5455",
@@ -3693,7 +3804,8 @@
         "magic3heal": "回復(小)",
         "magic3pow": "連撃(弱)",
         "name": "malleus_birth4",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/マレウス【プラチナジャケット】"
     },
     {
         "atk": "5083",
@@ -3726,7 +3838,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "malleus_masquerade",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/マレウス【マスカレードドレス】"
     },
     {
         "atk": "6274",
@@ -3759,7 +3872,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "malleus_birth2",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/マレウス【ユニオンバースデー】"
     },
     {
         "atk": "7439",
@@ -3792,7 +3906,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "malleus_dormitory",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/マレウス【寮服】"
     },
     {
         "atk": "6171",
@@ -3825,7 +3940,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "ruggie_birth",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/ラギー【おめかしバースデー】"
     },
     {
         "atk": "7460",
@@ -3858,7 +3974,8 @@
         "magic3heal": "回復(小)",
         "magic3pow": "連撃(弱)",
         "name": "ruggie_outdoor",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/ラギー【アウトドア・ウェア】"
     },
     {
         "atk": "5256",
@@ -3891,7 +4008,8 @@
         "magic3heal": "回復(極小)",
         "magic3pow": "連撃(弱)",
         "name": "ruggie_club",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/ラギー【クラブ・ウェア】"
     },
     {
         "atk": "5278",
@@ -3924,7 +4042,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "ruggie_birth3",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/ラギー【ブルームバースデー】"
     },
     {
         "atk": "6864",
@@ -3957,7 +4076,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "ruggie_birth4",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/ラギー【プラチナジャケット】"
     },
     {
         "atk": "6840",
@@ -3990,7 +4110,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "ruggie_birth2",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/ラギー【ユニオンバースデー】"
     },
     {
         "atk": "5541",
@@ -4023,7 +4144,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "ruggie_dormitory",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/ラギー【寮服】"
     },
     {
         "atk": "6956",
@@ -4056,7 +4178,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "ruggie_newyear",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/ラギー【新春の衣】"
     },
     {
         "atk": "6048",
@@ -4089,7 +4212,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "riddle_birth",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/リドル【おめかしバースデー】"
     },
     {
         "atk": "6562",
@@ -4122,7 +4246,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "riddle_scary",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/リドル【スケアリー・ドレス】"
     },
     {
         "atk": "5188",
@@ -4155,7 +4280,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "riddle_tmu",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/リドル【ツムステ】"
     },
     {
         "atk": "5870",
@@ -4188,7 +4314,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "riddle_birth3",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/リドル【ブルームバースデー】"
     },
     {
         "atk": "6359",
@@ -4221,7 +4348,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "riddle_birth2",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/リドル【ユニオンバースデー】"
     },
     {
         "atk": "7979",
@@ -4254,7 +4382,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "riddle_dormitory",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/リドル【寮服】"
     },
     {
         "atk": "5856",
@@ -4287,7 +4416,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "lilia_birth",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/リリア【おめかしバースデー】"
     },
     {
         "atk": "4314",
@@ -4320,7 +4450,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "lilia_club",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/リリア【クラブ・ウェア】"
     },
     {
         "atk": "5333",
@@ -4353,7 +4484,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "lilia_Swiss_Wear",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/リリア【スイスイ・ウェア】"
     },
     {
         "atk": "6976",
@@ -4386,7 +4518,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "lilia_birth3",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/リリア【ブルームバースデー】"
     },
     {
         "atk": "7034",
@@ -4419,7 +4552,8 @@
         "magic3heal": "回復(極小)",
         "magic3pow": "連撃(弱)",
         "name": "lilia_birth4",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/リリア【プラチナジャケット】"
     },
     {
         "atk": "5160",
@@ -4452,7 +4586,8 @@
         "magic3heal": "回復(小)",
         "magic3pow": "連撃(弱)",
         "name": "lilia_birth2",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/リリア【ユニオンバースデー】"
     },
     {
         "atk": "7818",
@@ -4485,7 +4620,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "lilia_Right_Generals_Armor",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/リリア【右大将の甲冑】"
     },
     {
         "atk": "5296",
@@ -4518,7 +4654,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "lilia_dormitory",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/リリア【寮服】"
     },
     {
         "atk": "6204",
@@ -4551,7 +4688,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "rook_birth",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/ルーク【おめかしバースデー】"
     },
     {
         "atk": "7485",
@@ -4584,7 +4722,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "rook_club",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/ルーク【クラブ・ウェア】"
     },
     {
         "atk": "5265",
@@ -4617,7 +4756,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "rook_scary",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/ルーク【スケアリー・ドレス】"
     },
     {
         "atk": "5051",
@@ -4650,7 +4790,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "rook_birth3",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/ルーク【ブルームバースデー】"
     },
     {
         "atk": "5174",
@@ -4683,7 +4824,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "rook_birth4",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/ルーク【プラチナジャケット】"
     },
     {
         "atk": "6621",
@@ -4716,7 +4858,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "rook_birth2",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/ルーク【ユニオンバースデー】"
     },
     {
         "atk": "7132",
@@ -4749,7 +4892,8 @@
         "magic3heal": "継続回復(小)",
         "magic3pow": "連撃(弱)",
         "name": "rook_dormitory",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/ルーク【寮服】"
     },
     {
         "atk": "4289",
@@ -4782,7 +4926,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "rook_newyear",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/ルーク【新春の衣】"
     },
     {
         "atk": "5992",
@@ -4815,7 +4960,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "leona_birth",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/レオナ【おめかしバースデー】"
     },
     {
         "atk": "5233",
@@ -4848,7 +4994,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "leona_gara",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/レオナ【ガラ・クチュール】"
     },
     {
         "atk": "6781",
@@ -4881,7 +5028,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "leona_club",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/レオナ【クラブ・ウェア】"
     },
     {
         "atk": "4440",
@@ -4914,7 +5062,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "leona_tmu",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/レオナ【ツムステ】"
     },
     {
         "atk": "6001",
@@ -4947,7 +5096,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "leona_birth3",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/レオナ【ブルームバースデー】"
     },
     {
         "atk": "6918",
@@ -4980,7 +5130,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "leona_birth2",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/レオナ【ユニオンバースデー】"
     },
     {
         "atk": "7683",
@@ -5013,7 +5164,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "leona_dormitory",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/レオナ【寮服】"
     },
     {
         "atk": "4579",
@@ -5046,7 +5198,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "leona_beast",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/レオナ【百獣の装束】"
     },
     {
         "atk": "6820",
@@ -5079,7 +5232,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "rollo_chairman_uniform",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/ロロ【会長服】"
     },
     {
         "atk": "6679",
@@ -5112,7 +5266,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "vil_birth",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/ヴィル【おめかしバースデー】"
     },
     {
         "atk": "6255",
@@ -5145,7 +5300,8 @@
         "magic3heal": "継続回復(小)",
         "magic3pow": "連撃(弱)",
         "name": "vil_scary",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/ヴィル【スケアリー・ドレス】"
     },
     {
         "atk": "6509",
@@ -5178,7 +5334,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "vil_birth3",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/ヴィル【ブルームバースデー】"
     },
     {
         "atk": "6138",
@@ -5211,7 +5368,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "vil_birth4",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/ヴィル【プラチナジャケット】"
     },
     {
         "atk": "5151",
@@ -5244,7 +5402,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "vil_milk",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/ヴィル【ヤーサミーナシルク】"
     },
     {
         "atk": "4554",
@@ -5277,7 +5436,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "vil_birth2",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/ヴィル【ユニオンバースデー】"
     },
     {
         "atk": "7039",
@@ -5310,7 +5470,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "vil_luxe_couture",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/ヴィル【リュクスクチュール】"
     },
     {
         "atk": "5310",
@@ -5343,7 +5504,8 @@
         "magic3heal": "",
         "magic3pow": "連撃(弱)",
         "name": "vil_dormitory",
-        "rare": "SSR"
+        "rare": "SSR",
+        "wikiURL": "https://twst.wikiru.jp/?SSR/ヴィル【寮服】"
     },
     {
         "atk": "3660",
@@ -5376,7 +5538,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "azul_scary",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/アズール【スケアリー・ドレス】"
     },
     {
         "atk": "5338",
@@ -5409,7 +5572,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "azul_luxe_couture",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/アズール【リュクスクチュール】"
     },
     {
         "atk": "4441",
@@ -5442,7 +5606,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "azul_experiment",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/アズール【実験着】"
     },
     {
         "atk": "6122",
@@ -5475,7 +5640,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "azul_ceremony",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/アズール【式典服】"
     },
     {
         "atk": "4121",
@@ -5508,7 +5674,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "azul_chef",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/アズール【見習いシェフ】"
     },
     {
         "atk": "5805",
@@ -5541,7 +5708,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "idia_apple",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/イデア【アップル・ボア】"
     },
     {
         "atk": "4923",
@@ -5574,7 +5742,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "idia_experiment",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/イデア【実験着】"
     },
     {
         "atk": "5369",
@@ -5607,7 +5776,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "idia_ceremony",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/イデア【式典服】"
     },
     {
         "atk": "3992",
@@ -5640,7 +5810,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "idia_star",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/イデア【星送りの衣】"
     },
     {
         "atk": "5796",
@@ -5673,7 +5844,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "idia_chef",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/イデア【見習いシェフ】"
     },
     {
         "atk": "3559",
@@ -5706,7 +5878,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "epel_groom",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/エペル【なりきり花婿】"
     },
     {
         "atk": "5258",
@@ -5739,7 +5912,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "epel_masquerade",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/エペル【マスカレードドレス】"
     },
     {
         "atk": "3509",
@@ -5772,7 +5946,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "epel_Rabbit_wear",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/エペル【ラビット・ウェア】"
     },
     {
         "atk": "4192",
@@ -5805,7 +5980,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "epel_experiment",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/エペル【実験着】"
     },
     {
         "atk": "6359",
@@ -5838,7 +6014,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "epel_ceremony",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/エペル【式典服】"
     },
     {
         "atk": "6051",
@@ -5871,7 +6048,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "epel_chef",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/エペル【見習いシェフ】"
     },
     {
         "atk": "5240",
@@ -5904,7 +6082,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "ace_gara",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/エース【ガラ・クチュール】"
     },
     {
         "atk": "3691",
@@ -5937,7 +6116,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "ace_Swiss_Wear",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/エース【スイスイ・ウェア】"
     },
     {
         "atk": "4850",
@@ -5970,7 +6150,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "ace_scary",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/エース【スケアリー・ドレス】"
     },
     {
         "atk": "3679",
@@ -6003,7 +6184,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "ace_experiment",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/エース【実験着】"
     },
     {
         "atk": "6576",
@@ -6036,7 +6218,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "ace_ceremony",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/エース【式典服】"
     },
     {
         "atk": "4695",
@@ -6069,7 +6252,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "ace_chef",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/エース【見習いシェフ】"
     },
     {
         "atk": "3640",
@@ -6102,7 +6286,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "ortho_cooking_gear",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/オルト【クッキング・ギア】"
     },
     {
         "atk": "6160",
@@ -6135,7 +6320,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "ortho_stargaze",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/オルト【スターゲイズ・ギア】"
     },
     {
         "atk": "5147",
@@ -6168,7 +6354,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "ortho_tmu",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/オルト【ツムステ】"
     },
     {
         "atk": "5778",
@@ -6201,7 +6388,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "ortho_new_year_gear",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/オルト【ニューイヤー・ギア】"
     },
     {
         "atk": "4850",
@@ -6234,7 +6422,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "ortho_ceremony",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/オルト【バースト・ギア】"
     },
     {
         "atk": "3378",
@@ -6267,7 +6456,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "ortho_experiment",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/オルト【プレシジョン・ギア】"
     },
     {
         "atk": "5342",
@@ -6300,7 +6490,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "ortho_rabbit_gear",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/オルト【ラビット・ギア】"
     },
     {
         "atk": "4618",
@@ -6333,7 +6524,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "kalim_gara",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/カリム【ガラ・クチュール】"
     },
     {
         "atk": "3428",
@@ -6366,7 +6558,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "kalim_experiment",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/カリム【実験着】"
     },
     {
         "atk": "5525",
@@ -6399,7 +6592,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "kalim_ceremony",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/カリム【式典服】"
     },
     {
         "atk": "6108",
@@ -6432,7 +6626,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "kalim_beast",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/カリム【百獣の装束】"
     },
     {
         "atk": "4109",
@@ -6465,7 +6660,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "kalim_chef",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/カリム【見習いシェフ】"
     },
     {
         "atk": "5667",
@@ -6498,7 +6694,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "grim_stripe",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/グリム【ストライプリボン】"
     },
     {
         "atk": "4279",
@@ -6531,7 +6728,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "grim_experiment",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/グリム【実験着】"
     },
     {
         "atk": "4764",
@@ -6564,7 +6762,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "grim_ceremony",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/グリム【式典服】"
     },
     {
         "atk": "4474",
@@ -6597,7 +6796,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "grim_chef",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/グリム【見習いシェフ】"
     },
     {
         "atk": "5382",
@@ -6630,7 +6830,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "cater_tmu",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/ケイト【ツムステ】"
     },
     {
         "atk": "6018",
@@ -6663,7 +6864,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "cater_playful_dress",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/ケイト【プレイフル・ドレス】"
     },
     {
         "atk": "4837",
@@ -6696,7 +6898,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "cater_milk",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/ケイト【ヤーサミーナシルク】"
     },
     {
         "atk": "3629",
@@ -6729,7 +6932,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "cater_experiment",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/ケイト【実験着】"
     },
     {
         "atk": "6396",
@@ -6762,7 +6966,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "cater_ceremony",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/ケイト【式典服】"
     },
     {
         "atk": "3497",
@@ -6795,7 +7000,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "cater_newyear",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/ケイト【新春の衣】"
     },
     {
         "atk": "5587",
@@ -6828,7 +7034,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "cater_chef",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/ケイト【見習いシェフ】"
     },
     {
         "atk": "5918",
@@ -6861,7 +7068,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "silver_gara",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/シルバー【ガラ・クチュール】"
     },
     {
         "atk": "3447",
@@ -6894,7 +7102,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "silver_experiment",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/シルバー【実験着】"
     },
     {
         "atk": "5160",
@@ -6927,7 +7136,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "silver_ceremony",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/シルバー【式典服】"
     },
     {
         "atk": "5556",
@@ -6960,7 +7170,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "silver_chef",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/シルバー【見習いシェフ】"
     },
     {
         "atk": "6278",
@@ -6993,7 +7204,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "jade_outdoor",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/ジェイド【アウトドア・ウェア】"
     },
     {
         "atk": "3702",
@@ -7026,7 +7238,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "jade_beans",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/ジェイド【ビーンズ・カモ】"
     },
     {
         "atk": "5605",
@@ -7059,7 +7272,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "jade_experiment",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/ジェイド【実験着】"
     },
     {
         "atk": "6032",
@@ -7092,7 +7306,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "jade_ceremony",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/ジェイド【式典服】"
     },
     {
         "atk": "4738",
@@ -7125,7 +7340,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "jade_newyear",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/ジェイド【新春の衣】"
     },
     {
         "atk": "5022",
@@ -7158,7 +7374,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "jade_chef",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/ジェイド【見習いシェフ】"
     },
     {
         "atk": "4962",
@@ -7191,7 +7408,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "jack_scary",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/ジャック【スケアリー・ドレス】"
     },
     {
         "atk": "5494",
@@ -7224,7 +7442,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "jack_beans",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/ジャック【ビーンズ・カモ】"
     },
     {
         "atk": "4499",
@@ -7257,7 +7476,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "jack_experiment",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/ジャック【実験着】"
     },
     {
         "atk": "6307",
@@ -7290,7 +7510,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "jack_ceremony",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/ジャック【式典服】"
     },
     {
         "atk": "5698",
@@ -7323,7 +7544,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "jack_chef",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/ジャック【見習いシェフ】"
     },
     {
         "atk": "5636",
@@ -7356,7 +7578,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "jamil_gara",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/ジャミル【ガラ・クチュール】"
     },
     {
         "atk": "4794",
@@ -7389,7 +7612,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "jamil_masquerade",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/ジャミル【マスカレードドレス】"
     },
     {
         "atk": "3435",
@@ -7422,7 +7646,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "jamil_luxe_couture",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/ジャミル【リュクスクチュール】"
     },
     {
         "atk": "4317",
@@ -7455,7 +7680,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "jamil_experiment",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/ジャミル【実験着】"
     },
     {
         "atk": "6539",
@@ -7488,7 +7714,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "jamil_ceremony",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/ジャミル【式典服】"
     },
     {
         "atk": "6070",
@@ -7521,7 +7748,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "jamil_chef",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/ジャミル【見習いシェフ】"
     },
     {
         "atk": "3428",
@@ -7554,7 +7782,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "sebek_outdoor",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/セベク【アウトドア・ウェア】"
     },
     {
         "atk": "4155",
@@ -7587,7 +7816,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "sebek_apple",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/セベク【アップル・ボア】"
     },
     {
         "atk": "3548",
@@ -7620,7 +7850,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "sebek_masquerade",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/セベク【マスカレードドレス】"
     },
     {
         "atk": "6269",
@@ -7653,7 +7884,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "sebek_experiment",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/セベク【実験着】"
     },
     {
         "atk": "5289",
@@ -7686,7 +7918,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "sebek_ceremony",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/セベク【式典服】"
     },
     {
         "atk": "3416",
@@ -7719,7 +7952,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "sebek_chef",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/セベク【見習いシェフ】"
     },
     {
         "atk": "4005",
@@ -7752,7 +7986,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "deuce_masquerade",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/デュース【マスカレードドレス】"
     },
     {
         "atk": "5134",
@@ -7785,7 +8020,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "deuce_experiment",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/デュース【実験着】"
     },
     {
         "atk": "6486",
@@ -7818,7 +8054,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "deuce_ceremony",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/デュース【式典服】"
     },
     {
         "atk": "5458",
@@ -7851,7 +8088,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "deuce_newyear",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/デュース【新春の衣】"
     },
     {
         "atk": "3710",
@@ -7884,7 +8122,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "deuce_chef",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/デュース【見習いシェフ】"
     },
     {
         "atk": "4824",
@@ -7917,7 +8156,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "trey_scary",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/トレイ【スケアリー・ドレス】"
     },
     {
         "atk": "5685",
@@ -7950,7 +8190,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "trey_experiment",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/トレイ【実験着】"
     },
     {
         "atk": "5061",
@@ -7983,7 +8224,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "trey_ceremony",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/トレイ【式典服】"
     },
     {
         "atk": "5999",
@@ -8016,7 +8258,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "trey_chef",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/トレイ【見習いシェフ】"
     },
     {
         "atk": "6411",
@@ -8049,7 +8292,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "floyd_outdoor",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/フロイド【アウトドア・ウェア】"
     },
     {
         "atk": "5104",
@@ -8082,7 +8326,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "floyd_tmu",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/フロイド【ツムステ】"
     },
     {
         "atk": "5961",
@@ -8115,7 +8360,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "floyd_playful_dress",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/フロイド【プレイフル・ドレス】"
     },
     {
         "atk": "4379",
@@ -8148,7 +8394,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "floyd_experiment",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/フロイド【実験着】"
     },
     {
         "atk": "3478",
@@ -8181,7 +8428,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "floyd_ceremony",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/フロイド【式典服】"
     },
     {
         "atk": "5654",
@@ -8214,7 +8462,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "floyd_chef",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/フロイド【見習いシェフ】"
     },
     {
         "atk": "5338",
@@ -8247,7 +8496,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "malleus_scary",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/マレウス【スケアリー・ドレス】"
     },
     {
         "atk": "6520",
@@ -8280,7 +8530,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "malleus_milk",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/マレウス【ヤーサミーナシルク】"
     },
     {
         "atk": "5289",
@@ -8313,7 +8564,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "malleus_experiment",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/マレウス【実験着】"
     },
     {
         "atk": "6014",
@@ -8346,7 +8598,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "malleus_ceremony",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/マレウス【式典服】"
     },
     {
         "atk": "3540",
@@ -8379,7 +8632,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "malleus_chef",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/マレウス【見習いシェフ】"
     },
     {
         "atk": "4512",
@@ -8412,7 +8666,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "ruggie_scary",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/ラギー【スケアリー・ドレス】"
     },
     {
         "atk": "3671",
@@ -8445,7 +8700,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "ruggie_port",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/ラギー【ポート・ウェア】"
     },
     {
         "atk": "6217",
@@ -8478,7 +8734,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "ruggie_experiment",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/ラギー【実験着】"
     },
     {
         "atk": "3528",
@@ -8511,7 +8768,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "ruggie_ceremony",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/ラギー【式典服】"
     },
     {
         "atk": "5307",
@@ -8544,7 +8802,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "ruggie_chef",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/ラギー【見習いシェフ】"
     },
     {
         "atk": "4919",
@@ -8577,7 +8836,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "riddle_groom",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/リドル【なりきり花婿】"
     },
     {
         "atk": "6595",
@@ -8610,7 +8870,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "riddle_Swiss_Wear",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/リドル【スイスイ・ウェア】"
     },
     {
         "atk": "5765",
@@ -8643,7 +8904,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "riddle_experiment",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/リドル【実験着】"
     },
     {
         "atk": "3733",
@@ -8676,7 +8938,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "riddle_ceremony",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/リドル【式典服】"
     },
     {
         "atk": "4462",
@@ -8709,7 +8972,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "riddle_chef",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/リドル【見習いシェフ】"
     },
     {
         "atk": "4125",
@@ -8742,7 +9006,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "lilia_groom",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/リリア【なりきり花婿】"
     },
     {
         "atk": "4725",
@@ -8775,7 +9040,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "lilia_scary",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/リリア【スケアリー・ドレス】"
     },
     {
         "atk": "5400",
@@ -8808,7 +9074,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "lilia_experiment",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/リリア【実験着】"
     },
     {
         "atk": "3648",
@@ -8841,7 +9108,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "lilia_ceremony",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/リリア【式典服】"
     },
     {
         "atk": "3959",
@@ -8874,7 +9142,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "lilia_beast",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/リリア【百獣の装束】"
     },
     {
         "atk": "3598",
@@ -8907,7 +9176,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "lilia_chef",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/リリア【見習いシェフ】"
     },
     {
         "atk": "6089",
@@ -8940,7 +9210,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "rook_tmu",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/ルーク【ツムステ】"
     },
     {
         "atk": "6179",
@@ -8973,7 +9244,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "rook_beans",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/ルーク【ビーンズ・カモ】"
     },
     {
         "atk": "3215",
@@ -9006,7 +9278,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "rook_port",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/ルーク【ポート・ウェア】"
     },
     {
         "atk": "5449",
@@ -9039,7 +9312,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "rook_experiment",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/ルーク【実験着】"
     },
     {
         "atk": "4134",
@@ -9072,7 +9346,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "rook_ceremony",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/ルーク【式典服】"
     },
     {
         "atk": "3721",
@@ -9105,7 +9380,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "rook_chef",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/ルーク【見習いシェフ】"
     },
     {
         "atk": "5716",
@@ -9138,7 +9414,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "leona_scary",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/レオナ【スケアリー・ドレス】"
     },
     {
         "atk": "4450",
@@ -9171,7 +9448,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "leona_playful_dress",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/レオナ【プレイフル・ドレス】"
     },
     {
         "atk": "3578",
@@ -9204,7 +9482,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "leona_experiment",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/レオナ【実験着】"
     },
     {
         "atk": "4992",
@@ -9237,7 +9516,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "leona_ceremony",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/レオナ【式典服】"
     },
     {
         "atk": "4084",
@@ -9270,7 +9550,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "leona_chef",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/レオナ【見習いシェフ】"
     },
     {
         "atk": "4751",
@@ -9303,7 +9584,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "vil_outdoor",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/ヴィル【アウトドア・ウェア】"
     },
     {
         "atk": "3335",
@@ -9336,7 +9618,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "vil_beans",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/ヴィル【ビーンズ・カモ】"
     },
     {
         "atk": "4487",
@@ -9369,7 +9652,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "vil_playful_dress",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/ヴィル【プレイフル・ドレス】"
     },
     {
         "atk": "4254",
@@ -9402,7 +9686,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "vil_experiment",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/ヴィル【実験着】"
     },
     {
         "atk": "6449",
@@ -9435,7 +9720,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "vil_ceremony",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/ヴィル【式典服】"
     },
     {
         "atk": "6231",
@@ -9468,7 +9754,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "vil_newyear",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/ヴィル【新春の衣】"
     },
     {
         "atk": "6141",
@@ -9501,7 +9788,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "vil_chef",
-        "rare": "SR"
+        "rare": "SR",
+        "wikiURL": "https://twst.wikiru.jp/?SR/ヴィル【見習いシェフ】"
     },
     {
         "atk": "5326",
@@ -9534,7 +9822,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "azul_outdoor",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/アズール【アウトドア・ウェア】"
     },
     {
         "atk": "3016",
@@ -9567,7 +9856,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "azul_Swiss_Wear",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/アズール【スイスイ・ウェア】"
     },
     {
         "atk": "3076",
@@ -9600,7 +9890,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "azul_uniform",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/アズール【制服】"
     },
     {
         "atk": "4613",
@@ -9633,7 +9924,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "azul_gym",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/アズール【運動着】"
     },
     {
         "atk": "4086",
@@ -9666,7 +9958,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "idia_scary",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/イデア【スケアリー・ドレス】"
     },
     {
         "atk": "5257",
@@ -9699,7 +9992,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "idia_uniform",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/イデア【制服】"
     },
     {
         "atk": "3175",
@@ -9732,7 +10026,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "idia_gym",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/イデア【運動着】"
     },
     {
         "atk": "4331",
@@ -9765,7 +10060,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "epel_scary",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/エペル【スケアリー・ドレス】"
     },
     {
         "atk": "5026",
@@ -9798,7 +10094,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "epel_tmu",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/エペル【ツムステ】"
     },
     {
         "atk": "2948",
@@ -9831,7 +10128,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "epel_uniform",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/エペル【制服】"
     },
     {
         "atk": "4397",
@@ -9864,7 +10162,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "epel_gym",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/エペル【運動着】"
     },
     {
         "atk": "4162",
@@ -9897,7 +10196,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "ace_luxe_couture",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/エース【リュクスクチュール】"
     },
     {
         "atk": "4347",
@@ -9930,7 +10230,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "ace_uniform",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/エース【制服】"
     },
     {
         "atk": "3763",
@@ -9963,7 +10264,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "ace_gym",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/エース【運動着】"
     },
     {
         "atk": "4254",
@@ -9996,7 +10298,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "ortho_gym",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/オルト【アスレチック・ギア】"
     },
     {
         "atk": "3674",
@@ -10029,7 +10332,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "ortho_uniform",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/オルト【アーキタイプ・ギア】"
     },
     {
         "atk": "3054",
@@ -10062,7 +10366,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "ortho_college",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/オルト【カレッジ・ギア】"
     },
     {
         "atk": "5040",
@@ -10095,7 +10400,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "ortho_scary",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/オルト【スケアリー・ギア】"
     },
     {
         "atk": "2974",
@@ -10128,7 +10434,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "kalim_scary",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/カリム【スケアリー・ドレス】"
     },
     {
         "atk": "3552",
@@ -10161,7 +10468,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "kalim_uniform",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/カリム【制服】"
     },
     {
         "atk": "5410",
@@ -10194,7 +10502,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "kalim_gym",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/カリム【運動着】"
     },
     {
         "atk": "5211",
@@ -10227,7 +10536,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "cater_beans",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/ケイト【ビーンズ・カモ】"
     },
     {
         "atk": "3710",
@@ -10260,7 +10570,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "cater_uniform",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/ケイト【制服】"
     },
     {
         "atk": "4813",
@@ -10293,7 +10604,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "cater_gym",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/ケイト【運動着】"
     },
     {
         "atk": "3876",
@@ -10326,7 +10638,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "silver_masquerade",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/シルバー【マスカレードドレス】"
     },
     {
         "atk": "3613",
@@ -10359,7 +10672,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "silver_Rabbit_wear",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/シルバー【ラビット・ウェア】"
     },
     {
         "atk": "5562",
@@ -10392,7 +10706,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "silver_uniform",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/シルバー【制服】"
     },
     {
         "atk": "3520",
@@ -10425,7 +10740,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "silver_gym",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/シルバー【運動着】"
     },
     {
         "atk": "4244",
@@ -10458,7 +10774,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "jade_apple",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/ジェイド【アップル・ボア】"
     },
     {
         "atk": "4961",
@@ -10491,7 +10808,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "jade_tmu",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/ジェイド【ツムステ】"
     },
     {
         "atk": "5313",
@@ -10524,7 +10842,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "jade_playful_dress",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/ジェイド【プレイフル・ドレス】"
     },
     {
         "atk": "3035",
@@ -10557,7 +10876,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "jade_uniform",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/ジェイド【制服】"
     },
     {
         "atk": "4166",
@@ -10590,7 +10910,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "jade_gym",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/ジェイド【運動着】"
     },
     {
         "atk": "5169",
@@ -10623,7 +10944,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "jack_gara",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/ジャック【ガラ・クチュール】"
     },
     {
         "atk": "5345",
@@ -10656,7 +10978,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "jack_Swiss_Wear",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/ジャック【スイスイ・ウェア】"
     },
     {
         "atk": "3552",
@@ -10689,7 +11012,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "jack_tmu",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/ジャック【ツムステ】"
     },
     {
         "atk": "5105",
@@ -10722,7 +11046,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "jack_playful_dress",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/ジャック【プレイフル・ドレス】"
     },
     {
         "atk": "4288",
@@ -10755,7 +11080,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "jack_uniform",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/ジャック【制服】"
     },
     {
         "atk": "3122",
@@ -10788,7 +11114,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "jack_gym",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/ジャック【運動着】"
     },
     {
         "atk": "4153",
@@ -10821,7 +11148,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "jamil_scary",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/ジャミル【スケアリー・ドレス】"
     },
     {
         "atk": "3442",
@@ -10854,7 +11182,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "jamil_beans",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/ジャミル【ビーンズ・カモ】"
     },
     {
         "atk": "4048",
@@ -10887,7 +11216,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "jamil_uniform",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/ジャミル【制服】"
     },
     {
         "atk": "2993",
@@ -10920,7 +11250,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "jamil_gym",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/ジャミル【運動着】"
     },
     {
         "atk": "4418",
@@ -10953,7 +11284,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "sebek_scary",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/セベク【スケアリー・ドレス】"
     },
     {
         "atk": "2774",
@@ -10986,7 +11318,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "sebek_tmu",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/セベク【ツムステ】"
     },
     {
         "atk": "3690",
@@ -11019,7 +11352,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "sebek_uniform",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/セベク【制服】"
     },
     {
         "atk": "4313",
@@ -11052,7 +11386,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "sebek_gym",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/セベク【運動着】"
     },
     {
         "atk": "5008",
@@ -11085,7 +11420,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "deuce_scary",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/デュース【スケアリー・ドレス】"
     },
     {
         "atk": "2959",
@@ -11118,7 +11454,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "deuce_tmu",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/デュース【ツムステ】"
     },
     {
         "atk": "3163",
@@ -11151,7 +11488,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "deuce_uniform",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/デュース【制服】"
     },
     {
         "atk": "4878",
@@ -11184,7 +11522,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "deuce_gym",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/デュース【運動着】"
     },
     {
         "atk": "3822",
@@ -11217,7 +11556,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "trey_playful_dress",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/トレイ【プレイフル・ドレス】"
     },
     {
         "atk": "4892",
@@ -11250,7 +11590,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "trey_milk",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/トレイ【ヤーサミーナシルク】"
     },
     {
         "atk": "4478",
@@ -11283,7 +11624,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "trey_uniform",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/トレイ【制服】"
     },
     {
         "atk": "3822",
@@ -11316,7 +11658,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "trey_star",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/トレイ【星送りの衣】"
     },
     {
         "atk": "3658",
@@ -11349,7 +11692,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "trey_gym",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/トレイ【運動着】"
     },
     {
         "atk": "2940",
@@ -11382,7 +11726,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "floyd_scary",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/フロイド【スケアリー・ドレス】"
     },
     {
         "atk": "5257",
@@ -11415,7 +11760,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "floyd_port",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/フロイド【ポート・ウェア】"
     },
     {
         "atk": "5488",
@@ -11448,7 +11794,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "floyd_uniform",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/フロイド【制服】"
     },
     {
         "atk": "4107",
@@ -11481,7 +11828,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "floyd_gym",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/フロイド【運動着】"
     },
     {
         "atk": "3008",
@@ -11514,7 +11862,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "malleus_uniform",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/マレウス【制服】"
     },
     {
         "atk": "3783",
@@ -11547,7 +11896,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "malleus_gym",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/マレウス【運動着】"
     },
     {
         "atk": "4517",
@@ -11580,7 +11930,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "ruggie_gara",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/ラギー【ガラ・クチュール】"
     },
     {
         "atk": "4837",
@@ -11613,7 +11964,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "ruggie_masquerade",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/ラギー【マスカレードドレス】"
     },
     {
         "atk": "4229",
@@ -11646,7 +11998,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "ruggie_uniform",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/ラギー【制服】"
     },
     {
         "atk": "4678",
@@ -11679,7 +12032,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "ruggie_gym",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/ラギー【運動着】"
     },
     {
         "atk": "2827",
@@ -11712,7 +12066,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "riddle_masquerade",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/リドル【マスカレードドレス】"
     },
     {
         "atk": "4410",
@@ -11745,7 +12100,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "riddle_uniform",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/リドル【制服】"
     },
     {
         "atk": "3812",
@@ -11778,7 +12134,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "riddle_gym",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/リドル【運動着】"
     },
     {
         "atk": "3796",
@@ -11811,7 +12168,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "lilia_tmu",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/リリア【ツムステ】"
     },
     {
         "atk": "2944",
@@ -11844,7 +12202,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "lilia_playful_dress",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/リリア【プレイフル・ドレス】"
     },
     {
         "atk": "4145",
@@ -11877,7 +12236,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "lilia_uniform",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/リリア【制服】"
     },
     {
         "atk": "5363",
@@ -11910,7 +12270,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "lilia_gym",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/リリア【運動着】"
     },
     {
         "atk": "4496",
@@ -11943,7 +12304,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "rook_groom",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/ルーク【なりきり花婿】"
     },
     {
         "atk": "2933",
@@ -11976,7 +12338,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "rook_masquerade",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/ルーク【マスカレードドレス】"
     },
     {
         "atk": "5336",
@@ -12009,7 +12372,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "rook_uniform",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/ルーク【制服】"
     },
     {
         "atk": "3576",
@@ -12042,7 +12406,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "rook_gym",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/ルーク【運動着】"
     },
     {
         "atk": "3872",
@@ -12075,7 +12440,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "leona_outdoor",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/レオナ【アウトドア・ウェア】"
     },
     {
         "atk": "4743",
@@ -12108,7 +12474,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "leona_uniform",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/レオナ【制服】"
     },
     {
         "atk": "3605",
@@ -12141,7 +12508,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "leona_gym",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/レオナ【運動着】"
     },
     {
         "atk": "3990",
@@ -12174,7 +12542,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "vil_uniform",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/ヴィル【制服】"
     },
     {
         "atk": "5313",
@@ -12207,7 +12576,8 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "vil_beast",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/ヴィル【百獣の装束】"
     },
     {
         "atk": "4543",
@@ -12240,6 +12610,7 @@
         "magic3heal": "",
         "magic3pow": "単発(弱)",
         "name": "vil_gym",
-        "rare": "R"
+        "rare": "R",
+        "wikiURL": "https://twst.wikiru.jp/?R/ヴィル【運動着】"
     }
 ]
