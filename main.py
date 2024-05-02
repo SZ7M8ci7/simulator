@@ -98,6 +98,7 @@ def getCharaDict(path,namedict,cosdict):
         outdict['etc'] = etc
         outdict['rare'] = chara[3]
         outdict['growtype'] = chara[22]
+        outdict['wikiURL'] = chara[-1]
 
         outlist.append(outdict)
         magicdict[outdict['name']] = [outdict['magic1atr'],outdict['magic2atr'],outdict['magic3atr']]
@@ -481,7 +482,7 @@ if __name__ == '__main__':
         for cur_url in url_all_list:
             try:
                 time.sleep(1)
-                output.append(str(count) + '\t' + main(rank, cur_url, masters))
+                output.append(str(count) + '\t' + main(rank, cur_url, masters) + '\t' + cur_url)
                 count+=1
             except Exception as e:
                 print(e,cur_url)
