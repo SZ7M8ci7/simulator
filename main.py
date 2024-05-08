@@ -264,7 +264,7 @@ def makeicon():
                     if name+'バースデー追加エリア' in lines[i] and 'birth' in cosdict[cos]:
                         lines[i] = make_html(namedict[name],cosdict[cos])+'\n' + lines[i]
                         break
-                    elif name+'バースデー追加エリア' in lines[i] and 'club' in cosdict[cos]:
+                    elif name+'部活追加エリア' in lines[i] and 'club' in cosdict[cos]:
                         lines[i] = make_html(namedict[name],cosdict[cos])+'\n' + lines[i]
                         break
                     elif name+rank+'追加エリア' in lines[i]:
