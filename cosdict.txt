@@ -50,3 +50,4 @@
 リュクスクチュール:luxe_couture
 クッキング・ギア:cooking_gear
 サバナクロー寮服:savannah_claw_dormitory_clothes
+リッチファーコート:Rich_Fur_Coat
