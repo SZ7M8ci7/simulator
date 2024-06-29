@@ -23,4 +23,4 @@
 グリム:grim
 ロロ:rollo
 クロウリー:crowley
-クルーウェル:Crewel
+クルーウェル:crewel
