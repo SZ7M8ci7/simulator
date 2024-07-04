@@ -98,7 +98,7 @@ for (let i = 1; i <= 10; i++) {
     atkbuffDict["ATKUP(大)"+i] = ((30+2*i)/100).toString();
 }
 for (let i = 1; i <= 10; i++) {
-    atkbuffDict["ATKUP(極大)"+i] = ((60+4*i)/100).toString();
+    atkbuffDict["ATKUP(極大)"+i] = ((50+2.5*i)/100).toString();
 }
 
 
@@ -116,7 +116,7 @@ for (let i = 1; i <= 10; i++) {
     dmgbuffDict["ダメUP(大)"+i] = ((7.5+0.5*i)/100).toString();
 }
 for (let i = 1; i <= 10; i++) {
-    dmgbuffDict["ダメUP(極大)"+i] = ((15+1*i)/100).toString();
+    dmgbuffDict["ダメUP(極大)"+i] = ((12.5+0.625*i)/100).toString();
 }
 
 for (let i = 1; i <= 10; i++) {
@@ -132,7 +132,7 @@ for (let i = 1; i <= 10; i++) {
     dmgbuffDict["属性ダメUP(大)"+i] = ((9+0.6*i)/100).toString();
 }
 for (let i = 1; i <= 10; i++) {
-    dmgbuffDict["属性ダメUP(極大)"+i] = ((18+1.2*i)/100).toString();
+    dmgbuffDict["属性ダメUP(極大)"+i] = ((15+0.75*i)/100).toString();
 }
 
 var buddyHPDict ={"HPUP(小)1"     :"0.11",
