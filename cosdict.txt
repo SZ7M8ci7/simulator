@@ -52,3 +52,5 @@
 サバナクロー寮服:savannah_claw_dormitory_clothes
 リッチファーコート:Rich_Fur_Coat
 カスルサルタナート制服:Kasr_Saltanat_Uniform
+プラチナ・ギア:Platinum_Gear
+マーメイド・フィン:Mermaid_Fin
