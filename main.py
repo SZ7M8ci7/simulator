@@ -95,10 +95,34 @@ def getCharaDict(path,namedict,cosdict):
             if i > 0:
                 etc += magic3split[i]
                 etc += '<br>'
+        splitted_etc = etc.split('<br>')
+        buff_count = 0
+        debuff_count = 0
+        for cur in splitted_etc:
+            if '被ダメージUP' in cur:
+                continue
+            if '被ダメージDOWN' in cur:
+                debuff_count+=1
+                continue
+
+            if 'ATKUP' in cur:
+                buff_count+=1
+            elif 'ダメージUP' in cur:
+                buff_count+=1
+            elif 'クリティカル' in cur:
+                buff_count+=1
+
+            if 'ATKDOWN' in cur:
+                debuff_count+=1
+            elif 'ダメージDOWN' in cur:
+                debuff_count+=1
+            
         outdict['etc'] = etc
         outdict['rare'] = chara[3]
         outdict['growtype'] = chara[22]
         outdict['wikiURL'] = chara[-1]
+        outdict['buff_count'] = buff_count
+        outdict['debuff_count'] = debuff_count
 
         outlist.append(outdict)
         magicdict[outdict['name']] = [outdict['magic1atr'],outdict['magic2atr'],outdict['magic3atr']]
