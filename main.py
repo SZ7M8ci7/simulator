@@ -101,20 +101,20 @@ def getCharaDict(path,namedict,cosdict):
         for cur in splitted_etc:
             if '被ダメージUP' in cur:
                 continue
-            if '被ダメージDOWN' in cur:
+            if '被ダメージDOWN' in cur and ('味方' in cur or '自' in cur):
                 debuff_count+=1
                 continue
 
             if 'ATKUP' in cur:
                 buff_count+=1
-            elif 'ダメージUP' in cur:
+            elif 'ダメージUP' in cur and ('味方' in cur or '自' in cur):
                 buff_count+=1
-            elif 'クリティカル' in cur:
+            elif 'クリティカル' in cur and ('味方' in cur or '自' in cur):
                 buff_count+=1
 
-            if 'ATKDOWN' in cur:
+            if 'ATKDOWN' in cur and '相手' in cur:
                 debuff_count+=1
-            elif 'ダメージDOWN' in cur:
+            elif 'ダメージDOWN' in cur and '相手' in cur:
                 debuff_count+=1
             
         outdict['etc'] = etc
@@ -181,6 +181,8 @@ def checkMagicHeal(str):
 
 def checkMagicBuf(str):
     buf = ''
+    if not ('自' in str or '味方' in str):
+        return buf
     if 'ATKUP(極小)' in str:
         buf = 'ATKUP(極小)'
     if 'ATKUP(小)' in str:
@@ -191,15 +193,15 @@ def checkMagicBuf(str):
         buf = 'ATKUP(大)'
     if 'ATKUP(極大)' in str:
         buf = 'ATKUP(極大)'
-    if 'ダメージUP(極小)' in str:
+    if 'ダメージUP(極小)' in str and '被ダメージ' not in str:
         buf = 'ダメUP(極小)'
-    if 'ダメージUP(小)' in str:
+    if 'ダメージUP(小)' in str and '被ダメージ' not in str:
         buf = 'ダメUP(小)'
-    if 'ダメージUP(中)' in str:
+    if 'ダメージUP(中)' in str and '被ダメージ' not in str:
         buf = 'ダメUP(中)'
-    if 'ダメージUP(大)' in str:
+    if 'ダメージUP(大)' in str and '被ダメージ' not in str:
         buf = 'ダメUP(大)'
-    if 'ダメージUP(極大)' in str:
+    if 'ダメージUP(極大)' in str and '被ダメージ' not in str:
         buf = 'ダメUP(極大)'
     if '属性ダメージUP(極小)' in str:
         buf = '属性ダメUP(極小)'
