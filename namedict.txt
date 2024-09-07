@@ -24,3 +24,4 @@
 ロロ:rollo
 クロウリー:crowley
 クルーウェル:crewel
+フェロー:fellow
