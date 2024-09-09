@@ -490,22 +490,26 @@ function calc() {
         document.getElementById("cname" + i).value;
     }
     for (let i = 1; i <= 5; i++) {
-      // Background color change if buddy1c exists in dDict
-      if (document.getElementById("cbuddy1Name" + i).value in charaDict) {
+      var buddy1Value = document.getElementById("cbuddy1Name" + i).value;
+      if (buddy1Value !== "" && buddy1Value in charaDict) {
         var buddy1Select = document.getElementById("cbuddy1Name" + i);
         buddy1Select.style.color = "#fa8072"; // Set background color when matching
       } else {
         var buddy1Select = document.getElementById("cbuddy1Name" + i);
         buddy1Select.style.color = ""; // Reset background color when not matching
       }
-      if (document.getElementById("cbuddy2Name" + i).value in charaDict) {
+    
+      var buddy2Value = document.getElementById("cbuddy2Name" + i).value;
+      if (buddy2Value !== "" && buddy2Value in charaDict) {
         var buddy2Select = document.getElementById("cbuddy2Name" + i);
         buddy2Select.style.color = "#fa8072"; // Set background color when matching
       } else {
         var buddy2Select = document.getElementById("cbuddy2Name" + i);
         buddy2Select.style.color = ""; // Reset background color when not matching
       }
-      if (document.getElementById("cbuddy3Name" + i).value in charaDict) {
+    
+      var buddy3Value = document.getElementById("cbuddy3Name" + i).value;
+      if (buddy3Value !== "" && buddy3Value in charaDict) {
         var buddy3Select = document.getElementById("cbuddy3Name" + i);
         buddy3Select.style.color = "#fa8072"; // Set background color when matching
       } else {
@@ -513,6 +517,7 @@ function calc() {
         buddy3Select.style.color = ""; // Reset background color when not matching
       }
     }
+    
     var totalHP = 0;
     var totalHealHP = 0;
     // データ系列フィルタ処理
