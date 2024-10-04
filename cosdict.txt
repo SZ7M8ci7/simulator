@@ -55,3 +55,4 @@
 プラチナ・ギア:Platinum_Gear
 マーメイド・フィン:Mermaid_Fin
 くつろぎマイルーム:birth5
+ナイトメアースーツ:Nightmare_Suit
