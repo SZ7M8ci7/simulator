@@ -470,21 +470,19 @@ function changeLevel(inid) {
       break;
     }
   }
-  let totsurate = 1;
+  let totsurate = 0;
   if (selectedOption == "未") {
-    totsurate = 0.964;
+    totsurate = 1;
   }
-  var HPperLv = (maxHP - baseHP) / (hiddenLv - 1);
-  var ATKperLv = (maxATK - baseATK) / (hiddenLv - 1);
+  var bonusHP = baseHP*0.2;
+  var bonusATK = baseATK*0.2;
+  var HPperLv = (maxHP - 2*bonusHP - baseHP) / (hiddenLv - 1);
+  var ATKperLv = (maxATK - 2*bonusATK - baseATK) / (hiddenLv - 1);
   var leveldef = hiddenLv - inLv;
   document.getElementById("cHP" + inid).value = (
-    (maxHP - HPperLv * leveldef) *
-    totsurate
-  ).toFixed(1);
+    (maxHP - HPperLv * leveldef) - bonusHP*totsurate).toFixed(1);
   document.getElementById("cATK" + inid).value = (
-    (maxATK - ATKperLv * leveldef) *
-    totsurate
-  ).toFixed(1);
+    (maxATK - ATKperLv * leveldef) - bonusATK*totsurate).toFixed(1);
 }
 function calc() {
   try {
