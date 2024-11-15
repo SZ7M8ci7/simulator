@@ -106,6 +106,22 @@ for (let i = 1; i <= 10; i++) {
   atkbuffDict["ATKUP(極大)" + i] = ((50 + 3 * i) / 100).toString();
 }
 
+for (let i = 1; i <= 10; i++) {
+  atkbuffDict["ATKDOWN(極小)" + i] = (-1*(5 + 0.5 * i) / 100).toString();
+}
+for (let i = 1; i <= 10; i++) {
+  atkbuffDict["ATKDOWN(小)" + i] = (-1*(10 + 1 * i) / 100).toString();
+}
+for (let i = 1; i <= 10; i++) {
+  atkbuffDict["ATKDOWN(中)" + i] = (-1*(20 + 1.5 * i) / 100).toString();
+}
+for (let i = 1; i <= 10; i++) {
+  atkbuffDict["ATKDOWN(大)" + i] = (-1*(30 + 2 * i) / 100).toString();
+}
+for (let i = 1; i <= 10; i++) {
+  atkbuffDict["ATKDOWN(極大)" + i] = (-1*(50 + 3 * i) / 100).toString();
+}
+
 var dmgbuffDict = {};
 for (let i = 1; i <= 10; i++) {
   dmgbuffDict["ダメUP(極小)" + i] = ((1.25 + 0.125 * i) / 100).toString();
@@ -120,7 +136,23 @@ for (let i = 1; i <= 10; i++) {
   dmgbuffDict["ダメUP(大)" + i] = ((7.5 + 0.5 * i) / 100).toString();
 }
 for (let i = 1; i <= 10; i++) {
-  dmgbuffDict["ダメUP(極大)" + i] = ((12.5 + 0.625 * i) / 100).toString();
+  dmgbuffDict["ダメUP(極大)" + i] = ((12.5 + 1 * i) / 100).toString();
+}
+
+for (let i = 1; i <= 10; i++) {
+  dmgbuffDict["ダメDOWN(極小)" + i] = (-1*(1.25 + 0.125 * i) / 100).toString();
+}
+for (let i = 1; i <= 10; i++) {
+  dmgbuffDict["ダメDOWN(小)" + i] = (-1*(2.5 + 0.25 * i) / 100).toString();
+}
+for (let i = 1; i <= 10; i++) {
+  dmgbuffDict["ダメDOWN(中)" + i] = (-1*(5 + 0.375 * i) / 100).toString();
+}
+for (let i = 1; i <= 10; i++) {
+  dmgbuffDict["ダメDOWN(大)" + i] = (-1*(7.5 + 0.5 * i) / 100).toString();
+}
+for (let i = 1; i <= 10; i++) {
+  dmgbuffDict["ダメDOWN(極大)" + i] = (-1*(12.5 + 1 * i) / 100).toString();
 }
 
 for (let i = 1; i <= 10; i++) {
@@ -139,6 +171,21 @@ for (let i = 1; i <= 10; i++) {
   dmgbuffDict["属性ダメUP(極大)" + i] = ((15 + 1.2 * i) / 100).toString();
 }
 
+for (let i = 1; i <= 10; i++) {
+  dmgbuffDict["属性ダメDOWN(極小)" + i] = (-1*(1.5 + 0.15 * i) / 100).toString();
+}
+for (let i = 1; i <= 10; i++) {
+  dmgbuffDict["属性ダメDOWN(小)" + i] = (-1*(3 + 0.3 * i) / 100).toString();
+}
+for (let i = 1; i <= 10; i++) {
+  dmgbuffDict["属性ダメDOWN(中)" + i] = (-1*(6 + 0.45 * i) / 100).toString();
+}
+for (let i = 1; i <= 10; i++) {
+  dmgbuffDict["属性ダメDOWN(大)" + i] = (-1*(9 + 0.6 * i) / 100).toString();
+}
+for (let i = 1; i <= 10; i++) {
+  dmgbuffDict["属性ダメDOWN(極大)" + i] = (-1*(15 + 1.2 * i) / 100).toString();
+}
 var buddyHPDict = {
   "HPUP(小)1": "0.11",
   "HPUP(小)2": "0.12",
