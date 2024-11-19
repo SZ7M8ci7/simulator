@@ -1274,6 +1274,9 @@ function calc() {
     document.getElementById("totalDamage5").innerHTML = damage5.toFixed();
     document.getElementById("totalDamage4").innerHTML = damage4.toFixed();
     document.getElementById("totalDamage3").innerHTML = damage3.toFixed();
+    document.getElementById("midDamage5").innerHTML = (damage5 - (damageList[0]||0)).toFixed() + '+' + (damageList[0]||0).toFixed();
+    document.getElementById("midDamage4").innerHTML = (damage4 - (damageList[0]||0)).toFixed() + '+' + (damageList[0]||0).toFixed();
+    document.getElementById("midDamage3").innerHTML = (damage3 - (damageList[0]||0)).toFixed() + '+' + (damageList[0]||0).toFixed();
 
     document.getElementById("extrascore1T").innerHTML = (
       score[0] * 0.216
