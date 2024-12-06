@@ -57,3 +57,4 @@
 くつろぎマイルーム:birth5
 ナイトメアースーツ:Nightmare_Suit
 アイボリークリフ制服:Ivory_Cliff_Uniform
+トリックキングジャケット:Trick_King_Jacket
