@@ -103,7 +103,7 @@ for (let i = 1; i <= 10; i++) {
   atkbuffDict["ATKUP(大)" + i] = ((30 + 2 * i) / 100).toString();
 }
 for (let i = 1; i <= 10; i++) {
-  atkbuffDict["ATKUP(極大)" + i] = ((50 + 3 * i) / 100).toString();
+  atkbuffDict["ATKUP(極大)" + i] = ((50 + 4 * i) / 100).toString();
 }
 
 for (let i = 1; i <= 10; i++) {
@@ -119,7 +119,7 @@ for (let i = 1; i <= 10; i++) {
   atkbuffDict["ATKDOWN(大)" + i] = (-1*(30 + 2 * i) / 100).toString();
 }
 for (let i = 1; i <= 10; i++) {
-  atkbuffDict["ATKDOWN(極大)" + i] = (-1*(50 + 3 * i) / 100).toString();
+  atkbuffDict["ATKDOWN(極大)" + i] = (-1*(50 + 4 * i) / 100).toString();
 }
 
 var dmgbuffDict = {};
