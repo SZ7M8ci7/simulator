@@ -243,6 +243,7 @@ if __name__ == '__main__':
         di = json.load(f)
     for d in di:
         if d['buddy1c'] == '??':
+            time.sleep(1)
             buddies = main(d['rare'], d['wikiURL'])
             d['buddy1c'] = buddies[0]
             d['buddy1s'] = buddies[1]
