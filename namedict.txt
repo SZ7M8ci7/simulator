@@ -25,3 +25,4 @@
 クロウリー:crowley
 クルーウェル:crewel
 フェロー:fellow
+トレイン:Train
