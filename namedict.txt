@@ -25,4 +25,6 @@
 クロウリー:crowley
 クルーウェル:crewel
 フェロー:fellow
-トレイン:Train
+トレイン:train
+バルガス:vargas
+サム:sam
