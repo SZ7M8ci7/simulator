@@ -34,7 +34,7 @@ def main1():
                 buddy+=1
             else:
                 d[mem['buddy3c']]+=1
-        if buddy <= 4:
+        if buddy <= 6:
             continue
         for j in range(N):
             c = card_list[j]
