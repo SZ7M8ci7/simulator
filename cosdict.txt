@@ -59,3 +59,4 @@
 アイボリークリフ制服:Ivory_Cliff_Uniform
 トリックキングジャケット:Trick_King_Jacket
 ストリクトスーツ:Strict_Suit
+クイーンズシェフコート:Queens_Chefs_Court
