@@ -429,9 +429,14 @@ def get_img(title, exists_files):
     filename = title.replace('/','')+'アイコン.jpg'
     # 条件にマッチするすべてのリンクを探す
     try:
+        
+        if filename in exists_files:
+            return
         time.sleep(1)
         url = "https://twst.wikiru.jp/attach2/696D67_" + filename.encode('utf-8').hex().rstrip().upper() + ".jpg"
         r = requests.get(url)
+        if 200 != r.status_code:
+            return
         path = 'get/' + filename
         image_file = open(path, 'wb')
         image_file.write(r.content)
