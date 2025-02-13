@@ -60,3 +60,4 @@
 トリックキングジャケット:Trick_King_Jacket
 ストリクトスーツ:Strict_Suit
 クイーンズシェフコート:Queens_Chefs_Court
+夜空のシフォン:Night_Sky_Chiffon
