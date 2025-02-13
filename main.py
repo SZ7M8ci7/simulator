@@ -308,7 +308,7 @@ def makeicon():
 
 def make_html(name,cos):
     eng = name + '_' + cos
-    out_html = '    <a href="#" rel="modal:close" onclick="gtag(\'event\', \'click\', {\'event_category\': \'chara\', \'event_label\':\'' + eng + '\', \'value\':\'1\'});changeImg(\''+eng+'\')"><img src="img/'+eng+'.png"></a>'
+    out_html = '    <a href="#" rel="modal:close" onclick="gtag(\'event\', \'click\', {\'event_category\': \'chara\', \'event_label\':\'' + eng + '\', \'value\':\'1\'});changeImg(\''+eng+'\')"><img src="img/'+eng+'.png "onerror="this.onerror=null; this.src=\'notyet.png\';"></a>'
     return out_html
 
 

@@ -366,6 +366,10 @@ def get_history():
                     results.append(['SSR', 'https://twst.wikiru.jp/?'+link_text])
     return results
 
+def make_html(eng):
+    out_html = '    <a href="#" rel="modal:close" onclick="gtag(\'event\', \'click\', {\'event_category\': \'chara\', \'event_label\':\'' + eng + '\', \'value\':\'1\'});changeImg(\''+eng+'\')"><img src="img/'+eng+'.png "onerror="this.onerror=null; this.src=\'notyet.png\';"></a>'
+    return out_html
+
 def update_or_add_entry(data, new_entry):
 
     max_id = -1
@@ -385,6 +389,28 @@ def update_or_add_entry(data, new_entry):
         new_entry['id'] = str(max_id + 1)
         data.append(new_entry)
         print(f"Added new entry with id '{new_entry['id']}' and name '{new_entry['name']}'.")
+        try:
+                
+            input_file = 'index.html'
+            with open(input_file, 'r',encoding='UTF-8') as file:
+                # ファイルを1行ずつ読み込み、処理を行う
+                lines = file.readlines()
+                for i in range(len(lines)):
+                    if new_entry['chara']+'バースデー追加エリア' in lines[i] and 'birth' in new_entry['name']:
+                        lines[i] = make_html(new_entry['name'])+'\n' + lines[i]
+                        break
+                    elif new_entry['chara']+'部活追加エリア' in lines[i] and 'club' in new_entry['name']:
+                        lines[i] = make_html(new_entry['name'])+'\n' + lines[i]
+                        break
+                    elif new_entry['chara']+new_entry['rare']+'追加エリア' in lines[i]:
+                        lines[i] = make_html(new_entry['name'])+'\n' + lines[i]
+                        break
+
+            # 処理結果を同一ファイルに書き込む
+            with open(input_file, 'w',encoding='UTF-8') as file:
+                file.writelines(lines)
+        except Exception as e:
+            print(e)
     return data
 
 if __name__ == '__main__':

@@ -16,10 +16,6 @@ def getDict(path):
             dict[key] = value.strip()
     return dict
 
-def make_html(eng):
-    out_html = '    <a href="#" rel="modal:close" onclick="gtag(\'event\', \'click\', {\'event_category\': \'chara\', \'event_label\':\'' + eng + '\', \'value\':\'1\'});changeImg(\''+eng+'\')"><img src="img/'+eng+'.png"></a>'
-    return out_html
-
 def make_icon(chara_data, filename):
     try:
         max_magic = 2
@@ -46,25 +42,6 @@ def make_icon(chara_data, filename):
         # 合成した画像を保存する
         background_image.save('img/' + chara_data['name'] +'.png')
 
-        input_file = 'index.html'
-
-        with open(input_file, 'r',encoding='UTF-8') as file:
-            # ファイルを1行ずつ読み込み、処理を行う
-            lines = file.readlines()
-            for i in range(len(lines)):
-                if chara_data['chara']+'バースデー追加エリア' in lines[i] and 'birth' in chara_data['name']:
-                    lines[i] = make_html(chara_data['name'])+'\n' + lines[i]
-                    break
-                elif chara_data['chara']+'部活追加エリア' in lines[i] and 'club' in chara_data['name']:
-                    lines[i] = make_html(chara_data['name'])+'\n' + lines[i]
-                    break
-                elif chara_data['chara']+chara_data['rare']+'追加エリア' in lines[i]:
-                    lines[i] = make_html(chara_data['name'])+'\n' + lines[i]
-                    break
-
-        # 処理結果を同一ファイルに書き込む
-        with open(input_file, 'w',encoding='UTF-8') as file:
-            file.writelines(lines)
     except Exception as e:
         print(e, file)
 

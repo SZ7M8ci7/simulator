@@ -413,6 +413,16 @@ function changeImg(imgsrc) {
   var imgId = "img" + modalId;
   document.getElementById(imgId).src = "img/" + imgsrc + ".png";
   document.getElementById(imgId).value = "img/" + imgsrc + ".png";
+  var imgElement = document.getElementById(imgId);
+  var newSrc = "img/" + imgsrc + ".png";
+
+  imgElement.src = newSrc;
+  
+  // onerror でフェールバック画像を設定
+  imgElement.onerror = function() {
+    this.onerror = null; // 無限ループ防止
+    this.src = "notyet.png"; // 代替画像
+  };
   var totuRadioId = "ctotu" + modalId;
   document.getElementById(totuRadioId).checked = true;
 
