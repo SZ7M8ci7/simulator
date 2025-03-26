@@ -62,6 +62,16 @@ var magicDict = {
   "連撃(強)8": "0.925",
   "連撃(強)9": "0.9625",
   "連撃(強)10": "1.0",
+  "3連撃(弱)1": "0.525",
+  "3連撃(弱)2": "0.55",
+  "3連撃(弱)3": "0.575",
+  "3連撃(弱)4": "0.60",
+  "3連撃(弱)5": "0.625",
+  "3連撃(弱)6": "0.65",
+  "3連撃(弱)7": "0.675",
+  "3連撃(弱)8": "0.70",
+  "3連撃(弱)9": "0.725",
+  "3連撃(弱)10": "0.75",
   "単発(弱)1": "0.525",
   "単発(弱)2": "0.55",
   "単発(弱)3": "0.575",
@@ -729,6 +739,9 @@ function calc() {
       var M1atkbuf5 =
         document.getElementById("cM1buf5" + i).value +
         document.getElementById("cM1buf5Lv" + i).value;
+      var M1atkbuf6 =
+        document.getElementById("cM1buf6" + i).value +
+        document.getElementById("cM1buf6Lv" + i).value;
       var M1atkbuf1add =
         (M1atkbuf1 in atkbuffDict ? atkbuffDict[M1atkbuf1] : 0) * suATK;
       var M1atkbuf2add =
@@ -739,8 +752,10 @@ function calc() {
         (M1atkbuf4 in atkbuffDict ? atkbuffDict[M1atkbuf4] : 0) * suATK;
       var M1atkbuf5add =
         (M1atkbuf5 in atkbuffDict ? atkbuffDict[M1atkbuf5] : 0) * suATK;
+      var M1atkbuf6add =
+        (M1atkbuf6 in atkbuffDict ? atkbuffDict[M1atkbuf6] : 0) * suATK;
 
-      var M1kou1 = suATK + M1atkbuf1add + M1atkbuf2add + M1atkbuf3add + M1atkbuf4add + M1atkbuf5add + buddyatk;
+      var M1kou1 = suATK + M1atkbuf1add + M1atkbuf2add + M1atkbuf3add + M1atkbuf4add + M1atkbuf5add + M1atkbuf6add + buddyatk;
 
       // 攻撃倍率
       var M1magicRatioKey =
@@ -766,11 +781,15 @@ function calc() {
       var M1dmgbuf5 =
         document.getElementById("cM1buf5" + i).value +
         document.getElementById("cM1buf5Lv" + i).value;
+      var M1dmgbuf6 =
+        document.getElementById("cM1buf6" + i).value +
+        document.getElementById("cM1buf6Lv" + i).value;
       var M1dmgbuf1add = M1dmgbuf1 in dmgbuffDict ? dmgbuffDict[M1dmgbuf1] : 0;
       var M1dmgbuf2add = M1dmgbuf2 in dmgbuffDict ? dmgbuffDict[M1dmgbuf2] : 0;
       var M1dmgbuf3add = M1dmgbuf3 in dmgbuffDict ? dmgbuffDict[M1dmgbuf3] : 0;
       var M1dmgbuf4add = M1dmgbuf4 in dmgbuffDict ? dmgbuffDict[M1dmgbuf4] : 0;
       var M1dmgbuf5add = M1dmgbuf5 in dmgbuffDict ? dmgbuffDict[M1dmgbuf5] : 0;
+      var M1dmgbuf6add = M1dmgbuf6 in dmgbuffDict ? dmgbuffDict[M1dmgbuf6] : 0;
 
       var M1kou2 =
         Number(M1magicRatio) * Number(M1muAdjust) +
@@ -778,14 +797,15 @@ function calc() {
         Number(M1dmgbuf2add) +
         Number(M1dmgbuf3add) +
         Number(M1dmgbuf4add) +
-        Number(M1dmgbuf5add);
+        Number(M1dmgbuf5add +
+        Number(M1dmgbuf6add));
 
       var M1rengeki = 1;
       var M1magicpow = document.getElementById("cM1pow" + i).value;
       if (M1magicpow == "連撃(弱)" || M1magicpow == "連撃(強)") {
         M1rengeki = 1.8;
       }
-      if (M1magicpow == "デュオ魔法") {
+      if (M1magicpow == "デュオ魔法" || M1magicpow == "3連撃(弱)") {
         M1rengeki = 2.4;
       }
       var M1criticalbuf1 = document.getElementById("cM1buf1" + i).value;
@@ -793,12 +813,14 @@ function calc() {
       var M1criticalbuf3 = document.getElementById("cM1buf3" + i).value;
       var M1criticalbuf4 = document.getElementById("cM1buf4" + i).value;
       var M1criticalbuf5 = document.getElementById("cM1buf5" + i).value;
+      var M1criticalbuf6 = document.getElementById("cM1buf6" + i).value;
       var M1criticalbuf1add = M1criticalbuf1 in criticallDict ? criticallDict[M1criticalbuf1] : 0;
       var M1criticalbuf2add = M1criticalbuf2 in criticallDict ? criticallDict[M1criticalbuf2] : 0;
       var M1criticalbuf3add = M1criticalbuf3 in criticallDict ? criticallDict[M1criticalbuf3] : 0;
       var M1criticalbuf4add = M1criticalbuf4 in criticallDict ? criticallDict[M1criticalbuf4] : 0;
       var M1criticalbuf5add = M1criticalbuf5 in criticallDict ? criticallDict[M1criticalbuf5] : 0;
-      var M1damage = M1kou1 * M1kou2 * M1rengeki * Math.max(M1criticalbuf1add,M1criticalbuf2add,M1criticalbuf3add,M1criticalbuf4add,M1criticalbuf5add,1);
+      var M1criticalbuf6add = M1criticalbuf6 in criticallDict ? criticallDict[M1criticalbuf6] : 0;
+      var M1damage = M1kou1 * M1kou2 * M1rengeki * Math.max(M1criticalbuf1add,M1criticalbuf2add,M1criticalbuf3add,M1criticalbuf4add,M1criticalbuf5add,M1criticalbuf6add,1);
       var vsM1hidamage = (M1damage * 1).toFixed(1);
       var vsM1kidamage = (M1damage * 1).toFixed(1);
       var vsM1mizudamage = (M1damage * 1).toFixed(1);
@@ -851,6 +873,9 @@ function calc() {
       var M2atkbuf5 =
         document.getElementById("cM2buf5" + i).value +
         document.getElementById("cM2buf5Lv" + i).value;
+      var M2atkbuf6 =
+        document.getElementById("cM2buf6" + i).value +
+        document.getElementById("cM2buf6Lv" + i).value;
       var M2atkbuf1add =
         (M2atkbuf1 in atkbuffDict ? atkbuffDict[M2atkbuf1] : 0) * suATK;
       var M2atkbuf2add =
@@ -861,8 +886,10 @@ function calc() {
         (M2atkbuf4 in atkbuffDict ? atkbuffDict[M2atkbuf4] : 0) * suATK;
       var M2atkbuf5add =
         (M2atkbuf5 in atkbuffDict ? atkbuffDict[M2atkbuf5] : 0) * suATK;
+      var M2atkbuf6add =
+        (M2atkbuf6 in atkbuffDict ? atkbuffDict[M2atkbuf6] : 0) * suATK;
 
-      var M2kou1 = suATK + M2atkbuf1add + M2atkbuf2add + M2atkbuf3add + M2atkbuf4add + M2atkbuf5add + buddyatk;
+      var M2kou1 = suATK + M2atkbuf1add + M2atkbuf2add + M2atkbuf3add + M2atkbuf4add + M2atkbuf5add + M2atkbuf6add + buddyatk;
 
       // 攻撃倍率
       var M2magicRatioKey =
@@ -888,11 +915,15 @@ function calc() {
       var M2dmgbuf5 =
         document.getElementById("cM2buf5" + i).value +
         document.getElementById("cM2buf5Lv" + i).value;
+      var M2dmgbuf6 =
+        document.getElementById("cM2buf6" + i).value +
+        document.getElementById("cM2buf6Lv" + i).value;
       var M2dmgbuf1add = M2dmgbuf1 in dmgbuffDict ? dmgbuffDict[M2dmgbuf1] : 0;
       var M2dmgbuf2add = M2dmgbuf2 in dmgbuffDict ? dmgbuffDict[M2dmgbuf2] : 0;
       var M2dmgbuf3add = M2dmgbuf3 in dmgbuffDict ? dmgbuffDict[M2dmgbuf3] : 0;
       var M2dmgbuf4add = M2dmgbuf4 in dmgbuffDict ? dmgbuffDict[M2dmgbuf4] : 0;
       var M2dmgbuf5add = M2dmgbuf5 in dmgbuffDict ? dmgbuffDict[M2dmgbuf5] : 0;
+      var M2dmgbuf6add = M2dmgbuf6 in dmgbuffDict ? dmgbuffDict[M2dmgbuf6] : 0;
 
       var M2kou2 =
         Number(M2magicRatio) * Number(M2muAdjust) +
@@ -900,14 +931,15 @@ function calc() {
         Number(M2dmgbuf2add) +
         Number(M2dmgbuf3add) +
         Number(M2dmgbuf4add) +
-        Number(M2dmgbuf5add);
+        Number(M2dmgbuf5add) +
+        Number(M2dmgbuf6add);
 
       var M2rengeki = 1;
       var M2magicpow = document.getElementById("cM2pow" + i).value;
       if (M2magicpow == "連撃(弱)" || M2magicpow == "連撃(強)") {
         M2rengeki = 1.8;
       }
-      if (M2magicpow == "デュオ魔法") {
+      if (M2magicpow == "デュオ魔法" || M2magicpow == "3連撃(弱)") {
         M2rengeki = 2.4;
       }
       var M2criticalbuf1 = document.getElementById("cM2buf1" + i).value;
@@ -915,12 +947,14 @@ function calc() {
       var M2criticalbuf3 = document.getElementById("cM2buf3" + i).value;
       var M2criticalbuf4 = document.getElementById("cM2buf4" + i).value;
       var M2criticalbuf5 = document.getElementById("cM2buf5" + i).value;
+      var M2criticalbuf6 = document.getElementById("cM2buf6" + i).value;
       var M2criticalbuf1add = M2criticalbuf1 in criticallDict ? criticallDict[M2criticalbuf1] : 0;
       var M2criticalbuf2add = M2criticalbuf2 in criticallDict ? criticallDict[M2criticalbuf2] : 0;
       var M2criticalbuf3add = M2criticalbuf3 in criticallDict ? criticallDict[M2criticalbuf3] : 0;
       var M2criticalbuf4add = M2criticalbuf4 in criticallDict ? criticallDict[M2criticalbuf4] : 0;
       var M2criticalbuf5add = M2criticalbuf5 in criticallDict ? criticallDict[M2criticalbuf5] : 0;
-      var M2damage = M2kou1 * M2kou2 * M2rengeki * Math.max(M2criticalbuf1add,M2criticalbuf2add,M2criticalbuf3add,M2criticalbuf4add,M2criticalbuf5add,1);
+      var M2criticalbuf6add = M2criticalbuf6 in criticallDict ? criticallDict[M2criticalbuf6] : 0;
+      var M2damage = M2kou1 * M2kou2 * M2rengeki * Math.max(M2criticalbuf1add,M2criticalbuf2add,M2criticalbuf3add,M2criticalbuf4add,M2criticalbuf5add,M2criticalbuf6add,1);
       var vsM2hidamage = (M2damage * 1).toFixed(1);
       var vsM2kidamage = (M2damage * 1).toFixed(1);
       var vsM2mizudamage = (M2damage * 1).toFixed(1);
@@ -973,6 +1007,9 @@ function calc() {
       var M3atkbuf5 =
         document.getElementById("cM3buf5" + i).value +
         document.getElementById("cM3buf5Lv" + i).value;
+      var M3atkbuf6 =
+        document.getElementById("cM3buf6" + i).value +
+        document.getElementById("cM3buf6Lv" + i).value;
       var M3atkbuf1add =
         (M3atkbuf1 in atkbuffDict ? atkbuffDict[M3atkbuf1] : 0) * suATK;
       var M3atkbuf2add =
@@ -983,8 +1020,10 @@ function calc() {
         (M3atkbuf4 in atkbuffDict ? atkbuffDict[M3atkbuf4] : 0) * suATK;
       var M3atkbuf5add =
         (M3atkbuf5 in atkbuffDict ? atkbuffDict[M3atkbuf5] : 0) * suATK;
+      var M3atkbuf6add =
+        (M3atkbuf6 in atkbuffDict ? atkbuffDict[M3atkbuf6] : 0) * suATK;
 
-      var M3kou1 = suATK + M3atkbuf1add + M3atkbuf2add + M3atkbuf3add + M3atkbuf4add + M3atkbuf5add + buddyatk;
+      var M3kou1 = suATK + M3atkbuf1add + M3atkbuf2add + M3atkbuf3add + M3atkbuf4add + M3atkbuf5add + M3atkbuf6add + buddyatk;
 
       // 攻撃倍率
       var M3magicRatioKey =
@@ -1010,11 +1049,15 @@ function calc() {
       var M3dmgbuf5 =
         document.getElementById("cM3buf5" + i).value +
         document.getElementById("cM3buf5Lv" + i).value;
+      var M3dmgbuf6 =
+        document.getElementById("cM3buf6" + i).value +
+        document.getElementById("cM3buf6Lv" + i).value;
       var M3dmgbuf1add = M3dmgbuf1 in dmgbuffDict ? dmgbuffDict[M3dmgbuf1] : 0;
       var M3dmgbuf2add = M3dmgbuf2 in dmgbuffDict ? dmgbuffDict[M3dmgbuf2] : 0;
       var M3dmgbuf3add = M3dmgbuf3 in dmgbuffDict ? dmgbuffDict[M3dmgbuf3] : 0;
       var M3dmgbuf4add = M3dmgbuf4 in dmgbuffDict ? dmgbuffDict[M3dmgbuf4] : 0;
       var M3dmgbuf5add = M3dmgbuf5 in dmgbuffDict ? dmgbuffDict[M3dmgbuf5] : 0;
+      var M3dmgbuf6add = M3dmgbuf6 in dmgbuffDict ? dmgbuffDict[M3dmgbuf6] : 0;
 
       var M3kou2 =
         Number(M3magicRatio) * Number(M3muAdjust) +
@@ -1022,14 +1065,15 @@ function calc() {
         Number(M3dmgbuf2add) +
         Number(M3dmgbuf3add) +
         Number(M3dmgbuf4add) +
-        Number(M3dmgbuf5add);
+        Number(M3dmgbuf5add) +
+        Number(M3dmgbuf6add);
 
       var M3rengeki = 0;
       var M3magicpow = document.getElementById("cM3pow" + i).value;
       if (M3magicpow == "連撃(弱)" || M3magicpow == "連撃(強)") {
         M3rengeki = 1.8;
       }
-      if (M3magicpow == "デュオ魔法") {
+      if (M3magicpow == "デュオ魔法" || M3magicpow == "3連撃(弱)") {
         M3rengeki = 2.4;
       }
 
@@ -1038,12 +1082,14 @@ function calc() {
       var M3criticalbuf3 = document.getElementById("cM3buf3" + i).value;
       var M3criticalbuf4 = document.getElementById("cM3buf4" + i).value;
       var M3criticalbuf5 = document.getElementById("cM3buf5" + i).value;
+      var M3criticalbuf6 = document.getElementById("cM3buf6" + i).value;
       var M3criticalbuf1add = M3criticalbuf1 in criticallDict ? criticallDict[M3criticalbuf1] : 0;
       var M3criticalbuf2add = M3criticalbuf2 in criticallDict ? criticallDict[M3criticalbuf2] : 0;
       var M3criticalbuf3add = M3criticalbuf3 in criticallDict ? criticallDict[M3criticalbuf3] : 0;
       var M3criticalbuf4add = M3criticalbuf4 in criticallDict ? criticallDict[M3criticalbuf4] : 0;
       var M3criticalbuf5add = M3criticalbuf5 in criticallDict ? criticallDict[M3criticalbuf5] : 0;
-      var M3damage = M3kou1 * M3kou2 * M3rengeki * Math.max(M3criticalbuf1add,M3criticalbuf2add,M3criticalbuf3add,M3criticalbuf4add,M3criticalbuf5add,1);
+      var M3criticalbuf6add = M3criticalbuf6 in criticallDict ? criticallDict[M3criticalbuf6] : 0;
+      var M3damage = M3kou1 * M3kou2 * M3rengeki * Math.max(M3criticalbuf1add,M3criticalbuf2add,M3criticalbuf3add,M3criticalbuf4add,M3criticalbuf5add,M3criticalbuf6add,1);
       var vsM3hidamage = (M3damage * 1).toFixed(1);
       var vsM3kidamage = (M3damage * 1).toFixed(1);
       var vsM3mizudamage = (M3damage * 1).toFixed(1);
