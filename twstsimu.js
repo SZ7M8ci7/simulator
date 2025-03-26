@@ -1325,14 +1325,14 @@ function calc() {
     damage4 = damage3 + (damageList[6] || 0) + (damageList[7] || 0);
     damage5 = damage4 + (damageList[8] || 0) + (damageList[9] || 0);
 
-    document.getElementById("totalHP").innerHTML = totalHP.toFixed();
-    document.getElementById("totalHealHP").innerHTML = totalHealHP.toFixed();
-    document.getElementById("totalDamage5").innerHTML = damage5.toFixed();
-    document.getElementById("totalDamage4").innerHTML = damage4.toFixed();
-    document.getElementById("totalDamage3").innerHTML = damage3.toFixed();
-    document.getElementById("midDamage5").innerHTML = (damage5 - (damageList[0]||0)).toFixed() + '+' + (damageList[0]||0).toFixed();
-    document.getElementById("midDamage4").innerHTML = (damage4 - (damageList[0]||0)).toFixed() + '+' + (damageList[0]||0).toFixed();
-    document.getElementById("midDamage3").innerHTML = (damage3 - (damageList[0]||0)).toFixed() + '+' + (damageList[0]||0).toFixed();
+    document.getElementById("totalHP").innerHTML = Number(totalHP.toFixed()).toLocaleString();
+    document.getElementById("totalHealHP").innerHTML = Number(totalHealHP.toFixed()).toLocaleString();
+    document.getElementById("totalDamage5").innerHTML = Number(damage5.toFixed()).toLocaleString();
+    document.getElementById("totalDamage4").innerHTML = Number(damage4.toFixed()).toLocaleString();
+    document.getElementById("totalDamage3").innerHTML = Number(damage3.toFixed()).toLocaleString();
+    document.getElementById("midDamage5").innerHTML = Number((damage5 - (damageList[0]||0)).toFixed()).toLocaleString() + '+' + Number((damageList[0]||0).toFixed()).toLocaleString();
+    document.getElementById("midDamage4").innerHTML = Number((damage4 - (damageList[0]||0)).toFixed()).toLocaleString() + '+' + Number((damageList[0]||0).toFixed()).toLocaleString();
+    document.getElementById("midDamage3").innerHTML = Number((damage3 - (damageList[0]||0)).toFixed()).toLocaleString() + '+' + Number((damageList[0]||0).toFixed()).toLocaleString();
 
     document.getElementById("extrascore1T").innerHTML = (
       score[0] * 0.216
