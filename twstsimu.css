@@ -229,4 +229,6 @@ p {
 	transform: rotate(45deg);
 	transform-origin: top center;
   }
-  
+  .hidden {
+	display: none;
+  }

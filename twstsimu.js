@@ -1855,3 +1855,17 @@ $(function () {
     }
   }
 });
+document.querySelectorAll('input[type="checkbox"][data-target]').forEach(checkbox => {
+  checkbox.addEventListener('change', function() {
+    const targetGroup = this.getAttribute('data-target');
+    const targetElements = document.querySelectorAll(`[data-group="${targetGroup}"]`);
+
+    targetElements.forEach(el => {
+      if (this.checked) {
+        el.classList.remove('hidden');
+      } else {
+        el.classList.add('hidden');
+      }
+    });
+  });
+});
