@@ -137,6 +137,8 @@ def checkMagicPow(str):
     pow = ''
     if '2連撃' in str:
         pow += '連撃'
+    elif '3連撃' in str:
+        pow += '3連撃'
     else:
         pow += '単発'
     if '(強)' in str:
