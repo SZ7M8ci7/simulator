@@ -376,13 +376,20 @@ def update_or_add_entry(data, new_entry):
 
     max_id = -1
     existing_entry = None
-    
+    input_file = 'index.html'
     for entry in data:
         max_id = max(max_id, int(entry['id']))
         if entry['name'] == new_entry['name']:
             existing_entry = entry
+    has_icon = False
+    with open(input_file, 'r',encoding='UTF-8') as file:
+        # ファイルを1行ずつ読み込み、処理を行う
+        lines = file.readlines()
+        for i in range(len(lines)):
+            if new_entry['name'] in lines[i]:
+                has_icon = True
 
-    if existing_entry:
+    if has_icon:
         # Update the existing entry
         existing_entry.update(new_entry)
         print(f"Updated entry with name '{new_entry['name']}'.")
@@ -392,8 +399,6 @@ def update_or_add_entry(data, new_entry):
         data.append(new_entry)
         print(f"Added new entry with id '{new_entry['id']}' and name '{new_entry['name']}'.")
         try:
-                
-            input_file = 'index.html'
             with open(input_file, 'r',encoding='UTF-8') as file:
                 # ファイルを1行ずつ読み込み、処理を行う
                 lines = file.readlines()
