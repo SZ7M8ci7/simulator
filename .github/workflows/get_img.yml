@@ -5,7 +5,7 @@ name: get img
 
 on:
   schedule:
-    - cron: '15 */3 * 5 *' # 毎3時間ごとに実行
+    - cron: '15 */3 * * *' # 毎3時間ごとに実行
   workflow_dispatch:
   
 jobs:
