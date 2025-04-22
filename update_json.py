@@ -357,8 +357,8 @@ def get_history():
             time_str = match.group(2)  # HH:MM:SS
             date_time_obj = datetime.strptime(f"{date_str} {time_str}", "%Y-%m-%d %H:%M:%S")
             
-            # 現在の日時から3日以内であればリストに追加
-            if date_time_obj >= datetime.now() - timedelta(days=7):
+            # 現在の日時から2日以内であればリストに追加
+            if date_time_obj >= datetime.now() - timedelta(days=2):
                 link_text = item.find('a').text.strip()  # リンクテキスト部分
                 if link_text.startswith('R/'):
                     results.append(['R', 'https://twst.wikiru.jp/?'+link_text])
