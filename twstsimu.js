@@ -1209,7 +1209,9 @@ function calc() {
             if (result[k].duoMagic == "デュオ魔法") {
               score[l] += 3000;
             }
-            score[l] += 1500;
+            if (!result[k].attribute == '無'){
+              score[l] += 1500;
+            };
             score[l] += result[k].vszendamage;
             score[l] += 500;
           }
