@@ -83,17 +83,20 @@ def getCharaDict(path,namedict,cosdict):
         for i in range(len(magic1split)):
             if i > 0:
                 etc += magic1split[i]
+                etc += '(M1)'
                 etc += '<br>'
         magic2split = chara[10].split('&')
         for i in range(len(magic2split)):
             if i > 0:
                 if '[DUO]' not in magic2split[i]:
                     etc += magic2split[i]
+                    etc += '(M2)'
                     etc += '<br>'
         magic3split = chara[11].split('&')
         for i in range(len(magic3split)):
             if i > 0:
                 etc += magic3split[i]
+                etc += '(M3)'
                 etc += '<br>'
         splitted_etc = etc.split('<br>')
         buff_count = 0

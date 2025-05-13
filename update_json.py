@@ -250,17 +250,20 @@ def get_chara_dict(rank, url, masters):
     for i in range(len(magic1split)):
         if i > 0:
             etc += magic1split[i]
+            etc += '(M1)'
             etc += '<br>'
     magic2split = magic2.split('&')
     for i in range(len(magic2split)):
         if i > 0:
             if '[DUO]' not in magic2split[i]:
                 etc += magic2split[i]
+                etc += '(M2)'
                 etc += '<br>'
     magic3split = magic3.split('&')
     for i in range(len(magic3split)):
         if i > 0:
             etc += magic3split[i]
+            etc += '(M3)'
             etc += '<br>'
     etc = etc.replace(' ', '').replace('（', '(').replace('）', ')').replace('＆', '&')
     splitted_etc = etc.split('<br>')
