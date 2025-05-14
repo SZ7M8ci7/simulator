@@ -1674,6 +1674,40 @@ function setChart() {
         mode: "label",
         position: "custom",
         caretSize: 0,
+        callbacks: {
+          label: function(tooltipItem, data) {
+            var datasetLabel = data.datasets[tooltipItem.datasetIndex].label || '';
+            var value = tooltipItem.yLabel;
+            var delimiter = '：'; // 全角コロン
+      
+            // ラベル名からパディング長さを決定（HP, バディ, 回復のみ 3、それ以外は 5）
+            function padLabel(label, length) {
+              let padCount = length - label.length;
+              return label + '　'.repeat(padCount > 0 ? padCount : 0);
+            }
+      
+            // HPラベルを全角大文字に変換
+            var labelForPad = datasetLabel === 'HP' ? 'ＨＰ' : datasetLabel;
+      
+            // パディング長さの条件指定
+            const shortPadLabels = ['ＨＰ', 'バディ', '回復'];
+            var padLength = shortPadLabels.includes(labelForPad) ? 4 : 5;
+      
+            var paddedLabel = padLabel(labelForPad, padLength);
+      
+            if (datasetLabel === 'HP') {
+              return paddedLabel + delimiter + String(Math.round(value)).padStart(5);
+            }
+            if (datasetLabel.includes('対')) {
+              var upperValue = Math.round(value * 1.05);
+              var lowerValue = Math.round(value * 0.95);
+              return paddedLabel + delimiter + String(Math.round(value)).padStart(5) + ' (' + String(lowerValue).padStart(5) + '～' + String(upperValue).padStart(5) + ')';
+            }
+            return paddedLabel + delimiter + String(Math.round(value)).padStart(5);
+          }
+        },
+        bodyFontFamily: 'monospace',
+        titleFontFamily: 'monospace',
       },
       responsive: false,
       maintainAspectRatio: false,
