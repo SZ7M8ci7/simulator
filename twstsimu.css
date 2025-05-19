@@ -137,6 +137,7 @@ p {
 }
 .nowrap{
     white-space: nowrap;
+	width: 85px;
 }
 .ac_menu{
   width: 450px;

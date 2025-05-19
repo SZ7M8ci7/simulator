@@ -912,7 +912,7 @@
   </div>
 </div>
 <form id="myForm">
-<table border="1" style="border-collapse: collapse;min-width: 1150px;max-width: 1150px;">
+<table border="1" style="border-collapse: collapse;min-width: 1210px;max-width: 1210px;">
 <caption>
 <span class="left">
 <input type="radio" id="display1" name="display" value="全属性" checked>
@@ -932,7 +932,7 @@
 </caption>
 
 <tr>
-<td></td>
+<td class="nowrap"></td>
 <td><a href="#ex1" rel="modal:open" id="1" onclick="setModal(this.id)"><input type="image" src="img/cx.png" id="img1" value="img/cx.png"/></a></td>
 <td><a href="#ex1" rel="modal:open" id="2" onclick="setModal(this.id)"><input type="image" src="img/cx.png" id="img2" value="img/cx.png"/></a></td>
 <td><a href="#ex1" rel="modal:open" id="3" onclick="setModal(this.id)"><input type="image" src="img/cx.png" id="img3" value="img/cx.png"/></a></td>
@@ -1135,11 +1135,11 @@
 </tr>
 <tr>
     <td class="nowrap">
-    <label for="cM1Lv1">マジック１<br>（＋バフ）</label>
+    <label for="cM1Lv1">マジック１</label>
     </td>
     <td>
     <input type="checkbox" name="checkboxc1" id="checkboxc11" onclick="checkLimit(this,1)" checked value="1">
-    <select name="cM1Atr1" id="cM1Atr1">
+    <select name="cM1Atr1" id="cM1Atr1" onchange="updateMagicAttributeColor(this)">
     <option value=""></option>
     <option value="火">火</option>
     <option value="木">木</option>
@@ -1159,7 +1159,6 @@
     <option value="2">2</option>
     <option value="1">1</option>
     </select>
-    <br>
     <select name="cM1pow1" id="cM1pow1">
     <option value=""></option>
     <option value="連撃(強)">連撃(強)</option>
@@ -1179,7 +1178,7 @@
     <option value="回復&継続回復(小)">回復&継続回復(小)</option>
     </select>
     <br>
-    <select name="cM1buf11" id="cM1buf11">
+    <select name="cM1buf11" id="cM1buf11" class="buff-select" data-chara="1" data-magic="1" data-buf="1" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -1229,7 +1228,7 @@
     <option value="1">1</option>
     </select>
     <br>
-    <select name="cM1buf21" id="cM1buf21">
+    <select name="cM1buf21" id="cM1buf21" class="buff-select" data-chara="1" data-magic="1" data-buf="2" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -1279,7 +1278,7 @@
     <option value="1">1</option>
     </select>
     <br>
-    <select name="cM1buf31" id="cM1buf31">
+    <select name="cM1buf31" id="cM1buf31" class="buff-select" data-chara="1" data-magic="1" data-buf="3" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -1329,7 +1328,7 @@
     <option value="1">1</option>
     </select>
     <br>
-    <select name="cM1buf41" id="cM1buf41">
+    <select name="cM1buf41" id="cM1buf41" class="buff-select" data-chara="1" data-magic="1" data-buf="4" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -1379,7 +1378,7 @@
     <option value="1">1</option>
     </select>
     <br>
-    <select name="cM1buf51" id="cM1buf51">
+    <select name="cM1buf51" id="cM1buf51" class="buff-select" data-chara="1" data-magic="1" data-buf="5" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -1428,7 +1427,7 @@
     <option value="2">2</option>
     <option value="1">1</option>
     </select>
-    <select name="cM1buf61" id="cM1buf61">
+    <select name="cM1buf61" id="cM1buf61" class="buff-select" data-chara="1" data-magic="1" data-buf="6" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -1500,7 +1499,6 @@
     <option value="2">2</option>
     <option value="1">1</option>
     </select>
-    <br>
     <select name="cM1pow2" id="cM1pow2">
     <option value=""></option>
     <option value="連撃(強)">連撃(強)</option>
@@ -1520,7 +1518,7 @@
     <option value="回復&継続回復(小)">回復&継続回復(小)</option>
     </select>
     <br>
-    <select name="cM1buf12" id="cM1buf12">
+    <select name="cM1buf12" id="cM1buf12" class="buff-select" data-chara="2" data-magic="1" data-buf="1" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -1570,7 +1568,7 @@
     <option value="1">1</option>
     </select>
     <br>
-    <select name="cM1buf22" id="cM1buf22">
+    <select name="cM1buf22" id="cM1buf22" class="buff-select" data-chara="2" data-magic="1" data-buf="2" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -1620,7 +1618,7 @@
     <option value="1">1</option>
     </select>
     <br>
-    <select name="cM1buf32" id="cM1buf32">
+    <select name="cM1buf32" id="cM1buf32" class="buff-select" data-chara="2" data-magic="1" data-buf="3" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -1670,7 +1668,7 @@
     <option value="1">1</option>
     </select>
     <br>
-    <select name="cM1buf42" id="cM1buf42">
+    <select name="cM1buf42" id="cM1buf42" class="buff-select" data-chara="2" data-magic="1" data-buf="4" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -1720,7 +1718,7 @@
     <option value="1">1</option>
     </select>
     <br>
-    <select name="cM1buf52" id="cM1buf52">
+    <select name="cM1buf52" id="cM1buf52" class="buff-select" data-chara="2" data-magic="1" data-buf="5" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -1769,7 +1767,7 @@
     <option value="2">2</option>
     <option value="1">1</option>
     </select>
-    <select name="cM1buf62" id="cM1buf62">
+    <select name="cM1buf62" id="cM1buf62" class="buff-select" data-chara="2" data-magic="1" data-buf="6" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -1841,7 +1839,6 @@
     <option value="2">2</option>
     <option value="1">1</option>
     </select>
-    <br>
     <select name="cM1pow3" id="cM1pow3">
     <option value=""></option>
     <option value="連撃(強)">連撃(強)</option>
@@ -1862,7 +1859,7 @@
     
     </select>
     <br>
-    <select name="cM1buf13" id="cM1buf13">
+    <select name="cM1buf13" id="cM1buf13" class="buff-select" data-chara="3" data-magic="1" data-buf="1" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -1912,7 +1909,7 @@
     <option value="1">1</option>
     </select>
     <br>
-    <select name="cM1buf23" id="cM1buf23">
+    <select name="cM1buf23" id="cM1buf23" class="buff-select" data-chara="3" data-magic="1" data-buf="2" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -1962,7 +1959,7 @@
     <option value="1">1</option>
     </select>
     <br>
-    <select name="cM1buf33" id="cM1buf33">
+    <select name="cM1buf33" id="cM1buf33" class="buff-select" data-chara="3" data-magic="1" data-buf="3" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -2012,7 +2009,7 @@
     <option value="1">1</option>
     </select>
     <br>
-    <select name="cM1buf43" id="cM1buf43">
+    <select name="cM1buf43" id="cM1buf43" class="buff-select" data-chara="3" data-magic="1" data-buf="4" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -2062,7 +2059,7 @@
     <option value="1">1</option>
     </select>
     <br>
-    <select name="cM1buf53" id="cM1buf53">
+    <select name="cM1buf53" id="cM1buf53" class="buff-select" data-chara="3" data-magic="1" data-buf="5" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -2111,7 +2108,7 @@
     <option value="2">2</option>
     <option value="1">1</option>
     </select>
-    <select name="cM1buf63" id="cM1buf63">
+    <select name="cM1buf63" id="cM1buf63" class="buff-select" data-chara="3" data-magic="1" data-buf="6" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -2183,7 +2180,6 @@
     <option value="2">2</option>
     <option value="1">1</option>
     </select>
-    <br>
     <select name="cM1pow4" id="cM1pow4">
     <option value=""></option>
     <option value="連撃(強)">連撃(強)</option>
@@ -2204,7 +2200,7 @@
     
     </select>
     <br>
-    <select name="cM1buf14" id="cM1buf14">
+    <select name="cM1buf14" id="cM1buf14" class="buff-select" data-chara="4" data-magic="1" data-buf="1" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -2254,7 +2250,7 @@
     <option value="1">1</option>
     </select>
     <br>
-    <select name="cM1buf24" id="cM1buf24">
+    <select name="cM1buf24" id="cM1buf24" class="buff-select" data-chara="4" data-magic="1" data-buf="2" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -2304,7 +2300,7 @@
     <option value="1">1</option>
     </select>
     <br>
-    <select name="cM1buf34" id="cM1buf34">
+    <select name="cM1buf34" id="cM1buf34" class="buff-select" data-chara="4" data-magic="1" data-buf="3" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -2354,7 +2350,7 @@
     <option value="1">1</option>
     </select>
     <br>
-    <select name="cM1buf44" id="cM1buf44">
+    <select name="cM1buf44" id="cM1buf44" class="buff-select" data-chara="4" data-magic="1" data-buf="4" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -2404,7 +2400,7 @@
     <option value="1">1</option>
     </select>
     <br>
-    <select name="cM1buf54" id="cM1buf54">
+    <select name="cM1buf54" id="cM1buf54" class="buff-select" data-chara="4" data-magic="1" data-buf="5" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -2453,7 +2449,7 @@
     <option value="2">2</option>
     <option value="1">1</option>
     </select>
-    <select name="cM1buf64" id="cM1buf64">
+    <select name="cM1buf64" id="cM1buf64" class="buff-select" data-chara="4" data-magic="1" data-buf="6" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -2525,7 +2521,6 @@
     <option value="2">2</option>
     <option value="1">1</option>
     </select>
-    <br>
     <select name="cM1pow5" id="cM1pow5">
     <option value=""></option>
     <option value="連撃(強)">連撃(強)</option>
@@ -2546,7 +2541,7 @@
     
     </select>
     <br>
-    <select name="cM1buf15" id="cM1buf15">
+    <select name="cM1buf15" id="cM1buf15" class="buff-select" data-chara="5" data-magic="1" data-buf="1" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -2596,7 +2591,7 @@
     <option value="1">1</option>
     </select>
     <br>
-    <select name="cM1buf25" id="cM1buf25">
+    <select name="cM1buf25" id="cM1buf25" class="buff-select" data-chara="5" data-magic="1" data-buf="2" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -2646,7 +2641,7 @@
     <option value="1">1</option>
     </select>
     <br>
-    <select name="cM1buf35" id="cM1buf35">
+    <select name="cM1buf35" id="cM1buf35" class="buff-select" data-chara="5" data-magic="1" data-buf="3" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -2696,7 +2691,7 @@
     <option value="1">1</option>
     </select>
     <br>
-    <select name="cM1buf45" id="cM1buf45">
+    <select name="cM1buf45" id="cM1buf45" class="buff-select" data-chara="5" data-magic="1" data-buf="4" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -2746,7 +2741,7 @@
     <option value="1">1</option>
     </select>
     <br>
-    <select name="cM1buf55" id="cM1buf55">
+    <select name="cM1buf55" id="cM1buf55" class="buff-select" data-chara="5" data-magic="1" data-buf="5" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -2795,7 +2790,7 @@
     <option value="2">2</option>
     <option value="1">1</option>
     </select>
-    <select name="cM1buf65" id="cM1buf65">
+    <select name="cM1buf65" id="cM1buf65" class="buff-select" data-chara="5" data-magic="1" data-buf="6" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -2847,7 +2842,7 @@
     </td>
 </tr>
 <tr>
-    <td><label for="cM2Lv1">マジック２<br>（＋バフ）</label>
+    <td><label for="cM2Lv1">マジック２</label>
     </td>
     <td>
     <input type="checkbox" name="checkboxc1" id="checkboxc12" onclick="checkLimit(this,1)" checked value="2">
@@ -2871,7 +2866,6 @@
     <option value="2">2</option>
     <option value="1">1</option>
     </select>
-    <br>
     <select name="cM2pow1" id="cM2pow1">
     <option value=""></option>
     <option value="連撃(強)">連撃(強)</option>
@@ -2893,7 +2887,7 @@
     
     </select>
     <br>
-    <select name="cM2buf11" id="cM2buf11">
+    <select name="cM2buf11" id="cM2buf11" class="buff-select" data-chara="1" data-magic="2" data-buf="1" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -2943,7 +2937,7 @@
     <option value="1">1</option>
     </select>
     <br>
-    <select name="cM2buf21" id="cM2buf21">
+    <select name="cM2buf21" id="cM2buf21" class="buff-select" data-chara="1" data-magic="2" data-buf="2" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -2993,7 +2987,7 @@
     <option value="1">1</option>
     </select>
     <br>
-    <select name="cM2buf31" id="cM2buf31">
+    <select name="cM2buf31" id="cM2buf31" class="buff-select" data-chara="1" data-magic="2" data-buf="3" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -3043,7 +3037,7 @@
     <option value="1">1</option>
     </select>
     <br>
-    <select name="cM2buf41" id="cM2buf41">
+    <select name="cM2buf41" id="cM2buf41" class="buff-select" data-chara="1" data-magic="2" data-buf="4" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -3093,7 +3087,7 @@
     <option value="1">1</option>
     </select>
     <br>
-    <select name="cM2buf51" id="cM2buf51">
+    <select name="cM2buf51" id="cM2buf51" class="buff-select" data-chara="1" data-magic="2" data-buf="5" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -3142,7 +3136,7 @@
     <option value="2">2</option>
     <option value="1">1</option>
     </select>
-    <select name="cM2buf61" id="cM2buf61">
+    <select name="cM2buf61" id="cM2buf61" class="buff-select" data-chara="1" data-magic="2" data-buf="6" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -3214,7 +3208,6 @@
     <option value="2">2</option>
     <option value="1">1</option>
     </select>
-    <br>
     <select name="cM2pow2" id="cM2pow2">
     <option value=""></option>
     <option value="連撃(強)">連撃(強)</option>
@@ -3236,7 +3229,7 @@
     
     </select>
     <br>
-    <select name="cM2buf12" id="cM2buf12">
+    <select name="cM2buf12" id="cM2buf12" class="buff-select" data-chara="2" data-magic="2" data-buf="1" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -3286,7 +3279,7 @@
     <option value="1">1</option>
     </select>
     <br>
-    <select name="cM2buf22" id="cM2buf22">
+    <select name="cM2buf22" id="cM2buf22" class="buff-select" data-chara="2" data-magic="2" data-buf="2" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -3336,7 +3329,7 @@
     <option value="1">1</option>
     </select>
     <br>
-    <select name="cM2buf32" id="cM2buf32">
+    <select name="cM2buf32" id="cM2buf32" class="buff-select" data-chara="2" data-magic="2" data-buf="3" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -3386,7 +3379,7 @@
     <option value="1">1</option>
     </select>
     <br>
-    <select name="cM2buf42" id="cM2buf42">
+    <select name="cM2buf42" id="cM2buf42" class="buff-select" data-chara="2" data-magic="2" data-buf="4" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -3436,7 +3429,7 @@
     <option value="1">1</option>
     </select>
     <br>
-    <select name="cM2buf52" id="cM2buf52">
+    <select name="cM2buf52" id="cM2buf52" class="buff-select" data-chara="2" data-magic="2" data-buf="5" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -3485,7 +3478,7 @@
     <option value="2">2</option>
     <option value="1">1</option>
     </select>
-    <select name="cM2buf62" id="cM2buf62">
+    <select name="cM2buf62" id="cM2buf62" class="buff-select" data-chara="2" data-magic="2" data-buf="6" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -3558,7 +3551,6 @@
     <option value="2">2</option>
     <option value="1">1</option>
     </select>
-    <br>
     <select name="cM2pow3" id="cM2pow3">
     <option value=""></option>
     <option value="連撃(強)">連撃(強)</option>
@@ -3580,7 +3572,7 @@
     
     </select>
     <br>
-    <select name="cM2buf13" id="cM2buf13">
+    <select name="cM2buf13" id="cM2buf13" class="buff-select" data-chara="3" data-magic="2" data-buf="1" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -3630,7 +3622,7 @@
     <option value="1">1</option>
     </select>
     <br>
-    <select name="cM2buf23" id="cM2buf23">
+    <select name="cM2buf23" id="cM2buf23" class="buff-select" data-chara="3" data-magic="2" data-buf="2" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -3680,7 +3672,7 @@
     <option value="1">1</option>
     </select>
     <br>
-    <select name="cM2buf33" id="cM2buf33">
+    <select name="cM2buf33" id="cM2buf33" class="buff-select" data-chara="3" data-magic="2" data-buf="3" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -3730,7 +3722,7 @@
     <option value="1">1</option>
     </select>
     <br>
-    <select name="cM2buf43" id="cM2buf43">
+    <select name="cM2buf43" id="cM2buf43" class="buff-select" data-chara="3" data-magic="2" data-buf="4" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -3780,7 +3772,7 @@
     <option value="1">1</option>
     </select>
     <br>
-    <select name="cM2buf53" id="cM2buf53">
+    <select name="cM2buf53" id="cM2buf53" class="buff-select" data-chara="3" data-magic="2" data-buf="5" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -3829,7 +3821,7 @@
     <option value="2">2</option>
     <option value="1">1</option>
     </select>
-    <select name="cM2buf63" id="cM2buf63">
+    <select name="cM2buf63" id="cM2buf63" class="buff-select" data-chara="3" data-magic="2" data-buf="6" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -3902,7 +3894,6 @@
     <option value="2">2</option>
     <option value="1">1</option>
     </select>
-    <br>
     <select name="cM2pow4" id="cM2pow4">
     <option value=""></option>
     <option value="連撃(強)">連撃(強)</option>
@@ -3924,7 +3915,7 @@
     
     </select>
     <br>
-    <select name="cM2buf14" id="cM2buf14">
+    <select name="cM2buf14" id="cM2buf14" class="buff-select" data-chara="4" data-magic="2" data-buf="1" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -3974,7 +3965,7 @@
     <option value="1">1</option>
     </select>
     <br>
-    <select name="cM2buf24" id="cM2buf24">
+    <select name="cM2buf24" id="cM2buf24" class="buff-select" data-chara="4" data-magic="2" data-buf="2" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -4024,7 +4015,7 @@
     <option value="1">1</option>
     </select>
     <br>
-    <select name="cM2buf34" id="cM2buf34">
+    <select name="cM2buf34" id="cM2buf34" class="buff-select" data-chara="4" data-magic="2" data-buf="3" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -4074,7 +4065,7 @@
     <option value="1">1</option>
     </select>
     <br>
-    <select name="cM2buf44" id="cM2buf44">
+    <select name="cM2buf44" id="cM2buf44" class="buff-select" data-chara="4" data-magic="2" data-buf="4" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -4124,7 +4115,7 @@
     <option value="1">1</option>
     </select>
     <br>
-    <select name="cM2buf54" id="cM2buf54">
+    <select name="cM2buf54" id="cM2buf54" class="buff-select" data-chara="4" data-magic="2" data-buf="5" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -4173,7 +4164,7 @@
     <option value="2">2</option>
     <option value="1">1</option>
     </select>
-    <select name="cM2buf64" id="cM2buf64">
+    <select name="cM2buf64" id="cM2buf64" class="buff-select" data-chara="4" data-magic="2" data-buf="6" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -4246,7 +4237,6 @@
     <option value="2">2</option>
     <option value="1">1</option>
     </select>
-    <br>
     <select name="cM2pow5" id="cM2pow5">
     <option value=""></option>
     <option value="連撃(強)">連撃(強)</option>
@@ -4268,7 +4258,7 @@
     
     </select>
     <br>
-    <select name="cM2buf15" id="cM2buf15">
+    <select name="cM2buf15" id="cM2buf15" class="buff-select" data-chara="5" data-magic="2" data-buf="1" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -4318,7 +4308,7 @@
     <option value="1">1</option>
     </select>
     <br>
-    <select name="cM2buf25" id="cM2buf25">
+    <select name="cM2buf25" id="cM2buf25" class="buff-select" data-chara="5" data-magic="2" data-buf="2" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -4368,7 +4358,7 @@
     <option value="1">1</option>
     </select>
     <br>
-    <select name="cM2buf35" id="cM2buf35">
+    <select name="cM2buf35" id="cM2buf35" class="buff-select" data-chara="5" data-magic="2" data-buf="3" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -4418,7 +4408,7 @@
     <option value="1">1</option>
     </select>
     <br>
-    <select name="cM2buf45" id="cM2buf45">
+    <select name="cM2buf45" id="cM2buf45" class="buff-select" data-chara="5" data-magic="2" data-buf="4" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -4468,7 +4458,7 @@
     <option value="1">1</option>
     </select>
     <br>
-    <select name="cM2buf55" id="cM2buf55">
+    <select name="cM2buf55" id="cM2buf55" class="buff-select" data-chara="5" data-magic="2" data-buf="5" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -4517,7 +4507,7 @@
     <option value="2">2</option>
     <option value="1">1</option>
     </select>
-    <select name="cM2buf65" id="cM2buf65">
+    <select name="cM2buf65" id="cM2buf65" class="buff-select" data-chara="5" data-magic="2" data-buf="6" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -4573,7 +4563,7 @@
 </tr>
 <tr>
     <td class="nowrap">
-    <label for="cM3Lv1">マジック３<br>（＋バフ）</label>
+    <label for="cM3Lv1">マジック３</label>
     </td>
     <td>
     <input type="checkbox" name="checkboxc1" id="checkboxc13" onclick="checkLimit(this,1)" value="3">
@@ -4597,7 +4587,6 @@
     <option value="2">2</option>
     <option value="1">1</option>
     </select>
-    <br>
     <select name="cM3pow1" id="cM3pow1">
     <option value=""></option>
     <option value="連撃(強)">連撃(強)</option>
@@ -4618,7 +4607,7 @@
     
     </select>
     <br>
-    <select name="cM3buf11" id="cM3buf11">
+    <select name="cM3buf11" id="cM3buf11" class="buff-select" data-chara="1" data-magic="3" data-buf="1" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -4668,7 +4657,7 @@
     <option value="1">1</option>
     </select>
     <br>
-    <select name="cM3buf21" id="cM3buf21">
+    <select name="cM3buf21" id="cM3buf21" class="buff-select" data-chara="1" data-magic="3" data-buf="2" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -4718,7 +4707,7 @@
     <option value="1">1</option>
     </select>
     <br>
-    <select name="cM3buf31" id="cM3buf31">
+    <select name="cM3buf31" id="cM3buf31" class="buff-select" data-chara="1" data-magic="3" data-buf="3" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -4768,7 +4757,7 @@
     <option value="1">1</option>
     </select>
     <br>
-    <select name="cM3buf41" id="cM3buf41">
+    <select name="cM3buf41" id="cM3buf41" class="buff-select" data-chara="1" data-magic="3" data-buf="4" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -4818,7 +4807,7 @@
     <option value="1">1</option>
     </select>
     <br>
-    <select name="cM3buf51" id="cM3buf51">
+    <select name="cM3buf51" id="cM3buf51" class="buff-select" data-chara="1" data-magic="3" data-buf="5" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -4867,7 +4856,7 @@
     <option value="2">2</option>
     <option value="1">1</option>
     </select>
-    <select name="cM3buf61" id="cM3buf61">
+    <select name="cM3buf61" id="cM3buf61" class="buff-select" data-chara="1" data-magic="3" data-buf="6" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -4939,7 +4928,6 @@
     <option value="2">2</option>
     <option value="1">1</option>
     </select>
-    <br>
     <select name="cM3pow2" id="cM3pow2">
     <option value=""></option>
     <option value="連撃(強)">連撃(強)</option>
@@ -4960,7 +4948,7 @@
     
     </select>
     <br>
-    <select name="cM3buf12" id="cM3buf12">
+    <select name="cM3buf12" id="cM3buf12" class="buff-select" data-chara="2" data-magic="3" data-buf="1" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -5010,7 +4998,7 @@
     <option value="1">1</option>
     </select>
     <br>
-    <select name="cM3buf22" id="cM3buf22">
+    <select name="cM3buf22" id="cM3buf22" class="buff-select" data-chara="2" data-magic="3" data-buf="2" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -5060,7 +5048,7 @@
     <option value="1">1</option>
     </select>
     <br>
-    <select name="cM3buf32" id="cM3buf32">
+    <select name="cM3buf32" id="cM3buf32" class="buff-select" data-chara="2" data-magic="3" data-buf="3" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -5110,7 +5098,7 @@
     <option value="1">1</option>
     </select>
     <br>
-    <select name="cM3buf42" id="cM3buf42">
+    <select name="cM3buf42" id="cM3buf42" class="buff-select" data-chara="2" data-magic="3" data-buf="4" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -5160,7 +5148,7 @@
     <option value="1">1</option>
     </select>
     <br>
-    <select name="cM3buf52" id="cM3buf52">
+    <select name="cM3buf52" id="cM3buf52" class="buff-select" data-chara="2" data-magic="3" data-buf="5" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -5209,7 +5197,7 @@
     <option value="2">2</option>
     <option value="1">1</option>
     </select>
-    <select name="cM3buf62" id="cM3buf62">
+    <select name="cM3buf62" id="cM3buf62" class="buff-select" data-chara="2" data-magic="3" data-buf="6" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -5281,7 +5269,6 @@
     <option value="2">2</option>
     <option value="1">1</option>
     </select>
-    <br>
     <select name="cM3pow3" id="cM3pow3">
     <option value=""></option>
     <option value="連撃(強)">連撃(強)</option>
@@ -5302,7 +5289,7 @@
     
     </select>
     <br>
-    <select name="cM3buf13" id="cM3buf13">
+    <select name="cM3buf13" id="cM3buf13" class="buff-select" data-chara="3" data-magic="3" data-buf="1" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -5352,7 +5339,7 @@
     <option value="1">1</option>
     </select>
     <br>
-    <select name="cM3buf23" id="cM3buf23">
+    <select name="cM3buf23" id="cM3buf23" class="buff-select" data-chara="3" data-magic="3" data-buf="2" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -5402,7 +5389,7 @@
     <option value="1">1</option>
     </select>
     <br>
-    <select name="cM3buf33" id="cM3buf33">
+    <select name="cM3buf33" id="cM3buf33" class="buff-select" data-chara="3" data-magic="3" data-buf="3" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -5452,7 +5439,7 @@
     <option value="1">1</option>
     </select>
     <br>
-    <select name="cM3buf43" id="cM3buf43">
+    <select name="cM3buf43" id="cM3buf43" class="buff-select" data-chara="3" data-magic="3" data-buf="4" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -5502,7 +5489,7 @@
     <option value="1">1</option>
     </select>
     <br>
-    <select name="cM3buf53" id="cM3buf53">
+    <select name="cM3buf53" id="cM3buf53" class="buff-select" data-chara="3" data-magic="3" data-buf="5" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -5551,7 +5538,7 @@
     <option value="2">2</option>
     <option value="1">1</option>
     </select>
-    <select name="cM3buf63" id="cM3buf63">
+    <select name="cM3buf63" id="cM3buf63" class="buff-select" data-chara="3" data-magic="3" data-buf="6" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -5623,7 +5610,6 @@
     <option value="2">2</option>
     <option value="1">1</option>
     </select>
-    <br>
     <select name="cM3pow4" id="cM3pow4">
     <option value=""></option>
     <option value="連撃(強)">連撃(強)</option>
@@ -5644,7 +5630,7 @@
     
     </select>
     <br>
-    <select name="cM3buf14" id="cM3buf14">
+    <select name="cM3buf14" id="cM3buf14" class="buff-select" data-chara="4" data-magic="3" data-buf="1" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -5694,7 +5680,7 @@
     <option value="1">1</option>
     </select>
     <br>
-    <select name="cM3buf24" id="cM3buf24">
+    <select name="cM3buf24" id="cM3buf24" class="buff-select" data-chara="4" data-magic="3" data-buf="2" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -5744,7 +5730,7 @@
     <option value="1">1</option>
     </select>
     <br>
-    <select name="cM3buf34" id="cM3buf34">
+    <select name="cM3buf34" id="cM3buf34" class="buff-select" data-chara="4" data-magic="3" data-buf="3" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -5794,7 +5780,7 @@
     <option value="1">1</option>
     </select>
     <br>
-    <select name="cM3buf44" id="cM3buf44">
+    <select name="cM3buf44" id="cM3buf44" class="buff-select" data-chara="4" data-magic="3" data-buf="4" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -5844,7 +5830,7 @@
     <option value="1">1</option>
     </select>
     <br>
-    <select name="cM3buf54" id="cM3buf54">
+    <select name="cM3buf54" id="cM3buf54" class="buff-select" data-chara="4" data-magic="3" data-buf="5" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -5893,7 +5879,7 @@
     <option value="2">2</option>
     <option value="1">1</option>
     </select>
-    <select name="cM3buf64" id="cM3buf64">
+    <select name="cM3buf64" id="cM3buf64" class="buff-select" data-chara="4" data-magic="3" data-buf="6" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -5965,7 +5951,6 @@
     <option value="2">2</option>
     <option value="1">1</option>
     </select>
-    <br>
     <select name="cM3pow5" id="cM3pow5">
     <option value=""></option>
     <option value="連撃(強)">連撃(強)</option>
@@ -5986,7 +5971,7 @@
     
     </select>
     <br>
-    <select name="cM3buf15" id="cM3buf15">
+    <select name="cM3buf15" id="cM3buf15" class="buff-select" data-chara="5" data-magic="3" data-buf="1" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -6036,7 +6021,7 @@
     <option value="1">1</option>
     </select>
     <br>
-    <select name="cM3buf25" id="cM3buf25">
+    <select name="cM3buf25" id="cM3buf25" class="buff-select" data-chara="5" data-magic="3" data-buf="2" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -6086,7 +6071,7 @@
     <option value="1">1</option>
     </select>
     <br>
-    <select name="cM3buf35" id="cM3buf35">
+    <select name="cM3buf35" id="cM3buf35" class="buff-select" data-chara="5" data-magic="3" data-buf="3" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -6136,7 +6121,7 @@
     <option value="1">1</option>
     </select>
     <br>
-    <select name="cM3buf45" id="cM3buf45">
+    <select name="cM3buf45" id="cM3buf45" class="buff-select" data-chara="5" data-magic="3" data-buf="4" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -6186,7 +6171,7 @@
     <option value="1">1</option>
     </select>
     <br>
-    <select name="cM3buf55" id="cM3buf55">
+    <select name="cM3buf55" id="cM3buf55" class="buff-select" data-chara="5" data-magic="3" data-buf="5" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>
@@ -6235,7 +6220,7 @@
     <option value="2">2</option>
     <option value="1">1</option>
     </select>
-    <select name="cM3buf65" id="cM3buf65">
+    <select name="cM3buf65" id="cM3buf65" class="buff-select" data-chara="5" data-magic="3" data-buf="6" onchange="updateBuffDisplay(this)">
     <option value=""></option>
     <option value="ATKUP(極小)">ATKUP(極小)</option>
     <option value="ATKUP(小)">ATKUP(小)</option>

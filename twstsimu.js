@@ -419,6 +419,38 @@ function checkLimit(cb, no) {
     cb.checked = false;
   }
 }
+function updateMagicAttributeColor(selectElem) {
+  const attribute = selectElem.value;
+  let backgroundColor = '';
+  
+  switch(attribute) {
+    case '火':
+      backgroundColor = 'rgba(255, 73, 73, 0.15)';
+      break;
+    case '木':
+      backgroundColor = 'rgba(179, 233, 179, 0.94)';
+      break;
+    case '水':
+      backgroundColor = 'rgba(208, 223, 247, 0.91)';
+      break;
+    case '無':
+      backgroundColor = 'rgba(155, 155, 155, 0.15)';
+      break;
+    default:
+      backgroundColor = '';
+  }
+  
+  // セル全体の背景色を変更
+  const cell = selectElem.closest('td');
+  if (cell) {
+    cell.style.backgroundColor = backgroundColor;
+    // セル内の全てのプルダウンに対して透過を設定
+    cell.querySelectorAll('select').forEach(select => {
+      select.style.backgroundColor = 'rgba(255, 255, 255, 0.7)';
+    });
+  }
+}
+
 function changeImg(imgsrc) {
   var imgId = "img" + modalId;
   document.getElementById(imgId).src = "img/" + imgsrc + ".png";
@@ -510,6 +542,49 @@ function changeImg(imgsrc) {
       document.getElementById("cM3buf5Lv" + modalId).value = "10";
       document.getElementById("cM3buf6Lv" + modalId).value = "10";
       document.getElementById("cM3heal" + modalId).value = data[i].magic3heal;
+
+      // バフの表示制御を更新
+      updateBuffDisplay(document.getElementById("cM1buf1" + modalId));
+      updateBuffDisplay(document.getElementById("cM2buf1" + modalId));
+      updateBuffDisplay(document.getElementById("cM3buf1" + modalId));
+
+      // --- ここからバフoptionの色変更処理 ---
+      var buffSelects = [
+        { id: "cM1buf1" + modalId, value: data[i].magic1buf },
+        { id: "cM2buf1" + modalId, value: data[i].magic2buf },
+        { id: "cM3buf1" + modalId, value: data[i].magic3buf }
+      ];
+      buffSelects.forEach(function(obj) {
+        var select = document.getElementById(obj.id);
+        if (select) {
+          // イベント付与
+          select.onchange = function() {
+            if (select.value === obj.value && obj.value !== '') {
+              select.style.color = 'gray';
+              select.style.fontWeight = 'normal';
+            } else if (select.value !== '') {
+              select.style.color = '';
+              select.style.fontWeight = 'bold';
+            } else {
+              select.style.color = '';
+              select.style.fontWeight = 'normal';
+            }
+          };
+          // 初期状態も反映
+          if (select.value === obj.value && obj.value !== '') {
+            select.style.color = 'gray';
+            select.style.fontWeight = 'normal';
+          } else if (select.value !== '') {
+            select.style.color = '';
+            select.style.fontWeight = 'bold';
+          } else {
+            select.style.color = '';
+            select.style.fontWeight = 'normal';
+          }
+        }
+      });
+      // --- ここまで ---
+
       document.getElementById("cbuddy1Name" + modalId).value = data[i].buddy1c;
       document.getElementById("cbuddy1St" + modalId).value = data[i].buddy1s;
       document.getElementById("cbuddy2Name" + modalId).value = data[i].buddy2c;
@@ -547,8 +622,35 @@ function changeImg(imgsrc) {
       }
       calc();
       setChart();
+
+      // 属性の背景色を更新
+      updateMagicAttributeColor(document.getElementById("cM1Atr" + modalId));
+      updateMagicAttributeColor(document.getElementById("cM2Atr" + modalId));
+      updateMagicAttributeColor(document.getElementById("cM3Atr" + modalId));
     }
   }
+
+  // --- ここから全バフselectの太字制御 ---
+  function setBuffSelectBoldEvent() {
+    document.querySelectorAll('.buff-select').forEach(function(select) {
+      select.onchange = function() {
+        if (select.value !== '') {
+          select.style.fontWeight = 'bold';
+        } else {
+          select.style.fontWeight = 'normal';
+        }
+        select.style.color = '';
+        updateBuffDisplay(this);
+      };
+      // 初期状態は常に通常
+      select.style.fontWeight = 'normal';
+      select.style.color = '';
+    });
+  }
+  // --- ここまで ---
+
+  // changeImgの最後に呼び出し
+  setBuffSelectBoldEvent();
 }
 
 function changeLevel(inid) {
@@ -1891,6 +1993,15 @@ window.addEventListener("DOMContentLoaded", function () {
     calc();
     setChart();
   });
+
+  // 属性選択の変更を検知
+  document.querySelectorAll('select[id^="cM"][id$="Atr"]').forEach(select => {
+    select.addEventListener('change', function() {
+      updateMagicAttributeColor(this);
+    });
+    // 初期表示時にも背景色を設定
+    updateMagicAttributeColor(select);
+  });
 });
 window.addEventListener("load", function () {
   $.getJSON("chara.json") // json読み込み開始
@@ -1934,4 +2045,69 @@ document.querySelectorAll('input[type="checkbox"][data-target]').forEach(checkbo
       }
     });
   });
+});
+
+function updateBuffDisplay(selectElem) {
+  // data属性から対象キャラ・マジックを特定
+  var chara = selectElem.getAttribute('data-chara');
+  var magic = selectElem.getAttribute('data-magic');
+  var prefix = 'cM' + magic + 'buf';
+  var max = 6;
+  // 対象キャラ・マジックの全バフ欄を取得
+  var selects = [];
+  for (var i = 1; i <= max; i++) {
+    var sel = document.getElementById(prefix + i + chara);
+    if (sel) selects.push(sel);
+  }
+  // 選択中のバフ数をカウント
+  var selected = selects.filter(s => s.value !== '').length;
+  var show = Math.min(selected + 1, max);
+  // 表示制御
+  for (var i = 0; i < max; i++) {
+    if (i < show) {
+      selects[i].style.display = '';
+      // レベル選択の表示/非表示を制御
+      var levelSelect = document.getElementById(prefix + (i + 1) + 'Lv' + chara);
+      if (levelSelect) {
+        // クリティカルバフの場合はレベル選択を非表示
+        if (selects[i].value.includes('クリティカル')) {
+          levelSelect.style.display = 'none';
+        } else {
+          levelSelect.style.display = '';
+        }
+      }
+    } else {
+      selects[i].style.display = 'none';
+      selects[i].value = '';
+      // 非表示のバフのレベル選択も非表示
+      var levelSelect = document.getElementById(prefix + (i + 1) + 'Lv' + chara);
+      if (levelSelect) {
+        levelSelect.style.display = 'none';
+      }
+    }
+  }
+  // <br>タグの表示制御
+  var row = selectElem.closest('tr');
+  if (row) {
+    var brs = row.querySelectorAll('br');
+    brs.forEach(function(br, idx) {
+      if (idx < show - 1) {
+        br.style.display = '';
+      } else {
+        br.style.display = 'none';
+      }
+    });
+  }
+
+  // セルの横幅を固定（1列目以外）
+  var cell = selectElem.closest('td');
+      // 1列目以外の場合のみ幅を固定
+      cell.style.width = '222.5px';
+      cell.style.minWidth = '222.5px';
+      cell.style.maxWidth = '222.5px';
+}
+// ページロード時に全バフ欄の表示を初期化
+window.addEventListener('DOMContentLoaded', function() {
+  var allBuffs = document.querySelectorAll('.buff-select');
+  allBuffs.forEach(function(sel) { updateBuffDisplay(sel); });
 });
