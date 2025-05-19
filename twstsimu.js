@@ -1895,7 +1895,7 @@ function saveState() {
       id: input.id,
       value: input.value,
       type: input.type,
-      checked: input.checked, // チェックボックスとラジオボタンの状態
+      checked: input.checked,
     };
     state.push(inputState);
   });
@@ -1904,12 +1904,17 @@ function saveState() {
     let selectState = {
       id: select.id,
       value: select.value,
+      style: {
+        fontWeight: select.style.fontWeight,
+        color: select.style.color,
+        display: select.style.display
+      }
     };
     state.push(selectState);
   });
 
   // 状態をシリアライズして保存
-  localStorage.setItem("pageState", JSON.stringify(state)); // シリアライズ必須
+  localStorage.setItem("pageState", JSON.stringify(state));
 }
 
 function openInNewTab() {
@@ -1931,41 +1936,45 @@ function openInNewTab() {
 function restoreState() {
   const savedState = localStorage.getItem("pageState");
   if (savedState) {
-    const state = JSON.parse(savedState); // パース必須
+    const state = JSON.parse(savedState);
 
     // imgに続く数字一桁のidを持つ要素の特別処理を最初に行う
     state.forEach((item) => {
       const match = item.id.match(/^img(\d)$/);
       if (match && item.type === "image") {
-        // 画像のURLを扱うinput想定
         const element = document.getElementById(item.id);
         if (element) {
-          modalId = match[1]; // 数字一桁をmodalIdにセット
-          changeImg(item.value.replace("img/", "").replace(".png", "")); // changeImg関数を呼び出し
-          item.processed = true; // このアイテムが処理されたことをマーク
+          modalId = match[1];
+          changeImg(item.value.replace("img/", "").replace(".png", ""));
+          item.processed = true;
         }
       }
     });
 
     // その他の要素を復元
     state.forEach((item) => {
-      // すでに処理されたアイテムはスキップ
       if (item.processed) return;
 
       const element = document.getElementById(item.id);
       if (element) {
-        if (
-          element.tagName === "INPUT" &&
-          (element.type === "checkbox" || element.type === "radio")
-        ) {
+        if (element.tagName === "INPUT" && (element.type === "checkbox" || element.type === "radio")) {
           element.checked = item.checked;
-        } else if (
-          element.tagName === "INPUT" ||
-          element.tagName === "SELECT"
-        ) {
+        } else if (element.tagName === "INPUT" || element.tagName === "SELECT") {
           element.value = item.value;
+          
+          // バフの表示状態を復元
+          if (item.style) {
+            element.style.fontWeight = item.style.fontWeight;
+            element.style.color = item.style.color;
+            element.style.display = item.style.display;
+          }
         }
       }
+    });
+
+    // バフの表示状態を更新
+    document.querySelectorAll('.buff-select').forEach(function(sel) {
+      updateBuffDisplay(sel);
     });
   }
 }
