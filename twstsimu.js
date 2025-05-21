@@ -1985,11 +1985,26 @@ function restoreURL() {
   // クエリパラメータの値を取得して処理
   urlParams.forEach((value, key) => {
     if (key.startsWith("name")) {
+        modalId = index;
         setModal(index);
+        // キャラクター情報を設定
         changeImg(value);
+        // レベル情報を取得して設定
+        const levelKey = `level${index}`;
+        const level = urlParams.get(levelKey);
+        if (level) {
+            // レベル関連の要素を設定
+            document.getElementById(`cLv${index}`).value = level;
+
+            // レベルに応じたステータスを計算
+            changeLevel(index);
+        }
         index++;
     }
   });
+  // ステータスの再計算とグラフの更新
+  calc();
+  setChart();
 }
 
 window.addEventListener("DOMContentLoaded", function () {
