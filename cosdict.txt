@@ -65,3 +65,4 @@
 夜明けの甲冑:Armor_at_Dawn
 深淵の支配者:Lord_of_the_Abyss
 渚のセレブレイト:The_celebrity_of_the_beach
+冥府の番人:Guardian_of_the_Underworld
