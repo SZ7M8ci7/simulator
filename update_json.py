@@ -94,6 +94,8 @@ def checkMagicBuf(str):
         buf = 'ダメUP(小)'
     if 'ダメージUP(中)' in str and '被ダメージ' not in str:
         buf = 'ダメUP(中)'
+    if 'ダメージUP(中)' in str and '味方全体' in str: # フェロー用特別ロジック
+        buf = 'ダメUP(中)'
     if 'ダメージUP(大)' in str and '被ダメージ' not in str:
         buf = 'ダメUP(大)'
     if 'ダメージUP(極大)' in str and '被ダメージ' not in str:
