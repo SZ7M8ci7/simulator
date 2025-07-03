@@ -1563,7 +1563,7 @@
         "costume": "プラチナ・ギア",
         "debuff_count": 1,
         "duo": "ジェイド",
-        "etc": "ATKUP(中)(自/1T)(M1)<br>ATKDOWN(小)(相手/1T)(M1)<br>暗闇無効(自/1T)(M3)<br>呪い(大)(相手/2T)(M3)<br>",
+        "etc": "ATKUP(中)(自/1T)(M1)<br>ATKDOWN(小)(相手/1T)(M1)<br>暗闇無効(自/1T)(M3)<br>魔法Lv5で効果が変化\nLv52連撃の無属性ダメージ(弱)(M3)<br>暗闇無効(自/1T)(M3)<br>呪い(中)(相手/2T)(M3)<br>",
         "growtype": "BAL寄りATK",
         "hp": "10761",
         "id": "43",
