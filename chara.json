@@ -7958,8 +7958,8 @@
     {
         "atk": "6565",
         "attr": "バランス",
-        "base_atk": "",
-        "base_hp": "",
+        "base_atk": "1397",
+        "base_hp": "2482",
         "buddy1c": "ジャミル",
         "buddy1s": "HP&ATKUP(小)",
         "buddy2c": "イデア",
