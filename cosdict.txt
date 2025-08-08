@@ -68,3 +68,4 @@
 冥府の番人:Guardian_of_the_Underworld
 C&Dダイナー:C&D_Diner
 美貌の圧制者:The_beautiful_oppressor
+くつろぎ・ギア:Relaxation_and_gear
