@@ -16,46 +16,56 @@ def getDict(path):
             dict[key] = value.strip()
     return dict
 
-def make_icon(chara_data, filename):
+def create_composite_image(chara_data, filename, size, magic_icon_size):
+    max_magic = 2
+    if chara_data['rare'] == 'SSR':
+        max_magic = 3
+    
+    background_image = Image.open(filename).convert("RGBA")
+    background_image_resized = background_image.resize((size, size))
+    start_pos = background_image_resized.width - max_magic * magic_icon_size - (max_magic - 1)
+    
+    for magic in range(max_magic):
+        magic_atr_key = f"magic{magic+1}atr"
+        foreground_image = Image.open(f"{chara_data[magic_atr_key]}.png")
+        foreground_image = foreground_image.convert("RGBA")
+        
+        if foreground_image.size != (magic_icon_size, magic_icon_size):
+            foreground_image = foreground_image.resize((magic_icon_size, magic_icon_size))
+        
+        background_image_resized.alpha_composite(foreground_image, (start_pos + magic_icon_size * magic + magic, 0))
+    
+    return background_image_resized
+
+def make_png_icon(chara_data, filename):
     try:
-        max_magic = 2
-        if chara_data['rare'] == 'SSR':
-            max_magic = 3
-        # 画像合成
-        background_image = Image.open(filename).convert("RGBA")
-
-        # 背景画像を60x60の正方形にリサイズする
-        background_image = background_image.resize((60, 60))
-        start_pos = background_image.width - max_magic*12 - (max_magic-1)
-        for magic in range(max_magic):
-
-            # 合成する画像を開く
-            magic_atr_key = f"magic{magic+1}atr"
-            foreground_image = Image.open(f"{chara_data[magic_atr_key]}.png")
-
-            # 透過PNGをサポートするように設定する
-            foreground_image = foreground_image.convert("RGBA")
-
-            # 合成する画像を背景画像の中央に配置する
-            background_image.alpha_composite(foreground_image, (start_pos+foreground_image.width*magic+magic, 0))
-
-        # 合成した画像を保存する
-        background_image.save('img/' + chara_data['name'] +'.png')
-
+        composite_image = create_composite_image(chara_data, filename, 60, 12)
+        composite_image.save('img/' + chara_data['name'] +'.png')
     except Exception as e:
-        print(e, file)
+        print(e, filename)
+
+def make_webp_icon(chara_data, filename):
+    try:
+        composite_image = create_composite_image(chara_data, filename, 80, 16)
+        composite_image.save('img/' + chara_data['name'] +'.webp', 'WEBP', quality=85)
+    except Exception as e:
+        print(e, filename)
 
 if __name__ == '__main__':
     
     namedict = getDict('namedict.txt')
     cosdict = getDict('cosdict.txt')
     img_files = glob.glob("img/*")
-    exists_files = set()
+    exists_png_files = set()
+    exists_webp_files = set()
     for file in img_files:
         try:
             sp = file.split('/')[-1]
             filename = sp.replace('img/','').replace('img\\','')
-            exists_files.add(filename)
+            if filename.endswith('.png'):
+                exists_png_files.add(filename)
+            elif filename.endswith('.webp'):
+                exists_webp_files.add(filename)
         except Exception as e:
             print(e, file)
 
@@ -71,10 +81,16 @@ if __name__ == '__main__':
             filename = sp.replace('get/','').replace('get\\','').replace('SSR','').replace('SR','').replace('R','').replace('】アイコン.jpg','')
             name_costume = filename.split('【')
             output_filename = namedict[name_costume[0]]+'_'+cosdict[name_costume[1]]
-            output_filename_ext = output_filename+'.png'
-            if output_filename_ext in exists_files:
-                continue
-            make_icon(chara_data_dict[output_filename], file)
+            output_png_filename = output_filename+'.png'
+            output_webp_filename = output_filename+'.webp'
+            
+            # PNG画像の存在チェックと生成
+            if output_png_filename not in exists_png_files:
+                make_png_icon(chara_data_dict[output_filename], file)
+            
+            # WebP画像の存在チェックと生成
+            if output_webp_filename not in exists_webp_files:
+                make_webp_icon(chara_data_dict[output_filename], file)
         except Exception as e:
             print(e, file)
 
