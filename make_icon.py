@@ -31,16 +31,9 @@ def create_composite_image(chara_data, filename, size, magic_icon_size):
         foreground_image = foreground_image.convert("RGBA")
         
         if foreground_image.size != (magic_icon_size, magic_icon_size):
-            # 元画像の縦横比を保持してリサイズ
-            original_width, original_height = foreground_image.size
-            if original_width != original_height:
-                # 縦横比を保持してリサイズ
-                foreground_image = foreground_image.resize((magic_icon_size, int(magic_icon_size * original_height / original_width)))
-            else:
-                foreground_image = foreground_image.resize((magic_icon_size, magic_icon_size))
+            foreground_image = foreground_image.resize((magic_icon_size, magic_icon_size))
         
-        y_pos = (size - magic_icon_size) // 2
-        background_image_resized.alpha_composite(foreground_image, (start_pos + magic_icon_size * magic + magic, y_pos))
+        background_image_resized.alpha_composite(foreground_image, (start_pos + magic_icon_size * magic + magic, 0))
     
     return background_image_resized
 
@@ -53,7 +46,7 @@ def make_png_icon(chara_data, filename):
 
 def make_webp_icon(chara_data, filename):
     try:
-        composite_image = create_composite_image(chara_data, filename, 80, 16)
+        composite_image = create_composite_image(chara_data, filename, 80, 17)  # 16→17に変更
         composite_image.save('img/' + chara_data['name'] +'.webp', 'WEBP', quality=85)
     except Exception as e:
         print(e, filename)
