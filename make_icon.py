@@ -93,8 +93,8 @@ if __name__ == '__main__':
                 make_png_icon(chara_data_dict[output_filename], file)
             
             # WebP画像の存在チェックと生成
-            # if output_webp_filename not in exists_webp_files:
-            make_webp_icon(chara_data_dict[output_filename], file)
+            if output_webp_filename not in exists_webp_files:
+                make_webp_icon(chara_data_dict[output_filename], file)
         except Exception as e:
             print(e, file)
 
