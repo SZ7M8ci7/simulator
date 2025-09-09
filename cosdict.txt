@@ -71,3 +71,4 @@ C&Dダイナー:C&D_Diner
 くつろぎ・ギア:Relaxation_and_gear
 ハンサムジャージ:Handsome_jersey
 アウトドア・ギア:Outdoor_Gear
+ラ・ボンボニエール:La_Bonbonniere
