@@ -113,7 +113,7 @@ def checkMagicBuf(str):
     return buf
 
 
-def get_chara_dict(rank, url, masters):
+def get_chara_dict(rank, url, masters, implementation_dates=None):
     namedict = getDict('namedict.txt')
     cosdict = getDict('cosdict.txt')
     name_type_master = masters[0]
@@ -296,6 +296,14 @@ def get_chara_dict(rank, url, masters):
     outdict['wikiURL'] = url
     outdict['buff_count'] = buff_count
     outdict['debuff_count'] = debuff_count
+    
+    # 実装日をマッチング
+    impl_date = ''
+    if implementation_dates:
+        key = name + costume
+        impl_date = implementation_dates.get(key, '')
+    outdict['implementation_date'] = impl_date
+    
     outDict('cosdict.txt',cosdict)
     outDict('namedict.txt',namedict)
     return outdict
@@ -338,6 +346,35 @@ def make_type_dict(url):
         name_type_master[row_data[0]+row_data[1]] = row_data[11]
     return [name_type_master,name_hp_master,name_atk_master,name_base_hp_master,name_base_atk_master]
 
+
+def get_implementation_dates():
+    """実装日情報を取得する関数"""
+    response = requests.get('https://twst.wikiru.jp/?SandBox/%E3%82%AB%E3%83%BC%E3%83%89%E5%AE%9F%E8%A3%85%E6%97%A5')
+    html = response.text
+    
+    soup = BeautifulSoup(html, 'html.parser')
+    
+    # 実装日データ辞書を初期化
+    implementation_dates = {}
+    
+    # テーブルを探して実装日情報を抽出
+    table = soup.find('table')
+    if table:
+        rows = table.find_all('tr')[1:]  # ヘッダー行をスキップ
+        
+        for row in rows:
+            cells = row.find_all(['td', 'th'])
+            if len(cells) >= 4:
+                character = cells[0].text.strip()
+                costume = cells[1].text.strip()
+                rarity = cells[2].text.strip()
+                impl_date = cells[3].text.strip()
+                
+                # キー生成（キャラクター名＋衣装名）
+                key = character + costume
+                implementation_dates[key] = impl_date
+    
+    return implementation_dates
 
 def get_history():
     response = requests.get('https://twst.wikiru.jp/?RecentChanges')
@@ -430,12 +467,15 @@ if __name__ == '__main__':
     if len(histories) != 0:
         masters = make_type_dict('https://twst.wikiru.jp/?%E3%82%AB%E3%83%BC%E3%83%89%E6%88%90%E9%95%B7%E7%8E%87')
         
+        # 実装日情報を取得
+        implementation_dates = get_implementation_dates()
+        
         # Load the existing data
         with open("chara.json", 'r') as file:
             data = json.load(file)
         for history in histories:
             rank, url = history[0], history[1]
-            chara_dict = get_chara_dict(rank, url, masters)
+            chara_dict = get_chara_dict(rank, url, masters, implementation_dates)
             time.sleep(1)
             data = update_or_add_entry(data, chara_dict)
         
