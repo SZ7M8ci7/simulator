@@ -25,7 +25,7 @@ def outDict(path,dict):
     with open(path, "w", encoding='UTF-8') as f:
         for key, val in dict.items():
             f.write(f"{key}:{val}\n")
-def getCharaDict(path,namedict,cosdict):
+def getCharaDict(path,namedict,cosdict, implementation_dates=None):
     csv_file = open(path, "r", encoding="utf-8", errors="", newline="")
     # リスト形式
     f = csv.reader(csv_file, delimiter="\t", doublequote=True, lineterminator="\r\n", quotechar='"',
@@ -126,6 +126,12 @@ def getCharaDict(path,namedict,cosdict):
         outdict['wikiURL'] = chara[-1]
         outdict['buff_count'] = buff_count
         outdict['debuff_count'] = debuff_count
+        # 実装日をマッチング
+        impl_date = ''
+        if implementation_dates:
+            key = chara[1] + chara[2]
+            impl_date = implementation_dates.get(key, '')
+        outdict['implementation_date'] = impl_date
 
         outlist.append(outdict)
         magicdict[outdict['name']] = [outdict['magic1atr'],outdict['magic2atr'],outdict['magic3atr']]
@@ -222,10 +228,10 @@ def checkMagicBuf(str):
         buf = '属性ダメUP(極大)'
     return buf
 
-def makeicon():
+def makeicon(implementation_dates=None):
     cosdict = getDict('cosdict.txt')
     namedict = getDict('namedict.txt')
-    charadict = getCharaDict('charadata.tsv',namedict,cosdict)
+    charadict = getCharaDict('charadata.tsv',namedict,cosdict, implementation_dates)
     files = glob.glob("get/*")
     out_files = glob.glob("img/*")
     out_files = [file.split('/')[-1] for file in out_files]
@@ -508,6 +514,34 @@ def make_type_dict(url):
         name_type_master[row_data[0]+row_data[1]] = row_data[11]
     return [name_type_master,name_hp_master,name_atk_master,name_base_hp_master,name_base_atk_master]
 
+def get_implementation_dates():
+    """実装日情報を取得する関数"""
+    response = requests.get('https://twst.wikiru.jp/?SandBox/%E3%82%AB%E3%83%BC%E3%83%89%E5%AE%9F%E8%A3%85%E6%97%A5')
+    html = response.text
+    
+    soup = BeautifulSoup(html, 'html.parser')
+    
+    # 実装日データ辞書を初期化
+    implementation_dates = {}
+    
+    # テーブルを探して実装日情報を抽出
+    table = soup.find('table')
+    if table:
+        rows = table.find_all('tr')[1:]  # ヘッダー行をスキップ
+        
+        for row in rows:
+            cells = row.find_all(['td', 'th'])
+            if len(cells) >= 4:
+                character = cells[0].text.strip()
+                costume = cells[1].text.strip()
+                rarity = cells[2].text.strip()
+                impl_date = cells[3].text.strip()
+                
+                # キー生成（キャラクター名＋衣装名）
+                key = character + costume
+                implementation_dates[key] = impl_date
+    
+    return implementation_dates
 
 
 
@@ -515,6 +549,8 @@ if __name__ == '__main__':
     masters = make_type_dict('https://twst.wikiru.jp/?%E3%82%AB%E3%83%BC%E3%83%89%E6%88%90%E9%95%B7%E7%8E%87')
     output = []
     count = 0
+    # 実装日情報を取得
+    implementation_dates = get_implementation_dates()
     for rank in ('SSR','SR','R'):
         url_all_list = get_list(rank)
         for cur_url in url_all_list:
@@ -528,4 +564,4 @@ if __name__ == '__main__':
     with open("charadata.tsv", "w", encoding='UTF-8') as f:
         for out in output:
             f.write(f"{out}\n")
-    makeicon()
+    makeicon(implementation_dates)
