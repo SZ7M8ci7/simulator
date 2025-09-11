@@ -1473,7 +1473,8 @@
         "magic3pow": "連撃(弱)",
         "name": "ortho_Outdoor_Gear",
         "rare": "SSR",
-        "wikiURL": "https://twst.wikiru.jp/?SSR/オルト【アウトドア・ギア】"
+        "wikiURL": "https://twst.wikiru.jp/?SSR/オルト【アウトドア・ギア】",
+        "implementation_date": ""
     },
     {
         "atk": "6815",
@@ -16593,6 +16594,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/ジャミル【ラ・ボンボニエール】",
         "buff_count": 2,
         "debuff_count": 0,
-        "id": "460"
+        "id": "460",
+        "implementation_date": ""
     }
 ]
