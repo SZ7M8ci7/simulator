@@ -554,7 +554,7 @@ if __name__ == '__main__':
     count = 0
     # 実装日情報を取得
     implementation_dates = get_implementation_dates()
-    for rank in ('SSR'):
+    for rank in ('SSR','SR','R'):
         url_all_list = get_list(rank)
         for cur_url in url_all_list:
             try:
