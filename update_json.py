@@ -367,6 +367,8 @@ def get_implementation_dates():
             if len(cells) >= 4:
                 character = cells[0].text.strip()
                 costume = cells[1].text.strip()
+                # costume内の半角括弧で囲まれた部分を除去
+                costume = re.sub(r'\([^)]*\)', '', costume).strip()
                 rarity = cells[2].text.strip()
                 impl_date = cells[3].text.strip()
                 
