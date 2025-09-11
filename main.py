@@ -7,6 +7,7 @@ from PIL import Image
 from deep_translator import GoogleTranslator
 import requests
 from bs4 import BeautifulSoup
+import re
 import random
 
 def getDict(path):
@@ -534,6 +535,8 @@ def get_implementation_dates():
             if len(cells) >= 4:
                 character = cells[0].text.strip()
                 costume = cells[1].text.strip()
+                # costume内の半角括弧で囲まれた部分を除去
+                costume = re.sub(r'\([^)]*\)', '', costume).strip()
                 rarity = cells[2].text.strip()
                 impl_date = cells[3].text.strip()
                 
@@ -551,7 +554,7 @@ if __name__ == '__main__':
     count = 0
     # 実装日情報を取得
     implementation_dates = get_implementation_dates()
-    for rank in ('SSR','SR','R'):
+    for rank in ('SSR'):
         url_all_list = get_list(rank)
         for cur_url in url_all_list:
             try:
