@@ -72,3 +72,4 @@ C&Dダイナー:C&D_Diner
 ハンサムジャージ:Handsome_jersey
 アウトドア・ギア:Outdoor_Gear
 ラ・ボンボニエール:La_Bonbonniere
+熱砂の策謀家:Thermal_sand_plotter
