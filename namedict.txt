@@ -28,3 +28,4 @@
 トレイン:train
 バルガス:vargas
 サム:sam
+スカリー:scully
