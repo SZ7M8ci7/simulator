@@ -1,4 +1,3 @@
-import glob
 import json
 import time
 from collections import defaultdict
@@ -412,56 +411,33 @@ def get_history():
                     results.append(['SSR', 'https://twst.wikiru.jp/?'+link_text])
     return results
 
-def make_html(eng):
-    out_html = '    <a href="#" rel="modal:close" onclick="gtag(\'event\', \'click\', {\'event_category\': \'chara\', \'event_label\':\'' + eng + '\', \'value\':\'1\'});changeImg(\''+eng+'\')"><img src="img/'+eng+'.png "onerror="this.onerror=null; this.src=\'notyet.png\';"></a>'
-    return out_html
 
 def update_or_add_entry(data, new_entry):
-
     max_id = -1
     existing_entry = None
-    input_file = 'index.html'
+    
     for entry in data:
-        max_id = max(max_id, int(entry['id']))
-        if entry['name'] == new_entry['name']:
+        # 最大IDを算出（IDは文字列想定のためint変換）
+        try:
+            max_id = max(max_id, int(entry.get('id', -1)))
+        except (ValueError, TypeError):
+            pass
+        # 既存エントリの有無を name で判定
+        if entry.get('name') == new_entry.get('name'):
             existing_entry = entry
-    has_icon = False
-    with open(input_file, 'r',encoding='UTF-8') as file:
-        # ファイルを1行ずつ読み込み、処理を行う
-        lines = file.readlines()
-        for i in range(len(lines)):
-            if new_entry['name'] in lines[i]:
-                has_icon = True
 
-    if has_icon:
-        # Update the existing entry
+    if existing_entry is not None:
+        # 既存のIDは保持したままフィールドを更新
+        preserved_id = existing_entry.get('id')
         existing_entry.update(new_entry)
+        if preserved_id is not None:
+            existing_entry['id'] = preserved_id
         print(f"Updated entry with name '{new_entry['name']}'.")
     else:
-        # Add the new entry with an incremented 'id'
+        # 新規追加時は連番IDを採番
         new_entry['id'] = str(max_id + 1)
         data.append(new_entry)
         print(f"Added new entry with id '{new_entry['id']}' and name '{new_entry['name']}'.")
-        try:
-            with open(input_file, 'r',encoding='UTF-8') as file:
-                # ファイルを1行ずつ読み込み、処理を行う
-                lines = file.readlines()
-                for i in range(len(lines)):
-                    if new_entry['chara']+'バースデー追加エリア' in lines[i] and 'birth' in new_entry['name']:
-                        lines[i] = make_html(new_entry['name'])+'\n' + lines[i]
-                        break
-                    elif new_entry['chara']+'部活追加エリア' in lines[i] and 'club' in new_entry['name']:
-                        lines[i] = make_html(new_entry['name'])+'\n' + lines[i]
-                        break
-                    elif new_entry['chara']+new_entry['rare']+'追加エリア' in lines[i]:
-                        lines[i] = make_html(new_entry['name'])+'\n' + lines[i]
-                        break
-
-            # 処理結果を同一ファイルに書き込む
-            with open(input_file, 'w',encoding='UTF-8') as file:
-                file.writelines(lines)
-        except Exception as e:
-            print(e)
     return data
 
 if __name__ == '__main__':

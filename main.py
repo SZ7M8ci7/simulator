@@ -294,36 +294,12 @@ def makeicon(implementation_dates=None):
 
             if output_filename+'.png' in out_files:
                 continue
-
-            input_file = 'index.html'
-
-            with open(input_file, 'r',encoding='UTF-8') as file:
-                # ファイルを1行ずつ読み込み、処理を行う
-                lines = file.readlines()
-                for i in range(len(lines)):
-                    if name+'バースデー追加エリア' in lines[i] and 'birth' in cosdict[cos]:
-                        lines[i] = make_html(namedict[name],cosdict[cos])+'\n' + lines[i]
-                        break
-                    elif name+'部活追加エリア' in lines[i] and 'club' in cosdict[cos]:
-                        lines[i] = make_html(namedict[name],cosdict[cos])+'\n' + lines[i]
-                        break
-                    elif name+rank+'追加エリア' in lines[i]:
-                        lines[i] = make_html(namedict[name],cosdict[cos])+'\n' + lines[i]
-                        break
-
-            # 処理結果を同一ファイルに書き込む
-            with open(input_file, 'w',encoding='UTF-8') as file:
-                file.writelines(lines)
         except Exception as e:
             print(e, file)
 
     outDict('cosdict.txt',cosdict)
     outDict('namedict.txt',namedict)
 
-def make_html(name,cos):
-    eng = name + '_' + cos
-    out_html = '    <a href="#" rel="modal:close" onclick="gtag(\'event\', \'click\', {\'event_category\': \'chara\', \'event_label\':\'' + eng + '\', \'value\':\'1\'});changeImg(\''+eng+'\')"><img src="img/'+eng+'.png "onerror="this.onerror=null; this.src=\'notyet.png\';"></a>'
-    return out_html
 
 
 def main(rank, url, masters):
