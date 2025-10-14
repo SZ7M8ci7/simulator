@@ -201,5 +201,19 @@
         "dorm": "ナイトレイブンカレッジ",
         "theme_1": "ベーシック",
         "theme_2": "ユニーク"
+    },
+    {
+        "name_ja": "サム",
+        "name_en": "sam",
+        "dorm": "スペシャル",
+        "theme_1": "",
+        "theme_2": ""
+    },
+    {
+        "name_ja": "スカリー",
+        "name_en": "scully",
+        "dorm": "スペシャル",
+        "theme_1": "",
+        "theme_2": ""
     }
 ]
