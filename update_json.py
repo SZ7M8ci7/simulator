@@ -1,4 +1,5 @@
 import json
+import os
 import time
 from collections import defaultdict
 from deep_translator import GoogleTranslator
@@ -440,6 +441,60 @@ def update_or_add_entry(data, new_entry):
         print(f"Added new entry with id '{new_entry['id']}' and name '{new_entry['name']}'.")
     return data
 
+def sync_characters_info_from_namedict(info_path='characters_info.json', namedict_path='namedict.txt'):
+    """
+    namedict.txt から characters_info.json に不足キャラクターを追加する。
+    既存キャラクターは更新せず、新規のみ追加する。
+    追加時は dorm="スペシャル"、theme_1="", theme_2="" を設定。
+    """
+    try:
+        namedict = getDict(namedict_path)  # JA -> EN
+    except Exception as e:
+        print(f"Failed to read {namedict_path}: {e}")
+        return
+
+    # 既存の characters_info.json を読み込み（なければ空リスト）
+    info = []
+    if os.path.exists(info_path):
+        try:
+            with open(info_path, 'r', encoding='UTF-8') as f:
+                info = json.load(f)
+                if not isinstance(info, list):
+                    print(f"Unexpected format in {info_path}; expected a list. Skipping update.")
+                    return
+        except Exception as e:
+            print(f"Failed to load {info_path}: {e}")
+            return
+
+    existing_ja = {entry.get('name_ja') for entry in info if isinstance(entry, dict)}
+
+    added = 0
+    for ja_name, en_name in namedict.items():
+        if not ja_name:
+            continue
+        if ja_name in existing_ja:
+            continue
+        # en_name が空の場合でもとりあえず追加（必要なら後で手動補完）
+        new_entry = {
+            'name_ja': ja_name,
+            'name_en': en_name,
+            'dorm': 'スペシャル',
+            'theme_1': '',
+            'theme_2': ''
+        }
+        info.append(new_entry)
+        added += 1
+
+    if added > 0:
+        try:
+            with open(info_path, 'w', encoding='UTF-8') as f:
+                json.dump(info, f, ensure_ascii=False, indent=4)
+            print(f"Added {added} character(s) to {info_path} from {namedict_path}.")
+        except Exception as e:
+            print(f"Failed to write {info_path}: {e}")
+    else:
+        print("No missing characters to add to characters_info.json.")
+
 if __name__ == '__main__':
     histories = get_history()
     if len(histories) != 0:
@@ -459,3 +514,6 @@ if __name__ == '__main__':
         
         with open("chara.json", 'w') as file:
             json.dump(data, file, ensure_ascii=False, indent=4)
+
+    # namedict.txt から characters_info.json に不足キャラクターを追加
+    sync_characters_info_from_namedict()

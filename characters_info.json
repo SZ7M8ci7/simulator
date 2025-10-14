@@ -1,0 +1,205 @@
+[
+    {
+        "name_ja": "リドル",
+        "name_en": "riddle",
+        "dorm": "ハーツラビュル",
+        "theme_1": "スタイリッシュ",
+        "theme_2": "ユニーク"
+    },
+    {
+        "name_ja": "エース",
+        "name_en": "ace",
+        "dorm": "ハーツラビュル",
+        "theme_1": "ユニーク",
+        "theme_2": "スタイリッシュ"
+    },
+    {
+        "name_ja": "デュース",
+        "name_en": "deuce",
+        "dorm": "ハーツラビュル",
+        "theme_1": "ベーシック",
+        "theme_2": "エレガント"
+    },
+    {
+        "name_ja": "トレイ",
+        "name_en": "trey",
+        "dorm": "ハーツラビュル",
+        "theme_1": "エレガント",
+        "theme_2": "ポップ"
+    },
+    {
+        "name_ja": "ケイト",
+        "name_en": "cater",
+        "dorm": "ハーツラビュル",
+        "theme_1": "ポップ",
+        "theme_2": "ベーシック"
+    },
+    {
+        "name_ja": "レオナ",
+        "name_en": "leona",
+        "dorm": "サバナクロー",
+        "theme_1": "エレガント",
+        "theme_2": "ユニーク"
+    },
+    {
+        "name_ja": "ジャック",
+        "name_en": "jack",
+        "dorm": "サバナクロー",
+        "theme_1": "ベーシック",
+        "theme_2": "スタイリッシュ"
+    },
+    {
+        "name_ja": "ラギー",
+        "name_en": "ruggie",
+        "dorm": "サバナクロー",
+        "theme_1": "ポップ",
+        "theme_2": "ベーシック"
+    },
+    {
+        "name_ja": "アズール",
+        "name_en": "azul",
+        "dorm": "オクタヴィネル",
+        "theme_1": "エレガント",
+        "theme_2": "スタイリッシュ"
+    },
+    {
+        "name_ja": "ジェイド",
+        "name_en": "jade",
+        "dorm": "オクタヴィネル",
+        "theme_1": "スタイリッシュ",
+        "theme_2": "ベーシック"
+    },
+    {
+        "name_ja": "フロイド",
+        "name_en": "floyd",
+        "dorm": "オクタヴィネル",
+        "theme_1": "ユニーク",
+        "theme_2": "ポップ"
+    },
+    {
+        "name_ja": "カリム",
+        "name_en": "kalim",
+        "dorm": "スカラビア",
+        "theme_1": "ポップ",
+        "theme_2": "ユニーク"
+    },
+    {
+        "name_ja": "ジャミル",
+        "name_en": "jamil",
+        "dorm": "スカラビア",
+        "theme_1": "スタイリッシュ",
+        "theme_2": "エレガント"
+    },
+    {
+        "name_ja": "ヴィル",
+        "name_en": "vil",
+        "dorm": "ポムフィオーレ",
+        "theme_1": "エレガント",
+        "theme_2": "スタイリッシュ"
+    },
+    {
+        "name_ja": "エペル",
+        "name_en": "epel",
+        "dorm": "ポムフィオーレ",
+        "theme_1": "ベーシック",
+        "theme_2": "ポップ"
+    },
+    {
+        "name_ja": "ルーク",
+        "name_en": "rook",
+        "dorm": "ポムフィオーレ",
+        "theme_1": "ユニーク",
+        "theme_2": "エレガント"
+    },
+    {
+        "name_ja": "イデア",
+        "name_en": "idia",
+        "dorm": "イグニハイド",
+        "theme_1": "ユニーク",
+        "theme_2": "エレガント"
+    },
+    {
+        "name_ja": "オルト",
+        "name_en": "ortho",
+        "dorm": "イグニハイド",
+        "theme_1": "ユニーク",
+        "theme_2": "ポップ"
+    },
+    {
+        "name_ja": "マレウス",
+        "name_en": "malleus",
+        "dorm": "ディアソムニア",
+        "theme_1": "スタイリッシュ",
+        "theme_2": "ベーシック"
+    },
+    {
+        "name_ja": "シルバー",
+        "name_en": "silver",
+        "dorm": "ディアソムニア",
+        "theme_1": "ベーシック",
+        "theme_2": "エレガント"
+    },
+    {
+        "name_ja": "セベク",
+        "name_en": "sebek",
+        "dorm": "ディアソムニア",
+        "theme_1": "スタイリッシュ",
+        "theme_2": "ユニーク"
+    },
+    {
+        "name_ja": "リリア",
+        "name_en": "lilia",
+        "dorm": "ディアソムニア",
+        "theme_1": "ポップ",
+        "theme_2": "ユニーク"
+    },
+    {
+        "name_ja": "グリム",
+        "name_en": "grim",
+        "dorm": "ナイトレイブンカレッジ",
+        "theme_1": "ポップ",
+        "theme_2": "ベーシック"
+    },
+    {
+        "name_ja": "クロウリー",
+        "name_en": "crowley",
+        "dorm": "ナイトレイブンカレッジ",
+        "theme_1": "スタイリッシュ",
+        "theme_2": "ベーシック"
+    },
+    {
+        "name_ja": "クルーウェル",
+        "name_en": "crewel",
+        "dorm": "ナイトレイブンカレッジ",
+        "theme_1": "エレガント",
+        "theme_2": "スタイリッシュ"
+    },
+    {
+        "name_ja": "ロロ",
+        "name_en": "rollo",
+        "dorm": "スペシャル",
+        "theme_1": "エレガント",
+        "theme_2": "スタイリッシュ"
+    },
+    {
+        "name_ja": "フェロー",
+        "name_en": "fellow",
+        "dorm": "スペシャル",
+        "theme_1": "ユニーク",
+        "theme_2": "ポップ"
+    },
+    {
+        "name_ja": "トレイン",
+        "name_en": "train",
+        "dorm": "ナイトレイブンカレッジ",
+        "theme_1": "エレガント",
+        "theme_2": "ベーシック"
+    },
+    {
+        "name_ja": "バルガス",
+        "name_en": "vargas",
+        "dorm": "ナイトレイブンカレッジ",
+        "theme_1": "ベーシック",
+        "theme_2": "ユニーク"
+    }
+]
