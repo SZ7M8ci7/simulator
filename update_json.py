@@ -289,6 +289,8 @@ def get_chara_dict(rank, url, masters, implementation_dates=None):
             debuff_count+=1
         elif 'ダメージDOWN' in cur and '相手' in cur:
             debuff_count+=1
+        if '暗闇' in cur and '相手' in cur:
+            debuff_count+=1
         
     outdict['etc'] = etc
     outdict['rare'] = rank
