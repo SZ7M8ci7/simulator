@@ -5861,7 +5861,7 @@
         "costume": "ビーンズ・カモ",
         "debuff_count": 0,
         "duo": "ヴィル",
-        "etc": "凍結無効(味方選択/1T)(M3)<br>ATKUP(小)(自/1T)(M3)<br>",
+        "etc": "HP継続回復(中)(自/3T)(M1)<br>凍結無効(味方選択/1T)(M3)<br>ATKUP(小)(自/1T)(M3)<br>",
         "growtype": "BAL",
         "hp": "11731",
         "id": "158",
