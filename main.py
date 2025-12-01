@@ -34,6 +34,7 @@ def getCharaDict(path,namedict,cosdict, implementation_dates=None):
     card_list = [row for row in f]
     outlist = []
     magicdict = defaultdict(list)
+    test_tmp = {}
     for chara in card_list:
         # 1,2 名前
         # 3,4 レア,タイプ
@@ -81,12 +82,18 @@ def getCharaDict(path,namedict,cosdict, implementation_dates=None):
         outdict['buddy3s'] = chara[17]
         etc = ''
         magic1split = chara[9].split('&')
+        if magic1split and magic1split[0] not in test_tmp:
+            test_tmp[magic1split[0]] = True
+            print(magic1split[0], chara[-1])
         for i in range(len(magic1split)):
             if i > 0:
                 etc += magic1split[i]
                 etc += '(M1)'
                 etc += '<br>'
         magic2split = chara[10].split('&')
+        if magic2split and magic2split[0] not in test_tmp:
+            test_tmp[magic2split[0]] = True
+            print(magic2split[0], chara[-1])
         for i in range(len(magic2split)):
             if i > 0:
                 if '[DUO]' not in magic2split[i]:
@@ -94,6 +101,9 @@ def getCharaDict(path,namedict,cosdict, implementation_dates=None):
                     etc += '(M2)'
                     etc += '<br>'
         magic3split = chara[11].split('&')
+        if magic3split and magic3split[0] not in test_tmp:
+            test_tmp[magic3split[0]] = True
+            print(magic3split[0], chara[-1])
         for i in range(len(magic3split)):
             if i > 0:
                 etc += magic3split[i]
