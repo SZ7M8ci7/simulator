@@ -75,3 +75,4 @@ C&Dダイナー:C&D_Diner
 熱砂の策謀家:Thermal_sand_plotter
 深海の商人:deep_sea_merchant
 ナイトメアークーリエ:Nightmare_Courier
+ナイトメアー・ギア:nightmare_gear
