@@ -5,9 +5,7 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - buddycount.cpp
       - chara.json
-      - .github/workflows/buddycount-cpp.yml
 
 jobs:
   build-and-run:

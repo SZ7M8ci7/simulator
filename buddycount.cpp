@@ -113,7 +113,7 @@ int main() {
                                     std::cout << names[idx];
                                 }
                                 std::cout << std::endl;
-                                return 0;
+                                // return 1;  // Non-zero exit mirrors Python's exception when threshold exceeded.
                             }
                         }
                     }

@@ -41,9 +41,9 @@ def main1():
             name = c['chara']
             tmp = len(member_name_set&{c['buddy1c'],c['buddy2c'],c['buddy3c']})
 
-            if buddy+d[name]+tmp > 13:
+            if buddy+d[name]+tmp > 12:
                 print(','.join(sorted([i.get('name') for i in member]+[c['name']])))
-                raise Exception()
+                # raise Exception()
 
 
 if __name__ == '__main__':
