@@ -97,7 +97,7 @@ int main() {
                                                     ? missing_counts.at(candidate.chara)
                                                     : 0;
 
-                            if (buddy + missing + tmp > 12) {
+                            if (buddy + missing + tmp > 13) {
                                 std::vector<std::string> names = {
                                     member_ptrs[0]->name,
                                     member_ptrs[1]->name,
@@ -113,7 +113,7 @@ int main() {
                                     std::cout << names[idx];
                                 }
                                 std::cout << std::endl;
-                                // return 1;  // Non-zero exit mirrors Python's exception when threshold exceeded.
+                                return 1;  // Non-zero exit mirrors Python's exception when threshold exceeded.
                             }
                         }
                     }
