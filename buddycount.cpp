@@ -97,7 +97,7 @@ int main() {
                                                     ? missing_counts.at(candidate.chara)
                                                     : 0;
 
-                            if (buddy + missing + tmp > 13) {
+                            if (buddy + missing + tmp > 12) {
                                 std::vector<std::string> names = {
                                     member_ptrs[0]->name,
                                     member_ptrs[1]->name,
