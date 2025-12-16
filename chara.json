@@ -7974,7 +7974,7 @@
         "growtype": "",
         "hp": "12055",
         "id": "215",
-        "implementation_date": "",
+        "implementation_date": "2025/12/01",
         "magic1atr": "木",
         "magic1buf": "属性ダメUP(中)",
         "magic1heal": "",
@@ -10453,7 +10453,7 @@
         "growtype": "",
         "hp": "6172",
         "id": "282",
-        "implementation_date": "",
+        "implementation_date": "2025/12/17",
         "magic1atr": "木",
         "magic1buf": "ATKUP(小)",
         "magic1heal": "",
@@ -17867,7 +17867,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/イデア【ラ・ボンボニエール】",
         "buff_count": 0,
         "debuff_count": 2,
-        "implementation_date": "",
+        "implementation_date": "2025/12/17",
         "id": "482"
     }
 ]
