@@ -6157,7 +6157,7 @@
         "costume": "ラビット・ウェア",
         "debuff_count": 1,
         "duo": "シルバー",
-        "etc": "ATKDOWN(中)(相手/1T)(M1)<br>ATKUP(小)(自分/1T)(M1)<br>回避(中)(自分/1T)(M3)<br>",
+        "etc": "ATKDOWN(中)(相手/1T)(M1)<br>ATKUP(小)(自/1T)(M1)<br>回避(中)(自/1T)(M3)<br>",
         "growtype": "DEF",
         "hp": "15829",
         "id": "166",
