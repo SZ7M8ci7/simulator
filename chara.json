@@ -18120,12 +18120,12 @@
         "buddy2s": "ATKUP(小)",
         "buddy3c": "ヴィル",
         "buddy3s": "HPUP(中)",
-        "etc": "水属性ダメージDOWN(中)(相手全体/3T)(M1)<br>呪い(大)(相手/2T)(M3)<br>ダメージUP(小)(自/1T)(M3)<br>",
+        "etc": "水属性ダメージDOWN(中)(味方全体/3T)(M1)<br>呪い(大)(相手/2T)(M3)<br>ダメージUP(小)(自/1T)(M3)<br>",
         "rare": "SSR",
         "growtype": "",
         "wikiURL": "https://twst.wikiru.jp/?SSR/ケイト【ラ・ボンボニエール】",
         "buff_count": 1,
-        "debuff_count": 1,
+        "debuff_count": 0,
         "implementation_date": "",
         "id": "489"
     }
