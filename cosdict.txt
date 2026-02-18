@@ -76,3 +76,4 @@ C&Dダイナー:C&D_Diner
 深海の商人:deep_sea_merchant
 ナイトメアークーリエ:Nightmare_Courier
 ナイトメアー・ギア:nightmare_gear
+荒野の反逆者:rebel_of_the_wilderness
