@@ -1,4 +1,4 @@
-import csv
+﻿import csv
 import glob
 import json
 import time
@@ -26,6 +26,69 @@ def outDict(path,dict):
     with open(path, "w", encoding='UTF-8') as f:
         for key, val in dict.items():
             f.write(f"{key}:{val}\n")
+
+def normalize_card_text(text):
+    return text.replace(' ', '').replace('（', '(').replace('）', ')').replace('＆', '&')
+
+def parse_buddy_entries(table):
+    entries = []
+    pending_entry = None
+
+    for tr in table.find_all("tr"):
+        cells = tr.find_all(["th", "td"])
+        if not cells:
+            continue
+
+        first_text = normalize_card_text(cells[0].get_text())
+        if first_text == 'キャラ':
+            continue
+
+        if cells[0].name == 'td':
+            char_name = first_text
+            if len(cells) >= 3 and cells[1].name == 'th':
+                detail = normalize_card_text(cells[1].get_text())
+                bonus = normalize_card_text(cells[2].get_text())
+                entry = {'char': char_name, 'base': bonus, 'totsu': bonus}
+                if '2回' in detail:
+                    entry['base'] = ''
+                entries.append(entry)
+                pending_entry = entry if cells[0].has_attr('rowspan') else None
+            elif len(cells) >= 2:
+                bonus = normalize_card_text(cells[1].get_text())
+                entries.append({'char': char_name, 'base': bonus, 'totsu': bonus})
+                pending_entry = None
+        elif cells[0].name == 'th' and pending_entry is not None:
+            detail = first_text
+            bonus = normalize_card_text(cells[1].get_text()) if len(cells) >= 2 else ''
+            if '2回' in detail:
+                pending_entry['totsu'] = bonus
+            else:
+                pending_entry['base'] = bonus
+
+    for entry in entries:
+        if not entry['base']:
+            entry['base'] = entry['totsu']
+        if not entry['totsu']:
+            entry['totsu'] = entry['base']
+
+    return entries[:3]
+
+def build_buddy_fields(entries):
+    normalized_entries = list(entries)
+    while len(normalized_entries) < 3:
+        normalized_entries.append({'char': '', 'base': '', 'totsu': ''})
+
+    return {
+        'buddy1c': normalized_entries[0]['char'],
+        'buddy1s': normalized_entries[0]['base'],
+        'buddy1s_totsu': normalized_entries[0]['totsu'],
+        'buddy2c': normalized_entries[1]['char'],
+        'buddy2s': normalized_entries[1]['base'],
+        'buddy2s_totsu': normalized_entries[1]['totsu'],
+        'buddy3c': normalized_entries[2]['char'],
+        'buddy3s': normalized_entries[2]['base'],
+        'buddy3s_totsu': normalized_entries[2]['totsu'],
+    }
 def getCharaDict(path,namedict,cosdict, implementation_dates=None):
     csv_file = open(path, "r", encoding="utf-8", errors="", newline="")
     # リスト形式
@@ -38,7 +101,7 @@ def getCharaDict(path,namedict,cosdict, implementation_dates=None):
         # 1,2 名前
         # 3,4 レア,タイプ
         # 7,8 HP,ATK
-        # 11,13,15 バディ1,2,3
+        # 12-20 バディ関連（*_totsu を含む）
         # 17,18  デバフ
         # 19,20  回復
         outdict = dict()
@@ -73,12 +136,39 @@ def getCharaDict(path,namedict,cosdict, implementation_dates=None):
         outdict['magic3atr'] = checkMagicAttr(chara[11])
         outdict['magic3buf'] = checkMagicBuf(chara[11])
         outdict['magic3heal'] = checkMagicHeal(chara[11])
-        outdict['buddy1c'] = chara[12]
-        outdict['buddy1s'] = chara[13]
-        outdict['buddy2c'] = chara[14]
-        outdict['buddy2s'] = chara[15]
-        outdict['buddy3c'] = chara[16]
-        outdict['buddy3s'] = chara[17]
+        if len(chara) >= 28:
+            outdict['buddy1c'] = chara[12]
+            outdict['buddy1s'] = chara[13]
+            outdict['buddy1s_totsu'] = chara[14]
+            outdict['buddy2c'] = chara[15]
+            outdict['buddy2s'] = chara[16]
+            outdict['buddy2s_totsu'] = chara[17]
+            outdict['buddy3c'] = chara[18]
+            outdict['buddy3s'] = chara[19]
+            outdict['buddy3s_totsu'] = chara[20]
+            growtype_index = 25
+        elif len(chara) >= 26:
+            outdict['buddy1c'] = chara[12]
+            outdict['buddy1s'] = chara[13]
+            outdict['buddy1s_totsu'] = chara[14]
+            outdict['buddy2c'] = chara[15]
+            outdict['buddy2s'] = chara[16]
+            outdict['buddy2s_totsu'] = chara[16]
+            outdict['buddy3c'] = chara[17]
+            outdict['buddy3s'] = chara[18]
+            outdict['buddy3s_totsu'] = chara[18]
+            growtype_index = 23
+        else:
+            outdict['buddy1c'] = chara[12]
+            outdict['buddy1s'] = chara[13]
+            outdict['buddy1s_totsu'] = chara[13]
+            outdict['buddy2c'] = chara[14]
+            outdict['buddy2s'] = chara[15]
+            outdict['buddy2s_totsu'] = chara[15]
+            outdict['buddy3c'] = chara[16]
+            outdict['buddy3s'] = chara[17]
+            outdict['buddy3s_totsu'] = chara[17]
+            growtype_index = 22
         etc = ''
         magic1split = chara[9].split('&')
         for i in range(len(magic1split)):
@@ -125,7 +215,7 @@ def getCharaDict(path,namedict,cosdict, implementation_dates=None):
             
         outdict['etc'] = etc
         outdict['rare'] = chara[3]
-        outdict['growtype'] = chara[22]
+        outdict['growtype'] = chara[growtype_index]
         outdict['wikiURL'] = chara[-1]
         outdict['buff_count'] = buff_count
         outdict['debuff_count'] = debuff_count
@@ -385,18 +475,7 @@ def main(rank, url, masters):
             magic3 = txt[str_index:end_index].strip()
         # 四つ目のテーブル
         if (count == 6 and rank == 'SSR') or (count == 5 and rank != 'SSR'):
-            # バディ
-            trs = item.findAll("tr")
-            buddies = ['','','','','','']
-            buddies_num = 0
-            for tr in trs:
-                detail = 0
-                for cell in tr.findAll('td'):
-                    detail += 1
-                    if detail == 3:
-                        break
-                    buddies[buddies_num] = cell.get_text()
-                    buddies_num+=1
+            buddy_fields = build_buddy_fields(parse_buddy_entries(item))
     name = name.replace('【ツイステ】', '')
     out_txt = (name
                + "\t" + costume
@@ -409,7 +488,15 @@ def main(rank, url, masters):
                + "\t" + magic1
                + "\t" + magic2
                + "\t" + magic3
-               + "\t" + '\t'.join(buddies)
+               + "\t" + buddy_fields['buddy1c']
+               + "\t" + buddy_fields['buddy1s']
+               + "\t" + buddy_fields['buddy1s_totsu']
+               + "\t" + buddy_fields['buddy2c']
+               + "\t" + buddy_fields['buddy2s']
+               + "\t" + buddy_fields['buddy2s_totsu']
+               + "\t" + buddy_fields['buddy3c']
+               + "\t" + buddy_fields['buddy3s']
+               + "\t" + buddy_fields['buddy3s_totsu']
                + "\t" + "\t" + "\t" + "\t" + "\t"
                + name_type_master[name+costume]
                ).replace(' ', '').replace('（', '(').replace('）', ')').replace('＆', '&')

@@ -1,4 +1,4 @@
-import json
+﻿import json
 import os
 import time
 from collections import defaultdict
@@ -24,6 +24,69 @@ def outDict(path,dict):
     with open(path, "w", encoding='UTF-8') as f:
         for key, val in dict.items():
             f.write(f"{key}:{val}\n")
+
+def normalize_card_text(text):
+    return text.replace(' ', '').replace('（', '(').replace('）', ')').replace('＆', '&')
+
+def parse_buddy_entries(table):
+    entries = []
+    pending_entry = None
+
+    for tr in table.find_all("tr"):
+        cells = tr.find_all(["th", "td"])
+        if not cells:
+            continue
+
+        first_text = normalize_card_text(cells[0].get_text())
+        if first_text == 'キャラ':
+            continue
+
+        if cells[0].name == 'td':
+            char_name = first_text
+            if len(cells) >= 3 and cells[1].name == 'th':
+                detail = normalize_card_text(cells[1].get_text())
+                bonus = normalize_card_text(cells[2].get_text())
+                entry = {'char': char_name, 'base': bonus, 'totsu': bonus}
+                if '2回' in detail:
+                    entry['base'] = ''
+                entries.append(entry)
+                pending_entry = entry if cells[0].has_attr('rowspan') else None
+            elif len(cells) >= 2:
+                bonus = normalize_card_text(cells[1].get_text())
+                entries.append({'char': char_name, 'base': bonus, 'totsu': bonus})
+                pending_entry = None
+        elif cells[0].name == 'th' and pending_entry is not None:
+            detail = first_text
+            bonus = normalize_card_text(cells[1].get_text()) if len(cells) >= 2 else ''
+            if '2回' in detail:
+                pending_entry['totsu'] = bonus
+            else:
+                pending_entry['base'] = bonus
+
+    for entry in entries:
+        if not entry['base']:
+            entry['base'] = entry['totsu']
+        if not entry['totsu']:
+            entry['totsu'] = entry['base']
+
+    return entries[:3]
+
+def build_buddy_fields(entries):
+    normalized_entries = list(entries)
+    while len(normalized_entries) < 3:
+        normalized_entries.append({'char': '', 'base': '', 'totsu': ''})
+
+    return {
+        'buddy1c': normalized_entries[0]['char'],
+        'buddy1s': normalized_entries[0]['base'],
+        'buddy1s_totsu': normalized_entries[0]['totsu'],
+        'buddy2c': normalized_entries[1]['char'],
+        'buddy2s': normalized_entries[1]['base'],
+        'buddy2s_totsu': normalized_entries[1]['totsu'],
+        'buddy3c': normalized_entries[2]['char'],
+        'buddy3s': normalized_entries[2]['base'],
+        'buddy3s_totsu': normalized_entries[2]['totsu'],
+    }
 
 
 def checkMagicPow(str):
@@ -196,18 +259,7 @@ def get_chara_dict(rank, url, masters, implementation_dates=None):
             magic3 = txt[str_index:end_index].strip().replace(' ', '').replace('（', '(').replace('）', ')').replace('＆', '&')
         # 四つ目のテーブル
         if (count == 6 and rank == 'SSR') or (count == 5 and rank != 'SSR'):
-            # バディ
-            trs = item.findAll("tr")
-            buddies = ['','','','','','']
-            buddies_num = 0
-            for tr in trs:
-                detail = 0
-                for cell in tr.findAll('td'):
-                    detail += 1
-                    if detail == 3:
-                        break
-                    buddies[buddies_num] = cell.get_text().replace(' ', '').replace('（', '(').replace('）', ')').replace('＆', '&')
-                    buddies_num+=1
+            buddy_fields = build_buddy_fields(parse_buddy_entries(item))
     name = name.replace('【ツイステ】', '')
 
     outdict = dict()
@@ -241,12 +293,15 @@ def get_chara_dict(rank, url, masters, implementation_dates=None):
     outdict['magic3atr'] = checkMagicAttr(magic3)
     outdict['magic3buf'] = checkMagicBuf(magic3)
     outdict['magic3heal'] = checkMagicHeal(magic3)
-    outdict['buddy1c'] = buddies[0]
-    outdict['buddy1s'] = buddies[1]
-    outdict['buddy2c'] = buddies[2]
-    outdict['buddy2s'] = buddies[3]
-    outdict['buddy3c'] = buddies[4]
-    outdict['buddy3s'] = buddies[5]
+    outdict['buddy1c'] = buddy_fields['buddy1c']
+    outdict['buddy1s'] = buddy_fields['buddy1s']
+    outdict['buddy1s_totsu'] = buddy_fields['buddy1s_totsu']
+    outdict['buddy2c'] = buddy_fields['buddy2c']
+    outdict['buddy2s'] = buddy_fields['buddy2s']
+    outdict['buddy2s_totsu'] = buddy_fields['buddy2s_totsu']
+    outdict['buddy3c'] = buddy_fields['buddy3c']
+    outdict['buddy3s'] = buddy_fields['buddy3s']
+    outdict['buddy3s_totsu'] = buddy_fields['buddy3s_totsu']
     etc = ''
     magic1split = magic1.split('&')
     for i in range(len(magic1split)):
