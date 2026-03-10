@@ -8772,7 +8772,10 @@
         "magic3pow": "3連撃(弱)",
         "name": "leona_rebel_of_the_wilderness",
         "rare": "SSR",
-        "wikiURL": "https://twst.wikiru.jp/?SSR/レオナ【荒野の反逆者】"
+        "wikiURL": "https://twst.wikiru.jp/?SSR/レオナ【荒野の反逆者】",
+        "buddy1s_totsu": "HPUP(中)",
+        "buddy2s_totsu": "ATKUP(小)",
+        "buddy3s_totsu": "HPUP(小)"
     },
     {
         "atk": "6820",
