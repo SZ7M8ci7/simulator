@@ -8072,7 +8072,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/ルーク【サバナクロー寮服】",
         "buddy1s_totsu": "HPUP(小)",
         "buddy2s_totsu": "ATKUP(小)",
-        "buddy3s_totsu": "HPUP(中)"
+        "buddy3s_totsu": "HPUP(中)&水属性被ダメージDOWN(大)"
     },
     {
         "atk": "5265",
@@ -8299,7 +8299,7 @@
         "rare": "SSR",
         "wikiURL": "https://twst.wikiru.jp/?SSR/ルーク【寮服】",
         "buddy1s_totsu": "HPUP(小)",
-        "buddy2s_totsu": "HPUP(中)",
+        "buddy2s_totsu": "HPUP(中)&クリティカル(小)",
         "buddy3s_totsu": "ATKUP(小)"
     },
     {
@@ -8338,7 +8338,7 @@
         "name": "rook_newyear",
         "rare": "SSR",
         "wikiURL": "https://twst.wikiru.jp/?SSR/ルーク【新春の衣】",
-        "buddy1s_totsu": "HPUP(小)",
+        "buddy1s_totsu": "HPUP(小)&火属性ダメージUP(大)",
         "buddy2s_totsu": "ATKUP(中)",
         "buddy3s_totsu": "HPUP(小)"
     },
