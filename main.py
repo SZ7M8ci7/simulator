@@ -1,6 +1,7 @@
 ﻿import csv
 import glob
 import json
+import os
 import time
 from collections import defaultdict
 from PIL import Image
@@ -9,6 +10,13 @@ import requests
 from bs4 import BeautifulSoup
 import re
 import random
+
+STATUS_TABLE_URL = 'https://twst.wikiru.jp/?%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB/%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7'
+CARD_INFO_PATTERN = re.compile(
+    r'レアリティ\s*(?P<rank>\S+)\s*衣装\s*(?P<costume>\S+)\s*タイプ\s*(?P<attr>\S+)'
+    r'\s*HP\s*初期\s*(?P<base_hp>\d+)\s*最大\s*(?P<hp>\d+)'
+    r'\s*ATK\s*初期\s*(?P<base_atk>\d+)\s*最大\s*(?P<atk>\d+)'
+)
 
 def getDict(path):
     dict = defaultdict(str)
@@ -30,6 +38,103 @@ def outDict(path,dict):
 def normalize_card_text(text):
     return text.replace(' ', '').replace('（', '(').replace('）', ')').replace('＆', '&')
 
+def is_limit_break_base(detail):
+    return 'まで' in detail or '無凸' in detail
+
+def find_card_tables(soup):
+    info_table = None
+    buddy_table = None
+    magic_tables = []
+
+    for table in soup.find_all("table", class_="style_table"):
+        first_row = table.find("tr")
+        if first_row is None:
+            continue
+
+        headers = [normalize_card_text(cell.get_text()) for cell in first_row.find_all(["th", "td"])]
+        table_text = normalize_card_text(table.get_text())
+
+        if info_table is None and 'レアリティ' in table_text and '衣装' in table_text and 'タイプ' in table_text and 'ATK' in table_text:
+            info_table = table
+        elif headers[:3] == ['属性', '名称', '効果']:
+            magic_tables.append(table)
+        elif headers and headers[0] == 'キャラ' and '名称' in headers and '効果' in headers:
+            buddy_table = table
+
+    return info_table, magic_tables, buddy_table
+
+def parse_card_info(table):
+    match = CARD_INFO_PATTERN.search(table.get_text())
+    if match is None:
+        raise ValueError('card info table format changed')
+    return match.groupdict()
+
+def parse_magic_text(table):
+    txt = table.get_text()
+    len_txt = len(txt)
+    str_index = txt.rfind('Lv10') + 4
+    end_index = len_txt - 1
+    if len_txt - str_index < 6:
+        end_index = str_index - 5
+        str_index = txt.rfind('Lv5') + 3
+    if len_txt - str_index < 10:
+        end_index = str_index - 4
+        str_index = txt.find('Lv1') + 3
+    return normalize_card_text(txt[str_index:end_index].strip())
+
+def load_local_masters():
+    name_type_master = defaultdict(str)
+    name_hp_master = defaultdict(str)
+    name_atk_master = defaultdict(str)
+    name_base_hp_master = defaultdict(str)
+    name_base_atk_master = defaultdict(str)
+
+    if not os.path.exists('chara.json'):
+        return [name_type_master, name_hp_master, name_atk_master, name_base_hp_master, name_base_atk_master]
+
+    with open('chara.json', 'r', encoding='utf-8') as f:
+        for item in json.load(f):
+            key = item.get('chara', '') + item.get('costume', '')
+            if not key:
+                continue
+            name_type_master[key] = item.get('growtype', '')
+            name_hp_master[key] = str(item.get('hp', ''))
+            name_atk_master[key] = str(item.get('atk', ''))
+            name_base_hp_master[key] = str(item.get('base_hp', ''))
+            name_base_atk_master[key] = str(item.get('base_atk', ''))
+
+    return [name_type_master, name_hp_master, name_atk_master, name_base_hp_master, name_base_atk_master]
+
+def infer_growtype(rank, attr, hp, atk):
+    if not os.path.exists('chara.json'):
+        return ''
+
+    try:
+        hp_value = int(hp)
+        atk_value = int(atk)
+    except (TypeError, ValueError):
+        return ''
+
+    with open('chara.json', 'r', encoding='utf-8') as f:
+        candidates = []
+        for item in json.load(f):
+            if item.get('rare') != rank or item.get('attr') != attr or not item.get('growtype'):
+                continue
+            try:
+                ref_hp = int(item.get('hp', ''))
+                ref_atk = int(item.get('atk', ''))
+            except (TypeError, ValueError):
+                continue
+            if ref_hp == hp_value and ref_atk == atk_value:
+                return item['growtype']
+            candidates.append((abs((ref_hp / ref_atk) - (hp_value / atk_value)), item['growtype']))
+
+    if not candidates:
+        return ''
+
+    candidates.sort(key=lambda item: item[0])
+    return candidates[0][1]
+
 def parse_buddy_entries(table):
     entries = []
     pending_entry = None
@@ -48,9 +153,11 @@ def parse_buddy_entries(table):
             if len(cells) >= 3 and cells[1].name == 'th':
                 detail = normalize_card_text(cells[1].get_text())
                 bonus = normalize_card_text(cells[2].get_text())
-                entry = {'char': char_name, 'base': bonus, 'totsu': bonus}
-                if '2回' in detail:
-                    entry['base'] = ''
+                entry = {'char': char_name, 'base': '', 'totsu': ''}
+                if is_limit_break_base(detail):
+                    entry['base'] = bonus
+                else:
+                    entry['totsu'] = bonus
                 entries.append(entry)
                 pending_entry = entry if cells[0].has_attr('rowspan') else None
             elif len(cells) >= 2:
@@ -60,10 +167,10 @@ def parse_buddy_entries(table):
         elif cells[0].name == 'th' and pending_entry is not None:
             detail = first_text
             bonus = normalize_card_text(cells[1].get_text()) if len(cells) >= 2 else ''
-            if '2回' in detail:
-                pending_entry['totsu'] = bonus
-            else:
+            if is_limit_break_base(detail):
                 pending_entry['base'] = bonus
+            else:
+                pending_entry['totsu'] = bonus
 
     for entry in entries:
         if not entry['base']:
@@ -410,81 +517,33 @@ def main(rank, url, masters):
         end_index = txt.rfind('【')
         name = txt[str_index:end_index]
 
-    count = 0
-    magic3 = ''
-    for item in data_all.find_all("table", class_="style_table"):
-        count += 1
-        txt = item.getText()
-        # 一つ目のテーブル
-        if count == 1:
-            typeindex = 0
-            if 'タイプ・' in txt:
-                typeindex = txt.find('タイプ')+1
-            # 衣装
-            str_index = txt.find('衣装') + 3
-            end_index = txt.find('タイプ',typeindex) - 1
-            costume = txt[str_index:end_index].strip()
-            # タイプ
-            str_index = txt.find('タイプ',typeindex) + 4
-            end_index = txt.find('HP') - 1
-            attr = txt[str_index:end_index].strip()
-            # HP
-            str_index = txt.find('最大') + 2
-            end_index = txt.find('ATK') - 1
-            HP = txt[str_index:end_index].strip()
-            # ATK
-            str_index = txt.rfind('最大') + 2
-            end_index = str_index + 6
-            ATK = txt[str_index:end_index].strip()
-        # 二つ目のテーブル
-        len_txt = len(txt)
-        if count == 3:
-            # マジック１
-            str_index = txt.rfind('Lv10') + 4
-            end_index = len_txt - 1
-            if len_txt - str_index < 6:
-                end_index = str_index - 5
-                str_index = txt.rfind('Lv5') + 3
-            if len_txt - str_index < 10:
-                end_index = str_index - 4
-                str_index = txt.find('Lv1') + 3
-            magic1 = txt[str_index:end_index].strip()
-        # 三つ目のテーブル
-        if count == 4:
-            # マジック２
-            str_index = txt.rfind('Lv10') + 4
-            end_index = len_txt - 1
-            if len_txt - str_index < 6:
-                end_index = str_index - 5
-                str_index = txt.rfind('Lv5') + 3
-            if len_txt - str_index < 10:
-                end_index = str_index - 4
-                str_index = txt.find('Lv1') + 3
-            magic2 = txt[str_index:end_index].strip()
-        # 三つ目のテーブル
-        if count == 5 and rank == 'SSR':
-            # マジック３
-            str_index = txt.rfind('Lv10') + 4
-            end_index = len_txt - 1
-            if len_txt - str_index < 6:
-                end_index = str_index - 5
-                str_index = txt.rfind('Lv5') + 3
-            if len_txt - str_index < 10:
-                end_index = str_index - 4
-                str_index = txt.find('Lv1') + 3
-            magic3 = txt[str_index:end_index].strip()
-        # 四つ目のテーブル
-        if (count == 6 and rank == 'SSR') or (count == 5 and rank != 'SSR'):
-            buddy_fields = build_buddy_fields(parse_buddy_entries(item))
+    info_table, magic_tables, buddy_table = find_card_tables(data_all)
+    if info_table is None or len(magic_tables) < 2 or buddy_table is None:
+        raise ValueError('card page table format changed')
+
+    info = parse_card_info(info_table)
+    costume = info['costume']
+    attr = info['attr']
+    base_hp = info['base_hp']
+    base_atk = info['base_atk']
+    HP = info['hp']
+    ATK = info['atk']
+
+    magic1 = parse_magic_text(magic_tables[0])
+    magic2 = parse_magic_text(magic_tables[1])
+    magic3 = parse_magic_text(magic_tables[2]) if rank == 'SSR' and len(magic_tables) >= 3 else ''
+    buddy_fields = build_buddy_fields(parse_buddy_entries(buddy_table))
     name = name.replace('【ツイステ】', '')
+    key = name + costume
+    growtype = name_type_master[key] if name_type_master[key] else infer_growtype(rank, attr, HP, ATK)
     out_txt = (name
                + "\t" + costume
                + "\t" + rank
                + "\t" + attr
-               + "\t" + str(name_base_hp_master[name+costume])
-               + "\t" + str(name_base_atk_master[name+costume])
-               + "\t" + str(name_hp_master[name+costume] if name_hp_master[name+costume] else HP)
-               + "\t" + str(name_atk_master[name+costume] if name_atk_master[name+costume] else ATK)
+               + "\t" + str(name_base_hp_master[key] if name_base_hp_master[key] else base_hp)
+               + "\t" + str(name_base_atk_master[key] if name_base_atk_master[key] else base_atk)
+               + "\t" + str(name_hp_master[key] if name_hp_master[key] else HP)
+               + "\t" + str(name_atk_master[key] if name_atk_master[key] else ATK)
                + "\t" + magic1
                + "\t" + magic2
                + "\t" + magic3
@@ -498,7 +557,7 @@ def main(rank, url, masters):
                + "\t" + buddy_fields['buddy3s']
                + "\t" + buddy_fields['buddy3s_totsu']
                + "\t" + "\t" + "\t" + "\t" + "\t"
-               + name_type_master[name+costume]
+               + growtype
                ).replace(' ', '').replace('（', '(').replace('）', ')').replace('＆', '&')
 
     return out_txt
@@ -543,42 +602,40 @@ def get_list(rank):
             get_img(link.text, exists_files)
     return url_list
 def make_type_dict(url):
-    response = requests.get(url)
-    html = response.text
+    masters = load_local_masters()
 
-    # BeautifulSoupを使用してHTMLを解析する
-    soup = BeautifulSoup(html, 'html.parser')
+    try:
+        response = requests.get(url)
+        html = response.text
+        soup = BeautifulSoup(html, 'html.parser')
+        table = soup.find('table', {'id': 'sortabletable1'})
+        if table is None:
+            return masters
 
-    # 目的のテーブルを抽出する
-    table = soup.find('table', {'class': 'style_table'})
+        rows = table.find_all('tr')
+        name_type_master, name_hp_master, name_atk_master, name_base_hp_master, name_base_atk_master = masters
+        for row in rows:
+            name = row.find('th')
+            cells = row.find_all('td')
+            if name is None:
+                continue
 
-    # テーブル内のすべての行を取得する
-    rows = table.find_all('tr')
+            row_data = [name.text.strip()]
+            for cell in cells:
+                row_data.append(cell.text.strip())
+            if len(row_data) < 12:
+                continue
 
-    # リストを初期化する
-    name_type_master = defaultdict(str)
-    name_hp_master = defaultdict(str)
-    name_atk_master = defaultdict(str)
-    name_base_hp_master = defaultdict(str)
-    name_base_atk_master = defaultdict(str)
-    # 各行を反復処理し、各行のすべてのセルを取得する
-    for row in rows:
-        name = row.find('th')
-        cells = row.find_all('td')
+            key = row_data[0] + row_data[1]
+            name_base_hp_master[key] = row_data[7]
+            name_base_atk_master[key] = row_data[8]
+            name_hp_master[key] = row_data[9]
+            name_atk_master[key] = row_data[10]
+            name_type_master[key] = row_data[11]
+    except Exception:
+        pass
 
-        # セルの値をリストに追加する
-        row_data = [name.text.strip()]
-        for cell in cells:
-            row_data.append(cell.text.strip())
-        if len(row_data) < 3:
-            continue
-        # 行の値をリストに追加する
-        name_base_hp_master[row_data[0]+row_data[1]] = row_data[7]
-        name_base_atk_master[row_data[0]+row_data[1]] = row_data[8]
-        name_hp_master[row_data[0]+row_data[1]] = row_data[9]
-        name_atk_master[row_data[0]+row_data[1]] = row_data[10]
-        name_type_master[row_data[0]+row_data[1]] = row_data[11]
-    return [name_type_master,name_hp_master,name_atk_master,name_base_hp_master,name_base_atk_master]
+    return masters
 
 def get_implementation_dates():
     """実装日情報を取得する関数"""
@@ -614,7 +671,7 @@ def get_implementation_dates():
 
 
 if __name__ == '__main__':
-    masters = make_type_dict('https://twst.wikiru.jp/?%E3%82%AB%E3%83%BC%E3%83%89%E6%88%90%E9%95%B7%E7%8E%87')
+    masters = make_type_dict(STATUS_TABLE_URL)
     output = []
     count = 0
     # 実装日情報を取得
