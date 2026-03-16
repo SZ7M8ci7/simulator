@@ -145,7 +145,10 @@
         "magic3pow": "連撃(弱)",
         "name": "azul_tmu",
         "rare": "SSR",
-        "wikiURL": "https://twst.wikiru.jp/?SSR/アズール【ツムステ】"
+        "wikiURL": "https://twst.wikiru.jp/?SSR/アズール【ツムステ】",
+        "buddy1s_totsu": "ATKUP(小)",
+        "buddy2s_totsu": "HPUP(中)&クリティカル(中)",
+        "buddy3s_totsu": "ATKUP(小)"
     },
     {
         "atk": "5387",
@@ -629,7 +632,10 @@
         "magic3pow": "連撃(弱)",
         "name": "idia_tmu",
         "rare": "SSR",
-        "wikiURL": "https://twst.wikiru.jp/?SSR/イデア【ツムステ】"
+        "wikiURL": "https://twst.wikiru.jp/?SSR/イデア【ツムステ】",
+        "buddy1s_totsu": "ATKUP(小)&ダメージUP(中)",
+        "buddy2s_totsu": "HPUP(中)",
+        "buddy3s_totsu": "HPUP(小)"
     },
     {
         "atk": "6665",
@@ -1369,7 +1375,10 @@
         "magic3pow": "連撃(弱)",
         "name": "ace_club",
         "rare": "SSR",
-        "wikiURL": "https://twst.wikiru.jp/?SSR/エース【クラブ・ウェア】"
+        "wikiURL": "https://twst.wikiru.jp/?SSR/エース【クラブ・ウェア】",
+        "buddy1s_totsu": "HPUP(小)",
+        "buddy2s_totsu": "HPUP(中)&クリティカル(小)",
+        "buddy3s_totsu": "ATKUP(小)"
     },
     {
         "atk": "5940",
@@ -2146,7 +2155,10 @@
         "magic3pow": "連撃(弱)",
         "name": "kalim_club",
         "rare": "SSR",
-        "wikiURL": "https://twst.wikiru.jp/?SSR/カリム【クラブ・ウェア】"
+        "wikiURL": "https://twst.wikiru.jp/?SSR/カリム【クラブ・ウェア】",
+        "buddy1s_totsu": "HPUP(小)",
+        "buddy2s_totsu": "ATKUP(中)",
+        "buddy3s_totsu": "HPUP(中)"
     },
     {
         "atk": "4326",
@@ -2183,7 +2195,10 @@
         "magic3pow": "連撃(弱)",
         "name": "kalim_tmu",
         "rare": "SSR",
-        "wikiURL": "https://twst.wikiru.jp/?SSR/カリム【ツムステ】"
+        "wikiURL": "https://twst.wikiru.jp/?SSR/カリム【ツムステ】",
+        "buddy1s_totsu": "ATKUP(小)",
+        "buddy2s_totsu": "ATKUP(小)",
+        "buddy3s_totsu": "HPUP(中)&呪い無効"
     },
     {
         "atk": "6152",
@@ -2701,7 +2716,10 @@
         "magic3pow": "連撃(弱)",
         "name": "cater_club",
         "rare": "SSR",
-        "wikiURL": "https://twst.wikiru.jp/?SSR/ケイト【クラブ・ウェア】"
+        "wikiURL": "https://twst.wikiru.jp/?SSR/ケイト【クラブ・ウェア】",
+        "buddy1s_totsu": "HPUP(小)",
+        "buddy2s_totsu": "ATKUP(小)",
+        "buddy3s_totsu": "HPUP(中)&ダメージUP(中)"
     },
     {
         "atk": "5491",
@@ -5109,7 +5127,10 @@
         "magic3pow": "連撃(弱)",
         "name": "deuce_Nightmare_Courier",
         "rare": "SSR",
-        "wikiURL": "https://twst.wikiru.jp/?SSR/デュース【ナイトメアークーリエ】"
+        "wikiURL": "https://twst.wikiru.jp/?SSR/デュース【ナイトメアークーリエ】",
+        "buddy1s_totsu": "ATKUP(小)",
+        "buddy2s_totsu": "HP&ATKUP(小)&火属性ダメージUP(大)",
+        "buddy3s_totsu": "HPUP(小)"
     },
     {
         "atk": "4541",
@@ -5553,7 +5574,10 @@
         "magic3pow": "連撃(弱)",
         "name": "trey_club",
         "rare": "SSR",
-        "wikiURL": "https://twst.wikiru.jp/?SSR/トレイ【クラブ・ウェア】"
+        "wikiURL": "https://twst.wikiru.jp/?SSR/トレイ【クラブ・ウェア】",
+        "buddy1s_totsu": "ATKUP(小)",
+        "buddy2s_totsu": "HPUP(中)&ダメージUP(中)",
+        "buddy3s_totsu": "ATKUP(小)"
     },
     {
         "atk": "5251",
@@ -5701,7 +5725,10 @@
         "magic3pow": "連撃(弱)",
         "name": "trey_La_Bonbonniere",
         "rare": "SSR",
-        "wikiURL": "https://twst.wikiru.jp/?SSR/トレイ【ラ・ボンボニエール】"
+        "wikiURL": "https://twst.wikiru.jp/?SSR/トレイ【ラ・ボンボニエール】",
+        "buddy1s_totsu": "HP&ATKUP(小)&ダメージUP(中)",
+        "buddy2s_totsu": "HPUP(小)",
+        "buddy3s_totsu": "ATKUP(小)"
     },
     {
         "atk": "4528",
@@ -5997,7 +6024,10 @@
         "magic3pow": "連撃(弱)",
         "name": "floyd_club",
         "rare": "SSR",
-        "wikiURL": "https://twst.wikiru.jp/?SSR/フロイド【クラブ・ウェア】"
+        "wikiURL": "https://twst.wikiru.jp/?SSR/フロイド【クラブ・ウェア】",
+        "buddy1s_totsu": "ATKUP(中)&やけど無効",
+        "buddy2s_totsu": "HPUP(小)",
+        "buddy3s_totsu": "HPUP(小)"
     },
     {
         "atk": "6548",
@@ -6478,7 +6508,10 @@
         "magic3pow": "連撃(弱)",
         "name": "malleus_tmu",
         "rare": "SSR",
-        "wikiURL": "https://twst.wikiru.jp/?SSR/マレウス【ツムステ】"
+        "wikiURL": "https://twst.wikiru.jp/?SSR/マレウス【ツムステ】",
+        "buddy1s_totsu": "HP&ATKUP(小)&ダメージUP(中)",
+        "buddy2s_totsu": "ATKUP(小)",
+        "buddy3s_totsu": "HPUP(小)"
     },
     {
         "atk": "7171",
@@ -7366,7 +7399,10 @@
         "magic3pow": "連撃(弱)",
         "name": "riddle_tmu",
         "rare": "SSR",
-        "wikiURL": "https://twst.wikiru.jp/?SSR/リドル【ツムステ】"
+        "wikiURL": "https://twst.wikiru.jp/?SSR/リドル【ツムステ】",
+        "buddy1s_totsu": "HPUP(大)",
+        "buddy2s_totsu": "HPUP(小)",
+        "buddy3s_totsu": "ATKUP(小)"
     },
     {
         "atk": "5870",
@@ -7662,7 +7698,10 @@
         "magic3pow": "連撃(弱)",
         "name": "lilia_club",
         "rare": "SSR",
-        "wikiURL": "https://twst.wikiru.jp/?SSR/リリア【クラブ・ウェア】"
+        "wikiURL": "https://twst.wikiru.jp/?SSR/リリア【クラブ・ウェア】",
+        "buddy1s_totsu": "HPUP(小)&ATKUP(中)",
+        "buddy2s_totsu": "HPUP(小)",
+        "buddy3s_totsu": "HPUP(小)"
     },
     {
         "atk": "5333",
@@ -8032,7 +8071,10 @@
         "magic3pow": "連撃(弱)",
         "name": "rook_club",
         "rare": "SSR",
-        "wikiURL": "https://twst.wikiru.jp/?SSR/ルーク【クラブ・ウェア】"
+        "wikiURL": "https://twst.wikiru.jp/?SSR/ルーク【クラブ・ウェア】",
+        "buddy1s_totsu": "HPUP(中)&暗闇無効",
+        "buddy2s_totsu": "ATKUP(小)",
+        "buddy3s_totsu": "HPUP(小)"
     },
     {
         "atk": "6016",
@@ -8972,7 +9014,10 @@
         "magic3pow": "連撃(弱)",
         "name": "vil_tmu",
         "rare": "SSR",
-        "wikiURL": "https://twst.wikiru.jp/?SSR/ヴィル【ツムステ】"
+        "wikiURL": "https://twst.wikiru.jp/?SSR/ヴィル【ツムステ】",
+        "buddy1s_totsu": "HPUP(小)",
+        "buddy2s_totsu": "ATKUP(小)",
+        "buddy3s_totsu": "HP&ATKUP(小)&クリティカル(小)"
     },
     {
         "atk": "6509",
