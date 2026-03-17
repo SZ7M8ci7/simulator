@@ -686,8 +686,6 @@ if __name__ == '__main__':
         for title in titles_by_rank.get(rank, []):
             cur_url = build_card_url(title)
             try:
-                if count > 20:
-                    continue
                 time.sleep(1)
                 scraped_card = scrape_card(rank, cur_url, masters)
                 cards.append(build_card_record(count, scraped_card, namedict, cosdict, implementation_dates))
