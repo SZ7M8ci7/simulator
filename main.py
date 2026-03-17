@@ -714,6 +714,8 @@ if __name__ == '__main__':
         url_all_list = get_list(rank)
         for cur_url in url_all_list:
             try:
+                if count > 20:
+                    continue
                 time.sleep(1)
                 output.append(str(count) + '\t' + main(rank, cur_url, masters) + '\t' + cur_url)
                 count+=1
