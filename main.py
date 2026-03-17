@@ -467,12 +467,10 @@ def makeicon(implementation_dates=None):
     namedict = getDict('namedict.txt')
     charadict = getCharaDict('charadata.tsv',namedict,cosdict, implementation_dates)
     files = glob.glob("get/*")
-    out_files = glob.glob("img/*")
-    out_files = [file.split('/')[-1] for file in out_files]
 
     for file in files:
         try:
-            filename = file.split('/')[-1]
+            filename = os.path.basename(file)
             rank = ''
             if 'SSR' in filename:
                 rank = 'SSR'
@@ -524,9 +522,6 @@ def makeicon(implementation_dates=None):
 
             # 合成した画像を保存する
             background_image.save('img/' + output_filename+'.png')
-
-            if output_filename+'.png' in out_files:
-                continue
         except Exception as e:
             print(e, file)
 
@@ -601,9 +596,8 @@ def get_img(title, exists_files):
     filename = title.replace('/','')+'アイコン.jpg'
     # 条件にマッチするすべてのリンクを探す
     try:
-        
-        # if filename in exists_files:
-        #     return
+        if filename in exists_files:
+            return
         time.sleep(1)
         url = "https://twst.wikiru.jp/attach2/696D67_" + filename.encode('utf-8').hex().rstrip().upper() + ".jpg"
         r = requests.get(url)
@@ -626,8 +620,7 @@ def get_list(rank):
     exists_files = set()
     for file in files:
         try:
-            sp = file.split('/')[-1]
-            exists_files.add(sp.replace('get/',''))
+            exists_files.add(os.path.basename(file))
         except:
             pass
     for link in data_all.find_all('a'):
