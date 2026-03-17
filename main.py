@@ -12,6 +12,8 @@ import re
 import random
 
 STATUS_TABLE_URL = 'https://twst.wikiru.jp/?%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB/%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7'
+GET_DIR = 'get'
+IMG_DIR = 'img'
 CARD_INFO_PATTERN = re.compile(
     r'レアリティ\s*(?P<rank>\S+)\s*衣装\s*(?P<costume>\S+)\s*タイプ\s*(?P<attr>\S+)'
     r'\s*HP\s*初期\s*(?P<base_hp>\d+)\s*最大\s*(?P<hp>\d+)'
@@ -34,6 +36,10 @@ def outDict(path,dict):
     with open(path, "w", encoding='UTF-8') as f:
         for key, val in dict.items():
             f.write(f"{key}:{val}\n")
+
+def ensure_output_dirs():
+    os.makedirs(GET_DIR, exist_ok=True)
+    os.makedirs(IMG_DIR, exist_ok=True)
 
 def normalize_card_text(text):
     return text.replace(' ', '').replace('（', '(').replace('）', ')').replace('＆', '&')
@@ -229,151 +235,127 @@ def normalize_buddy_fields(fields):
 
     return fields
 
-def getCharaDict(path,namedict,cosdict, implementation_dates=None):
-    csv_file = open(path, "r", encoding="utf-8", errors="", newline="")
-    # リスト形式
-    f = csv.reader(csv_file, delimiter="\t", doublequote=True, lineterminator="\r\n", quotechar='"',
-                   skipinitialspace=True)
-    card_list = [row for row in f]
-    outlist = []
+def sanitize_translated_text(text):
+    return text.replace(' ', '_').replace('\'', '').replace('"', '')
+
+def translate_cached(text, cache):
+    if text not in cache:
+        translated = GoogleTranslator(source='ja', target='en').translate(text).replace(' ', '_')
+        if translated == '':
+            translated = str(random.randint(1, 100000))
+        cache[text] = sanitize_translated_text(translated)
+    return cache[text]
+
+def extract_duo_partner(magic_text):
+    if '[DUO]' not in magic_text or 'と一緒' not in magic_text:
+        return ''
+    start = magic_text.index('[DUO]') + 5
+    end = magic_text.index('と一緒')
+    return magic_text[start:end]
+
+def build_extra_effect_text(*magic_texts):
+    etc_parts = []
+    for magic_index, magic_text in enumerate(magic_texts, start=1):
+        if not magic_text:
+            continue
+        for effect_index, effect in enumerate(magic_text.split('&')):
+            if effect_index == 0:
+                continue
+            if magic_index == 2 and '[DUO]' in effect:
+                continue
+            etc_parts.append(f'{effect}(M{magic_index})')
+    return '<br>'.join(etc_parts)
+
+def count_status_effects(etc_text):
+    buff_count = 0
+    debuff_count = 0
+
+    for cur in etc_text.split('<br>'):
+        if not cur:
+            continue
+        if '被ダメージUP' in cur:
+            continue
+        if '被ダメージDOWN' in cur and ('味方' in cur or '自' in cur):
+            debuff_count += 1
+            continue
+
+        if 'ATKUP' in cur:
+            buff_count += 1
+        elif 'ダメージUP' in cur and ('味方' in cur or '自' in cur):
+            buff_count += 1
+        elif 'クリティカル' in cur and ('味方' in cur or '自' in cur):
+            buff_count += 1
+
+        if 'ATKDOWN' in cur and '相手' in cur:
+            debuff_count += 1
+        elif 'ダメージDOWN' in cur and '相手' in cur:
+            debuff_count += 1
+        if '暗闇' in cur and '相手' in cur:
+            debuff_count += 1
+
+    return buff_count, debuff_count
+
+def build_card_record(card_id, scraped_card, namedict, cosdict, implementation_dates=None):
+    magic1 = scraped_card['magic1']
+    magic2 = scraped_card['magic2']
+    magic3 = scraped_card['magic3']
+    etc = build_extra_effect_text(magic1, magic2, magic3)
+    buff_count, debuff_count = count_status_effects(etc)
+    key = scraped_card['chara'] + scraped_card['costume']
+
+    record = {
+        'id': str(card_id),
+        'name': translate_cached(scraped_card['chara'], namedict) + '_' + translate_cached(scraped_card['costume'], cosdict),
+        'chara': scraped_card['chara'],
+        'costume': scraped_card['costume'],
+        'attr': scraped_card['attr'],
+        'base_hp': scraped_card['base_hp'],
+        'base_atk': scraped_card['base_atk'],
+        'hp': scraped_card['hp'],
+        'atk': scraped_card['atk'],
+        'magic1pow': checkMagicPow(magic1),
+        'magic1atr': checkMagicAttr(magic1),
+        'magic1buf': checkMagicBuf(magic1),
+        'magic1heal': checkMagicHeal(magic1),
+        'magic2pow': checkMagicPow(magic2),
+        'magic2atr': checkMagicAttr(magic2),
+        'magic2buf': checkMagicBuf(magic2),
+        'magic2heal': checkMagicHeal(magic2),
+        'duo': extract_duo_partner(magic2),
+        'magic3pow': checkMagicPow(magic3),
+        'magic3atr': checkMagicAttr(magic3),
+        'magic3buf': checkMagicBuf(magic3),
+        'magic3heal': checkMagicHeal(magic3),
+        'etc': etc,
+        'rare': scraped_card['rare'],
+        'growtype': scraped_card['growtype'],
+        'wikiURL': scraped_card['wikiURL'],
+        'buff_count': buff_count,
+        'debuff_count': debuff_count,
+        'implementation_date': implementation_dates.get(key, '') if implementation_dates else '',
+    }
+    record.update({
+        'buddy1c': scraped_card['buddy1c'],
+        'buddy1s': scraped_card['buddy1s'],
+        'buddy1s_totsu': scraped_card['buddy1s_totsu'],
+        'buddy2c': scraped_card['buddy2c'],
+        'buddy2s': scraped_card['buddy2s'],
+        'buddy2s_totsu': scraped_card['buddy2s_totsu'],
+        'buddy3c': scraped_card['buddy3c'],
+        'buddy3s': scraped_card['buddy3s'],
+        'buddy3s_totsu': scraped_card['buddy3s_totsu'],
+    })
+    return record
+
+def build_magicdict(cards):
     magicdict = defaultdict(list)
-    for chara in card_list:
-        # 1,2 名前
-        # 3,4 レア,タイプ
-        # 7,8 HP,ATK
-        # 12-20 バディ関連（*_totsu を含む）
-        # 17,18  デバフ
-        # 19,20  回復
-        outdict = dict()
-        outdict['id'] = chara[0]
-        if chara[1] not in namedict.keys():
-            namedict[chara[1]] = GoogleTranslator(source='ja',target='en').translate(chara[1]).replace(' ','_').replace('\'','').replace('"','')
-        if chara[2] not in cosdict.keys():
-            cosdict[chara[2]] = GoogleTranslator(source='ja',target='en').translate(chara[2]).replace(' ','_').replace('\'','').replace('"','')
-        outdict['name'] = namedict[chara[1]] + '_' + cosdict[chara[2]]
-        outdict['chara'] = chara[1]
-        outdict['costume'] = chara[2]
-        outdict['attr'] = chara[4]
-        outdict['base_hp'] = chara[5]
-        outdict['base_atk'] = chara[6]
-        outdict['hp'] = chara[7]
-        outdict['atk'] = chara[8]
-        outdict['magic1pow'] = checkMagicPow(chara[9])
-        outdict['magic1atr'] = checkMagicAttr(chara[9])
-        outdict['magic1buf'] = checkMagicBuf(chara[9])
-        outdict['magic1heal'] = checkMagicHeal(chara[9])
-        outdict['magic2pow'] = checkMagicPow(chara[10])
-        outdict['magic2atr'] = checkMagicAttr(chara[10])
-        outdict['magic2buf'] = checkMagicBuf(chara[10])
-        outdict['magic2heal'] = checkMagicHeal(chara[10])
-        duo = ''
-        if '[DUO]' in chara[10]:
-            start = chara[10].index('[DUO]') + 5
-            end = chara[10].index('と一緒')
-            duo = chara[10][start:end]
-        outdict['duo'] = duo
-        outdict['magic3pow'] = checkMagicPow(chara[11])
-        outdict['magic3atr'] = checkMagicAttr(chara[11])
-        outdict['magic3buf'] = checkMagicBuf(chara[11])
-        outdict['magic3heal'] = checkMagicHeal(chara[11])
-        if len(chara) >= 28:
-            outdict['buddy1c'] = chara[12]
-            outdict['buddy1s'] = chara[13]
-            outdict['buddy1s_totsu'] = chara[14]
-            outdict['buddy2c'] = chara[15]
-            outdict['buddy2s'] = chara[16]
-            outdict['buddy2s_totsu'] = chara[17]
-            outdict['buddy3c'] = chara[18]
-            outdict['buddy3s'] = chara[19]
-            outdict['buddy3s_totsu'] = chara[20]
-            growtype_index = 25
-        elif len(chara) >= 26:
-            outdict['buddy1c'] = chara[12]
-            outdict['buddy1s'] = chara[13]
-            outdict['buddy1s_totsu'] = chara[14]
-            outdict['buddy2c'] = chara[15]
-            outdict['buddy2s'] = chara[16]
-            outdict['buddy2s_totsu'] = chara[16]
-            outdict['buddy3c'] = chara[17]
-            outdict['buddy3s'] = chara[18]
-            outdict['buddy3s_totsu'] = chara[18]
-            growtype_index = 23
-        else:
-            outdict['buddy1c'] = chara[12]
-            outdict['buddy1s'] = chara[13]
-            outdict['buddy1s_totsu'] = chara[13]
-            outdict['buddy2c'] = chara[14]
-            outdict['buddy2s'] = chara[15]
-            outdict['buddy2s_totsu'] = chara[15]
-            outdict['buddy3c'] = chara[16]
-            outdict['buddy3s'] = chara[17]
-            outdict['buddy3s_totsu'] = chara[17]
-            growtype_index = 22
-        normalize_buddy_fields(outdict)
-        etc = ''
-        magic1split = chara[9].split('&')
-        for i in range(len(magic1split)):
-            if i > 0:
-                etc += magic1split[i]
-                etc += '(M1)'
-                etc += '<br>'
-        magic2split = chara[10].split('&')
-        for i in range(len(magic2split)):
-            if i > 0:
-                if '[DUO]' not in magic2split[i]:
-                    etc += magic2split[i]
-                    etc += '(M2)'
-                    etc += '<br>'
-        magic3split = chara[11].split('&')
-        for i in range(len(magic3split)):
-            if i > 0:
-                etc += magic3split[i]
-                etc += '(M3)'
-                etc += '<br>'
-        splitted_etc = etc.split('<br>')
-        buff_count = 0
-        debuff_count = 0
-        for cur in splitted_etc:
-            if '被ダメージUP' in cur:
-                continue
-            if '被ダメージDOWN' in cur and ('味方' in cur or '自' in cur):
-                debuff_count+=1
-                continue
-
-            if 'ATKUP' in cur:
-                buff_count+=1
-            elif 'ダメージUP' in cur and ('味方' in cur or '自' in cur):
-                buff_count+=1
-            elif 'クリティカル' in cur and ('味方' in cur or '自' in cur):
-                buff_count+=1
-
-            if 'ATKDOWN' in cur and '相手' in cur:
-                debuff_count+=1
-            elif 'ダメージDOWN' in cur and '相手' in cur:
-                debuff_count+=1
-            if '暗闇' in cur and '相手' in cur:
-                debuff_count+=1
-            
-        outdict['etc'] = etc
-        outdict['rare'] = chara[3]
-        outdict['growtype'] = chara[growtype_index]
-        outdict['wikiURL'] = chara[-1]
-        outdict['buff_count'] = buff_count
-        outdict['debuff_count'] = debuff_count
-        # 実装日をマッチング
-        impl_date = ''
-        if implementation_dates:
-            key = chara[1] + chara[2]
-            impl_date = implementation_dates.get(key, '')
-        outdict['implementation_date'] = impl_date
-
-        outlist.append(outdict)
-        magicdict[outdict['name']] = [outdict['magic1atr'],outdict['magic2atr'],outdict['magic3atr']]
-
-    with open('chara.json', 'w', encoding="utf-8") as f:
-        json.dump(outlist, f, sort_keys=True, indent=4, ensure_ascii=False)
-
+    for card in cards:
+        magicdict[card['name']] = [card['magic1atr'], card['magic2atr'], card['magic3atr']]
     return magicdict
+
+def write_chara_json(cards, path='chara.json'):
+    with open(path, 'w', encoding='utf-8') as f:
+        json.dump(cards, f, sort_keys=True, indent=4, ensure_ascii=False)
 
 
 def checkMagicPow(str):
@@ -462,75 +444,53 @@ def checkMagicBuf(str):
         buf = '属性ダメUP(極大)'
     return buf
 
-def makeicon(implementation_dates=None):
-    cosdict = getDict('cosdict.txt')
-    namedict = getDict('namedict.txt')
-    charadict = getCharaDict('charadata.tsv',namedict,cosdict, implementation_dates)
-    files = glob.glob("get/*")
+def parse_icon_source(file_path):
+    filename = os.path.basename(file_path)
+    rank = next((candidate for candidate in ('SSR', 'SR', 'R') if filename.startswith(candidate)), '')
+    if not rank or '【' not in filename or '】' not in filename:
+        return None
 
-    for file in files:
+    leftbracket = filename.index('【')
+    rightbracket = filename.index('】')
+    return rank, filename[len(rank):leftbracket], filename[leftbracket + 1:rightbracket]
+
+def makeicon(cards):
+    ensure_output_dirs()
+    card_lookup = {
+        (card['rare'], card['chara'], card['costume']): card
+        for card in cards
+    }
+
+    for file in glob.glob(os.path.join(GET_DIR, '*')):
         try:
-            filename = os.path.basename(file)
-            rank = ''
-            if 'SSR' in filename:
-                rank = 'SSR'
-            elif 'SR' in filename:
-                rank = 'SR'
-            else:
-                rank = 'R'
-            if '【' not in filename:
+            icon_source = parse_icon_source(file)
+            if icon_source is None:
                 continue
-            if '】' not in filename:
+
+            card = card_lookup.get(icon_source)
+            if card is None:
                 continue
-            leftbracket = filename.index('【')
-            rightbracket = filename.index('】')
 
-            name = filename[len(rank):leftbracket]
-            cos = filename[leftbracket+1:rightbracket]
-            if name not in namedict:
-                add_name = GoogleTranslator(source='ja',target='en').translate(name).replace(' ','_')
-                if add_name == '':
-                    add_name = str(random.randint(1,100000))
-                namedict[name] = add_name.replace('\'','').replace('"','')
-            if cos not in cosdict:
-                add_cos = GoogleTranslator(source='ja',target='en').translate(cos).replace(' ','_')
-                if add_cos == '':
-                    add_cos = str(random.randint(1,100000))
-                cosdict[cos] = add_cos.replace('\'','').replace('"','')
-            output_filename = namedict[name] + '_' + cosdict[cos]
+            max_magic = 3 if card['rare'] == 'SSR' else 2
+            magics = [card['magic1atr'], card['magic2atr'], card['magic3atr']]
+            if any(not magic for magic in magics[:max_magic]):
+                continue
 
-            max_magic = 2
-            if rank == 'SSR':
-                max_magic = 3
-            magics = charadict[output_filename]
-            # 画像合成
             background_image = Image.open(file).convert("RGBA")
-
-            # 背景画像を60x60の正方形にリサイズする
             background_image = background_image.resize((60, 60))
-            start_pos = background_image.width - max_magic*12 - (max_magic-1)
-            for magic in range(max_magic):
+            start_pos = background_image.width - max_magic * 12 - (max_magic - 1)
+            for magic_index in range(max_magic):
+                foreground_image = Image.open(f"{magics[magic_index]}.png").convert("RGBA")
+                background_image.alpha_composite(
+                    foreground_image,
+                    (start_pos + foreground_image.width * magic_index + magic_index, 0),
+                )
 
-                # 合成する画像を開く
-                foreground_image = Image.open(f"{magics[magic]}.png")
-
-                # 透過PNGをサポートするように設定する
-                foreground_image = foreground_image.convert("RGBA")
-
-                # 合成する画像を背景画像の中央に配置する
-                background_image.alpha_composite(foreground_image, (start_pos+foreground_image.width*magic+magic, 0))
-
-            # 合成した画像を保存する
-            background_image.save('img/' + output_filename+'.png')
+            background_image.save(os.path.join(IMG_DIR, card['name'] + '.png'))
         except Exception as e:
             print(e, file)
 
-    outDict('cosdict.txt',cosdict)
-    outDict('namedict.txt',namedict)
-
-
-
-def main(rank, url, masters):
+def scrape_card(rank, url, masters):
     name_type_master = masters[0]
     name_hp_master = masters[1]
     name_atk_master = masters[2]
@@ -565,69 +525,80 @@ def main(rank, url, masters):
     name = name.replace('【ツイステ】', '')
     key = name + costume
     growtype = name_type_master[key] if name_type_master[key] else infer_growtype(rank, attr, HP, ATK)
-    out_txt = (name
-               + "\t" + costume
-               + "\t" + rank
-               + "\t" + attr
-               + "\t" + str(name_base_hp_master[key] if name_base_hp_master[key] else base_hp)
-               + "\t" + str(name_base_atk_master[key] if name_base_atk_master[key] else base_atk)
-               + "\t" + str(name_hp_master[key] if name_hp_master[key] else HP)
-               + "\t" + str(name_atk_master[key] if name_atk_master[key] else ATK)
-               + "\t" + magic1
-               + "\t" + magic2
-               + "\t" + magic3
-               + "\t" + buddy_fields['buddy1c']
-               + "\t" + buddy_fields['buddy1s']
-               + "\t" + buddy_fields['buddy1s_totsu']
-               + "\t" + buddy_fields['buddy2c']
-               + "\t" + buddy_fields['buddy2s']
-               + "\t" + buddy_fields['buddy2s_totsu']
-               + "\t" + buddy_fields['buddy3c']
-               + "\t" + buddy_fields['buddy3s']
-               + "\t" + buddy_fields['buddy3s_totsu']
-               + "\t" + "\t" + "\t" + "\t" + "\t"
-               + growtype
-               ).replace(' ', '').replace('（', '(').replace('）', ')').replace('＆', '&')
+    return {
+        'chara': name,
+        'costume': costume,
+        'rare': rank,
+        'attr': attr,
+        'base_hp': str(name_base_hp_master[key] if name_base_hp_master[key] else base_hp),
+        'base_atk': str(name_base_atk_master[key] if name_base_atk_master[key] else base_atk),
+        'hp': str(name_hp_master[key] if name_hp_master[key] else HP),
+        'atk': str(name_atk_master[key] if name_atk_master[key] else ATK),
+        'magic1': magic1,
+        'magic2': magic2,
+        'magic3': magic3,
+        'growtype': growtype,
+        'wikiURL': url,
+        'buddy1c': buddy_fields['buddy1c'],
+        'buddy1s': buddy_fields['buddy1s'],
+        'buddy1s_totsu': buddy_fields['buddy1s_totsu'],
+        'buddy2c': buddy_fields['buddy2c'],
+        'buddy2s': buddy_fields['buddy2s'],
+        'buddy2s_totsu': buddy_fields['buddy2s_totsu'],
+        'buddy3c': buddy_fields['buddy3c'],
+        'buddy3s': buddy_fields['buddy3s'],
+        'buddy3s_totsu': buddy_fields['buddy3s_totsu'],
+    }
 
-    return out_txt
+def main(rank, url, masters):
+    return scrape_card(rank, url, masters)
 
 def get_img(title, exists_files):
-
-    filename = title.replace('/','')+'アイコン.jpg'
+    ensure_output_dirs()
+    filename = title.replace('/', '').replace('\\', '') + 'アイコン.jpg'
+    normalized_filename = filename.lower()
     # 条件にマッチするすべてのリンクを探す
     try:
-        if filename in exists_files:
+        if normalized_filename in exists_files:
             return
         time.sleep(1)
         url = "https://twst.wikiru.jp/attach2/696D67_" + filename.encode('utf-8').hex().rstrip().upper() + ".jpg"
         r = requests.get(url)
         if 200 != r.status_code:
             return
-        path = 'get/' + filename
-        image_file = open(path, 'wb')
-        image_file.write(r.content)
-        image_file.close()
+        path = os.path.join(GET_DIR, filename)
+        with open(path, 'wb') as image_file:
+            image_file.write(r.content)
+        exists_files.add(normalized_filename)
     except:
         pass
 
-def get_list(rank):
+def build_card_url(title):
+    return 'https://twst.wikiru.jp/?' + title
+
+def fetch_card_titles_by_rank():
     url = "https://twst.wikiru.jp/?cmd=list"
     result = requests.get(url)
     data_all = BeautifulSoup(result.text, 'html.parser')
-    url_list = []
-    
-    files = glob.glob("get/*")
-    exists_files = set()
-    for file in files:
-        try:
-            exists_files.add(os.path.basename(file))
-        except:
-            pass
+    titles_by_rank = {'SSR': [], 'SR': [], 'R': []}
+
     for link in data_all.find_all('a'):
-        if link.text.startswith(rank) and link.text.endswith('】'):
-            url_list.append('https://twst.wikiru.jp/?' + link.text)
-            get_img(link.text, exists_files)
-    return url_list
+        for rank in titles_by_rank:
+            if link.text.startswith(rank) and link.text.endswith('】'):
+                titles_by_rank[rank].append(link.text)
+                break
+
+    return titles_by_rank
+
+def download_missing_icons(card_titles):
+    ensure_output_dirs()
+    exists_files = {os.path.basename(file).lower() for file in glob.glob(os.path.join(GET_DIR, '*'))}
+    for title in card_titles:
+        get_img(title, exists_files)
+
+def get_list(rank):
+    titles_by_rank = fetch_card_titles_by_rank()
+    return [build_card_url(title) for title in titles_by_rank.get(rank, [])]
 def make_type_dict(url):
     masters = load_local_masters()
 
@@ -699,23 +670,32 @@ def get_implementation_dates():
 
 if __name__ == '__main__':
     masters = make_type_dict(STATUS_TABLE_URL)
-    output = []
-    count = 0
-    # 実装日情報を取得
+    namedict = getDict('namedict.txt')
+    cosdict = getDict('cosdict.txt')
     implementation_dates = get_implementation_dates()
-    for rank in ('SSR','SR','R'):
-        url_all_list = get_list(rank)
-        for cur_url in url_all_list:
+    titles_by_rank = fetch_card_titles_by_rank()
+    download_missing_icons([
+        title
+        for rank in ('SSR', 'SR', 'R')
+        for title in titles_by_rank.get(rank, [])
+    ])
+
+    cards = []
+    count = 0
+    for rank in ('SSR', 'SR', 'R'):
+        for title in titles_by_rank.get(rank, []):
+            cur_url = build_card_url(title)
             try:
                 if count > 20:
                     continue
                 time.sleep(1)
-                output.append(str(count) + '\t' + main(rank, cur_url, masters) + '\t' + cur_url)
-                count+=1
+                scraped_card = scrape_card(rank, cur_url, masters)
+                cards.append(build_card_record(count, scraped_card, namedict, cosdict, implementation_dates))
+                count += 1
             except Exception as e:
-                print(e,cur_url)
-    print(output)
-    with open("charadata.tsv", "w", encoding='UTF-8') as f:
-        for out in output:
-            f.write(f"{out}\n")
-    makeicon(implementation_dates)
+                print(e, cur_url)
+
+    write_chara_json(cards)
+    outDict('cosdict.txt', cosdict)
+    outDict('namedict.txt', namedict)
+    makeicon(cards)
