@@ -209,13 +209,20 @@ def normalize_buddy_fields(fields):
         char_value = fields.get(char_key, '')
         status_value = fields.get(status_key, '')
         totsu_value = fields.get(totsu_key, '')
+        char_candidates = [value for value in (char_value, status_value, totsu_value) if value and not is_buddy_status(value)]
+        status_candidates = [value for value in (status_value, totsu_value, char_value) if is_buddy_status(value)]
 
-        if is_buddy_status(char_value) and status_value and not is_buddy_status(status_value):
-            fields[char_key], fields[status_key] = status_value, char_value
-            status_value = fields[status_key]
+        if not char_value or is_buddy_status(char_value):
+            fields[char_key] = char_candidates[0] if char_candidates else ''
 
-        if not totsu_value:
-            fields[totsu_key] = status_value
+        if not is_buddy_status(status_value):
+            fields[status_key] = status_candidates[0] if status_candidates else ''
+
+        if not is_buddy_status(totsu_value):
+            replacement = next((value for value in status_candidates if value != fields[status_key]), '')
+            fields[totsu_key] = replacement if replacement else fields[status_key]
+        elif not totsu_value:
+            fields[totsu_key] = fields[status_key]
 
     return fields
 
