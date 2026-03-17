@@ -194,6 +194,31 @@ def build_buddy_fields(entries):
         'buddy3s_totsu': normalized_entries[2]['totsu'],
     }
 
+def is_buddy_status(text):
+    if not text:
+        return False
+    status_tokens = ('UP', '無効', '回避', '回復', 'ダメージ', 'クリティカル', 'ATK', 'HP')
+    return any(token in text for token in status_tokens)
+
+def normalize_buddy_fields(fields):
+    for index in range(1, 4):
+        char_key = f'buddy{index}c'
+        status_key = f'buddy{index}s'
+        totsu_key = f'buddy{index}s_totsu'
+
+        char_value = fields.get(char_key, '')
+        status_value = fields.get(status_key, '')
+        totsu_value = fields.get(totsu_key, '')
+
+        if is_buddy_status(char_value) and status_value and not is_buddy_status(status_value):
+            fields[char_key], fields[status_key] = status_value, char_value
+            status_value = fields[status_key]
+
+        if not totsu_value:
+            fields[totsu_key] = status_value
+
+    return fields
+
 
 def checkMagicPow(str):
     pow = ''
@@ -315,7 +340,7 @@ def get_chara_dict(rank, url, masters, implementation_dates=None):
     magic1 = parse_magic_text(magic_tables[0])
     magic2 = parse_magic_text(magic_tables[1])
     magic3 = parse_magic_text(magic_tables[2]) if rank == 'SSR' and len(magic_tables) >= 3 else ''
-    buddy_fields = build_buddy_fields(parse_buddy_entries(buddy_table))
+    buddy_fields = normalize_buddy_fields(build_buddy_fields(parse_buddy_entries(buddy_table)))
     name = name.replace('【ツイステ】', '')
     key = name + costume
     growtype = name_type_master[key] if name_type_master[key] else infer_growtype(rank, attr, HP, ATK)
