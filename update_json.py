@@ -1,590 +1,91 @@
-﻿import json
+import json
 import os
-import time
-from collections import defaultdict
-from deep_translator import GoogleTranslator
-import requests
-from bs4 import BeautifulSoup
 import re
+import time
 from datetime import datetime, timedelta
 
-STATUS_TABLE_URL = 'https://twst.wikiru.jp/?%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB/%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7'
-CARD_INFO_PATTERN = re.compile(
-    r'レアリティ\s*(?P<rank>\S+)\s*衣装\s*(?P<costume>\S+)\s*タイプ\s*(?P<attr>\S+)'
-    r'\s*HP\s*初期\s*(?P<base_hp>\d+)\s*最大\s*(?P<hp>\d+)'
-    r'\s*ATK\s*初期\s*(?P<base_atk>\d+)\s*最大\s*(?P<atk>\d+)'
+from bs4 import BeautifulSoup
+import requests
+
+from scraper_common import (
+    STATUS_TABLE_URL,
+    build_card_record,
+    getDict,
+    get_implementation_dates,
+    make_type_dict,
+    outDict,
+    scrape_card,
 )
 
-def getDict(path):
-    dict = defaultdict(str)
-    with open(path, "r", encoding='UTF-8') as f:
-        # ファイルの各行に対して処理を行う
-        for line in f:
-            if len(line) <= 1:
-                continue
-            # 行末の改行コードを削除して分割
-            key, value = line.strip().split(":")
-            # 辞書型にキーと値を追加
-            dict[key] = value.strip()
-    return dict
-def outDict(path,dict):
-    with open(path, "w", encoding='UTF-8') as f:
-        for key, val in dict.items():
-            f.write(f"{key}:{val}\n")
 
-def normalize_card_text(text):
-    return text.replace(' ', '').replace('（', '(').replace('）', ')').replace('＆', '&')
+def get_chara_dict(rank, url, masters, implementation_dates=None, namedict=None, cosdict=None):
+    if namedict is None:
+        namedict = getDict('namedict.txt')
+    if cosdict is None:
+        cosdict = getDict('cosdict.txt')
 
-def is_limit_break_base(detail):
-    return 'まで' in detail or '無凸' in detail
+    scraped_card = scrape_card(rank, url, masters)
+    outdict = build_card_record(None, scraped_card, namedict, cosdict, implementation_dates)
+    outdict.pop('id', None)
 
-def find_card_tables(soup):
-    info_table = None
-    buddy_table = None
-    magic_tables = []
-
-    for table in soup.find_all("table", class_="style_table"):
-        first_row = table.find("tr")
-        if first_row is None:
-            continue
-
-        headers = [normalize_card_text(cell.get_text()) for cell in first_row.find_all(["th", "td"])]
-        table_text = normalize_card_text(table.get_text())
-
-        if info_table is None and 'レアリティ' in table_text and '衣装' in table_text and 'タイプ' in table_text and 'ATK' in table_text:
-            info_table = table
-        elif headers[:3] == ['属性', '名称', '効果']:
-            magic_tables.append(table)
-        elif headers and headers[0] == 'キャラ' and '名称' in headers and '効果' in headers:
-            buddy_table = table
-
-    return info_table, magic_tables, buddy_table
-
-def parse_card_info(table):
-    match = CARD_INFO_PATTERN.search(table.get_text())
-    if match is None:
-        raise ValueError('card info table format changed')
-    return match.groupdict()
-
-def parse_magic_text(table):
-    txt = table.get_text()
-    len_txt = len(txt)
-    str_index = txt.rfind('Lv10') + 4
-    end_index = len_txt - 1
-    if len_txt - str_index < 6:
-        end_index = str_index - 5
-        str_index = txt.rfind('Lv5') + 3
-    if len_txt - str_index < 10:
-        end_index = str_index - 4
-        str_index = txt.find('Lv1') + 3
-    return normalize_card_text(txt[str_index:end_index].strip())
-
-def load_local_masters():
-    name_type_master = defaultdict(str)
-    name_hp_master = defaultdict(str)
-    name_atk_master = defaultdict(str)
-    name_base_hp_master = defaultdict(str)
-    name_base_atk_master = defaultdict(str)
-
-    if not os.path.exists('chara.json'):
-        return [name_type_master, name_hp_master, name_atk_master, name_base_hp_master, name_base_atk_master]
-
-    with open('chara.json', 'r', encoding='utf-8') as f:
-        for item in json.load(f):
-            key = item.get('chara', '') + item.get('costume', '')
-            if not key:
-                continue
-            name_type_master[key] = item.get('growtype', '')
-            name_hp_master[key] = str(item.get('hp', ''))
-            name_atk_master[key] = str(item.get('atk', ''))
-            name_base_hp_master[key] = str(item.get('base_hp', ''))
-            name_base_atk_master[key] = str(item.get('base_atk', ''))
-
-    return [name_type_master, name_hp_master, name_atk_master, name_base_hp_master, name_base_atk_master]
-
-def infer_growtype(rank, attr, hp, atk):
-    if not os.path.exists('chara.json'):
-        return ''
-
-    try:
-        hp_value = int(hp)
-        atk_value = int(atk)
-    except (TypeError, ValueError):
-        return ''
-
-    with open('chara.json', 'r', encoding='utf-8') as f:
-        candidates = []
-        for item in json.load(f):
-            if item.get('rare') != rank or item.get('attr') != attr or not item.get('growtype'):
-                continue
-            try:
-                ref_hp = int(item.get('hp', ''))
-                ref_atk = int(item.get('atk', ''))
-            except (TypeError, ValueError):
-                continue
-            if ref_hp == hp_value and ref_atk == atk_value:
-                return item['growtype']
-            candidates.append((abs((ref_hp / ref_atk) - (hp_value / atk_value)), item['growtype']))
-
-    if not candidates:
-        return ''
-
-    candidates.sort(key=lambda item: item[0])
-    return candidates[0][1]
-
-def parse_buddy_entries(table):
-    entries = []
-    pending_entry = None
-
-    for tr in table.find_all("tr"):
-        cells = tr.find_all(["th", "td"])
-        if not cells:
-            continue
-
-        first_text = normalize_card_text(cells[0].get_text())
-        if first_text == 'キャラ':
-            continue
-
-        if cells[0].name == 'td':
-            char_name = first_text
-            if len(cells) >= 3 and cells[1].name == 'th':
-                detail = normalize_card_text(cells[1].get_text())
-                bonus = normalize_card_text(cells[2].get_text())
-                entry = {'char': char_name, 'base': '', 'totsu': ''}
-                if is_limit_break_base(detail):
-                    entry['base'] = bonus
-                else:
-                    entry['totsu'] = bonus
-                entries.append(entry)
-                pending_entry = entry if cells[0].has_attr('rowspan') else None
-            elif len(cells) >= 2:
-                bonus = normalize_card_text(cells[1].get_text())
-                entries.append({'char': char_name, 'base': bonus, 'totsu': bonus})
-                pending_entry = None
-        elif cells[0].name == 'th' and pending_entry is not None:
-            detail = first_text
-            bonus = normalize_card_text(cells[1].get_text()) if len(cells) >= 2 else ''
-            if is_limit_break_base(detail):
-                pending_entry['base'] = bonus
-            else:
-                pending_entry['totsu'] = bonus
-
-    for entry in entries:
-        if not entry['base']:
-            entry['base'] = entry['totsu']
-        if not entry['totsu']:
-            entry['totsu'] = entry['base']
-
-    return entries[:3]
-
-def build_buddy_fields(entries):
-    normalized_entries = list(entries)
-    while len(normalized_entries) < 3:
-        normalized_entries.append({'char': '', 'base': '', 'totsu': ''})
-
-    return {
-        'buddy1c': normalized_entries[0]['char'],
-        'buddy1s': normalized_entries[0]['base'],
-        'buddy1s_totsu': normalized_entries[0]['totsu'],
-        'buddy2c': normalized_entries[1]['char'],
-        'buddy2s': normalized_entries[1]['base'],
-        'buddy2s_totsu': normalized_entries[1]['totsu'],
-        'buddy3c': normalized_entries[2]['char'],
-        'buddy3s': normalized_entries[2]['base'],
-        'buddy3s_totsu': normalized_entries[2]['totsu'],
-    }
-
-def is_buddy_status(text):
-    if not text:
-        return False
-    status_tokens = ('UP', '無効', '回避', '回復', 'ダメージ', 'クリティカル', 'ATK', 'HP')
-    return any(token in text for token in status_tokens)
-
-def normalize_buddy_fields(fields):
-    for index in range(1, 4):
-        char_key = f'buddy{index}c'
-        status_key = f'buddy{index}s'
-        totsu_key = f'buddy{index}s_totsu'
-
-        char_value = fields.get(char_key, '')
-        status_value = fields.get(status_key, '')
-        totsu_value = fields.get(totsu_key, '')
-        char_candidates = [value for value in (char_value, status_value, totsu_value) if value and not is_buddy_status(value)]
-        status_candidates = [value for value in (status_value, totsu_value, char_value) if is_buddy_status(value)]
-
-        if not char_value or is_buddy_status(char_value):
-            fields[char_key] = char_candidates[0] if char_candidates else ''
-
-        if not is_buddy_status(status_value):
-            fields[status_key] = status_candidates[0] if status_candidates else ''
-
-        if not is_buddy_status(totsu_value):
-            replacement = next((value for value in status_candidates if value != fields[status_key]), '')
-            fields[totsu_key] = replacement if replacement else fields[status_key]
-        elif not totsu_value:
-            fields[totsu_key] = fields[status_key]
-
-    return fields
-
-
-def checkMagicPow(str):
-    pow = ''
-    if '2連撃' in str:
-        pow += '連撃'
-    elif '3連撃' in str:
-        pow += '3連撃'
-    else:
-        pow += '単発'
-    if '(強)' in str:
-        pow += '(強)'
-    else:
-        pow += '(弱)'
-    return pow
-
-
-def checkMagicAttr(string):
-    string = string[:8]
-    attribute = ''
-    if '火' in string:
-        attribute = '火'
-    elif '水' in string:
-        attribute = '水'
-    elif '木' in string:
-        attribute = '木'
-    elif '無' in string:
-        attribute = '無'
-
-    return attribute
-
-
-def checkMagicHeal(str):
-    heal = ''
-    if 'HP回復(極小)' in str:
-        heal = '回復(極小)'
-    if 'HP回復(小)' in str:
-        heal = '回復(小)'
-    if 'HP回復(中)' in str:
-        heal = '回復(中)'
-    if 'HP継続回復(小)' in str:
-        heal = '継続回復(小)'
-    if 'HP継続回復(中)' in str:
-        heal = '継続回復(中)'
-    if 'HP継続回復(小)' in str and 'HP回復(小)' in str:
-        heal = '回復&継続回復(小)'
-
-    return heal
-
-
-def checkMagicBuf(str):
-    buf = ''
-    if not ('自' in str or '味方' in str):
-        return buf
-    if 'ATKUP(極小)' in str:
-        buf = 'ATKUP(極小)'
-    if 'ATKUP(小)' in str:
-        buf = 'ATKUP(小)'
-    if 'ATKUP(中)' in str:
-        buf = 'ATKUP(中)'
-    if 'ATKUP(大)' in str:
-        buf = 'ATKUP(大)'
-    if 'ATKUP(極大)' in str:
-        buf = 'ATKUP(極大)'
-    if 'ダメージUP(極小)' in str and '被ダメージ' not in str:
-        buf = 'ダメUP(極小)'
-    if 'ダメージUP(小)' in str and '被ダメージ' not in str:
-        buf = 'ダメUP(小)'
-    if 'ダメージUP(中)' in str and '被ダメージ' not in str:
-        buf = 'ダメUP(中)'
-    if 'ダメージUP(中)' in str and '味方全体' in str: # フェロー用特別ロジック
-        buf = 'ダメUP(中)'
-    if 'ダメージUP(大)' in str and '被ダメージ' not in str:
-        buf = 'ダメUP(大)'
-    if 'ダメージUP(極大)' in str and '被ダメージ' not in str:
-        buf = 'ダメUP(極大)'
-    if '属性ダメージUP(極小)' in str:
-        buf = '属性ダメUP(極小)'
-    if '属性ダメージUP(小)' in str:
-        buf = '属性ダメUP(小)'
-    if '属性ダメージUP(中)' in str:
-        buf = '属性ダメUP(中)'
-    if '属性ダメージUP(大)' in str:
-        buf = '属性ダメUP(大)'
-    if '属性ダメージUP(極大)' in str:
-        buf = '属性ダメUP(極大)'
-    return buf
-
-
-def get_chara_dict(rank, url, masters, implementation_dates=None):
-    namedict = getDict('namedict.txt')
-    cosdict = getDict('cosdict.txt')
-    name_type_master = masters[0]
-    name_hp_master = masters[1]
-    name_atk_master = masters[2]
-    name_base_hp_master = masters[3]
-    name_base_atk_master = masters[4]
-    result = requests.get(url)
-    data_all = BeautifulSoup(result.text, 'html.parser')
-    # キャラ名
-    name = ""
-    for item in data_all.find_all("title"):
-        txt = item.getText()
-        str_index = txt.find('/') + 1
-        end_index = txt.rfind('【')
-        name = txt[str_index:end_index]
-
-    info_table, magic_tables, buddy_table = find_card_tables(data_all)
-    if info_table is None or len(magic_tables) < 2 or buddy_table is None:
-        raise ValueError('card page table format changed')
-
-    info = parse_card_info(info_table)
-    costume = info['costume']
-    attr = info['attr']
-    base_hp = info['base_hp']
-    base_atk = info['base_atk']
-    HP = info['hp']
-    ATK = info['atk']
-
-    magic1 = parse_magic_text(magic_tables[0])
-    magic2 = parse_magic_text(magic_tables[1])
-    magic3 = parse_magic_text(magic_tables[2]) if rank == 'SSR' and len(magic_tables) >= 3 else ''
-    buddy_fields = normalize_buddy_fields(build_buddy_fields(parse_buddy_entries(buddy_table)))
-    name = name.replace('【ツイステ】', '')
-    key = name + costume
-    growtype = name_type_master[key] if name_type_master[key] else infer_growtype(rank, attr, HP, ATK)
-
-    outdict = dict()
-    if name not in namedict.keys():
-        namedict[name] = GoogleTranslator(source='ja',target='en').translate(name).replace(' ','_').replace('\'','').replace('"','')
-    if costume not in cosdict.keys():
-        cosdict[costume] = GoogleTranslator(source='ja',target='en').translate(costume).replace(' ','_').replace('\'','').replace('"','')
-    outdict['name'] = namedict[name] + '_' + cosdict[costume]
-    outdict['chara'] = name
-    outdict['costume'] = costume
-    outdict['attr'] = attr
-    outdict['base_hp'] =  str(name_base_hp_master[key] if name_base_hp_master[key] else base_hp)
-    outdict['base_atk'] = str(name_base_atk_master[key] if name_base_atk_master[key] else base_atk)
-    outdict['hp'] = str(name_hp_master[key] if name_hp_master[key] else HP)
-    outdict['atk'] = str(name_atk_master[key] if name_atk_master[key] else ATK)
-    outdict['magic1pow'] = checkMagicPow(magic1)
-    outdict['magic1atr'] = checkMagicAttr(magic1)
-    outdict['magic1buf'] = checkMagicBuf(magic1)
-    outdict['magic1heal'] = checkMagicHeal(magic1)
-    outdict['magic2pow'] = checkMagicPow(magic2)
-    outdict['magic2atr'] = checkMagicAttr(magic2)
-    outdict['magic2buf'] = checkMagicBuf(magic2)
-    outdict['magic2heal'] = checkMagicHeal(magic2)
-    duo = ''
-    if '[DUO]' in magic2:
-        start = magic2.index('[DUO]') + 5
-        end = magic2.index('と一緒')
-        duo = magic2[start:end]
-    outdict['duo'] = duo
-    outdict['magic3pow'] = checkMagicPow(magic3)
-    outdict['magic3atr'] = checkMagicAttr(magic3)
-    outdict['magic3buf'] = checkMagicBuf(magic3)
-    outdict['magic3heal'] = checkMagicHeal(magic3)
-    outdict['buddy1c'] = buddy_fields['buddy1c']
-    outdict['buddy1s'] = buddy_fields['buddy1s']
-    outdict['buddy1s_totsu'] = buddy_fields['buddy1s_totsu']
-    outdict['buddy2c'] = buddy_fields['buddy2c']
-    outdict['buddy2s'] = buddy_fields['buddy2s']
-    outdict['buddy2s_totsu'] = buddy_fields['buddy2s_totsu']
-    outdict['buddy3c'] = buddy_fields['buddy3c']
-    outdict['buddy3s'] = buddy_fields['buddy3s']
-    outdict['buddy3s_totsu'] = buddy_fields['buddy3s_totsu']
-    etc = ''
-    magic1split = magic1.split('&')
-    for i in range(len(magic1split)):
-        if i > 0:
-            etc += magic1split[i]
-            etc += '(M1)'
-            etc += '<br>'
-    magic2split = magic2.split('&')
-    for i in range(len(magic2split)):
-        if i > 0:
-            if '[DUO]' not in magic2split[i]:
-                etc += magic2split[i]
-                etc += '(M2)'
-                etc += '<br>'
-    magic3split = magic3.split('&')
-    for i in range(len(magic3split)):
-        if i > 0:
-            etc += magic3split[i]
-            etc += '(M3)'
-            etc += '<br>'
-    etc = etc.replace(' ', '').replace('（', '(').replace('）', ')').replace('＆', '&')
-    splitted_etc = etc.split('<br>')
-    buff_count = 0
-    debuff_count = 0
-    for cur in splitted_etc:
-        if '被ダメージUP' in cur:
-            continue
-        if '被ダメージDOWN' in cur and ('味方' in cur or '自' in cur):
-            debuff_count+=1
-            continue
-
-        if 'ATKUP' in cur:
-            buff_count+=1
-        elif 'ダメージUP' in cur and ('味方' in cur or '自' in cur):
-            buff_count+=1
-        elif 'クリティカル' in cur and ('味方' in cur or '自' in cur):
-            buff_count+=1
-
-        if 'ATKDOWN' in cur and '相手' in cur:
-            debuff_count+=1
-        elif 'ダメージDOWN' in cur and '相手' in cur:
-            debuff_count+=1
-        if '暗闇' in cur and '相手' in cur:
-            debuff_count+=1
-        
-    outdict['etc'] = etc
-    outdict['rare'] = rank
-    outdict['growtype'] = growtype
-    outdict['wikiURL'] = url
-    outdict['buff_count'] = buff_count
-    outdict['debuff_count'] = debuff_count
-    
-    # 実装日をマッチング
-    impl_date = ''
-    if implementation_dates:
-        key = name + costume
-        impl_date = implementation_dates.get(key, '')
-    outdict['implementation_date'] = impl_date
-    
-    outDict('cosdict.txt',cosdict)
-    outDict('namedict.txt',namedict)
+    outDict('cosdict.txt', cosdict)
+    outDict('namedict.txt', namedict)
     return outdict
-    
-def make_type_dict(url):
-    masters = load_local_masters()
 
-    try:
-        response = requests.get(url)
-        html = response.text
-        soup = BeautifulSoup(html, 'html.parser')
-        table = soup.find('table', {'id': 'sortabletable1'})
-        if table is None:
-            return masters
-
-        rows = table.find_all('tr')
-        name_type_master, name_hp_master, name_atk_master, name_base_hp_master, name_base_atk_master = masters
-        for row in rows:
-            name = row.find('th')
-            cells = row.find_all('td')
-            if name is None:
-                continue
-
-            row_data = [name.text.strip()]
-            for cell in cells:
-                row_data.append(cell.text.strip())
-            if len(row_data) < 12:
-                continue
-
-            key = row_data[0] + row_data[1]
-            name_base_hp_master[key] = row_data[7]
-            name_base_atk_master[key] = row_data[8]
-            name_hp_master[key] = row_data[9]
-            name_atk_master[key] = row_data[10]
-            name_type_master[key] = row_data[11]
-    except Exception:
-        pass
-
-    return masters
-
-
-def get_implementation_dates():
-    """実装日情報を取得する関数"""
-    response = requests.get('https://twst.wikiru.jp/?SandBox/%E3%82%AB%E3%83%BC%E3%83%89%E5%AE%9F%E8%A3%85%E6%97%A5')
-    html = response.text
-    
-    soup = BeautifulSoup(html, 'html.parser')
-    
-    # 実装日データ辞書を初期化
-    implementation_dates = {}
-    
-    # テーブルを探して実装日情報を抽出
-    table = soup.find('table')
-    if table:
-        rows = table.find_all('tr')[1:]  # ヘッダー行をスキップ
-        
-        for row in rows:
-            cells = row.find_all(['td', 'th'])
-            if len(cells) >= 4:
-                character = cells[0].text.strip()
-                costume = cells[1].text.strip()
-                # costume内の半角括弧で囲まれた部分を除去
-                costume = re.sub(r'\([^)]*\)', '', costume).strip()
-                rarity = cells[2].text.strip()
-                impl_date = cells[3].text.strip()
-                
-                # キー生成（キャラクター名＋衣装名）
-                key = character + costume
-                implementation_dates[key] = impl_date
-    
-    return implementation_dates
 
 def get_history():
     response = requests.get('https://twst.wikiru.jp/?RecentChanges')
     html = response.text
 
-    # BeautifulSoupでHTMLを解析
     soup = BeautifulSoup(html, 'html.parser')
-
-    # 各<li>タグを取得
     items = soup.select('ul.list1.list-indent1 > li')
 
     results = []
     date_pattern = re.compile(r'\s*(\d{4}-\d{2}-\d{2}) \([月火水木金土日]\) (\d{2}:\d{2}:\d{2})')
-    # 各<li>からデータを抽出し、日付フォーマットが一致する場合のみ処理
     for item in items:
         text_content = item.text.strip()
-        match = date_pattern.search(text_content)  # search()に変更して柔軟にマッチ
+        match = date_pattern.search(text_content)
 
         if match:
-            # 日付と時間を抽出してdatetimeオブジェクトに変換
-            date_str = match.group(1)  # YYYY-MM-DD
-            time_str = match.group(2)  # HH:MM:SS
+            date_str = match.group(1)
+            time_str = match.group(2)
             date_time_obj = datetime.strptime(f"{date_str} {time_str}", "%Y-%m-%d %H:%M:%S")
-            
-            # 現在の日時から2日以内であればリストに追加
+
             if date_time_obj >= datetime.now() - timedelta(days=2):
-                link_text = item.find('a').text.strip()  # リンクテキスト部分
+                link_text = item.find('a').text.strip()
                 if link_text.startswith('R/'):
-                    results.append(['R', 'https://twst.wikiru.jp/?'+link_text])
+                    results.append(['R', 'https://twst.wikiru.jp/?' + link_text])
                 if link_text.startswith('SR/'):
-                    results.append(['SR', 'https://twst.wikiru.jp/?'+link_text])
+                    results.append(['SR', 'https://twst.wikiru.jp/?' + link_text])
                 if link_text.startswith('SSR/'):
-                    results.append(['SSR', 'https://twst.wikiru.jp/?'+link_text])
+                    results.append(['SSR', 'https://twst.wikiru.jp/?' + link_text])
     return results
 
 
 def update_or_add_entry(data, new_entry):
     max_id = -1
     existing_entry = None
-    
+
     for entry in data:
-        # 最大IDを算出（IDは文字列想定のためint変換）
         try:
             max_id = max(max_id, int(entry.get('id', -1)))
         except (ValueError, TypeError):
             pass
-        # 既存エントリの有無を name で判定
         if entry.get('name') == new_entry.get('name'):
             existing_entry = entry
 
     if existing_entry is not None:
-        # 既存のIDは保持したままフィールドを更新
         preserved_id = existing_entry.get('id')
         existing_entry.update(new_entry)
         if preserved_id is not None:
             existing_entry['id'] = preserved_id
         print(f"Updated entry with name '{new_entry['name']}'.")
     else:
-        # 新規追加時は連番IDを採番
         new_entry['id'] = str(max_id + 1)
         data.append(new_entry)
         print(f"Added new entry with id '{new_entry['id']}' and name '{new_entry['name']}'.")
     return data
+
 
 def sync_characters_info_from_namedict(info_path='characters_info.json', namedict_path='namedict.txt'):
     """
@@ -593,12 +94,11 @@ def sync_characters_info_from_namedict(info_path='characters_info.json', namedic
     追加時は dorm="スペシャル"、theme_1="", theme_2="" を設定。
     """
     try:
-        namedict = getDict(namedict_path)  # JA -> EN
+        namedict = getDict(namedict_path)
     except Exception as e:
         print(f"Failed to read {namedict_path}: {e}")
         return
 
-    # 既存の characters_info.json を読み込み（なければ空リスト）
     info = []
     if os.path.exists(info_path):
         try:
@@ -619,7 +119,6 @@ def sync_characters_info_from_namedict(info_path='characters_info.json', namedic
             continue
         if ja_name in existing_ja:
             continue
-        # en_name が空の場合でもとりあえず追加（必要なら後で手動補完）
         new_entry = {
             'name_ja': ja_name,
             'name_en': en_name,
@@ -640,25 +139,24 @@ def sync_characters_info_from_namedict(info_path='characters_info.json', namedic
     else:
         print("No missing characters to add to characters_info.json.")
 
+
 if __name__ == '__main__':
     histories = get_history()
     if len(histories) != 0:
         masters = make_type_dict(STATUS_TABLE_URL)
-        
-        # 実装日情報を取得
         implementation_dates = get_implementation_dates()
-        
-        # Load the existing data
-        with open("chara.json", 'r') as file:
+        namedict = getDict('namedict.txt')
+        cosdict = getDict('cosdict.txt')
+
+        with open("chara.json", 'r', encoding='utf-8') as file:
             data = json.load(file)
         for history in histories:
             rank, url = history[0], history[1]
-            chara_dict = get_chara_dict(rank, url, masters, implementation_dates)
+            chara_dict = get_chara_dict(rank, url, masters, implementation_dates, namedict, cosdict)
             time.sleep(1)
             data = update_or_add_entry(data, chara_dict)
-        
-        with open("chara.json", 'w') as file:
+
+        with open("chara.json", 'w', encoding='utf-8') as file:
             json.dump(data, file, ensure_ascii=False, indent=4)
 
-    # namedict.txt から characters_info.json に不足キャラクターを追加
     sync_characters_info_from_namedict()
