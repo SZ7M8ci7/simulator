@@ -8160,7 +8160,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/リドル【夜空のシフォン】"
     },
     {
-        "atk": "8509",
+        "atk": "7979",
         "attr": "アタック",
         "base_atk": "1536",
         "base_hp": "1962",
@@ -8180,7 +8180,7 @@
         "duo": "アズール",
         "etc": "ATKDOWN(中)(相手選択/1T)(M3)",
         "growtype": "ATK",
-        "hp": "8750",
+        "hp": "8250",
         "id": "204",
         "implementation_date": "2020/03/18",
         "magic1atr": "火",
