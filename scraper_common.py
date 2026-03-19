@@ -12,8 +12,8 @@ import requests
 STATUS_TABLE_URL = 'https://twst.wikiru.jp/?%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB/%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E4%B8%80%E8%A6%A7'
 CARD_INFO_PATTERN = re.compile(
     r'レアリティ\s*(?P<rank>\S+)\s*衣装\s*(?P<costume>\S+)\s*タイプ\s*(?P<attr>\S+)'
-    r'\s*HP\s*初期\s*(?P<base_hp>\d+)\s*最大\s*(?P<hp>\d+)'
-    r'\s*ATK\s*初期\s*(?P<base_atk>\d+)\s*最大\s*(?P<atk>\d+)'
+    r'\s*HP\s*初期\s*(?P<base_hp>\d+|[?？]+)\s*最大\s*(?P<hp>\d+)'
+    r'\s*ATK\s*初期\s*(?P<base_atk>\d+|[?？]+)\s*最大\s*(?P<atk>\d+)'
 )
 
 
@@ -69,7 +69,18 @@ def parse_card_info(table):
     match = CARD_INFO_PATTERN.search(table.get_text())
     if match is None:
         raise ValueError('card info table format changed')
-    return match.groupdict()
+    info = match.groupdict()
+    info['base_hp'] = fill_missing_base_status(info['base_hp'], info['hp'])
+    info['base_atk'] = fill_missing_base_status(info['base_atk'], info['atk'])
+    return info
+
+
+def fill_missing_base_status(base_value, max_value):
+    text = str(base_value).strip()
+    if text and all(char in '?？' for char in text):
+        if is_valid_status_value(max_value):
+            return str(int(str(max_value).strip()) // 5)
+    return text
 
 
 def is_valid_status_value(value):
