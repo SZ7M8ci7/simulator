@@ -80,7 +80,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/アズール【くつろぎマイルーム】"
     },
     {
-        "atk": "4390",
+        "atk": "4656",
         "attr": "ディフェンス",
         "base_atk": "1044",
         "base_hp": "3086",
@@ -100,7 +100,7 @@
         "duo": "イデア",
         "etc": "ATKDOWN(中)(相手選択/1T)(M1)<br>ダメージDOWN(中)(相手/3T)(M3)",
         "growtype": "",
-        "hp": "16031",
+        "hp": "17096",
         "id": "2",
         "implementation_date": "2025/04/08",
         "magic1atr": "無",
@@ -600,7 +600,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/イデア【なりきり花婿】"
     },
     {
-        "atk": "6840",
+        "atk": "7283",
         "attr": "アタック",
         "base_atk": "1406",
         "base_hp": "2258",
@@ -620,7 +620,7 @@
         "duo": "アズール",
         "etc": "凍結無効(味方選択/1T)(M1)<br>ATKUP(中)(自/1T)(M1)<br>呪い(大)(相手/2T)(M3)<br>ダメージUP(小)(自/1T)(M3)",
         "growtype": "ATK",
-        "hp": "10240",
+        "hp": "10883",
         "id": "15",
         "implementation_date": "2025/05/12",
         "magic1atr": "無",
@@ -1280,7 +1280,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/エペル【ユニオンバースデー】"
     },
     {
-        "atk": "4591",
+        "atk": "4870",
         "attr": "ディフェンス",
         "base_atk": "1092",
         "base_hp": "2945",
@@ -1300,7 +1300,7 @@
         "duo": "ルーク",
         "etc": "HP回復(小)(M1)<br>ATKDOWN(小)(相手/1T)(M1)<br>呪い無効(味方選択/1T)(M3)<br>ATKUP(小)(自/1T)(M3)",
         "growtype": "",
-        "hp": "15299",
+        "hp": "16315",
         "id": "32",
         "implementation_date": "2020/12/28",
         "magic1atr": "水",
