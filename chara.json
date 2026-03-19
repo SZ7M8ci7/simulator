@@ -3280,7 +3280,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/シルバー【おめかしバースデー】"
     },
     {
-        "atk": "6086",
+        "atk": "6475",
         "attr": "バランス",
         "base_atk": "1295",
         "base_hp": "2522",
@@ -3300,7 +3300,7 @@
         "duo": "エース",
         "etc": "HP継続回復(小)(自/3T)(M1)<br>ATKDOWN(小)(相手/1T)(M1)<br>ダメージUP(大)(自/1T)(M3)",
         "growtype": "",
-        "hp": "11853",
+        "hp": "12610",
         "id": "82",
         "implementation_date": "2025/05/14",
         "magic1atr": "木",
@@ -3440,7 +3440,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/シルバー【ブルームバースデー】"
     },
     {
-        "atk": "6368",
+        "atk": "6775",
         "attr": "バランス",
         "base_atk": "1355",
         "base_hp": "2408",
@@ -3460,7 +3460,7 @@
         "duo": "アズール",
         "etc": "ダメージUP(中)(味方選択/1T)(M3)",
         "growtype": "",
-        "hp": "11317",
+        "hp": "12040",
         "id": "86",
         "implementation_date": "2024/05/14",
         "magic1atr": "火",
@@ -3480,7 +3480,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/シルバー【プラチナジャケット】"
     },
     {
-        "atk": "6635",
+        "atk": "7065",
         "attr": "アタック",
         "base_atk": "1364",
         "base_hp": "2313",
@@ -3500,7 +3500,7 @@
         "duo": "ルーク",
         "etc": "水属性ダメージUP(大)(味方選択/1T)(M1)<br>凍結無効(味方選択/1T)(M3)<br>ATKUP(小)(自/1T)(M3)",
         "growtype": "ATK",
-        "hp": "10489",
+        "hp": "11148",
         "id": "87",
         "implementation_date": "2022/05/13",
         "magic1atr": "水",
@@ -5000,7 +5000,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/スカリー【ナイトメアースーツ】"
     },
     {
-        "atk": "6293",
+        "atk": "6695",
         "attr": "バランス",
         "base_atk": "1339",
         "base_hp": "2425",
@@ -5020,7 +5020,7 @@
         "duo": "ケイト",
         "etc": "ダメージDOWN(中)(相手/3T)(M1)<br>ATKUP(小)(自/1T)(M3)<br>ダメージDOWN(小)(相手/1T)(M3)",
         "growtype": "",
-        "hp": "11397",
+        "hp": "12125",
         "id": "125",
         "implementation_date": "2021/03/15",
         "magic1atr": "火",
