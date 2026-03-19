@@ -120,7 +120,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/アズール【クラブ・ウェア】"
     },
     {
-        "atk": "6567",
+        "atk": "6993",
         "attr": "アタック",
         "base_atk": "1350",
         "base_hp": "2348",
@@ -140,7 +140,7 @@
         "duo": "ルーク",
         "etc": "デバフ解除(味方選択)(M1)<br>ATKDOWN(小)(相手/1T)(M1)<br>ダメージUP(大)(自/1T)(M3)",
         "growtype": "ATK",
-        "hp": "10648",
+        "hp": "11317",
         "id": "3",
         "implementation_date": "2023/04/04",
         "magic1atr": "無",
@@ -3040,7 +3040,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/ケイト【トリックキングジャケット】"
     },
     {
-        "atk": "5038",
+        "atk": "5355",
         "attr": "ディフェンス",
         "base_atk": "1111",
         "base_hp": "2940",
@@ -3060,7 +3060,7 @@
         "duo": "フロイド",
         "etc": "被ダメージDOWN(大)(自/1T)(M1)<br>回避(中)(自/1T)(M3)",
         "growtype": "",
-        "hp": "14303",
+        "hp": "15229",
         "id": "76",
         "implementation_date": "2023/02/03",
         "magic1atr": "火",
@@ -3120,7 +3120,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/ケイト【プラチナジャケット】"
     },
     {
-        "atk": "5978",
+        "atk": "6360",
         "attr": "バランス",
         "base_atk": "1272",
         "base_hp": "2553",
@@ -3140,7 +3140,7 @@
         "duo": "ジャミル",
         "etc": "回避(小)(自/1T)(M1)<br>ダメージUP(小)(自/1T)(M1)<br>HP回復(小)(M3)<br>ダメージDOWN(小)(相手/1T)(M3)",
         "growtype": "",
-        "hp": "11999",
+        "hp": "12765",
         "id": "78",
         "implementation_date": "2022/02/03",
         "magic1atr": "木",
@@ -3160,7 +3160,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/ケイト【ユニオンバースデー】"
     },
     {
-        "atk": "5092",
+        "atk": "5412",
         "attr": "ディフェンス",
         "base_atk": "1123",
         "base_hp": "2929",
@@ -3180,7 +3180,7 @@
         "duo": "ヴィル",
         "etc": "水属性ダメージDOWN(中)(味方全体/3T)(M1)<br>呪い(大)(相手/2T)(M3)<br>ダメージUP(小)(自/1T)(M3)",
         "growtype": "",
-        "hp": "14249",
+        "hp": "15172",
         "id": "79",
         "implementation_date": "",
         "magic1atr": "木",
@@ -5920,7 +5920,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/トレイ【くつろぎマイルーム】"
     },
     {
-        "atk": "7932",
+        "atk": "8459",
         "attr": "アタック",
         "base_atk": "1527",
         "base_hp": "1974",
@@ -5940,7 +5940,7 @@
         "duo": "ジェイド",
         "etc": "ダメージUP(中)(味方選択/1T)(M3)",
         "growtype": "ATK",
-        "hp": "8300",
+        "hp": "8804",
         "id": "148",
         "implementation_date": "2022/09/22",
         "magic1atr": "火",
@@ -7200,7 +7200,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/マレウス【ユニオンバースデー】"
     },
     {
-        "atk": "5912",
+        "atk": "6290",
         "attr": "バランス",
         "base_atk": "1258",
         "base_hp": "2594",
@@ -7220,7 +7220,7 @@
         "duo": "ルーク",
         "etc": "火属性ダメージUP(中)(味方全体/2T)(M1)<br>ダメージDOWN(大)(相手/1T)(M3)",
         "growtype": "",
-        "hp": "12191",
+        "hp": "12970",
         "id": "180",
         "implementation_date": "2026/01/16",
         "magic1atr": "火",
@@ -8120,7 +8120,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/リドル【ユニオンバースデー】"
     },
     {
-        "atk": "7511",
+        "atk": "8010",
         "attr": "アタック",
         "base_atk": "1446",
         "base_hp": "2093",
@@ -8140,7 +8140,7 @@
         "duo": "デュース",
         "etc": "ATKUP(大)(自/1T)(M1)<br>呪い無効(味方選択/1T)(M3)<br>ATKUP(小)(自/1T)(M3)",
         "growtype": "ATK",
-        "hp": "8801",
+        "hp": "9334",
         "id": "203",
         "implementation_date": "2025/02/14",
         "magic1atr": "無",
