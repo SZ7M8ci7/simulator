@@ -40,7 +40,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/アズール【おめかしバースデー】"
     },
     {
-        "atk": "5809",
+        "atk": "6180",
         "attr": "バランス",
         "base_atk": "1236",
         "base_hp": "2637",
@@ -60,7 +60,7 @@
         "duo": "エペル",
         "etc": "ATKDOWN(中)(相手/1T)(M1)<br>ATKUP(小)(自/1T)(M1)<br>ダメージUP(中)(味方選択/1T)(M3)",
         "growtype": "",
-        "hp": "12393",
+        "hp": "13185",
         "id": "1",
         "implementation_date": "2025/02/21",
         "magic1atr": "火",
@@ -200,7 +200,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/アズール【ビーンズ・カモ】"
     },
     {
-        "atk": "6185",
+        "atk": "6580",
         "attr": "バランス",
         "base_atk": "1316",
         "base_hp": "2467",
@@ -220,7 +220,7 @@
         "duo": "ジャック",
         "etc": "ダメージDOWN(中)(相手選択/1T)(M1)<br>呪い(大)(相手/2T)(M3)<br>ダメージUP(小)(自/1T)(M3)",
         "growtype": "",
-        "hp": "11594",
+        "hp": "12335",
         "id": "5",
         "implementation_date": "2023/02/22",
         "magic1atr": "木",
@@ -320,7 +320,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/アズール【マスカレードドレス】"
     },
     {
-        "atk": "6776",
+        "atk": "7215",
         "attr": "アタック",
         "base_atk": "1393",
         "base_hp": "2266",
@@ -340,7 +340,7 @@
         "duo": "エース",
         "etc": "ダメージDOWN(中)(相手/3T)(M1)<br>ダメージUP(中)(自/3T)(M3)",
         "growtype": "ATK",
-        "hp": "10276",
+        "hp": "10922",
         "id": "8",
         "implementation_date": "2022/02/22",
         "magic1atr": "火",
@@ -360,7 +360,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/アズール【ユニオンバースデー】"
     },
     {
-        "atk": "5396",
+        "atk": "5735",
         "attr": "ディフェンス",
         "base_atk": "1190",
         "base_hp": "2769",
@@ -380,7 +380,7 @@
         "duo": "シルバー",
         "etc": "木属性ダメージDOWN(中)(相手全体/3T)(M1)<br>ATKDOWN(小)(相手/1T)(M3)<br>ダメージUP(小)(自/1T)(M3)",
         "growtype": "",
-        "hp": "13471",
+        "hp": "14343",
         "id": "9",
         "implementation_date": "",
         "magic1atr": "火",
@@ -400,7 +400,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/アズール【ラ・ボンボニエール】"
     },
     {
-        "atk": "6030",
+        "atk": "6415",
         "attr": "バランス",
         "base_atk": "1283",
         "base_hp": "2532",
@@ -420,7 +420,7 @@
         "duo": "リドル",
         "etc": "HP回復(小)(M1)<br>ATKUP(小)(自/1T)(M1)<br>呪い無効(味方選択/1T)(M3)<br>ATKUP(小)(自/1T)(M3)",
         "growtype": "",
-        "hp": "11900",
+        "hp": "12660",
         "id": "10",
         "implementation_date": "2020/04/14",
         "magic1atr": "水",
@@ -440,7 +440,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/アズール【寮服】"
     },
     {
-        "atk": "6171",
+        "atk": "6565",
         "attr": "バランス",
         "base_atk": "1313",
         "base_hp": "2679",
@@ -460,7 +460,7 @@
         "duo": "レオナ",
         "etc": "HP継続回復(中)(自/3T)(M1)<br>ATKDOWN(小)(相手/1T)(M1)<br>HP継続回復(小)(自/3T)(M3)",
         "growtype": "",
-        "hp": "12591",
+        "hp": "13395",
         "id": "11",
         "implementation_date": "2025/11/10",
         "magic1atr": "木",
@@ -760,7 +760,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/イデア【プラチナジャケット】"
     },
     {
-        "atk": "5555",
+        "atk": "5904",
         "attr": "ディフェンス",
         "base_atk": "1225",
         "base_hp": "2668",
@@ -780,7 +780,7 @@
         "duo": "エペル",
         "etc": "ATKDOWN(大)(相手/1T)(M1)<br>ATKUP(大)(自/1T)(M3)",
         "growtype": "",
-        "hp": "12979",
+        "hp": "13820",
         "id": "19",
         "implementation_date": "2022/10/24",
         "magic1atr": "水",
@@ -1000,7 +1000,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/イデア【新春の衣】"
     },
     {
-        "atk": "5926",
+        "atk": "6305",
         "attr": "バランス",
         "base_atk": "1261",
         "base_hp": "2575",
@@ -1020,7 +1020,7 @@
         "duo": "ヴィル",
         "etc": "木属性ダメージUP(大)(味方選択/1T)(M1)<br>暗闇無効(味方選択/1T)(M3)<br>ダメージDOWN(小)(相手/1T)(M3)",
         "growtype": "",
-        "hp": "12102",
+        "hp": "12875",
         "id": "25",
         "implementation_date": "2021/05/05",
         "magic1atr": "木",
@@ -1040,7 +1040,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/エペル【おめかしバースデー】"
     },
     {
-        "atk": "5893",
+        "atk": "6270",
         "attr": "バランス",
         "base_atk": "1254",
         "base_hp": "2601",
@@ -1060,7 +1060,7 @@
         "duo": "イデア",
         "etc": "ダメージUP(大)(自/1T)(M1)<br>ATKUP(小)(自/1T)(M3)<br>ダメージDOWN(小)(相手/1T)(M3)",
         "growtype": "",
-        "hp": "12224",
+        "hp": "13005",
         "id": "26",
         "implementation_date": "2025/05/05",
         "magic1atr": "無",
@@ -1080,7 +1080,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/エペル【くつろぎマイルーム】"
     },
     {
-        "atk": "7054",
+        "atk": "7511",
         "attr": "アタック",
         "base_atk": "1450",
         "base_hp": "2176",
@@ -1100,7 +1100,7 @@
         "duo": "イデア",
         "etc": "ATKUP(中)(自/3T)(M1)<br>ATKDOWN(中)(相手/3T)(M3)",
         "growtype": "ATK",
-        "hp": "9868",
+        "hp": "10488",
         "id": "27",
         "implementation_date": "2022/01/31",
         "magic1atr": "水",
@@ -1160,7 +1160,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/エペル【クラブ・ウェア】"
     },
     {
-        "atk": "5328",
+        "atk": "5663",
         "attr": "ディフェンス",
         "base_atk": "1175",
         "base_hp": "2788",
@@ -1180,7 +1180,7 @@
         "duo": "リリア",
         "etc": "ATKDOWN(大)(相手/1T)(M1)<br>ダメージUP(大)(自/1T)(M3)",
         "growtype": "",
-        "hp": "13563",
+        "hp": "14441",
         "id": "29",
         "implementation_date": "2023/05/05",
         "magic1atr": "火",
@@ -1200,7 +1200,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/エペル【ブルームバースデー】"
     },
     {
-        "atk": "4600",
+        "atk": "4879",
         "attr": "ディフェンス",
         "base_atk": "1094",
         "base_hp": "2958",
@@ -1220,7 +1220,7 @@
         "duo": "ケイト",
         "etc": "水属性ダメージDOWN(大)(相手選択/1T)(M1)<br>ATKUP(小)(自/1T)(M3)<br>ダメージDOWN(小)(相手/1T)(M3)",
         "growtype": "",
-        "hp": "15366",
+        "hp": "16387",
         "id": "30",
         "implementation_date": "2024/05/05",
         "magic1atr": "水",
@@ -1240,7 +1240,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/エペル【プラチナジャケット】"
     },
     {
-        "atk": "5401",
+        "atk": "5740",
         "attr": "ディフェンス",
         "base_atk": "1191",
         "base_hp": "2748",
@@ -1260,7 +1260,7 @@
         "duo": "フロイド",
         "etc": "ダメージDOWN(大)(相手/1T)(M1)<br>回避(中)(自/1T)(M3)",
         "growtype": "",
-        "hp": "13369",
+        "hp": "14234",
         "id": "31",
         "implementation_date": "2022/05/05",
         "magic1atr": "無",
@@ -8600,7 +8600,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/リリア【寮服】"
     },
     {
-        "atk": "6204",
+        "atk": "6600",
         "attr": "バランス",
         "base_atk": "1320",
         "base_hp": "2460",
@@ -8620,7 +8620,7 @@
         "duo": "ジェイド",
         "etc": "ダメージDOWN(大)(相手/1T)(M1)<br>ATKUP(小)(自/1T)(M3)<br>ダメージDOWN(小)(相手/1T)(M3)",
         "growtype": "",
-        "hp": "11562",
+        "hp": "12300",
         "id": "215",
         "implementation_date": "2020/12/01",
         "magic1atr": "無",
@@ -8640,7 +8640,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/ルーク【おめかしバースデー】"
     },
     {
-        "atk": "6246",
+        "atk": "6645",
         "attr": "バランス",
         "base_atk": "1329",
         "base_hp": "2458",
@@ -8660,7 +8660,7 @@
         "duo": "ケイト",
         "etc": "ダメージUP(大)(自/1T)(M1)<br>HP回復(小)(M3)<br>ダメージUP(小)(自/1T)(M3)",
         "growtype": "",
-        "hp": "11552",
+        "hp": "12290",
         "id": "216",
         "implementation_date": "2024/11/29",
         "magic1atr": "水",
