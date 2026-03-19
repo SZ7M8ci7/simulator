@@ -1,6 +1,6 @@
 [
     {
-        "atk": "5206",
+        "atk": "5533",
         "attr": "ディフェンス",
         "base_atk": "1148",
         "base_hp": "2852",
@@ -20,7 +20,7 @@
         "duo": "マレウス",
         "etc": "ダメージDOWN(大)(相手/1T)(M1)<br>ATKUP(大)(自/1T)(M3)",
         "growtype": "",
-        "hp": "13874",
+        "hp": "14773",
         "id": "0",
         "implementation_date": "2021/02/22",
         "magic1atr": "水",
