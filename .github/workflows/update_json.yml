@@ -5,9 +5,7 @@ name: update json
 
 on:
   schedule:
-    - cron: '0 7-18 * * *'
-    - cron: '0 0-6 * * *'
-    - cron: '0 19-23 * * *'
+    - cron: '0,15,30,45 * * * *'
 
   workflow_dispatch:
   

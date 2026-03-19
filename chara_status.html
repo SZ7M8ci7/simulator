@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>【ツイステ】カードステータス更新状況</title>
+<link rel="stylesheet" href="chara_status.css">
+</head>
+<body>
+<main class="page">
+    <section class="boards">
+        <section class="column">
+            <h1>未更新（15分間隔での最新反映）</h1>
+            <ul class="name-list" id="unchangedList"></ul>
+        </section>
+        <section class="column">
+            <h1>更新済み</h1>
+            <ul class="name-list" id="updatedList"></ul>
+        </section>
+    </section>
+    <p class="error-message" id="errorMessage" hidden>読み込みに失敗しました。</p>
+</main>
+
+<script src="chara_status.js"></script>
+</body>
+</html>
