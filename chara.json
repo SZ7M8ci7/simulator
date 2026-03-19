@@ -7840,7 +7840,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/リドル【おめかしバースデー】"
     },
     {
-        "atk": "5771",
+        "atk": "6140",
         "attr": "バランス",
         "base_atk": "1228",
         "base_hp": "2651",
@@ -7860,7 +7860,7 @@
         "duo": "ラギー",
         "etc": "ATKDOWN(小)(相手選択/2T)(M1)<br>ATKDOWN(小)(相手/1T)(M3)<br>ダメージUP(小)(自/1T)(M3)",
         "growtype": "",
-        "hp": "12459",
+        "hp": "13255",
         "id": "196",
         "implementation_date": "2025/08/22",
         "magic1atr": "火",
@@ -7880,7 +7880,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/リドル【くつろぎマイルーム】"
     },
     {
-        "atk": "4516",
+        "atk": "4790",
         "attr": "ディフェンス",
         "base_atk": "1074",
         "base_hp": "2998",
@@ -7900,7 +7900,7 @@
         "duo": "セベク",
         "etc": "ATKDOWN(中)(相手/1T)(M1)<br>ATKUP(小)(自/1T)(M1)<br>暗闇無効(味方選択/1T)(M3)<br>ダメージDOWN(小)(相手/1T)(M3)",
         "growtype": "",
-        "hp": "15574",
+        "hp": "16608",
         "id": "197",
         "implementation_date": "2025/11/07",
         "magic1atr": "木",
@@ -8040,7 +8040,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/リドル【ブルームバースデー】"
     },
     {
-        "atk": "6279",
+        "atk": "6680",
         "attr": "バランス",
         "base_atk": "1336",
         "base_hp": "2444",
@@ -8060,7 +8060,7 @@
         "duo": "ルーク",
         "etc": "水属性ダメージUP(大)(味方選択/1T)(M1)<br>HP継続回復(小)(自/3T)(M3)<br>ダメージUP(小)(自/1T)(M3)",
         "growtype": "",
-        "hp": "11486",
+        "hp": "12220",
         "id": "201",
         "implementation_date": "2024/08/23",
         "magic1atr": "水",
@@ -8080,7 +8080,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/リドル【プラチナジャケット】"
     },
     {
-        "atk": "6359",
+        "atk": "6765",
         "attr": "バランス",
         "base_atk": "1353",
         "base_hp": "2396",
@@ -8100,7 +8100,7 @@
         "duo": "アズール",
         "etc": "ダメージUP(中)(自/3T)(M1)<br>ATKDOWN(小)(相手/1T)(M3)<br>ダメージUP(小)(自/1T)(M3)",
         "growtype": "",
-        "hp": "11261",
+        "hp": "11980",
         "id": "202",
         "implementation_date": "2022/08/23",
         "magic1atr": "無",
@@ -8240,7 +8240,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/リリア【おめかしバースデー】"
     },
     {
-        "atk": "6382",
+        "atk": "6790",
         "attr": "バランス",
         "base_atk": "1358",
         "base_hp": "2401",
@@ -8260,7 +8260,7 @@
         "duo": "ジェイド",
         "etc": "ATKDOWN(中)(相手/3T)(M1)<br>ATKDOWN(小)(相手/1T)(M3)<br>ダメージUP(小)(自/1T)(M3)",
         "growtype": "",
-        "hp": "11284",
+        "hp": "12005",
         "id": "206",
         "implementation_date": "2024/12/31",
         "magic1atr": "水",
@@ -8480,7 +8480,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/リリア【ユニオンバースデー】"
     },
     {
-        "atk": "6420",
+        "atk": "6830",
         "attr": "バランス",
         "base_atk": "1366",
         "base_hp": "2387",
@@ -8500,7 +8500,7 @@
         "duo": "リドル",
         "etc": "木属性ダメージUP(中)(味方全体/2T)(M1)<br>ダメージUP(中)(味方選択/1T)(M3)",
         "growtype": "",
-        "hp": "11218",
+        "hp": "11935",
         "id": "212",
         "implementation_date": "2025/12/31",
         "magic1atr": "木",
@@ -9600,7 +9600,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/ヴィル【おめかしバースデー】"
     },
     {
-        "atk": "6260",
+        "atk": "6660",
         "attr": "バランス",
         "base_atk": "1332",
         "base_hp": "2451",
@@ -9620,7 +9620,7 @@
         "duo": "デュース",
         "etc": "HP継続回復(小)(自/3T)(M1)<br>ATKUP(小)(自/1T)(M1)<br>ATKUP(小)(自/1T)(M3)<br>ダメージDOWN(小)(相手/1T)(M3)",
         "growtype": "",
-        "hp": "11519",
+        "hp": "12255",
         "id": "240",
         "implementation_date": "2025/04/08",
         "magic1atr": "無",
@@ -9760,7 +9760,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/ヴィル【ブルームバースデー】"
     },
     {
-        "atk": "6138",
+        "atk": "6530",
         "attr": "バランス",
         "base_atk": "1306",
         "base_hp": "2501",
@@ -9780,7 +9780,7 @@
         "duo": "ジャック",
         "etc": "HP回復(小)(M1)<br>ダメージUP(小)(自/1T)(M1)<br>ATKDOWN(小)(相手/1T)(M3)<br>ダメージUP(小)(自/1T)(M3)",
         "growtype": "",
-        "hp": "11754",
+        "hp": "12505",
         "id": "244",
         "implementation_date": "2024/04/08",
         "magic1atr": "水",
