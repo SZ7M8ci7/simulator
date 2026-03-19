@@ -72,6 +72,28 @@ def parse_card_info(table):
     return match.groupdict()
 
 
+def is_valid_status_value(value):
+    if value is None:
+        return False
+
+    text = str(value).strip()
+    if text == '' or text.lower() in ('none', 'null'):
+        return False
+
+    if not text.isdigit():
+        return False
+
+    return int(text) > 0
+
+
+def choose_status_value(fetched_value, fallback_value):
+    if is_valid_status_value(fetched_value):
+        return str(fetched_value).strip()
+    if is_valid_status_value(fallback_value):
+        return str(fallback_value).strip()
+    return str(fetched_value).strip() if fetched_value is not None else ''
+
+
 def parse_magic_text(table):
     txt = table.get_text()
     len_txt = len(txt)
@@ -485,10 +507,10 @@ def scrape_card(rank, url, masters):
         'costume': costume,
         'rare': rank,
         'attr': attr,
-        'base_hp': str(name_base_hp_master[key] if name_base_hp_master[key] else base_hp),
-        'base_atk': str(name_base_atk_master[key] if name_base_atk_master[key] else base_atk),
-        'hp': str(name_hp_master[key] if name_hp_master[key] else HP),
-        'atk': str(name_atk_master[key] if name_atk_master[key] else ATK),
+        'base_hp': choose_status_value(base_hp, name_base_hp_master[key]),
+        'base_atk': choose_status_value(base_atk, name_base_atk_master[key]),
+        'hp': choose_status_value(HP, name_hp_master[key]),
+        'atk': choose_status_value(ATK, name_atk_master[key]),
         'magic1': magic1,
         'magic2': magic2,
         'magic3': magic3,
