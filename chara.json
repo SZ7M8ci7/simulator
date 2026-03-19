@@ -640,7 +640,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/イデア【クラブ・ウェア】"
     },
     {
-        "atk": "7709",
+        "atk": "8221",
         "attr": "アタック",
         "base_atk": "1484",
         "base_hp": "2042",
@@ -660,7 +660,7 @@
         "duo": "ラギー",
         "etc": "ATKUP(大)(自/1)(M1)<br>ダメージUP(中)(自/3T)(M3)",
         "growtype": "ATK",
-        "hp": "8586",
+        "hp": "9107",
         "id": "16",
         "implementation_date": "2024/05/20",
         "magic1atr": "木",
@@ -1320,7 +1320,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/エペル【寮服】"
     },
     {
-        "atk": "5070",
+        "atk": "5388",
         "attr": "ディフェンス",
         "base_atk": "1118",
         "base_hp": "2924",
@@ -1340,7 +1340,7 @@
         "duo": "オルト",
         "etc": "被ダメージDOWN(大)(自/1T)(M1)<br>ダメージDOWN(大)(相手/1T)(M3)",
         "growtype": "",
-        "hp": "14225",
+        "hp": "15146",
         "id": "33",
         "implementation_date": "2020/09/18",
         "magic1atr": "水",
@@ -1360,7 +1360,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/エース【おめかしバースデー】"
     },
     {
-        "atk": "6316",
+        "atk": "6720",
         "attr": "バランス",
         "base_atk": "1344",
         "base_hp": "2430",
@@ -1380,7 +1380,7 @@
         "duo": "カリム",
         "etc": "ATKDOWN(中)(相手/1T)(M1)<br>ATKUP(小)(自/1T)(M1)<br>ダメージUP(中)(味方選択/1T)(M3)",
         "growtype": "",
-        "hp": "11421",
+        "hp": "12150",
         "id": "34",
         "implementation_date": "2024/09/20",
         "magic1atr": "火",
@@ -1400,7 +1400,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/エース【くつろぎマイルーム】"
     },
     {
-        "atk": "7574",
+        "atk": "8077",
         "attr": "アタック",
         "base_atk": "1458",
         "base_hp": "2065",
@@ -1420,7 +1420,7 @@
         "duo": "リドル",
         "etc": "ATKDOWN(中)(相手/3T)(M3)",
         "growtype": "ATK",
-        "hp": "8683",
+        "hp": "9209",
         "id": "35",
         "implementation_date": "2020/07/07",
         "magic1atr": "火",
@@ -2000,7 +2000,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/オルト【フェアリー・ギア】"
     },
     {
-        "atk": "6528",
+        "atk": "6951",
         "attr": "アタック",
         "base_atk": "1342",
         "base_hp": "2361",
@@ -2020,7 +2020,7 @@
         "duo": "セベク",
         "etc": "被ダメージDOWN(中)(自/3T)(M1)<br>呪い(大)(相手/2T)(M3)<br>ダメージUP(小)(自/1T)(M3)",
         "growtype": "ATK",
-        "hp": "10707",
+        "hp": "11380",
         "id": "50",
         "implementation_date": "2023/08/10",
         "magic1atr": "水",
@@ -2120,7 +2120,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/オルト【プレイフル・ギア】"
     },
     {
-        "atk": "5219",
+        "atk": "5547",
         "attr": "ディフェンス",
         "base_atk": "1151",
         "base_hp": "2844",
@@ -2140,7 +2140,7 @@
         "duo": "ケイト",
         "etc": "水属性ダメージUP(大)(味方選択/1T)(M1)<br>ATKDOWN(中)(相手選択/1T)(M3)",
         "growtype": "",
-        "hp": "13836",
+        "hp": "14731",
         "id": "53",
         "implementation_date": "2022/08/12",
         "magic1atr": "水",
@@ -2200,7 +2200,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/カリム【おめかしバースデー】"
     },
     {
-        "atk": "6208",
+        "atk": "6605",
         "attr": "バランス",
         "base_atk": "1321",
         "base_hp": "2472",
@@ -2220,7 +2220,7 @@
         "duo": "セベク",
         "etc": "デバフ解除(味方選択)(M1)<br>ダメージDOWN(小)(相手/1T)(M1)<br>無属性ダメージUP(大)(味方選択/1T)(M3)",
         "growtype": "",
-        "hp": "11618",
+        "hp": "12360",
         "id": "55",
         "implementation_date": "2025/06/24",
         "magic1atr": "火",
@@ -2240,7 +2240,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/カリム【くつろぎマイルーム】"
     },
     {
-        "atk": "7000",
+        "atk": "7454",
         "attr": "アタック",
         "base_atk": "1439",
         "base_hp": "2206",
@@ -2260,7 +2260,7 @@
         "duo": "ルーク",
         "etc": "凍結無効(味方選択/3T)(M1)<br>ダメージUP(大)(自/1T)(M3)",
         "growtype": "ATK",
-        "hp": "10004",
+        "hp": "10632",
         "id": "56",
         "implementation_date": "2024/07/12",
         "magic1atr": "無",
@@ -5120,7 +5120,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/セベク【クラブ・ウェア】"
     },
     {
-        "atk": "5879",
+        "atk": "6255",
         "attr": "バランス",
         "base_atk": "1251",
         "base_hp": "2608",
@@ -5140,7 +5140,7 @@
         "duo": "ジェイド",
         "etc": "HP回復(中)(M1)<br>ダメージUP(中)(味方選択/1T)(M3)",
         "growtype": "",
-        "hp": "12257",
+        "hp": "13040",
         "id": "128",
         "implementation_date": "2024/10/01",
         "magic1atr": "火",
@@ -5160,7 +5160,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/セベク【ナイトメアースーツ】"
     },
     {
-        "atk": "5478",
+        "atk": "5822",
         "attr": "ディフェンス",
         "base_atk": "1208",
         "base_hp": "2708",
@@ -5180,7 +5180,7 @@
         "duo": "トレイ",
         "etc": "回避(小)(自/1T)(M1)<br>ATKDOWN(小)(相手/1T)(M1)<br>回避(中)(自/1T)(M3)",
         "growtype": "",
-        "hp": "13174",
+        "hp": "14027",
         "id": "129",
         "implementation_date": "2023/03/16",
         "magic1atr": "木",
@@ -5200,7 +5200,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/セベク【ブルームバースデー】"
     },
     {
-        "atk": "7112",
+        "atk": "7573",
         "attr": "アタック",
         "base_atk": "1462",
         "base_hp": "2156",
@@ -5220,7 +5220,7 @@
         "duo": "エース",
         "etc": "ATKUP(中)(自/1T)(M1)<br>ATKDOWN(小)(相手/1T)(M1)<br>呪い(大)(相手/2T)(M3)<br>ダメージUP(小)(自/1T)(M3)",
         "growtype": "ATK",
-        "hp": "9777",
+        "hp": "10391",
         "id": "130",
         "implementation_date": "2024/03/15",
         "magic1atr": "火",
@@ -5280,7 +5280,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/セベク【ユニオンバースデー】"
     },
     {
-        "atk": "6937",
+        "atk": "7386",
         "attr": "アタック",
         "base_atk": "1426",
         "base_hp": "2214",
@@ -5300,7 +5300,7 @@
         "duo": "シルバー",
         "etc": "ダメージUP(中)(自/3T)(M1)<br>暗闇無効(自/1T)(M3)<br>HP継続回復(小)(自/3T)(M3)",
         "growtype": "ATK",
-        "hp": "10040",
+        "hp": "10671",
         "id": "132",
         "implementation_date": "2022/12/19",
         "magic1atr": "水",
@@ -5320,7 +5320,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/セベク【寮服】"
     },
     {
-        "atk": "7093",
+        "atk": "7552",
         "attr": "アタック",
         "base_atk": "1458",
         "base_hp": "2163",
@@ -5340,7 +5340,7 @@
         "duo": "オルト",
         "etc": "被ダメージUP(大)(相手/1T)(M1)<br>暗闇無効(味方選択/1T)(M3)<br>ダメージDOWN(小)(相手/1T)(M3)",
         "growtype": "ATK",
-        "hp": "9809",
+        "hp": "10425",
         "id": "133",
         "implementation_date": "2023/12/11",
         "magic1atr": "水",
@@ -5360,7 +5360,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/セベク【常夜の甲冑】"
     },
     {
-        "atk": "5129",
+        "atk": "5451",
         "attr": "ディフェンス",
         "base_atk": "1131",
         "base_hp": "2892",
@@ -5380,7 +5380,7 @@
         "duo": "ヴィル",
         "etc": "ダメージDOWN(中)(相手選択/1T)(M1)<br>ATKDOWN(中)(相手選択/1T)(M3)",
         "growtype": "",
-        "hp": "14069",
+        "hp": "14980",
         "id": "134",
         "implementation_date": "2022/12/31",
         "magic1atr": "無",
@@ -5400,7 +5400,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/セベク【新春の衣】"
     },
     {
-        "atk": "6718",
+        "atk": "7153",
         "attr": "アタック",
         "base_atk": "1381",
         "base_hp": "2285",
@@ -5420,7 +5420,7 @@
         "duo": "エペル",
         "etc": "ダメージDOWN(中)(相手/3T)(M1)<br>ダメージUP(中)(自/3T)(M3)",
         "growtype": "ATK",
-        "hp": "10362",
+        "hp": "11013",
         "id": "135",
         "implementation_date": "2021/06/02",
         "magic1atr": "無",
@@ -5840,7 +5840,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/デュース【百獣の装束】"
     },
     {
-        "atk": "6523",
+        "atk": "6946",
         "attr": "アタック",
         "base_atk": "1341",
         "base_hp": "2349",
@@ -5860,7 +5860,7 @@
         "duo": "エース",
         "etc": "ダメージUP(中)(自/3T)(M1)<br>ATKDOWN(中)(相手/3T)(M3)",
         "growtype": "ATK",
-        "hp": "10652",
+        "hp": "11322",
         "id": "146",
         "implementation_date": "2020/10/23",
         "magic1atr": "木",
