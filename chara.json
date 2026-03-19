@@ -800,7 +800,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/イデア【マスカレードドレス】"
     },
     {
-        "atk": "6326",
+        "atk": "6730",
         "attr": "バランス",
         "base_atk": "1346",
         "base_hp": "2410",
@@ -820,7 +820,7 @@
         "duo": "レオナ",
         "etc": "ダメージDOWN(大)(相手/1T)(M1)<br>ATKDOWN(小)(相手/1T)(M3)<br>ダメージUP(小)(自/1T)(M3)",
         "growtype": "",
-        "hp": "11327",
+        "hp": "12050",
         "id": "20",
         "implementation_date": "2021/12/17",
         "magic1atr": "木",
@@ -1840,7 +1840,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/オルト【くつろぎ・ギア】"
     },
     {
-        "atk": "4284",
+        "atk": "4544",
         "attr": "ディフェンス",
         "base_atk": "1019",
         "base_hp": "3180",
@@ -1860,7 +1860,7 @@
         "duo": "アズール",
         "etc": "HP継続回復(小)(自/3T)(M1)<br>ダメージDOWN(小)(相手/1T)(M1)<br>ATKUP(大)(自/1T)(M3)",
         "growtype": "",
-        "hp": "16520",
+        "hp": "17617",
         "id": "46",
         "implementation_date": "2025/09/08",
         "magic1atr": "木",
@@ -4040,7 +4040,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/ジェイド【渚のセレブレイト】"
     },
     {
-        "atk": "5959",
+        "atk": "6340",
         "attr": "バランス",
         "base_atk": "1268",
         "base_hp": "2560",
@@ -4060,7 +4060,7 @@
         "duo": "ジャミル",
         "etc": "ダメージUP(大)(自/1T)(M1)<br>ATKUP(小)(自/1T)(M3)<br>ダメージDOWN(小)(相手/1T)(M3)",
         "growtype": "",
-        "hp": "12032",
+        "hp": "12800",
         "id": "101",
         "implementation_date": "2020/10/09",
         "magic1atr": "無",
@@ -4080,7 +4080,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/ジャック【おめかしバースデー】"
     },
     {
-        "atk": "5828",
+        "atk": "6200",
         "attr": "バランス",
         "base_atk": "1240",
         "base_hp": "2630",
@@ -4100,7 +4100,7 @@
         "duo": "リドル",
         "etc": "被ダメージUP(大)(相手/1T)(M1)<br>ATKDOWN(小)(相手/1T)(M3)<br>ダメージUP(小)(自/1T)(M3)",
         "growtype": "",
-        "hp": "12361",
+        "hp": "13150",
         "id": "102",
         "implementation_date": "2024/10/10",
         "magic1atr": "火",
@@ -4160,7 +4160,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/ジャック【クラブ・ウェア】"
     },
     {
-        "atk": "6128",
+        "atk": "6520",
         "attr": "バランス",
         "base_atk": "1304",
         "base_hp": "2506",
@@ -4180,7 +4180,7 @@
         "duo": "リリア",
         "etc": "ATKUP(中)(自/3T)(M1)<br>火属性ダメージUP(大)(味方選択/1T)(M3)",
         "growtype": "",
-        "hp": "11778",
+        "hp": "12530",
         "id": "104",
         "implementation_date": "2025/11/21",
         "magic1atr": "無",
@@ -4200,7 +4200,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/ジャック【ナイトメアークーリエ】"
     },
     {
-        "atk": "4503",
+        "atk": "4776",
         "attr": "ディフェンス",
         "base_atk": "1071",
         "base_hp": "3007",
@@ -4220,7 +4220,7 @@
         "duo": "デュース",
         "etc": "木属性ダメージUP(大)(味方選択/1T)(M1)<br>ダメージDOWN(大)(相手/1T)(M3)",
         "growtype": "",
-        "hp": "15621",
+        "hp": "16658",
         "id": "105",
         "implementation_date": "2022/10/07",
         "magic1atr": "木",
@@ -4240,7 +4240,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/ジャック【ブルームバースデー】"
     },
     {
-        "atk": "5582",
+        "atk": "5933",
         "attr": "ディフェンス",
         "base_atk": "1231",
         "base_hp": "2652",
@@ -4260,7 +4260,7 @@
         "duo": "マレウス",
         "etc": "ATKDOWN(大)(相手/1T)(M1)<br>ATKUP(小)(自/1T)(M3)<br>ダメージDOWN(小)(相手/1T)(M3)",
         "growtype": "",
-        "hp": "12901",
+        "hp": "13737",
         "id": "106",
         "implementation_date": "2023/10/10",
         "magic1atr": "木",
@@ -4280,7 +4280,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/ジャック【プラチナジャケット】"
     },
     {
-        "atk": "5818",
+        "atk": "6190",
         "attr": "バランス",
         "base_atk": "1238",
         "base_hp": "2617",
@@ -4300,7 +4300,7 @@
         "duo": "ルーク",
         "etc": "ATKUP(中)(自/3T)(M1)<br>HP継続回復(小)(自/3T)(M3)<br>ダメージDOWN(小)(相手/1T)(M3)",
         "growtype": "",
-        "hp": "12299",
+        "hp": "13085",
         "id": "107",
         "implementation_date": "2022/08/26",
         "magic1atr": "火",
