@@ -1760,7 +1760,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/エース【新春の衣】"
     },
     {
-        "atk": "5097",
+        "atk": "5417",
         "attr": "ディフェンス",
         "base_atk": "1124",
         "base_hp": "2908",
@@ -1780,7 +1780,7 @@
         "duo": "カリム",
         "etc": "HP回復(小)(M1)<br>ダメージUP(小)(自/1T)(M1)<br>ダメージDOWN(中)(相手/3T)(M3)",
         "growtype": "",
-        "hp": "14147",
+        "hp": "15063",
         "id": "44",
         "implementation_date": "2021/08/13",
         "magic1atr": "無",
@@ -1800,7 +1800,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/オルト【おめかし・ギア】"
     },
     {
-        "atk": "6175",
+        "atk": "6570",
         "attr": "バランス",
         "base_atk": "1314",
         "base_hp": "2487",
@@ -1820,7 +1820,7 @@
         "duo": "トレイ",
         "etc": "凍結無効(味方選択/1T)(M1)<br>ATKUP(小)(味方選択/1T)(M1)<br>ダメージDOWN(大)(相手/1T)(M3)",
         "growtype": "",
-        "hp": "11688",
+        "hp": "12435",
         "id": "45",
         "implementation_date": "2025/08/13",
         "magic1atr": "無",
@@ -1880,7 +1880,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/オルト【アウトドア・ギア】"
     },
     {
-        "atk": "6815",
+        "atk": "7257",
         "attr": "アタック",
         "base_atk": "1401",
         "base_hp": "2253",
@@ -1900,7 +1900,7 @@
         "duo": "イデア",
         "etc": "ダメージUP(中)(自/3T)(M1)<br>凍結無効(味方選択/1T)(M3)<br>ATKUP(小)(自/1T)(M3)",
         "growtype": "ATK",
-        "hp": "10217",
+        "hp": "10859",
         "id": "47",
         "implementation_date": "2021/08/31",
         "magic1atr": "火",
@@ -1920,7 +1920,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/オルト【イグニハイド・ギア】"
     },
     {
-        "atk": "5591",
+        "atk": "5943",
         "attr": "ディフェンス",
         "base_atk": "1233",
         "base_hp": "2665",
@@ -1940,7 +1940,7 @@
         "duo": "イデア",
         "etc": "HP回復(小)(M1)<br>HP継続回復(小)(自/3T)(M1)<br>ATKUP(小)(自/1T)(M3)<br>ダメージDOWN(小)(相手/1T)(M3)",
         "growtype": "",
-        "hp": "12965",
+        "hp": "13804",
         "id": "48",
         "implementation_date": "2023/05/12",
         "magic1atr": "無",
@@ -2080,7 +2080,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/オルト【プラチナ・ギア】"
     },
     {
-        "atk": "5120",
+        "atk": "5441",
         "attr": "ディフェンス",
         "base_atk": "1129",
         "base_hp": "2913",
@@ -2100,7 +2100,7 @@
         "duo": "レオナ",
         "etc": "ATKDOWN(小)(相手選択/2T)(M1)<br>ATKDOWN(小)(相手/1T)(M3)<br>ダメージUP(小)(自/1T)(M3)",
         "growtype": "",
-        "hp": "14171",
+        "hp": "15089",
         "id": "52",
         "implementation_date": "2023/10/20",
         "magic1atr": "水",
@@ -2160,7 +2160,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/オルト【ユニオン・ギア】"
     },
     {
-        "atk": "5523",
+        "atk": "5870",
         "attr": "ディフェンス",
         "base_atk": "1218",
         "base_hp": "2684",
@@ -2180,7 +2180,7 @@
         "duo": "シルバー",
         "etc": "ダメージDOWN(大)(相手/1T)(M3)",
         "growtype": "",
-        "hp": "13057",
+        "hp": "13903",
         "id": "54",
         "implementation_date": "2021/06/24",
         "magic1atr": "火",
@@ -3640,7 +3640,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/ジェイド【おめかしバースデー】"
     },
     {
-        "atk": "5860",
+        "atk": "6235",
         "attr": "バランス",
         "base_atk": "1247",
         "base_hp": "2615",
@@ -3660,7 +3660,7 @@
         "duo": "ジャミル",
         "etc": "ATKUP(大)(自/1T)(M1)<br>ATKDOWN(大)(相手/1T)(M3)",
         "growtype": "",
-        "hp": "12290",
+        "hp": "13075",
         "id": "91",
         "implementation_date": "2024/11/01",
         "magic1atr": "無",
@@ -4320,7 +4320,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/ジャック【ポート・ウェア】"
     },
     {
-        "atk": "5355",
+        "atk": "5692",
         "attr": "ディフェンス",
         "base_atk": "1181",
         "base_hp": "2772",
@@ -4340,7 +4340,7 @@
         "duo": "ラギー",
         "etc": "ダメージDOWN(中)(相手/3T)(M1)<br>回避(中)(自/1T)(M3)",
         "growtype": "",
-        "hp": "13485",
+        "hp": "14358",
         "id": "108",
         "implementation_date": "2021/10/08",
         "magic1atr": "水",
@@ -4360,7 +4360,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/ジャック【ユニオンバースデー】"
     },
     {
-        "atk": "5342",
+        "atk": "5677",
         "attr": "ディフェンス",
         "base_atk": "1178",
         "base_hp": "2780",
@@ -4380,7 +4380,7 @@
         "duo": "イデア",
         "etc": "火属性ダメージDOWN(中)(相手全体/3T)(M1)<br>ダメージDOWN(中)(相手/3T)(M3)",
         "growtype": "",
-        "hp": "13524",
+        "hp": "14400",
         "id": "109",
         "implementation_date": "2025/10/10",
         "magic1atr": "水",
@@ -4400,7 +4400,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/ジャック【ラ・ボンボニエール】"
     },
     {
-        "atk": "6995",
+        "atk": "7448",
         "attr": "アタック",
         "base_atk": "1438",
         "base_hp": "2195",
@@ -4420,7 +4420,7 @@
         "duo": "ラギー",
         "etc": "ATKUP(大)(自/1T)(M1)<br>ATKDOWN(大)(相手/1T)(M3)",
         "growtype": "ATK",
-        "hp": "9954",
+        "hp": "10579",
         "id": "110",
         "implementation_date": "2020/03/18",
         "magic1atr": "火",
@@ -4440,7 +4440,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/ジャック【寮服】"
     },
     {
-        "atk": "7098",
+        "atk": "7557",
         "attr": "アタック",
         "base_atk": "1459",
         "base_hp": "2174",
@@ -4460,7 +4460,7 @@
         "duo": "フロイド",
         "etc": "ATKUP(大)(自/1T)(M3)",
         "growtype": "ATK",
-        "hp": "9859",
+        "hp": "10478",
         "id": "111",
         "implementation_date": "2024/12/31",
         "magic1atr": "火",
