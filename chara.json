@@ -3080,7 +3080,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/ケイト【ブルームバースデー】"
     },
     {
-        "atk": "6903",
+        "atk": "7350",
         "attr": "アタック",
         "base_atk": "1419",
         "base_hp": "2238",
@@ -3100,7 +3100,7 @@
         "duo": "ラギー",
         "etc": "ダメージUP(大)(自/1T)(M1)<br>ダメージDOWN(大)(相手/1T)(M3)",
         "growtype": "ATK",
-        "hp": "10149",
+        "hp": "10787",
         "id": "77",
         "implementation_date": "2024/02/02",
         "magic1atr": "火",
@@ -5040,7 +5040,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/セベク【おめかしバースデー】"
     },
     {
-        "atk": "6349",
+        "atk": "6755",
         "attr": "バランス",
         "base_atk": "1351",
         "base_hp": "2415",
@@ -5060,7 +5060,7 @@
         "duo": "アズール",
         "etc": "ATKDOWN(中)(相手選択/1T)(M1)<br>ダメージUP(中)(自/3T)(M3)",
         "growtype": "",
-        "hp": "11350",
+        "hp": "12075",
         "id": "126",
         "implementation_date": "2025/03/14",
         "magic1atr": "木",
@@ -5240,7 +5240,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/セベク【プラチナジャケット】"
     },
     {
-        "atk": "6699",
+        "atk": "7132",
         "attr": "アタック",
         "base_atk": "1377",
         "base_hp": "2291",
@@ -5260,7 +5260,7 @@
         "duo": "ジャック",
         "etc": "木属性ダメージUP(大)(味方選択/1T)(M1)<br>ダメージUP(中)(味方選択/1T)(M3)",
         "growtype": "ATK",
-        "hp": "10389",
+        "hp": "11042",
         "id": "131",
         "implementation_date": "2022/03/16",
         "magic1atr": "木",
@@ -6920,7 +6920,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/マレウス【おめかしバースデー】"
     },
     {
-        "atk": "6124",
+        "atk": "6515",
         "attr": "バランス",
         "base_atk": "1303",
         "base_hp": "2508",
@@ -6940,7 +6940,7 @@
         "duo": "ヴィル",
         "etc": "凍結無効(味方選択/3T)(M1)<br>呪い(大)(相手/2T)(M3)<br>ダメージUP(小)(自/1T)(M3)",
         "growtype": "",
-        "hp": "11787",
+        "hp": "12540",
         "id": "173",
         "implementation_date": "2025/01/17",
         "magic1atr": "火",
@@ -7080,7 +7080,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/マレウス【ブルームバースデー】"
     },
     {
-        "atk": "5455",
+        "atk": "5798",
         "attr": "ディフェンス",
         "base_atk": "1203",
         "base_hp": "2737",
@@ -7100,7 +7100,7 @@
         "duo": "デュース",
         "etc": "ダメージDOWN(大)(相手/1T)(M1)<br>HP回復(小)(M3)<br>ダメージDOWN(小)(相手/1T)(M3)",
         "growtype": "",
-        "hp": "13315",
+        "hp": "14177",
         "id": "177",
         "implementation_date": "2024/01/17",
         "magic1atr": "木",
@@ -7160,7 +7160,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/マレウス【マスカレードドレス】"
     },
     {
-        "atk": "6274",
+        "atk": "6675",
         "attr": "バランス",
         "base_atk": "1335",
         "base_hp": "2432",
@@ -7180,7 +7180,7 @@
         "duo": "リドル",
         "etc": "ATKUP(大)(自/1T)(M1)<br>呪い(中)(相手選択/2T)(M3)<br>ダメージDOWN(小)(相手/1T)(M3)",
         "growtype": "",
-        "hp": "11430",
+        "hp": "12160",
         "id": "179",
         "implementation_date": "2022/01/17",
         "magic1atr": "火",
@@ -7800,7 +7800,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/ラギー【新春の衣】"
     },
     {
-        "atk": "6048",
+        "atk": "6435",
         "attr": "バランス",
         "base_atk": "1287",
         "base_hp": "2525",
@@ -7820,7 +7820,7 @@
         "duo": "レオナ",
         "etc": "ダメージDOWN(大)(相手/1T)(M1)<br>ATKUP(小)(自/1T)(M3)<br>ダメージDOWN(小)(相手/1T)(M3)",
         "growtype": "",
-        "hp": "11867",
+        "hp": "12625",
         "id": "195",
         "implementation_date": "2021/08/23",
         "magic1atr": "水",
