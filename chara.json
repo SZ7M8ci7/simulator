@@ -480,7 +480,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/アズール【深海の商人】"
     },
     {
-        "atk": "6640",
+        "atk": "7070",
         "attr": "アタック",
         "base_atk": "1365",
         "base_hp": "2311",
@@ -500,7 +500,7 @@
         "duo": "フロイド",
         "etc": "ダメージUP(大)(自/1T)(M1)<br>ATKDOWN(大)(相手/1T)(M3)",
         "growtype": "ATK",
-        "hp": "10480",
+        "hp": "11139",
         "id": "12",
         "implementation_date": "2020/12/17",
         "magic1atr": "火",
@@ -520,7 +520,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/イデア【おめかしバースデー】"
     },
     {
-        "atk": "5569",
+        "atk": "5925",
         "attr": "バランス",
         "base_atk": "1185",
         "base_hp": "2764",
@@ -540,7 +540,7 @@
         "duo": "ジャック",
         "etc": "HP回復(小)(M1)<br>ATKDOWN(小)(相手/1T)(M1)<br>ダメージUP(大)(自/1T)(M3)",
         "growtype": "",
-        "hp": "12990",
+        "hp": "13820",
         "id": "13",
         "implementation_date": "2024/12/17",
         "magic1atr": "火",
@@ -560,7 +560,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/イデア【くつろぎマイルーム】"
     },
     {
-        "atk": "5432",
+        "atk": "5774",
         "attr": "ディフェンス",
         "base_atk": "1198",
         "base_hp": "2732",
@@ -580,7 +580,7 @@
         "duo": "リリア",
         "etc": "ATKUP(中)(自/3T)(M1)<br>呪い(大)(相手/2T)(M3)<br>ダメージUP(小)(自/1T)(M3)",
         "growtype": "",
-        "hp": "13291",
+        "hp": "14151",
         "id": "14",
         "implementation_date": "2021/06/24",
         "magic1atr": "水",
@@ -680,7 +680,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/イデア【ツムステ】"
     },
     {
-        "atk": "6665",
+        "atk": "7096",
         "attr": "アタック",
         "base_atk": "1370",
         "base_hp": "2316",
@@ -700,7 +700,7 @@
         "duo": "リドル",
         "etc": "水属性ダメージUP(大)(味方選択/1T)(M1)<br>HP回復(小)(M3)<br>ダメージDOWN(小)(相手/1T)(M3)",
         "growtype": "ATK",
-        "hp": "10503",
+        "hp": "11163",
         "id": "17",
         "implementation_date": "2022/12/16",
         "magic1atr": "水",
@@ -720,7 +720,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/イデア【ブルームバースデー】"
     },
     {
-        "atk": "6063",
+        "atk": "6450",
         "attr": "バランス",
         "base_atk": "1290",
         "base_hp": "2517",
@@ -740,7 +740,7 @@
         "duo": "シルバー",
         "etc": "ダメージUP(中)(味方選択/1T)(M3)",
         "growtype": "",
-        "hp": "11829",
+        "hp": "12585",
         "id": "18",
         "implementation_date": "2023/12/15",
         "magic1atr": "木",
@@ -840,7 +840,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/イデア【ユニオンバースデー】"
     },
     {
-        "atk": "5500",
+        "atk": "5846",
         "attr": "ディフェンス",
         "base_atk": "1213",
         "base_hp": "2713",
@@ -860,7 +860,7 @@
         "duo": "セベク",
         "etc": "無属性ダメージDOWN(中)(相手全体/3T)(M1)<br>ATKDOWN(中)(相手/3T)(M3)",
         "growtype": "",
-        "hp": "13198",
+        "hp": "14053",
         "id": "21",
         "implementation_date": "2025/12/17",
         "magic1atr": "無",
@@ -2640,7 +2640,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/クルーウェル【リッチファーコート】"
     },
     {
-        "atk": "6345",
+        "atk": "6750",
         "attr": "バランス",
         "base_atk": "1350",
         "base_hp": "2983",
@@ -2660,7 +2660,7 @@
         "duo": "グリム",
         "etc": "HP継続回復(小)(味方選択/3T)(M3)",
         "growtype": "",
-        "hp": "14020",
+        "hp": "14915",
         "id": "66",
         "implementation_date": "2024/02/19",
         "magic1atr": "無",
@@ -2720,7 +2720,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/グリム【くつろぎマイルーム】"
     },
     {
-        "atk": "7059",
+        "atk": "7516",
         "attr": "アタック",
         "base_atk": "1451",
         "base_hp": "2187",
@@ -2740,7 +2740,7 @@
         "duo": "クロウリー",
         "etc": "ATKUP(中)(味方選択/1T)(M1)<br>HP回復(小)(M3)<br>ATKUP(小)(自/1T)(M3)",
         "growtype": "ATK",
-        "hp": "9918",
+        "hp": "10541",
         "id": "68",
         "implementation_date": "2025/03/10",
         "magic1atr": "火",
@@ -3600,7 +3600,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/シルバー【寮服】"
     },
     {
-        "atk": "6081",
+        "atk": "6470",
         "attr": "バランス",
         "base_atk": "1294",
         "base_hp": "2510",
@@ -3620,7 +3620,7 @@
         "duo": "ジャック",
         "etc": "被ダメージDOWN(中)(自/3T)(M1)<br>HP回復(小)(M3)<br>ダメージUP(小)(自/1T)(M3)",
         "growtype": "",
-        "hp": "11797",
+        "hp": "12550",
         "id": "90",
         "implementation_date": "2020/11/04",
         "magic1atr": "木",
@@ -3720,7 +3720,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/ジェイド【クラブ・ウェア】"
     },
     {
-        "atk": "6796",
+        "atk": "7236",
         "attr": "アタック",
         "base_atk": "1397",
         "base_hp": "2259",
@@ -3740,7 +3740,7 @@
         "duo": "アズール",
         "etc": "ATKDOWN(大)(相手/1T)(M1)<br>ダメージDOWN(中)(相手選択/1T)(M3)",
         "growtype": "ATK",
-        "hp": "10244",
+        "hp": "10888",
         "id": "93",
         "implementation_date": "2020/10/14",
         "magic1atr": "水",
@@ -3760,7 +3760,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/ジェイド【スケアリー・ドレス】"
     },
     {
-        "atk": "6898",
+        "atk": "7345",
         "attr": "アタック",
         "base_atk": "1418",
         "base_hp": "2227",
@@ -3780,7 +3780,7 @@
         "duo": "カリム",
         "etc": "HP継続回復(小)(自/3T)(M1)<br>ダメージDOWN(小)(相手/1T)(M1)<br>ダメージUP(中)(味方選択/1T)(M3)",
         "growtype": "ATK",
-        "hp": "10099",
+        "hp": "10734",
         "id": "94",
         "implementation_date": "2022/11/04",
         "magic1atr": "火",
@@ -3800,7 +3800,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/ジェイド【ブルームバースデー】"
     },
     {
-        "atk": "6011",
+        "atk": "6395",
         "attr": "バランス",
         "base_atk": "1279",
         "base_hp": "2539",
@@ -3820,7 +3820,7 @@
         "duo": "リドル",
         "etc": "ATKUP(中)(自/1T)(M1)<br>ATKDOWN(小)(相手/1T)(M1)<br>ダメージUP(中)(自/1T)(M3)<br>HP回復(極小)(M3)",
         "growtype": "",
-        "hp": "11933",
+        "hp": "12695",
         "id": "95",
         "implementation_date": "2023/11/02",
         "magic1atr": "無",
@@ -3840,7 +3840,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/ジェイド【プラチナジャケット】"
     },
     {
-        "atk": "5228",
+        "atk": "5557",
         "attr": "ディフェンス",
         "base_atk": "1153",
         "base_hp": "2857",
@@ -3860,7 +3860,7 @@
         "duo": "カリム",
         "etc": "ATKDOWN(小)(相手選択/2T)(M1)<br>ダメージDOWN(大)(相手/1T)(M3)",
         "growtype": "",
-        "hp": "13899",
+        "hp": "14799",
         "id": "96",
         "implementation_date": "2024/08/16",
         "magic1atr": "水",
@@ -3880,7 +3880,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/ジェイド【マーメイド・フィン】"
     },
     {
-        "atk": "6307",
+        "atk": "6710",
         "attr": "バランス",
         "base_atk": "1342",
         "base_hp": "2417",
@@ -3900,7 +3900,7 @@
         "duo": "シルバー",
         "etc": "ダメージDOWN(中)(相手選択/1T)(M1)<br>ATKUP(小)(自/1T)(M3)<br>ダメージDOWN(小)(相手/1T)(M3)",
         "growtype": "",
-        "hp": "11359",
+        "hp": "12085",
         "id": "97",
         "implementation_date": "2021/11/04",
         "magic1atr": "無",
@@ -3920,7 +3920,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/ジェイド【ユニオンバースデー】"
     },
     {
-        "atk": "6157",
+        "atk": "6550",
         "attr": "バランス",
         "base_atk": "1310",
         "base_hp": "2494",
@@ -3940,7 +3940,7 @@
         "duo": "ケイト",
         "etc": "水属性ダメージUP(中)(味方全体/2T)(M1)<br>ダメージUP(中)(自/1T)(M3)<br>HP回復(極小)(M3)",
         "growtype": "",
-        "hp": "11721",
+        "hp": "12470",
         "id": "98",
         "implementation_date": "2025/11/04",
         "magic1atr": "水",
@@ -3960,7 +3960,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/ジェイド【ラ・ボンボニエール】"
     },
     {
-        "atk": "5464",
+        "atk": "5808",
         "attr": "ディフェンス",
         "base_atk": "1205",
         "base_hp": "2716",
@@ -3980,7 +3980,7 @@
         "duo": "フロイド",
         "etc": "ATKUP(中)(自/3T)(M1)<br>ダメージDOWN(中)(相手/3T)(M3)",
         "growtype": "",
-        "hp": "13213",
+        "hp": "14068",
         "id": "99",
         "implementation_date": "2020/04/07",
         "magic1atr": "水",
@@ -4000,7 +4000,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/ジェイド【寮服】"
     },
     {
-        "atk": "5319",
+        "atk": "5653",
         "attr": "ディフェンス",
         "base_atk": "1173",
         "base_hp": "2809",
@@ -4020,7 +4020,7 @@
         "duo": "リドル",
         "etc": "HP回復(小)(M1)<br>ダメージUP(小)(自/1T)(M1)<br>HP回復(小)(M3)<br>ダメージDOWN(小)(相手/1T)(M3)",
         "growtype": "",
-        "hp": "13665",
+        "hp": "14550",
         "id": "100",
         "implementation_date": "2025/04/22",
         "magic1atr": "木",
@@ -4960,7 +4960,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/ジャミル【熱砂の策謀家】"
     },
     {
-        "atk": "5138",
+        "atk": "5461",
         "attr": "ディフェンス",
         "base_atk": "1133",
         "base_hp": "2905",
@@ -4980,7 +4980,7 @@
         "duo": "グリム",
         "etc": "暗闇(中)(相手/1T)(M1)<br>HP回復(小)(M3)<br>ATKUP(小)(自/1T)(M3)",
         "growtype": "",
-        "hp": "14132",
+        "hp": "15047",
         "id": "124",
         "implementation_date": "2025/10/14",
         "magic1atr": "無",
@@ -6280,7 +6280,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/トレイ【新春の衣】"
     },
     {
-        "atk": "4999",
+        "atk": "5302",
         "attr": "ディフェンス",
         "base_atk": "1189",
         "base_hp": "3481",
@@ -6300,7 +6300,7 @@
         "duo": "クルーウェル",
         "etc": "被ダメージDOWN(大)(味方全体/5T)(M3)",
         "growtype": "",
-        "hp": "18083",
+        "hp": "19284",
         "id": "157",
         "implementation_date": "2025/01/15",
         "magic1atr": "木",
@@ -6320,7 +6320,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/トレイン【ストリクトスーツ】"
     },
     {
-        "atk": "9002",
+        "atk": "9600",
         "attr": "アタック",
         "base_atk": "1733",
         "base_hp": "1940",
@@ -6340,7 +6340,7 @@
         "duo": "トレイン",
         "etc": "ガッツ(味方全体/3T)(M3)",
         "growtype": "ATK",
-        "hp": "8157",
+        "hp": "8652",
         "id": "158",
         "implementation_date": "2025/08/27",
         "magic1atr": "木",
@@ -6360,7 +6360,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/バルガス【ハンサムジャージ】"
     },
     {
-        "atk": "6439",
+        "atk": "6850",
         "attr": "バランス",
         "base_atk": "1370",
         "base_hp": "2380",
@@ -6380,7 +6380,7 @@
         "duo": "グリム",
         "etc": "ダメージUP(大)(相手全体/2T)(M1)<br>被ダメージUP(中)(相手全体/2T)(M1)<br>ダメージUP(中)(味方全体/2T)(M3)<br>被ダメージUP(大)(味方全体/2T)(M3)",
         "growtype": "",
-        "hp": "11186",
+        "hp": "11900",
         "id": "159",
         "implementation_date": "2024/09/09",
         "magic1atr": "木",
@@ -6520,7 +6520,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/フロイド【クラブ・ウェア】"
     },
     {
-        "atk": "6548",
+        "atk": "6972",
         "attr": "アタック",
         "base_atk": "1346",
         "base_hp": "2354",
@@ -6540,7 +6540,7 @@
         "duo": "リドル",
         "etc": "ATKUP(中)(自/3T)(M1)<br>ダメージDOWN(中)(相手/3T)(M3)",
         "growtype": "ATK",
-        "hp": "10675",
+        "hp": "11346",
         "id": "163",
         "implementation_date": "2023/08/16",
         "magic1atr": "無",
@@ -6600,7 +6600,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/フロイド【ビーンズ・カモ】"
     },
     {
-        "atk": "6485",
+        "atk": "6904",
         "attr": "アタック",
         "base_atk": "1333",
         "base_hp": "2362",
@@ -6620,7 +6620,7 @@
         "duo": "オルト",
         "etc": "HP継続回復(小)(自/3T)(M1)<br>ダメージUP(小)(自/1T)(M1)<br>呪い(中)(相手選択/2T)(M3)<br>ダメージDOWN(小)(相手/1T)(M3)",
         "growtype": "ATK",
-        "hp": "10711",
+        "hp": "11384",
         "id": "165",
         "implementation_date": "2022/11/04",
         "magic1atr": "無",
@@ -6640,7 +6640,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/フロイド【ブルームバースデー】"
     },
     {
-        "atk": "5743",
+        "atk": "6110",
         "attr": "バランス",
         "base_atk": "1222",
         "base_hp": "2560",
@@ -6660,7 +6660,7 @@
         "duo": "カリム",
         "etc": "ATKDOWN(中)(相手/1T)(M1)<br>ATKUP(小)(自/1T)(M1)<br>ダメージDOWN(中)(相手/1T)(M3)<br>HP回復(極小)(M3)",
         "growtype": "",
-        "hp": "12455",
+        "hp": "13250",
         "id": "166",
         "implementation_date": "2023/11/02",
         "magic1atr": "水",
@@ -6680,7 +6680,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/フロイド【プラチナジャケット】"
     },
     {
-        "atk": "7073",
+        "atk": "7531",
         "attr": "アタック",
         "base_atk": "1454",
         "base_hp": "2169",
@@ -6700,7 +6700,7 @@
         "duo": "アズール",
         "etc": "呪い(大)(相手/2T)(M1)<br>ダメージUP(小)(自/1T)(M1)<br>ダメージUP(大)(自/1T)(M3)",
         "growtype": "ATK",
-        "hp": "9836",
+        "hp": "10020",
         "id": "167",
         "implementation_date": "2024/08/16",
         "magic1atr": "火",
@@ -6720,7 +6720,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/フロイド【マーメイド・フィン】"
     },
     {
-        "atk": "6660",
+        "atk": "7091",
         "attr": "アタック",
         "base_atk": "1369",
         "base_hp": "2304",
@@ -6740,7 +6740,7 @@
         "duo": "デュース",
         "etc": "火属性ダメージUP(大)(味方選択/1T)(M1)<br>ATKDOWN(中)(相手選択/1T)(M3)",
         "growtype": "ATK",
-        "hp": "10448",
+        "hp": "11105",
         "id": "168",
         "implementation_date": "2021/11/04",
         "magic1atr": "火",
@@ -6760,7 +6760,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/フロイド【ユニオンバースデー】"
     },
     {
-        "atk": "4474",
+        "atk": "4745",
         "attr": "ディフェンス",
         "base_atk": "1064",
         "base_hp": "3047",
@@ -6780,7 +6780,7 @@
         "duo": "シルバー",
         "etc": "ATKDOWN(中)(相手/1T)(M1)<br>ATKUP(小)(自/1T)(M1)<br>回避(中)(自/1T)(M3)",
         "growtype": "",
-        "hp": "15829",
+        "hp": "16880",
         "id": "169",
         "implementation_date": "2025/08/08",
         "magic1atr": "火",
@@ -6800,7 +6800,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/フロイド【ラビット・ウェア】"
     },
     {
-        "atk": "6157",
+        "atk": "6550",
         "attr": "バランス",
         "base_atk": "1310",
         "base_hp": "2494",
@@ -6820,7 +6820,7 @@
         "duo": "リリア",
         "etc": "木属性ダメージUP(中)(味方全体/2T)(M1)<br>ダメージUP(中)(自/1T)(M3)<br>HP回復(極小)(M3)",
         "growtype": "",
-        "hp": "11721",
+        "hp": "12470",
         "id": "170",
         "implementation_date": "2025/11/04",
         "magic1atr": "木",
