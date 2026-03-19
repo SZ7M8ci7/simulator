@@ -1960,7 +1960,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/オルト【ケルベロス・ギア】"
     },
     {
-        "atk": "6396",
+        "atk": "6805",
         "attr": "バランス",
         "base_atk": "1361",
         "base_hp": "2382",
@@ -1980,7 +1980,7 @@
         "duo": "シルバー",
         "etc": "ATKDOWN(中)(相手/3T)(M1)<br>HP継続回復(小)(自/3T)(M3)<br>ダメージUP(小)(自/1T)(M3)",
         "growtype": "",
-        "hp": "11195",
+        "hp": "11910",
         "id": "49",
         "implementation_date": "2022/05/30",
         "magic1atr": "木",
@@ -2040,7 +2040,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/オルト【ブルーム・ギア】"
     },
     {
-        "atk": "6489",
+        "atk": "6910",
         "attr": "アタック",
         "base_atk": "1334",
         "base_hp": "2373",
@@ -2060,7 +2060,7 @@
         "duo": "ジェイド",
         "etc": "ATKUP(中)(自/1T)(M1)<br>ATKDOWN(小)(相手/1T)(M1)<br>暗闇無効(自/1T)(M3)<br>呪い(大)(相手/2T)(M3)",
         "growtype": "ATK",
-        "hp": "10761",
+        "hp": "11437",
         "id": "51",
         "implementation_date": "2024/08/13",
         "magic1atr": "火",
@@ -3400,7 +3400,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/シルバー【スケアリー・ドレス】"
     },
     {
-        "atk": "7015",
+        "atk": "7469",
         "attr": "アタック",
         "base_atk": "1442",
         "base_hp": "2188",
@@ -3420,7 +3420,7 @@
         "duo": "イデア",
         "etc": "ダメージUP(大)(自/1T)(M1)<br>ATKUP(小)(自/1T)(M3)<br>ダメージDOWN(小)(相手/1T)(M3)",
         "growtype": "ATK",
-        "hp": "9922",
+        "hp": "10546",
         "id": "85",
         "implementation_date": "2023/05/12",
         "magic1atr": "無",
@@ -5080,7 +5080,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/セベク【くつろぎマイルーム】"
     },
     {
-        "atk": "7117",
+        "atk": "7578",
         "attr": "アタック",
         "base_atk": "1463",
         "base_hp": "2168",
@@ -5100,7 +5100,7 @@
         "duo": "シルバー",
         "etc": "デバフ解除(味方選択)(M1)<br>ATKUP(小)(自/1T)(M1)<br>ダメージUP(大)(自/1T)(M3)",
         "growtype": "ATK",
-        "hp": "9831",
+        "hp": "10449",
         "id": "127",
         "implementation_date": "2025/07/22",
         "magic1atr": "火",
@@ -6080,7 +6080,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/トレイ【ブルームバースデー】"
     },
     {
-        "atk": "4587",
+        "atk": "4865",
         "attr": "ディフェンス",
         "base_atk": "1091",
         "base_hp": "2967",
@@ -6100,7 +6100,7 @@
         "duo": "レオナ",
         "etc": "木属性ダメージDOWN(大)(相手選択/1T)(M1)<br>ATKUP(小)(自/1T)(M3)<br>ダメージDOWN(小)(相手/1T)(M3)",
         "growtype": "",
-        "hp": "15413",
+        "hp": "16437",
         "id": "152",
         "implementation_date": "2023/10/24",
         "magic1atr": "火",
@@ -7920,7 +7920,7 @@
         "wikiURL": "https://twst.wikiru.jp/?SSR/リドル【クラブ・ウェア】"
     },
     {
-        "atk": "6562",
+        "atk": "6987",
         "attr": "アタック",
         "base_atk": "1349",
         "base_hp": "2336",
@@ -7940,7 +7940,7 @@
         "duo": "ラギー",
         "etc": "ATKDOWN(中)(相手/3T)(M1)<br>ダメージUP(中)(自/3T)(M3)",
         "growtype": "ATK",
-        "hp": "10593",
+        "hp": "11259",
         "id": "198",
         "implementation_date": "2021/10/31",
         "magic1atr": "木",
