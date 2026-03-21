@@ -174,24 +174,6 @@ def infer_growtype(rank, attr, hp, atk):
     return candidates[0][1]
 
 
-def normalize_growtype(type_text):
-    growtype_map = {
-        'アタック': 'ATK',
-        'ディフェンス': 'DEF',
-        'バランス': 'BAL',
-        'バランス寄りアタック': 'BAL寄りATK',
-        'バランス寄りATK': 'BAL寄りATK',
-        'バランス寄りディフェンス': 'BAL寄りDEF',
-        'バランス寄りDEF': 'BAL寄りDEF',
-        'ATK': 'ATK',
-        'DEF': 'DEF',
-        'BAL': 'BAL',
-        'BAL寄りATK': 'BAL寄りATK',
-        'BAL寄りDEF': 'BAL寄りDEF',
-    }
-    return growtype_map.get(type_text, '')
-
-
 def parse_buddy_entries(table):
     entries = []
     pending_entry = None
@@ -530,11 +512,7 @@ def scrape_card(rank, url, masters):
     magic3 = parse_magic_text(magic_tables[2]) if rank == 'SSR' and len(magic_tables) >= 3 else ''
     buddy_fields = normalize_buddy_fields(build_buddy_fields(parse_buddy_entries(buddy_table)))
     key = name + costume
-    growtype = normalize_growtype(attr)
-    if not growtype and name_type_master[key]:
-        growtype = name_type_master[key]
-    if not growtype:
-        growtype = infer_growtype(rank, attr, HP, ATK)
+    growtype = name_type_master[key] if name_type_master[key] else infer_growtype(rank, attr, HP, ATK)
     return {
         'chara': name,
         'costume': costume,
