@@ -5299,7 +5299,7 @@
         "debuff_count": 2,
         "duo": "フロイド",
         "etc": "無属性ダメージDOWN(中)(相手全体/3T)(M1)<br>ダメージDOWN(大)(相手/1T)(M3)",
-        "growtype": "DEF",
+        "growtype": "BAL寄りDEF",
         "hp": "15213",
         "id": "132",
         "implementation_date": "",
