@@ -78,3 +78,4 @@ C&Dダイナー:C&D_Diner
 ナイトメアー・ギア:nightmare_gear
 荒野の反逆者:rebel_of_the_wilderness
 真紅の暴君:Crimson_Tyrant
+ビッグ・チェック:big_check
