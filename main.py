@@ -1,6 +1,7 @@
 import glob
 import json
 import os
+import tempfile
 import time
 from collections import defaultdict
 
@@ -21,6 +22,11 @@ from scraper_common import (
 
 GET_DIR = 'get'
 IMG_DIR = 'img'
+CARD_LIST_URL = 'https://twst.wikiru.jp/?cmd=list'
+MIN_CARD_TITLE_COUNT = 400
+MIN_PREVIOUS_COUNT_RATIO = 0.98
+REQUEST_ATTEMPTS = 3
+REQUEST_TIMEOUT_SECONDS = 30
 
 
 def ensure_output_dirs():
@@ -35,9 +41,42 @@ def build_magicdict(cards):
     return magicdict
 
 
+def load_chara_json(path='chara.json'):
+    if not os.path.exists(path):
+        return []
+
+    with open(path, 'r', encoding='utf-8') as f:
+        cards = json.load(f)
+
+    if not isinstance(cards, list):
+        raise ValueError(f'{path} must contain a JSON list')
+    return cards
+
+
 def write_chara_json(cards, path='chara.json'):
-    with open(path, 'w', encoding='utf-8') as f:
-        json.dump(cards, f, sort_keys=True, indent=4, ensure_ascii=False)
+    if not cards:
+        raise ValueError('Refusing to replace chara.json with an empty card list')
+
+    target_path = os.path.abspath(path)
+    target_dir = os.path.dirname(target_path)
+    os.makedirs(target_dir, exist_ok=True)
+    file_descriptor, temp_path = tempfile.mkstemp(
+        dir=target_dir,
+        prefix=f'.{os.path.basename(target_path)}.',
+        suffix='.tmp',
+        text=True,
+    )
+
+    try:
+        with os.fdopen(file_descriptor, 'w', encoding='utf-8') as f:
+            json.dump(cards, f, sort_keys=True, indent=4, ensure_ascii=False)
+            f.flush()
+            os.fsync(f.fileno())
+        os.replace(temp_path, target_path)
+    except Exception:
+        if os.path.exists(temp_path):
+            os.remove(temp_path)
+        raise
 
 
 def parse_icon_source(file_path):
@@ -116,19 +155,66 @@ def build_card_url(title):
     return 'https://twst.wikiru.jp/?' + title
 
 
-def fetch_card_titles_by_rank():
-    url = "https://twst.wikiru.jp/?cmd=list"
-    result = requests.get(url)
+def get_with_retries(url, attempts=REQUEST_ATTEMPTS, timeout=REQUEST_TIMEOUT_SECONDS):
+    last_error = None
+    for attempt in range(1, attempts + 1):
+        try:
+            response = requests.get(url, timeout=timeout)
+            response.raise_for_status()
+            return response
+        except requests.RequestException as error:
+            last_error = error
+            if attempt < attempts:
+                time.sleep(2 ** (attempt - 1))
+
+    raise RuntimeError(f'Failed to fetch {url} after {attempts} attempts') from last_error
+
+
+def validate_card_titles(titles_by_rank, previous_count=0):
+    counts = {rank: len(titles_by_rank.get(rank, [])) for rank in ('SSR', 'SR', 'R')}
+    total_count = sum(counts.values())
+    minimum_count = max(
+        MIN_CARD_TITLE_COUNT,
+        int(previous_count * MIN_PREVIOUS_COUNT_RATIO),
+    )
+
+    if any(count == 0 for count in counts.values()) or total_count < minimum_count:
+        raise RuntimeError(
+            'Card list response is incomplete; refusing to update chara.json '
+            f'(counts={counts}, total={total_count}, required>={minimum_count})'
+        )
+
+    return total_count
+
+
+def fetch_card_titles_by_rank(previous_count=0):
+    result = get_with_retries(CARD_LIST_URL)
     data_all = BeautifulSoup(result.text, 'html.parser')
     titles_by_rank = {'SSR': [], 'SR': [], 'R': []}
+    seen_titles = {rank: set() for rank in titles_by_rank}
 
     for link in data_all.find_all('a'):
+        title = link.get_text(strip=True)
         for rank in titles_by_rank:
-            if link.text.startswith(rank) and link.text.endswith('】'):
-                titles_by_rank[rank].append(link.text)
+            if (
+                title.startswith(f'{rank}/')
+                and title.endswith('】')
+                and title not in seen_titles[rank]
+            ):
+                titles_by_rank[rank].append(title)
+                seen_titles[rank].add(title)
                 break
 
+    validate_card_titles(titles_by_rank, previous_count)
     return titles_by_rank
+
+
+def validate_generated_cards(cards, expected_count):
+    if len(cards) != expected_count:
+        raise RuntimeError(
+            'Card scraping was incomplete; refusing to update chara.json '
+            f'(generated={len(cards)}, expected={expected_count})'
+        )
 
 
 def download_missing_icons(card_titles):
@@ -143,12 +229,14 @@ def get_list(rank):
     return [build_card_url(title) for title in titles_by_rank.get(rank, [])]
 
 
-if __name__ == '__main__':
+def run_full_update():
+    previous_cards = load_chara_json()
+    titles_by_rank = fetch_card_titles_by_rank(len(previous_cards))
+    expected_count = sum(len(titles) for titles in titles_by_rank.values())
     masters = make_type_dict(STATUS_TABLE_URL)
     namedict = getDict('namedict.txt')
     cosdict = getDict('cosdict.txt')
     implementation_dates = get_implementation_dates()
-    titles_by_rank = fetch_card_titles_by_rank()
     download_missing_icons([
         title
         for rank in ('SSR', 'SR', 'R')
@@ -156,6 +244,7 @@ if __name__ == '__main__':
     ])
 
     cards = []
+    failures = []
     count = 0
     for rank in ('SSR', 'SR', 'R'):
         for title in titles_by_rank.get(rank, []):
@@ -167,8 +256,16 @@ if __name__ == '__main__':
                 count += 1
             except Exception as e:
                 print(e, cur_url)
+                failures.append(cur_url)
 
+    if failures:
+        print(f'Failed to scrape {len(failures)} card(s).')
+    validate_generated_cards(cards, expected_count)
     write_chara_json(cards)
     outDict('cosdict.txt', cosdict)
     outDict('namedict.txt', namedict)
     makeicon(cards)
+
+
+if __name__ == '__main__':
+    run_full_update()
