@@ -79,4 +79,3 @@ C&Dダイナー:C&D_Diner
 荒野の反逆者:rebel_of_the_wilderness
 真紅の暴君:Crimson_Tyrant
 ビッグ・チェック:big_check
-オルト:ortho
