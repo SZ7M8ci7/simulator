@@ -80,3 +80,4 @@ C&Dダイナー:C&D_Diner
 真紅の暴君:Crimson_Tyrant
 ビッグ・チェック:big_check
 クラブ・ギア:club_gear
+フレンドリーテック:friendly_tech
