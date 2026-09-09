@@ -82,3 +82,4 @@ C&Dダイナー:C&D_Diner
 クラブ・ギア:club_gear
 フレンドリーテック:friendly_tech
 ボンボニエール・ギア:Bonbonniere_Gear
+グレート・ルック:great_look
