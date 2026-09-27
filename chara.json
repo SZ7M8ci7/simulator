@@ -12282,8 +12282,8 @@
     {
         "atk": "6193",
         "attr": "アタック",
-        "base_atk": "1238",
-        "base_hp": "1249",
+        "base_atk": "1308",
+        "base_hp": "1616",
         "buddy1c": "オルト",
         "buddy1s": "ATKUP(小)",
         "buddy1s_totsu": "ATKUP(小)",
@@ -13162,8 +13162,8 @@
     {
         "atk": "6747",
         "attr": "アタック",
-        "base_atk": "1349",
-        "base_hp": "1423",
+        "base_atk": "1710",
+        "base_hp": "2210",
         "buddy1c": "カリム",
         "buddy1s": "HP&ATKUP(小)",
         "buddy1s_totsu": "HP&ATKUP(小)",
@@ -19042,8 +19042,8 @@
     {
         "atk": "3735",
         "attr": "ディフェンス",
-        "base_atk": "747",
-        "base_hp": "2025",
+        "base_atk": "907",
+        "base_hp": "2103",
         "buddy1c": "ラギー",
         "buddy1s": "HPUP(中)",
         "buddy1s_totsu": "HPUP(中)",
