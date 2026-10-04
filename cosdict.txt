@@ -83,3 +83,4 @@ C&Dダイナー:C&D_Diner
 フレンドリーテック:friendly_tech
 ボンボニエール・ギア:Bonbonniere_Gear
 グレート・ルック:great_look
+スウィートアバター:sweet_avatar
