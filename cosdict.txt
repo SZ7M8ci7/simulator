@@ -79,3 +79,7 @@ C&Dダイナー:C&D_Diner
 荒野の反逆者:rebel_of_the_wilderness
 真紅の暴君:Crimson_Tyrant
 ビッグ・チェック:big_check
+クラブ・ギア:club_gear
+フレンドリーテック:friendly_tech
+ボンボニエール・ギア:Bonbonniere_Gear
+グレート・ルック:great_look
