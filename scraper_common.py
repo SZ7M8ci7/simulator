@@ -278,6 +278,8 @@ def sanitize_translated_text(text):
 
 def translate_cached(text, cache):
     if text not in cache:
+        import time
+        time.sleep(1)
         translated = GoogleTranslator(source='ja', target='en').translate(text).replace(' ', '_')
         if translated == '':
             translated = str(random.randint(1, 100000))
