@@ -21,6 +21,10 @@ class ImageFailure(ValueError):
         self.attempts = attempts
 
 
+class ImagePending(ImageFailure):
+    """The exact source image is not published yet (HTTP 404)."""
+
+
 def image_info(raw, expected_format=None):
     if not raw or len(raw) > MAX_BYTES:
         raise ImageFailure('Empty or oversized image')
@@ -97,6 +101,7 @@ class Downloader:
     def fetch(self, url):
         if self.blocked:
             raise ImageFailure('Deferred: server requested a long Retry-After; retry next run')
+        last_error = None
         for attempt in range(1, self.attempts + 1):
             if self.last_request is not None:
                 self.sleep(max(0, self.interval - (self.clock() - self.last_request), self.retry_until - self.clock()))
@@ -107,6 +112,11 @@ class Downloader:
             try:
                 response = self.session.get(url, timeout=(10, 30), stream=True)
                 status = response.status_code
+                if status == 404:
+                    retry = False
+                    if last_error is not None:
+                        raise ImageFailure('HTTP 404 after an abnormal response: ' + last_error, attempt)
+                    raise ImagePending('Source image not published yet (HTTP 404)', attempt)
                 if status != 200:
                     retry = status in {408, 429, 500, 502, 503, 504}
                     if status in {429, 503}:
@@ -138,8 +148,11 @@ class Downloader:
                 raw = b''.join(chunks)
                 image_info(raw)
                 return raw, attempt
+            except ImagePending:
+                raise
             except (requests.RequestException, ImageFailure) as error:
                 message = str(error)
+                last_error = message
                 if not retry or attempt == self.attempts:
                     raise ImageFailure(message, attempt) from error
             finally:
@@ -151,13 +164,17 @@ class Downloader:
 def write_report(path, stage, results):
     failures = [r for r in results if r['status'] == 'error']
     report = {'stage': stage, 'checkedAt': datetime.now(timezone.utc).isoformat(),
-              'cardCount': len(results), 'failedCount': len(failures), 'results': results}
+              'cardCount': len(results), 'failedCount': len(failures),
+              'pendingCount': sum(r['status'] == 'pending' for r in results), 'results': results}
     atomic_write(path, (json.dumps(report, ensure_ascii=False, indent=2) + '\n').encode('utf-8'))
-    summary = '{}: {} cards checked; {} unresolved\n'.format(stage, len(results), len(failures))
+    summary = '{}: {} cards checked'.format(stage, len(results))
+    if failures:
+        summary += '; {} errors'.format(len(failures))
+    summary += '\n'
     print(summary.strip())
     details = ''.join('- `{}`: {}\n'.format(r['name'], r['error'].replace('\n', ' ')) for r in failures)
     print(details, end='')
-    if os.environ.get('GITHUB_STEP_SUMMARY'):
+    if failures and os.environ.get('GITHUB_STEP_SUMMARY'):
         with open(os.environ['GITHUB_STEP_SUMMARY'], 'a', encoding='utf-8') as stream:
             stream.write('### ' + summary + '\n' + details + '\n')
     return report

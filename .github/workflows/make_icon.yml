@@ -45,8 +45,8 @@ jobs:
           path: reports/*.json
           if-no-files-found: warn
           retention-days: 30
-      - name: Fail visibly when cards remain unresolved
+      - name: Fail visibly for image errors
         if: ${{ !cancelled() && steps.icons.outcome != 'success' }}
         run: |
-          echo '::error::Card icons remain unresolved. See job summary and card-image-reports.'
+          echo '::error::Card icon errors detected. See job summary and card-image-reports.'
           exit 1

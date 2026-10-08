@@ -1,4 +1,6 @@
 import io
+import os
+from contextlib import redirect_stdout
 import json
 import tempfile
 import unittest
@@ -94,7 +96,7 @@ class PipelineTest(unittest.TestCase):
     def test_404_does_not_retry_or_block_later_cards(self):
         client = self.downloader(Response(404), Response(), Response())
         results = acquire([card('missing'), card('two'), card('three')], self.root, client)
-        self.assertEqual([r['status'] for r in results], ['error', 'downloaded', 'downloaded'])
+        self.assertEqual([r['status'] for r in results], ['pending', 'downloaded', 'downloaded'])
         self.assertEqual(self.session.calls, 3)
 
     def test_existing_valid_image_skips_network(self):
@@ -226,15 +228,79 @@ class PipelineTest(unittest.TestCase):
         generate([card()], self.root, {'one'})
         self.assertNotEqual((self.root / 'img/one.webp').read_bytes(), before)
 
-    def test_cli_reports_and_returns_nonzero_for_missing_images(self):
+    def test_cli_pending_only_returns_zero_and_does_not_notify(self):
         (self.root / 'chara.json').write_text(json.dumps([card()]), encoding='utf8')
-        with patch('get_img.Downloader', return_value=self.downloader(Response(404))):
-            self.assertEqual(download_main(['--root', str(self.root)]), 1)
-        self.assertEqual(generate_main(['--root', str(self.root)]), 1)
+        summary = self.root / 'summary.md'
+        output = io.StringIO()
+        with patch.dict(os.environ, {'GITHUB_STEP_SUMMARY': str(summary)}), redirect_stdout(output):
+            with patch('get_img.Downloader', return_value=self.downloader(Response(404))):
+                self.assertEqual(download_main(['--root', str(self.root)]), 0)
+            self.assertEqual(generate_main(['--root', str(self.root)]), 0)
+        self.assertFalse(summary.exists())
+        self.assertNotIn('one', output.getvalue())
+        self.assertNotIn('warning', output.getvalue().lower())
+        self.assertNotIn('error', output.getvalue().lower())
+        for filename in ['get-images.json', 'make-icons.json']:
+            report = json.loads((self.root / 'reports' / filename).read_text(encoding='utf8'))
+            self.assertEqual(report['failedCount'], 0)
+            self.assertEqual(report['pendingCount'], 1)
+            self.assertEqual(report['results'][0]['status'], 'pending')
+
+    def test_mixed_pending_corruption_and_success_preserve_updates_and_report_only_error(self):
+        cards = [card('waiting'), card('broken'), card('ready')]
+        (self.root / 'chara.json').write_text(json.dumps(cards), encoding='utf8')
+        summary = self.root / 'summary.md'
+        client = self.downloader(Response(404), Response(raw=b'<html>challenge</html>'), Response(), attempts=1)
+        with patch.dict(os.environ, {'GITHUB_STEP_SUMMARY': str(summary)}), redirect_stdout(io.StringIO()):
+            with patch('get_img.Downloader', return_value=client):
+                self.assertEqual(download_main(['--root', str(self.root)]), 1)
+            self.assertEqual(generate_main(['--root', str(self.root)]), 1)
         for filename in ['get-images.json', 'make-icons.json']:
             report = json.loads((self.root / 'reports' / filename).read_text(encoding='utf8'))
             self.assertEqual(report['failedCount'], 1)
-            self.assertEqual(report['results'][0]['name'], 'one')
+            self.assertEqual(report['pendingCount'], 1)
+            self.assertEqual([r['status'] for r in report['results'][:2]], ['pending', 'error'])
+        image_info((self.root / 'img/ready.webp').read_bytes(), 'WEBP')
+        notice = summary.read_text(encoding='utf8')
+        self.assertIn('broken', notice)
+        self.assertNotIn('waiting', notice)
+
+    def test_pending_image_is_acquired_on_the_next_run(self):
+        client = self.downloader(Response(404), Response())
+        self.assertEqual(acquire([card()], self.root, client)[0]['status'], 'pending')
+        self.assertEqual(acquire([card()], self.root, client)[0]['status'], 'downloaded')
+        self.assertEqual(generate([card()], self.root)[0]['status'], 'generated')
+
+    def test_html_followed_by_404_is_not_downgraded_to_pending(self):
+        result = acquire([card()], self.root, self.downloader(Response(content_type='text/html'), Response(404)))[0]
+        self.assertEqual(result['status'], 'error')
+        self.assertIn('abnormal response', result['error'])
+
+    def test_auth_rate_limit_and_transport_errors_are_not_pending(self):
+        for response in [Response(401), Response(403), Response(429), requests.Timeout('timeout')]:
+            result = acquire([card()], self.root, self.downloader(response, attempts=1))[0]
+            self.assertEqual(result['status'], 'error')
+
+    def test_missing_source_with_corrupt_existing_output_is_error(self):
+        (self.root / 'img').mkdir()
+        (self.root / 'img/one.webp').write_bytes(b'<html>bad cached output</html>')
+        self.assertEqual(generate([card()], self.root)[0]['status'], 'error')
+
+    def test_missing_source_with_valid_outputs_is_pending(self):
+        (self.root / 'img').mkdir()
+        (self.root / 'img/one.webp').write_bytes(picture('WEBP', (80, 80)))
+        (self.root / 'img/one.png').write_bytes(picture('PNG', (60, 60)))
+        self.assertEqual(generate([card()], self.root)[0]['status'], 'pending')
+
+    def test_missing_render_dependency_is_error_not_pending(self):
+        (self.root / 'get' / filename_for(card())).write_bytes(picture())
+        (self.root / '火.png').unlink()
+        self.assertEqual(generate([card()], self.root)[0]['status'], 'error')
+
+    def test_upstream_download_error_is_preserved_by_generation(self):
+        result = generate([card()], self.root, source_errors={'one': 'HTTP 403'})[0]
+        self.assertEqual(result['status'], 'error')
+        self.assertIn('HTTP 403', result['error'])
 
 
 if __name__ == '__main__':

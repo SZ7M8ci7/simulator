@@ -3,17 +3,18 @@ import argparse
 import json
 from pathlib import Path
 
-from image_pipeline import (Downloader, atomic_write, filename_for, image_info,
+from image_pipeline import (Downloader, ImagePending, atomic_write, filename_for, image_info,
                             safe_child, url_for, write_report)
 
 
 def acquire(cards, root, downloader, source_filenames=None):
     results = []
     for card in cards:
-        result = {'name': card['name'], 'url': url_for(card, (source_filenames or {}).get(card['name']))}
+        result = {'name': card['name']}
+        invalid = False
         try:
+            result['url'] = url_for(card, (source_filenames or {}).get(card['name']))
             path = safe_child(Path(root) / 'get', filename_for(card))
-            invalid = False
             if path.exists():
                 try:
                     image_info(path.read_bytes())
@@ -27,6 +28,11 @@ def acquire(cards, root, downloader, source_filenames=None):
             image_info(raw)
             atomic_write(path, raw)
             result.update(status='repaired' if invalid else 'downloaded', attempts=attempts)
+        except ImagePending as error:
+            if invalid:
+                result.update(status='error', error='Corrupt cached source could not be repaired: ' + str(error), attempts=error.attempts)
+            else:
+                result.update(status='pending', reason=str(error), attempts=error.attempts)
         except Exception as error:
             result.update(status='error', error=str(error), attempts=getattr(error, 'attempts', 0))
         results.append(result)

@@ -21,6 +21,7 @@ jobs:
         run: pip install -r requirements.txt
       - name: Regression tests
         run: python -m unittest discover -s tests -v
+      # Missing sources/404 exit successfully; only real image/network errors fail.
       - name: Download and validate source images
         id: download
         continue-on-error: true
@@ -50,8 +51,8 @@ jobs:
           path: reports/*.json
           if-no-files-found: warn
           retention-days: 30
-      - name: Fail visibly when cards remain unresolved
+      - name: Fail visibly for image errors
         if: ${{ !cancelled() && (steps.download.outcome != 'success' || steps.icons.outcome != 'success') }}
         run: |
-          echo '::error::Card images remain unresolved. See job summary and card-image-reports.'
+          echo '::error::Card image errors detected. See job summary and card-image-reports.'
           exit 1
