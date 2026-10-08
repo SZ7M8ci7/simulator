@@ -1,37 +1,51 @@
-import glob
+"""Acquire every missing/invalid card icon; never cache an HTML response."""
+import argparse
 import json
-import time
-import requests
+from pathlib import Path
 
-def get_img(filename):
+from image_pipeline import (Downloader, atomic_write, filename_for, image_info,
+                            safe_child, url_for, write_report)
 
-    try:
-        time.sleep(1)
-        url = "https://twst.wikiru.jp/attach2/696D67_" + filename.encode('utf-8').hex().rstrip().upper()+".jpg"
-        r = requests.get(url)
-        if 200 != r.status_code:
-            return
-        path = 'get/' + filename
-        image_file = open(path, 'wb')
-        image_file.write(r.content)
-        print(r.content)
-        image_file.close()
-    except:
-        pass
+
+def acquire(cards, root, downloader, source_filenames=None):
+    results = []
+    for card in cards:
+        result = {'name': card['name'], 'url': url_for(card, (source_filenames or {}).get(card['name']))}
+        try:
+            path = safe_child(Path(root) / 'get', filename_for(card))
+            invalid = False
+            if path.exists():
+                try:
+                    image_info(path.read_bytes())
+                    result['status'] = 'valid'
+                    results.append(result)
+                    continue
+                except ValueError as error:
+                    invalid = True
+                    result['previousError'] = str(error)
+            raw, attempts = downloader.fetch(result['url'])
+            image_info(raw)
+            atomic_write(path, raw)
+            result.update(status='repaired' if invalid else 'downloaded', attempts=attempts)
+        except Exception as error:
+            result.update(status='error', error=str(error), attempts=getattr(error, 'attempts', 0))
+        results.append(result)
+    return results
+
+
+def main(argv=None):
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--root', type=Path, default=Path('.'))
+    parser.add_argument('--interval', type=float, default=1.0)
+    parser.add_argument('--attempts', type=int, default=3)
+    args = parser.parse_args(argv)
+    cards = json.loads((args.root / 'chara.json').read_text(encoding='utf-8'))
+    overrides_path = args.root / 'image_sources.json'
+    sources = json.loads(overrides_path.read_text(encoding='utf-8')) if overrides_path.exists() else {}
+    results = acquire(cards, args.root, Downloader(interval=args.interval, attempts=args.attempts), sources)
+    report = write_report(args.root / 'reports/get-images.json', 'Download card images', results)
+    return 1 if report['failedCount'] else 0
+
 
 if __name__ == '__main__':
-    with open("chara.json", 'r') as file:
-        data = json.load(file)
-    files = glob.glob("get/*")
-    exists_files = set()
-    for file in files:
-        try:
-            sp = file.split('/')[-1]
-            exists_files.add(sp.replace('get/','').replace('get\\',''))
-        except:
-            pass
-    for d in data:
-        filename = f"{d['rare']}{d['chara']}【{d['costume']}】アイコン.jpg"
-        if filename not in exists_files:
-            get_img(filename)
-            break
+    raise SystemExit(main())

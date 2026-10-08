@@ -1,101 +1,81 @@
-from collections import defaultdict
-import glob
+"""Generate verified card icons and fail visibly on unresolved cards."""
+import argparse
+import io
 import json
+from pathlib import Path
+
 from PIL import Image
 
-def getDict(path):
-    dict = defaultdict(str)
-    with open(path, "r", encoding='UTF-8') as f:
-        # ファイルの各行に対して処理を行う
-        for line in f:
-            if len(line) <= 1:
-                continue
-            # 行末の改行コードを削除して分割
-            key, value = line.strip().split(":")
-            # 辞書型にキーと値を追加
-            dict[key] = value.strip()
-    return dict
+from image_pipeline import atomic_write, filename_for, image_info, safe_child, write_report
 
-def create_composite_image(chara_data, filename, size, magic_icon_size):
-    max_magic = 2
-    if chara_data['rare'] == 'SSR':
-        max_magic = 3
-    
-    background_image = Image.open(filename).convert("RGBA")
-    background_image_resized = background_image.resize((size, size))
-    start_pos = background_image_resized.width - max_magic * magic_icon_size - (max_magic - 1)
-    
-    for magic in range(max_magic):
-        magic_atr_key = f"magic{magic+1}atr"
-        foreground_image = Image.open(f"{chara_data[magic_atr_key]}.png")
-        foreground_image = foreground_image.convert("RGBA")
-        
-        if foreground_image.size != (magic_icon_size, magic_icon_size):
-            # WebPの場合は縦を18pxに、横は16pxのまま
-            if size == 80:  # WebPの場合
-                foreground_image = foreground_image.resize((16, 18))
-            else:  # PNGの場合
-                foreground_image = foreground_image.resize((magic_icon_size, magic_icon_size))
-        
-        background_image_resized.alpha_composite(foreground_image, (start_pos + magic_icon_size * magic + magic, 0))
-    
-    return background_image_resized
 
-def make_png_icon(chara_data, filename):
-    try:
-        composite_image = create_composite_image(chara_data, filename, 60, 12)
-        composite_image.save('img/' + chara_data['name'] +'.png')
-    except Exception as e:
-        print(e, filename)
+def render_icon(card, raw, root, size):
+    image_info(raw)
+    with Image.open(io.BytesIO(raw)) as source:
+        background = source.convert('RGBA').resize((size, size))
+    count = 3 if card['rare'] == 'SSR' else 2
+    magic_size = 16 if size == 80 else 12
+    start = size - count * magic_size - (count - 1)
+    for index in range(count):
+        attribute = card['magic{}atr'.format(index + 1)]
+        if attribute not in {'火', '水', '木', '無'}:
+            raise ValueError('Missing/invalid magic attribute: ' + attribute)
+        with Image.open(Path(root) / (attribute + '.png')) as source:
+            overlay = source.convert('RGBA')
+        if overlay.size != (magic_size, magic_size):
+            overlay = overlay.resize((16, 18) if size == 80 else (magic_size, magic_size))
+        background.alpha_composite(overlay, (start + (magic_size + 1) * index, 0))
+    output = io.BytesIO()
+    fmt = 'WEBP' if size == 80 else 'PNG'
+    background.save(output, fmt, **({'quality': 85} if fmt == 'WEBP' else {}))
+    raw = output.getvalue()
+    image_info(raw, fmt)
+    return raw
 
-def make_webp_icon(chara_data, filename):
-    try:
-        composite_image = create_composite_image(chara_data, filename, 80, 16)  # 元の16に戻す
-        composite_image.save('img/' + chara_data['name'] +'.webp', 'WEBP', quality=85)
-    except Exception as e:
-        print(e, filename)
+
+def generate(cards, root, refresh=()):
+    results = []
+    root = Path(root)
+    for card in cards:
+        result = {'name': card['name']}
+        try:
+            raw = safe_child(root / 'get', filename_for(card)).read_bytes()
+            image_info(raw)
+            outputs = []
+            for extension, fmt, size in [('png', 'PNG', 60), ('webp', 'WEBP', 80)]:
+                path = safe_child(root / 'img', card['name'] + '.' + extension)
+                valid = False
+                if path.exists() and card['name'] not in refresh:
+                    try:
+                        _, dimensions = image_info(path.read_bytes(), fmt)
+                        valid = dimensions == (size, size)
+                    except ValueError:
+                        pass
+                if not valid:
+                    outputs.append((path, render_icon(card, raw, root, size)))
+            for path, data in outputs:
+                atomic_write(path, data)
+            result['status'] = 'generated' if outputs else 'valid'
+        except Exception as error:
+            result.update(status='error', error=str(error))
+        results.append(result)
+    return results
+
+
+def main(argv=None):
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--root', type=Path, default=Path('.'))
+    args = parser.parse_args(argv)
+    cards = json.loads((args.root / 'chara.json').read_text(encoding='utf-8'))
+    report_path = args.root / 'reports/get-images.json'
+    refresh = set()
+    if report_path.exists():
+        report = json.loads(report_path.read_text(encoding='utf-8'))
+        refresh = {r['name'] for r in report['results'] if r['status'] in {'repaired', 'downloaded'}}
+    results = generate(cards, args.root, refresh)
+    report = write_report(args.root / 'reports/make-icons.json', 'Generate card icons', results)
+    return 1 if report['failedCount'] else 0
+
 
 if __name__ == '__main__':
-    
-    namedict = getDict('namedict.txt')
-    cosdict = getDict('cosdict.txt')
-    img_files = glob.glob("img/*")
-    exists_png_files = set()
-    exists_webp_files = set()
-    for file in img_files:
-        try:
-            sp = file.split('/')[-1]
-            filename = sp.replace('img/','').replace('img\\','')
-            if filename.endswith('.png'):
-                exists_png_files.add(filename)
-            elif filename.endswith('.webp'):
-                exists_webp_files.add(filename)
-        except Exception as e:
-            print(e, file)
-
-    with open("chara.json", 'r') as file:
-        data = json.load(file)
-    chara_data_dict = {}
-    for d in data:
-        chara_data_dict[d['name']] = d
-    get_files = glob.glob("get/*")
-    for file in get_files:
-        try:
-            sp = file.split('/')[-1]
-            filename = sp.replace('get/','').replace('get\\','').replace('SSR','').replace('SR','').replace('R','').replace('】アイコン.jpg','')
-            name_costume = filename.split('【')
-            output_filename = namedict[name_costume[0]]+'_'+cosdict[name_costume[1]]
-            output_png_filename = output_filename+'.png'
-            output_webp_filename = output_filename+'.webp'
-            
-            # PNG画像の存在チェックと生成
-            if output_png_filename not in exists_png_files:
-                make_png_icon(chara_data_dict[output_filename], file)
-            
-            # WebP画像の存在チェックと生成
-            if output_webp_filename not in exists_webp_files:
-                make_webp_icon(chara_data_dict[output_filename], file)
-        except Exception as e:
-            print(e, file)
-
-        
+    raise SystemExit(main())
