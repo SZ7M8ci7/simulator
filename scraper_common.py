@@ -1,11 +1,12 @@
+import hashlib
 import json
 import os
-import random
 import re
 from collections import defaultdict
+from functools import lru_cache
+from pathlib import Path
 
 from bs4 import BeautifulSoup
-from deep_translator import GoogleTranslator
 import requests
 
 
@@ -272,19 +273,38 @@ def normalize_buddy_fields(fields):
     return fields
 
 
-def sanitize_translated_text(text):
-    return text.replace(' ', '_').replace('\'', '').replace('"', '')
+@lru_cache(maxsize=1)
+def load_translation_model():
+    import ctranslate2
+    import sentencepiece
+    from huggingface_hub import hf_hub_download
+
+    # Int8 conversion of Helsinki-NLP/opus-mt-ja-en. Pin weights and tokenizers together.
+    repo = 'jiangzhuo9357/opus-mt-ja-en-ct2'
+    revision = 'd9413fe79f0f029e720da0bf4dd0cea41e18a2d6'
+    files = {name: hf_hub_download(repo, name, revision=revision) for name in
+             ('model.bin', 'config.json', 'shared_vocabulary.json', 'source.spm', 'target.spm')}
+    translator = ctranslate2.Translator(str(Path(files['model.bin']).parent),
+                                        device='cpu', compute_type='int8')
+    source = sentencepiece.SentencePieceProcessor(model_file=files['source.spm'])
+    target = sentencepiece.SentencePieceProcessor(model_file=files['target.spm'])
+    return translator, source, target
 
 
 def translate_cached(text, cache):
-    if text not in cache:
-        import time
-        time.sleep(1)
-        translated = GoogleTranslator(source='ja', target='en').translate(text).replace(' ', '_')
-        if translated == '':
-            translated = str(random.randint(1, 100000))
-        cache[text] = sanitize_translated_text(translated)
-    return cache[text]
+    if text in cache:
+        return cache[text]
+
+    translator, source, target = load_translation_model()
+    tokens = source.encode(text, out_type=str) + ['</s>']
+    result = translator.translate_batch([tokens])[0]
+    translation = target.decode(result.hypotheses[0]).lower().replace("'", '')
+    identifier = re.sub(r'[^a-z0-9]+', '_', translation).strip('_')[:80]
+    if not identifier or identifier in cache.values():
+        suffix = hashlib.sha256(text.encode('utf-8')).hexdigest()[:16]
+        identifier = f'{identifier or "jp"}_{suffix}'
+    cache[text] = identifier
+    return identifier
 
 
 def extract_duo_partner(magic_text):
