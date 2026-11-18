@@ -2,7 +2,7 @@ import json
 import os
 import re
 import time
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 from bs4 import BeautifulSoup
 import requests
@@ -34,13 +34,17 @@ def get_chara_dict(rank, url, masters, implementation_dates=None, namedict=None,
 
 
 def get_history():
-    response = requests.get('https://twst.wikiru.jp/?RecentChanges')
+    response = requests.get('https://twst.wikiru.jp/?RecentChanges', timeout=30)
+    response.raise_for_status()
     html = response.text
 
     soup = BeautifulSoup(html, 'html.parser')
-    items = soup.select('ul.list1.list-indent1 > li')
+    items = soup.select('#body ul.list1.list-indent1 > li')
 
     results = []
+    jst = timezone(timedelta(hours=9))
+    cutoff = datetime.now(jst) - timedelta(days=2)
+    found_dated_row = False
     date_pattern = re.compile(r'\s*(\d{4}-\d{2}-\d{2}) \([月火水木金土日]\) (\d{2}:\d{2}:\d{2})')
     for item in items:
         text_content = item.text.strip()
@@ -51,14 +55,15 @@ def get_history():
             time_str = match.group(2)
             date_time_obj = datetime.strptime(f"{date_str} {time_str}", "%Y-%m-%d %H:%M:%S")
 
-            if date_time_obj >= datetime.now() - timedelta(days=2):
-                link_text = item.find('a').text.strip()
-                if link_text.startswith('R/'):
-                    results.append(['R', 'https://twst.wikiru.jp/?' + link_text])
-                if link_text.startswith('SR/'):
-                    results.append(['SR', 'https://twst.wikiru.jp/?' + link_text])
-                if link_text.startswith('SSR/'):
-                    results.append(['SSR', 'https://twst.wikiru.jp/?' + link_text])
+            found_dated_row = True
+            if date_time_obj.replace(tzinfo=jst) >= cutoff:
+                for link in item.select('a[href]'):
+                    title = link.get_text(strip=True)
+                    if title.startswith(('R/', 'SR/', 'SSR/')) and title.endswith('】'):
+                        results.append([title.split('/', 1)[0], 'https://twst.wikiru.jp/?' + title])
+                        break
+    if not found_dated_row:
+        raise ValueError('RecentChanges contains no recognizable dated entries')
     return results
 
 
@@ -142,6 +147,7 @@ def sync_characters_info_from_namedict(info_path='characters_info.json', namedic
 
 if __name__ == '__main__':
     histories = get_history()
+    print(f'Found {len(histories)} recently updated card page(s).')
     if len(histories) != 0:
         masters = make_type_dict(STATUS_TABLE_URL)
         implementation_dates = get_implementation_dates()
