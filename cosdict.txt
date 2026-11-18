@@ -84,3 +84,4 @@ C&Dダイナー:C&D_Diner
 ボンボニエール・ギア:Bonbonniere_Gear
 グレート・ルック:great_look
 スウィートアバター:sweet_avatar
+守護竜の演習服:the_guardian_dragons_drill_suit
