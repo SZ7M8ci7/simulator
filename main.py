@@ -53,6 +53,46 @@ def load_chara_json(path='chara.json'):
     return cards
 
 
+def preserve_card_ids(previous_cards, cards):
+    """Keep published IDs by canonical card name, regardless of scrape order."""
+    previous_ids = {}
+    used_ids = set()
+    for card in previous_cards:
+        name, card_id = card.get('name'), card.get('id')
+        if not isinstance(name, str) or not name.strip() or name in previous_ids:
+            raise ValueError(f'Missing or duplicate existing card name: {name!r}')
+        if (
+            not isinstance(card_id, str)
+            or not card_id.isascii()
+            or not card_id.isdecimal()
+            or str(int(card_id)) != card_id
+            or card_id in used_ids
+        ):
+            raise ValueError(f'Invalid or duplicate existing ID for {name!r}: {card_id!r}')
+        previous_ids[name] = card_id
+        used_ids.add(card_id)
+
+    seen = set()
+    next_id = max((int(card_id) for card_id in used_ids), default=-1) + 1
+    result = []
+    for card in cards:
+        name = card.get('name')
+        if not isinstance(name, str) or not name.strip() or name in seen:
+            raise ValueError(f'Missing or duplicate scraped card name: {name!r}')
+        seen.add(name)
+        card_id = previous_ids.get(name)
+        if card_id is None:
+            card_id = str(next_id)
+            next_id += 1
+        result.append({**card, 'id': card_id})
+
+    # Do not drop an existing identity when the wiki omits or renames a page.
+    missing = previous_ids.keys() - seen
+    if missing:
+        raise ValueError(f'Missing existing cards; refusing to update chara.json: {", ".join(sorted(missing))}')
+    return result
+
+
 def write_chara_json(cards, path='chara.json'):
     if not cards:
         raise ValueError('Refusing to replace chara.json with an empty card list')
@@ -245,15 +285,13 @@ def run_full_update():
 
     cards = []
     failures = []
-    count = 0
     for rank in ('SSR', 'SR', 'R'):
         for title in titles_by_rank.get(rank, []):
             cur_url = build_card_url(title)
             try:
                 time.sleep(1)
                 scraped_card = scrape_card(rank, cur_url, masters)
-                cards.append(build_card_record(count, scraped_card, namedict, cosdict, implementation_dates))
-                count += 1
+                cards.append(build_card_record(None, scraped_card, namedict, cosdict, implementation_dates))
             except Exception as e:
                 print(e, cur_url)
                 failures.append(cur_url)
@@ -261,6 +299,7 @@ def run_full_update():
     if failures:
         print(f'Failed to scrape {len(failures)} card(s).')
     validate_generated_cards(cards, expected_count)
+    cards = preserve_card_ids(previous_cards, cards)
     write_chara_json(cards)
     outDict('cosdict.txt', cosdict)
     outDict('namedict.txt', namedict)
